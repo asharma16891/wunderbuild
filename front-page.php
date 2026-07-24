@@ -153,44 +153,7 @@
       </div>
 
     </div>
-  </section>
-  <!-- <section class="trust bg-field">
-    <div class="wrap">
-      <div class="trust-grid">
-        <div class="trust-card">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
-            </svg></span>
-          <p>Built for residential builders</p>
-        </div>
-        <div class="trust-card">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18" />
-            </svg></span>
-          <p>Made for Australian &amp; New&nbsp;Zealand teams</p>
-        </div>
-        <div class="trust-card">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
-              <path d="M9 22V12h6v10" />
-            </svg></span>
-          <p>From first estimate to final invoice</p>
-        </div>
-        <div class="trust-card">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
-            </svg></span>
-          <p>Training &amp; support included</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
+</section>
 
   <!-- PROCESS TIMELINE -->
   <section class="process">
@@ -330,7 +293,7 @@
               </a>
             </div>
             <div class="browser-mock">
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Leads.png" alt="Leads">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Leads.png" alt="Leads">
 
             </div>
           </div>
@@ -354,7 +317,7 @@
             <div class="browser-mock">
 
               
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Estimates.png" alt="Leads">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Estimates.png" alt="Leads">
 
 
             </div>
@@ -377,7 +340,7 @@
 
             </div>
             <div class="browser-mock">
-               <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Jobs.png" alt="Leads">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Jobs.png" alt="Leads">
             </div>
           </div>
         </div>
@@ -399,7 +362,7 @@
 
             </div>
             <div class="browser-mock">
-               <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Schedule.png" alt="Leads">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Schedule.png" alt="Leads">
               
             </div>
           </div>
@@ -422,7 +385,7 @@
 
             </div>
             <div class="browser-mock">
-               <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Site Diary.png" alt="Leads">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Site Diary.png" alt="Leads">
             </div>
           </div>
         </div>
@@ -443,7 +406,7 @@
               </a>
             </div>
             <div class="browser-mock">
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Job Overview.png" alt="Leads">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Job Overview.png" alt="Leads">
             </div>
           </div>
         </div>
@@ -467,7 +430,7 @@
             </div>
             <div class="browser-mock">
              
-               <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/Xero Invoices.png" alt="Leads">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Xero Invoices.png" alt="Leads">
             </div>
           </div>
         </div>
