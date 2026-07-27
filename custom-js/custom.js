@@ -45,102 +45,193 @@ tabBtns.forEach((btn) => {
 });
 
 // Process path: fill grows and the active step updates as you scroll through the section
+// Process Timeline
 const pathContainer = document.getElementById("processPath");
 const pathRows = document.querySelectorAll(".p-row");
 const pathFill = document.getElementById("pathFill");
-let ticking = false;
 
-function updatePathOnScroll() {
-  const rect = pathContainer.getBoundingClientRect();
-  const viewportH = window.innerHeight;
-  const raw = (viewportH / 2 - rect.top) / rect.height;
-  const progress = Math.min(1, Math.max(0, raw));
+// Only run timeline JS if elements exist on the page
+if (pathContainer && pathFill && pathRows.length) {
+  let ticking = false;
 
-  pathFill.style.height = progress * 100 + "%";
+  function updatePathOnScroll() {
+    const rect = pathContainer.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+    const raw = (viewportH / 2 - rect.top) / rect.height;
+    const progress = Math.min(1, Math.max(0, raw));
 
-  const activeIndex = Math.min(
-    pathRows.length - 1,
-    Math.floor(progress * pathRows.length),
-  );
-  pathRows.forEach((r, i) => r.classList.toggle("active", i === activeIndex));
-  ticking = false;
-}
+    pathFill.style.height = progress * 100 + "%";
 
-function onScroll() {
-  if (!ticking) {
-    requestAnimationFrame(updatePathOnScroll);
-    ticking = true;
+    const activeIndex = Math.min(
+      pathRows.length - 1,
+      Math.floor(progress * pathRows.length)
+    );
+
+    pathRows.forEach((r, i) => {
+      r.classList.toggle("active", i === activeIndex);
+    });
+
+    ticking = false;
   }
-}
 
-window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", onScroll);
-updatePathOnScroll();
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updatePathOnScroll);
+      ticking = true;
+    }
+  }
 
-pathRows.forEach((row, index) => {
-  row.addEventListener("mouseenter", () => {
-    pathRows.forEach((r, i) => r.classList.toggle("active", i === index));
-    pathFill.style.height = ((index + 1) / pathRows.length) * 100 + "%";
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+
+  updatePathOnScroll();
+
+  pathRows.forEach((row, index) => {
+    row.addEventListener("mouseenter", () => {
+      pathRows.forEach((r, i) => {
+        r.classList.toggle("active", i === index);
+      });
+
+      pathFill.style.height =
+        ((index + 1) / pathRows.length) * 100 + "%";
+    });
   });
-});
+}
 
 // Testimonials slider
+// Testimonials Slider
 (function () {
   const track = document.getElementById("tTrack");
+
+  // Stop if testimonial slider doesn't exist on this page
+  if (!track) return;
+
   const slides = track.querySelectorAll(".t-slide");
   const dotsWrap = document.getElementById("tDots");
   const prevBtn = document.getElementById("tPrev");
   const nextBtn = document.getElementById("tNext");
+  const sliderWrap = document.querySelector(".t-slider-wrap");
+
+  // Extra safety check
+  if (!slides.length || !dotsWrap || !prevBtn || !nextBtn) return;
+
   let index = 0;
   let autoplay;
 
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
+
     dot.className = "t-dot" + (i === 0 ? " active" : "");
-    dot.setAttribute("aria-label", "Go to testimonial " + (i + 1));
+    dot.setAttribute(
+      "aria-label",
+      "Go to testimonial " + (i + 1)
+    );
+
     dot.addEventListener("click", () => goTo(i));
+
     dotsWrap.appendChild(dot);
   });
+
   const dots = dotsWrap.querySelectorAll(".t-dot");
 
   function goTo(i) {
     index = (i + slides.length) % slides.length;
-    track.style.transform = "translateX(-" + index * 100 + "%)";
-    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+
+    track.style.transform =
+      "translateX(-" + index * 100 + "%)";
+
+    dots.forEach((d, di) => {
+      d.classList.toggle("active", di === index);
+    });
+
     restartAutoplay();
   }
 
   function restartAutoplay() {
     clearInterval(autoplay);
-    autoplay = setInterval(() => goTo(index + 1), 6000);
+
+    autoplay = setInterval(() => {
+      goTo(index + 1);
+    }, 6000);
   }
 
-  prevBtn.addEventListener("click", () => goTo(index - 1));
-  nextBtn.addEventListener("click", () => goTo(index + 1));
+  prevBtn.addEventListener("click", () => {
+    goTo(index - 1);
+  });
 
-  // swipe support
+  nextBtn.addEventListener("click", () => {
+    goTo(index + 1);
+  });
+
+  // Swipe support
   let startX = null;
+
   track.addEventListener(
     "touchstart",
     (e) => {
       startX = e.touches[0].clientX;
     },
-    { passive: true },
+    { passive: true }
   );
+
   track.addEventListener("touchend", (e) => {
     if (startX === null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    if (dx > 40) goTo(index - 1);
-    else if (dx < -40) goTo(index + 1);
+
+    const dx =
+      e.changedTouches[0].clientX - startX;
+
+    if (dx > 40) {
+      goTo(index - 1);
+    } else if (dx < -40) {
+      goTo(index + 1);
+    }
+
     startX = null;
   });
 
-  const sliderWrap = document.querySelector(".t-slider-wrap");
-  sliderWrap.addEventListener("mouseenter", () => clearInterval(autoplay));
-  sliderWrap.addEventListener("mouseleave", restartAutoplay);
+  if (sliderWrap) {
+    sliderWrap.addEventListener("mouseenter", () => {
+      clearInterval(autoplay);
+    });
+
+    sliderWrap.addEventListener("mouseleave", restartAutoplay);
+  }
 
   restartAutoplay();
 })();
+
+
+/* =========================================================
+   FAQ ACCORDION
+========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function (item) {
+
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', function () {
+
+            const isActive = item.classList.contains('active');
+
+            // Close all FAQs
+            faqItems.forEach(function (faq) {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+            }
+
+        });
+
+    });
+
+});
 
 
 

@@ -463,6 +463,457 @@ get_header();
     </div>
 </section> 
 
+<!-- =========================================================
+     COMPARISON SECTION
+========================================================= -->
+
+<section class="comparison-section">
+
+    <div class="wrap">
+
+        <!-- Section Heading -->
+        <div class="comparison-head">
+
+            <span class="badge comparison-badge">
+                Why Wunderbuild
+            </span>
+
+            <h2>
+                Less time chasing.
+                <br>
+                More time moving the job forward.
+            </h2>
+
+            <p>
+                Most admin work doesn't look like one big problem.
+                It shows up as small repeats, missed details, and
+                extra checks across the day.
+            </p>
+
+        </div>
+
+
+        <!-- Comparison Cards -->
+        <div class="comparison-grid">
+
+            <!-- Without Wunderbuild -->
+            <div class="comparison-card without-card">
+
+                <div class="comparison-card-head">
+                    <span class="comparison-icon">
+                        −
+                    </span>
+
+                    <h3>
+                        Without Wunderbuild
+                    </h3>
+                </div>
+
+
+                <div class="comparison-list">
+
+                    <div class="comparison-item">
+                        <span class="item-number">01</span>
+
+                        <p>
+                            Leads sit in one place, and estimates are built
+                            somewhere else.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">02</span>
+
+                        <p>
+                            Supplier quotes, specifications, and documents
+                            get chased through email.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">03</span>
+
+                        <p>
+                            The site waits for the latest task, file,
+                            or decision.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">04</span>
+
+                        <p>
+                            Client decisions get buried in calls,
+                            messages, and memory.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">05</span>
+
+                        <p>
+                            Costs change after the work has already been done.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- With Wunderbuild -->
+            <div class="comparison-card with-card">
+
+                <div class="comparison-card-head">
+
+                    <span class="comparison-icon">
+                        ✓
+                    </span>
+
+                    <h3>
+                        With Wunderbuild
+                    </h3>
+
+                </div>
+
+
+                <div class="comparison-list">
+
+                    <div class="comparison-item">
+                        <span class="item-number">01</span>
+
+                        <p>
+                            New work can move into pricing and job setup
+                            with less manual rebuilding.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">02</span>
+
+                        <p>
+                            Quote requests, specifications, and documents
+                            stay closer to the job.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">03</span>
+
+                        <p>
+                            Schedules, tasks, documents, checklists,
+                            and site diaries stay visible.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">04</span>
+
+                        <p>
+                            Selections, approvals, communication,
+                            and variations stay attached.
+                        </p>
+                    </div>
+
+
+                    <div class="comparison-item">
+                        <span class="item-number">05</span>
+
+                        <p>
+                            Budgets, expenses, actuals, claims, and invoices
+                            stay in closer sync with the live job.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CTA -->
+        <div class="comparison-cta">
+
+            <a href="#" class="btn btn-primary">
+                Start a free trial
+            </a>
+
+            <a href="#" class="btn btn-dark">
+                Book a free demo
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FAQ SECTION
+========================================================= -->
+
+<section class="faq-section">
+
+    <div class="wrap">
+
+        <!-- FAQ Header -->
+        <div class="faq-head">
+
+            <span class="badge faq-badge">
+                FAQs
+            </span>
+
+            <h2>
+                Questions, answered.
+            </h2>
+
+            <p>
+                Everything you need to know about bringing your
+                building workflow into one connected place.
+            </p>
+
+        </div>
+
+
+        <!-- FAQ Accordion -->
+        <div class="faq-list">
+
+
+            <!-- FAQ 01 -->
+            <div class="faq-item active">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        Do I need to use every part of Wunderbuild straight away?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            No. Most teams start with the parts of the job that
+                            need attention first, then build from there. You
+                            might start with estimating, job setup, scheduling,
+                            site diaries, cost control, or Xero invoicing,
+                            depending on how your business currently works.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 02 -->
+            <div class="faq-item">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        How does Wunderbuild connect each stage of a job?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            Wunderbuild keeps the records for each stage of
+                            the job closer together, so leads, estimates,
+                            site work, client decisions, costs, claims,
+                            and financial records are easier to follow as
+                            the work progresses.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 03 -->
+            <div class="faq-item">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        Can Wunderbuild help if we're moving from spreadsheets
+                        or another system?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            Yes. Wunderbuild is built to help builders bring
+                            more of the job into one place. The exact setup
+                            depends on how your jobs, documents, costs, team,
+                            and current tools are organised.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 04 -->
+            <div class="faq-item">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        Does Wunderbuild connect the office and the site?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            Yes. Wunderbuild brings office work, site work,
+                            documents, communication, tasks, site records,
+                            costs, claims, and invoices into a single job flow.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 05 -->
+            <div class="faq-item">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        Does Wunderbuild work with Xero?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            Wunderbuild can surface supplier invoices imported
+                            from Xero with their related job context. The exact
+                            integration setup and supported accounting workflow
+                            should be confirmed during onboarding.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAQ 06 -->
+            <div class="faq-item">
+
+                <button class="faq-question" type="button">
+
+                    <span>
+                        Where should our team start?
+                    </span>
+
+                    <span class="faq-icon">
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div class="faq-answer-inner">
+
+                        <p>
+                            Start with the part of the job that involves the
+                            most repetitive work, the most missing information,
+                            or the most chasing. Your team can begin there,
+                            then bring more of the workflow into Wunderbuild
+                            as the process settles in.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FAQ CTA -->
+        <div class="faq-cta">
+
+            <p>
+                Still have questions?
+            </p>
+
+            <a href="#" class="btn btn-primary">
+                Talk to our team
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
 
