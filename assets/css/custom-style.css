@@ -224,7 +224,7 @@ header.scrolled .navbar {
 }
 
 .logo-mark {
-  width: 50px;
+  width: 210px;
   height: 50px;
   border-radius: 8px;
   background: var(--charcoal);
@@ -272,6 +272,52 @@ header.scrolled .navbar {
   width: 100%;
 }
 
+/* WordPress Menu */
+.nav-links .primary-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links .primary-menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links .primary-menu li a {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-60);
+    position: relative;
+    padding: 4px 0;
+    text-decoration: none;
+}
+
+.nav-links .primary-menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1.5px;
+    background: var(--charcoal);
+    transition: width 0.25s ease;
+}
+
+.nav-links .primary-menu li a:hover {
+    color: var(--charcoal);
+}
+
+.nav-links .primary-menu li a:hover::after,
+.nav-links .primary-menu .current-menu-item > a::after,
+.nav-links .primary-menu .current_page_item > a::after {
+    width: 100%;
+}
 .nav-actions {
   display: flex;
   align-items: center;
@@ -919,7 +965,7 @@ Icon
       background: var(--charcoal);
     } */
 
-.ic svg {
+.ic img {
   width: 36px;
   height: 36px;
 
@@ -928,7 +974,7 @@ Icon
   transition: 0.35s;
 }
 
-.trust-card:hover svg {
+.trust-card:hover img {
   stroke: #fff;
 }
 
@@ -2153,9 +2199,9 @@ footer .wrap {
   font-size: 24px;
 }
 
-.footer-brand .logo-mark img {
+/* .footer-brand .logo-mark img {
   width: 40px;
-}
+} */
 
 .tagline {
   font-size: 12.5px !important;
@@ -2355,7 +2401,7 @@ a.contact-row:hover {
   transform: translateY(-2px);
 }
 
-.social svg {
+.social img {
   width: 14px;
   height: 14px;
   stroke: var(--white);
