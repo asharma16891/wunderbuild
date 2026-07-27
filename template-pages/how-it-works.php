@@ -668,19 +668,9 @@ get_header();
         <!-- FAQ Header -->
         <div class="faq-head">
 
-            <span class="badge faq-badge">
-                FAQs
-            </span>
-
             <h2>
-                Questions, answered.
+                FAQs
             </h2>
-
-            <p>
-                Everything you need to know about bringing your
-                building workflow into one connected place.
-            </p>
-
         </div>
 
 
@@ -913,6 +903,121 @@ get_header();
     </div>
 
 </section>
+
+  <!-- TESTIMONIALS -->
+   <section class="testimonials bg-field">
+    <div class="wrap">
+      <div class="section-head center" style="margin-left:auto;margin-right:auto;">
+        <span class="badge badge-coral">Testimonials</span>
+        <h2>Real builders. Real jobs. Real feedback.</h2>
+        <p>Hear from the people who've discovered how Wunderbuild solved their biggest challenges.</p>
+      </div>
+      <div class="t-slider-wrap">
+        <div class="t-track-viewport">
+          <div class="t-track" id="tTrack">
+
+            <div class="t-slide">
+              <div class="t-card">
+                <div class="t-stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                </div>
+                <p class="t-quote">We stopped chasing progress claims across three different tools. Everything's attached to the job now, and it shows the moment we open it.</p>
+                <div class="t-person">
+                  <div class="t-avatar"></div>
+                  <div>
+                    <div class="name">Dale Whitfield</div>
+                    <div class="meta">Whitfield Residential · Brisbane, QLD</div>
+                  </div>
+                  <span class="t-badge">★ Verified Google review</span>
+                </div>
+              </div>
+            </div>
+
+           
+
+            <div class="t-slide">
+              <div class="t-card">
+                <div class="t-stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                </div>
+                <p class="t-quote">Onboarding used our actual job files, not a demo account. My site supervisor was updating diaries by the end of week one.</p>
+                <div class="t-person">
+                  <div class="t-avatar"></div>
+                  <div>
+                    <div class="name">Priya Nair</div>
+                    <div class="meta">Nair Built Homes · Hamilton, NZ</div>
+                  </div>
+                  <span class="t-badge">$1.2M project · 8 months</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="t-slide">
+              <div class="t-card">
+                <div class="t-stars">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" /></svg>
+                </div>
+                <p class="t-quote">Variations used to get lost in text messages. Now they sit against the job budget where the office can actually see them.</p>
+                <div class="t-person">
+                  <div class="t-avatar"></div>
+                  <div>
+                    <div class="name">Marcus Ferro</div>
+                    <div class="meta">Ferro Construction · Geelong, VIC</div>
+                  </div>
+                  <span class="t-badge">$860K project · 6 months</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="t-controls">
+          <button class="t-arrow" id="tPrev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <div class="t-dots" id="tDots"></div>
+          <button class="t-arrow" id="tNext" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:44px;">
+        <a href="#" class="explore-link" style="justify-content:center;">Read more reviews <svg viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-glow"></div>
+    <div class="wrap" style="position:relative; z-index:1;">
+      <h2>Ready to stop carrying the whole job in your head?</h2>
+      <p>Start with the job in front of you. Wunderbuild helps keep the work, the people, and the money connected from
+        there.</p>
+      <div class="actions">
+        <a href="#" class="btn btn-primary">Start a free trial</a>
+        <a href="#" class="btn btn-dark">Book a free demo</a>
+      </div>
+    </div>
+  </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
