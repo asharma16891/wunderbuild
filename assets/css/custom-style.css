@@ -968,9 +968,6 @@ Icon
 .ic img {
   width: 36px;
   height: 36px;
-
-  stroke: #fff;
-
   transition: 0.35s;
 }
 
@@ -1861,10 +1858,10 @@ section {
   margin-bottom: 20px;
 }
 
-.support-card .ic svg {
+.support-card .ic img {
   width: 20px;
   height: 20px;
-  stroke: var(--lime);
+ 
 }
 
 .support-card h4 {
