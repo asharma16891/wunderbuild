@@ -6,67 +6,55 @@
 
 get_header();
 ?>
-<?php
 
-$lead_features = [
+        <?php
+        $without_items = [
 
-    [
-        'id'          => 'lead-details',
-        'label'       => 'Lead details',
-        'title'       => 'Keep the lead facts in one place',
-        'description' => 'See the contact, address, assignee, stage, budget, expected close date, and labels without piecing the opportunity together from separate records.',
-        'image'       => 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80',
-        'alt'         => 'Team discussing project details'
-    ],
+            'Leads sit in one place, and estimates are built somewhere else.',
 
-    [
-        'id'          => 'recent-notes',
-        'label'       => 'Recent notes',
-        'title'       => 'Keep every update attached',
-        'description' => 'Add call summaries, internal notes, and important context against the lead, so the next person can pick up the full story.',
-        'image'       => 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80',
-        'alt'         => 'Business team collaborating'
-    ],
+            'Supplier quotes, specifications, and documents get chased through email.',
 
-    [
-        'id'          => 'checklists',
-        'label'       => 'Quality control',
-        'title'       => 'Qualify the opportunity properly',
-        'description' => 'Use repeatable checklists to confirm the information your team needs before the lead moves into estimating.',
-        'image'       => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80',
-        'alt'         => 'Team working on project planning'
-    ],
+            'The site waits for the latest task, file, or decision.',
 
-    [
-        'id'          => 'tasks',
-        'label'       => 'Task management',
-        'title'       => 'Make the next action visible',
-        'description' => 'Create follow-up tasks, assign responsibility, and set dates to prevent the opportunity from stalling between conversations.',
-        'image'       => 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80',
-        'alt'         => 'Modern office workspace'
-    ],
+            'Client decisions get buried in calls, messages, and memory.',
 
-    [
-        'id'          => 'estimation',
-        'label'         => 'Estimating',
-        'title'         => 'Move qualified work into pricing',
-        'description'   => 'Link the lead to an existing estimate or create a new one directly from the lead once the opportunity is ready to price.',
-        'image'         => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
-        'alt'           => 'Business documents and calculator'
-    ],
+            'Costs change after the work has already been done.'
 
-    [
-        'id'          => 'documents',
-        'label'       => 'File management',
-        'title'       => 'Keep early files with the lead',
-        'description' => 'Store plans, photos, briefs, and supporting files against the opportunity, so the team has the right information before pricing begins.',
-        'image'       => 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
-        'alt'         => 'People working in an office'
-    ],
+        ];
 
-];
+        $with_items = [
 
-?>
+            'New work can move into pricing and job setup with less manual rebuilding.',
+
+            'Quote requests, specifications, and documents stay closer to the job.',
+
+            'Schedules, tasks, documents, checklists, and site diaries stay visible.',
+
+            'Selections, approvals, communication, and variations stay attached.',
+
+            'Budgets, expenses, actuals, claims, and invoices stay in closer sync with the live job.'
+
+        ];
+
+        $comparison = [
+
+            [
+                'variant' => 'without',
+                'title'   => 'Without Wunderbuild',
+                'icon'    => 'triangle-alert.svg',
+                'items'   => $without_items,
+            ],
+
+            [
+                'variant' => 'with',
+                'title'   => 'With Wunderbuild',
+                'icon'    => 'sparkles.svg',
+                'items'   => $with_items,
+            ]
+
+        ];
+
+        ?>
 
 
 <section class="hero bg-field">
@@ -136,229 +124,63 @@ $lead_features = [
 </section>
 
 <!-- New Work / Problem Section -->
-<section class="new-work-section">
-    <div class="wrap">
+<section class="new-work">
+    <div class="container">
 
-        <div class="new-work-header">
-            <span class="new-work-eyebrow">
-                <span class="new-work-eyebrow-dot"></span>
-                New work
-            </span>
-
+        <div class="section-heading">
+            <span class="eyebrow">New Work</span>
             <h2>Work gets messy when the details live everywhere.</h2>
-
             <p>
-                New enquiries move quickly. When information is scattered across
-                inboxes, spreadsheets, and notes, it becomes harder to know what
-                needs attention next.
+                Keep every enquiry organised from the first contact to the next step.
             </p>
         </div>
 
+        <div class="feature-grid wrap">
 
-        <div class="new-work-grid">
+            <article class="feature-card">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop&q=80" alt="Lead owner">
 
-            <!-- Card 01 -->
-            <article class="new-work-card">
-                <div class="new-work-card-top">
-                    <span class="new-work-number">01</span>
-
-                    <span class="new-work-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 20V10" />
-                            <path d="M8 14l4-4 4 4" />
-                            <path d="M5 4h14" />
-                            <path d="M5 4v16" />
-                        </svg>
-                    </span>
-                </div>
-
-                <div class="new-work-card-content">
+                <div class="feature-content">
                     <h3>No clear owner</h3>
-
                     <p>
-                        A good enquiry comes in, but no one is sure who's following up
-                        on it.
+                        Assign every enquiry to the right person so nothing gets missed.
                     </p>
                 </div>
-
-                <div class="new-work-card-line"></div>
             </article>
 
+            <article class="feature-card">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&auto=format&fit=crop&q=80" alt="Project stage">
 
-            <!-- Card 02 -->
-            <article class="new-work-card">
-                <div class="new-work-card-top">
-                    <span class="new-work-number">02</span>
-
-                    <span class="new-work-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="8" />
-                            <path d="M12 8v4l3 2" />
-                        </svg>
-                    </span>
-                </div>
-
-                <div class="new-work-card-content">
+                <div class="feature-content">
                     <h3>No clear stage</h3>
-
                     <p>
-                        The team can't see whether the lead is new, qualified, waiting
-                        on information, in estimation, or ready to move.
+                        See exactly where every lead sits in your sales pipeline.
                     </p>
                 </div>
-
-                <div class="new-work-card-line"></div>
             </article>
 
+            <article class="feature-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&auto=format&fit=crop&q=80" alt="Next step">
 
-            <!-- Card 03 -->
-            <article class="new-work-card">
-                <div class="new-work-card-top">
-                    <span class="new-work-number">03</span>
-
-                    <span class="new-work-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M4 6h16" />
-                            <path d="M4 12h10" />
-                            <path d="M4 18h7" />
-                            <path d="M17 15l3 3-3 3" />
-                        </svg>
-                    </span>
-                </div>
-
-                <div class="new-work-card-content">
+                <div class="feature-content">
                     <h3>No clear next step</h3>
-
                     <p>
-                        The budget, address, client details, close date, and follow-up
-                        notes are scattered, delaying the next action.
+                        Keep follow-ups, notes and client details together.
                     </p>
                 </div>
-
-                <div class="new-work-card-line"></div>
             </article>
 
-        </div>
-
-
-        <!-- Bottom Message -->
-        <div class="new-work-bottom">
-            <div class="new-work-bottom-line"></div>
-
-            <p>
-                When the details are connected, your team knows what to do next.
-            </p>
-
-            <span class="new-work-arrow">
-                ↓
-            </span>
         </div>
 
     </div>
 </section>
 
 <!-- lead feature layout -->
-<section class="new-work-section lead-feature">
-
-    <div class="new-work-header">
-
-
-        <h2>Open the lead and see what needs to happen next.</h2>
-
-        <p>
-            Keep the contact, address, assignee, stage, budget, expected close date, notes, checklists, tasks, documents, and estimate connection together, so every follow-up starts with the full picture.
-        </p>
-    </div>
-
-
-    <div class="lead-feature-layout wrap">
-
-        <!-- LEFT SIDEBAR -->
-        <div class="lead-feature-sidebar">
-
-            <div class="lead-feature-sidebar-inner">
-
-                <?php foreach ($lead_features as $index => $feature) : ?>
-
-                    <button
-                        type="button"
-                        class="lead-feature-tab <?php echo $index === 0 ? 'active' : ''; ?>"
-                        data-tab="<?php echo esc_attr($feature['id']); ?>">
-
-                        <span class="feature-tab-content">
-
-                            <span class="feature-tab-label">
-                                <?php echo esc_html($feature['label']); ?>
-                            </span>
-
-                            <strong>
-                                <?php echo esc_html($feature['title']); ?>
-                            </strong>
-
-                            <small>
-                                <?php echo esc_html($feature['description']); ?>
-                            </small>
-
-                        </span>
-
-                        <span class="feature-arrow" aria-hidden="true">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true">
-                                <path
-                                    d="M5 12h13"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round" />
-
-                                <path
-                                    d="M13 6l6 6-6 6"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </span>
-
-                    </button>
-
-                <?php endforeach; ?>
-
-            </div>
-
-        </div>
-
-
-        <!-- RIGHT IMAGE PREVIEW -->
-        <div
-            class="lead-feature-preview"
-            id="featurePreview">
-
-            <?php foreach ($lead_features as $index => $feature) : ?>
-
-                <div
-                    class="feature-content-item <?php echo $index === 0 ? 'active' : ''; ?>"
-                    data-content="<?php echo esc_attr($feature['id']); ?>">
-
-                    <div class="feature-image-wrapper">
-
-                        <img
-                            src="<?php echo esc_url($feature['image']); ?>"
-                            alt="<?php echo esc_attr($feature['alt']); ?>"
-                            loading="lazy">
-
-                    </div>
-
-                </div>
-
-            <?php endforeach; ?>
-
-        </div>
-
-    </div>
-
-</section>
+<?php
+get_template_part(
+    'template-pages/workflow-map'
+);
+?>
 
 
 
@@ -373,176 +195,43 @@ $lead_features = [
         <!-- Section Heading -->
         <div class="comparison-head">
 
+            <span class="badge comparison-badge">
+                Why Wunderbuild
+            </span>
 
             <h2>
-                What this replaces
+                Less time chasing.
+                <br>
+                More time moving the job forward.
             </h2>
 
-            
+            <p>
+                Most admin work doesn't look like one big problem.
+                It shows up as small repeats, missed details, and
+                extra checks across the day.
+            </p>
 
         </div>
 
 
         <!-- Comparison Cards -->
-        <div class="comparison-grid">
 
-            <!-- Without Wunderbuild -->
-            <div class="comparison-card without-card">
+       <div class="comparison-wrapper">
 
-                <div class="comparison-card-head">
-                    <span class="comparison-icon">
-                        −
-                    </span>
+    <?php foreach ($comparison as $card): ?>
 
-                    <h3>
-                        Without Wunderbuild
-                    </h3>
-                </div>
+        <?php
+        get_template_part(
+            'components/comparison-card',
+            null,
+            $card
+        );
+        ?>
 
-
-                <div class="comparison-list">
-
-                    <div class="comparison-item">
-                        <span class="item-number">01</span>
-
-                        <p>
-                            Leads sit in one place, and estimates are built
-                            somewhere else.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">02</span>
-
-                        <p>
-                            Supplier quotes, specifications, and documents
-                            get chased through email.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">03</span>
-
-                        <p>
-                            The site waits for the latest task, file,
-                            or decision.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">04</span>
-
-                        <p>
-                            Client decisions get buried in calls,
-                            messages, and memory.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">05</span>
-
-                        <p>
-                            Costs change after the work has already been done.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- With Wunderbuild -->
-            <div class="comparison-card with-card">
-
-                <div class="comparison-card-head">
-
-                    <span class="comparison-icon">
-                        ✓
-                    </span>
-
-                    <h3>
-                        With Wunderbuild
-                    </h3>
-
-                </div>
-
-
-                <div class="comparison-list">
-
-                    <div class="comparison-item">
-                        <span class="item-number">01</span>
-
-                        <p>
-                            New work can move into pricing and job setup
-                            with less manual rebuilding.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">02</span>
-
-                        <p>
-                            Quote requests, specifications, and documents
-                            stay closer to the job.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">03</span>
-
-                        <p>
-                            Schedules, tasks, documents, checklists,
-                            and site diaries stay visible.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">04</span>
-
-                        <p>
-                            Selections, approvals, communication,
-                            and variations stay attached.
-                        </p>
-                    </div>
-
-
-                    <div class="comparison-item">
-                        <span class="item-number">05</span>
-
-                        <p>
-                            Budgets, expenses, actuals, claims, and invoices
-                            stay in closer sync with the live job.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CTA -->
-        <div class="comparison-cta">
-
-            <a href="#" class="btn btn-primary">
-                Start a free trial
-            </a>
-
-            <a href="#" class="btn btn-dark">
-                Book a free demo
-            </a>
-
-        </div>
-
+    <?php endforeach; ?>
     </div>
+  
+
 
 </section>
 
@@ -919,13 +608,7 @@ $lead_features = [
             </div>
         </div>
 
-        <div style="text-align:center; margin-top:44px;">
-            <a href="#" class="explore-link" style="justify-content:center;">Read more reviews <svg viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                </svg></a>
-        </div>
+
     </div>
 </section>
 

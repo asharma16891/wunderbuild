@@ -234,257 +234,56 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const layout = document.querySelector(".lead-feature-layout");
-    const sidebar = document.querySelector(".lead-feature-sidebar-inner");
-    const preview = document.querySelector(".lead-feature-preview");
+    const dots = document.querySelectorAll(".hs-dot");
+    const cards = document.querySelectorAll(".hs-card");
+    const items = document.querySelectorAll(".hs-item");
 
-    const tabs = document.querySelectorAll(".lead-feature-tab");
-    const contents = document.querySelectorAll(".feature-content-item");
+    function activate(id) {
 
-    if (!layout || !sidebar || !preview || !tabs.length || !contents.length) {
-        return;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Store original content positions
-    |--------------------------------------------------------------------------
-    */
-
-    const originalPositions = [];
-
-    contents.forEach(function (content) {
-        originalPositions.push({
-            element: content,
-            parent: content.parentNode
-        });
-    });
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Check mobile
-    |--------------------------------------------------------------------------
-    */
-
-    function isMobile() {
-        return window.innerWidth <= 800;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Move content below clicked tab on mobile
-    |--------------------------------------------------------------------------
-    */
-
-    function showTab(target, clickedTab) {
-
-        // Remove active from all tabs
-        tabs.forEach(function (tab) {
-            tab.classList.remove("active");
+        dots.forEach(dot => {
+            dot.classList.toggle(
+                "active",
+                dot.dataset.id === id
+            );
         });
 
-        // Add active to clicked tab
-        clickedTab.classList.add("active");
-
-
-        if (isMobile()) {
-
-            const targetContent = document.querySelector(
-                '.feature-content-item[data-content="' + target + '"]'
+        cards.forEach(card => {
+            card.classList.toggle(
+                "show",
+                card.dataset.id === id
             );
+        });
 
-            if (!targetContent) {
-                return;
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Hide all content first
-            |--------------------------------------------------------------------------
-            */
-
-            contents.forEach(function (content) {
-                content.classList.remove("active");
-            });
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Move selected image directly after clicked tab
-            |--------------------------------------------------------------------------
-            */
-
-            clickedTab.insertAdjacentElement(
-                "afterend",
-                targetContent
+        items.forEach(item => {
+            item.classList.toggle(
+                "active",
+                item.dataset.id === id
             );
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Activate image
-            |--------------------------------------------------------------------------
-            */
-
-            requestAnimationFrame(function () {
-                targetContent.classList.add("active");
-            });
-
-        } else {
-
-            /*
-            |--------------------------------------------------------------------------
-            | Desktop
-            | Keep existing desktop preview behaviour
-            |--------------------------------------------------------------------------
-            */
-
-            contents.forEach(function (content) {
-
-                if (content.dataset.content === target) {
-
-                    content.classList.remove("active");
-
-                    // Restart animation
-                    void content.offsetWidth;
-
-                    content.classList.add("active");
-
-                } else {
-
-                    content.classList.remove("active");
-
-                }
-
-            });
-
-        }
+        });
 
     }
 
+    dots.forEach(dot => {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Click Events
-    |--------------------------------------------------------------------------
-    */
+        dot.addEventListener("click", function () {
 
-    tabs.forEach(function (tab) {
-
-        tab.addEventListener("click", function () {
-
-            const target = tab.dataset.tab;
-
-            showTab(target, tab);
+            activate(this.dataset.id);
 
         });
 
     });
 
+    items.forEach(item => {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Handle Resize
-    |--------------------------------------------------------------------------
-    */
+        item.addEventListener("click", function () {
 
-    let lastMobileState = isMobile();
+            activate(this.dataset.id);
 
-    window.addEventListener("resize", function () {
-
-        const currentMobileState = isMobile();
-
-        // Only run when crossing mobile breakpoint
-        if (currentMobileState === lastMobileState) {
-            return;
-        }
-
-        lastMobileState = currentMobileState;
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Going back to desktop
-        |--------------------------------------------------------------------------
-        */
-
-        if (!currentMobileState) {
-
-            // Move all content back to preview
-            originalPositions.forEach(function (item) {
-
-                item.parent.appendChild(item.element);
-
-            });
-
-
-            // Show first active content
-            contents.forEach(function (content) {
-                content.classList.remove("active");
-            });
-
-            const activeTab = document.querySelector(
-                ".lead-feature-tab.active"
-            );
-
-            if (activeTab) {
-
-                const activeContent = document.querySelector(
-                    '.feature-content-item[data-content="' +
-                    activeTab.dataset.tab +
-                    '"]'
-                );
-
-                if (activeContent) {
-                    activeContent.classList.add("active");
-                }
-
-            }
-
-        }
+        });
 
     });
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Initial Mobile State
-    |--------------------------------------------------------------------------
-    */
-
-    if (isMobile()) {
-
-        const activeTab = document.querySelector(
-            ".lead-feature-tab.active"
-        );
-
-        if (activeTab) {
-
-            const target = activeTab.dataset.tab;
-
-            const targetContent = document.querySelector(
-                '.feature-content-item[data-content="' + target + '"]'
-            );
-
-            if (targetContent) {
-
-                targetContent.classList.add("active");
-
-                activeTab.insertAdjacentElement(
-                    "afterend",
-                    targetContent
-                );
-
-            }
-
-        }
-
-    }
 
 });
 
