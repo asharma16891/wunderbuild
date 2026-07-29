@@ -11,3 +11,4 @@ while (have_posts()) :
 endwhile;
 
 get_footer();
+?>
