@@ -1,30 +1,39 @@
 <?php
 
-$badge              = get_field('badge');
-$heading            = get_field('heading');
-$description        = get_field('description');
+$badge             = get_field('badge');
+$heading           = get_field('heading');
+$description       = get_field('description');
 
-$left_title         = get_field('left_title');
-$left_icon          = get_field('left_icon');
-$left_items         = get_field('left_items');
+$comparison = array(
+    array(
+        'class'       => 'comparison-box--left',
+        'small_title' => get_field('left_small_title'),
+        'heading'     => get_field('left_heading'),
+        'icon'        => get_field('left_icon'),
+        'items'       => get_field('left_items'),
+    ),
+    array(
+        'class'       => 'comparison-box--right',
+        'small_title' => get_field('right_small_title'),
+        'heading'     => get_field('right_heading'),
+        'icon'        => get_field('right_icon'),
+        'items'       => get_field('right_items'),
+    ),
+);
 
-$right_title        = get_field('right_title');
-$right_icon         = get_field('right_icon');
-$right_items        = get_field('right_items');
+$primary_button   = get_field('primary_button');
+$secondary_button = get_field('secondary_button');
 
-$primary_text       = get_field('primary_button_text');
-$primary_link       = get_field('primary_button_link');
 
-$secondary_text     = get_field('secondary_button_text');
-$secondary_link     = get_field('secondary_button_link');
 
 ?>
+
+
 
 <section class="comparison-section">
 
     <div class="wrap">
 
-        <!-- Section Heading -->
         <div class="comparison-head">
 
             <?php if ($badge) : ?>
@@ -43,139 +52,44 @@ $secondary_link     = get_field('secondary_button_link');
 
         </div>
 
+        <div class="comparison-wrapper">
 
-        <div class="comparison-grid">
+            <?php foreach ($comparison as $card) : ?>
 
-            <!-- WITHOUT -->
-            <div class="comparison-card without-card">
+                <?php
+                get_template_part(
+                    'components/comparison-card',
+                    null,
+                    $card
+                );
+                ?>
 
-                <div class="comparison-card-head">
-
-                    <span class="comparison-icon">
-
-                        <?php if ($left_icon) : ?>
-
-                            <img src="<?php echo esc_url($left_icon['url']); ?>"
-                                alt="<?php echo esc_attr($left_icon['alt']); ?>">
-
-                        <?php else : ?>
-
-                            −
-
-                        <?php endif; ?>
-
-                    </span>
-
-                    <h3><?php echo esc_html($left_title); ?></h3>
-
-                </div>
-
-
-                <?php if ($left_items) : ?>
-
-                    <div class="comparison-list">
-
-                        <?php foreach ($left_items as $item) : ?>
-
-                            <div class="comparison-item">
-
-                                <span class="item-number">
-                                    <?php echo esc_html($item['number']); ?>
-                                </span>
-
-                                <p>
-                                    <?php echo esc_html($item['text']); ?>
-                                </p>
-
-                            </div>
-
-                        <?php endforeach; ?>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
-
-
-            <!-- WITH -->
-            <div class="comparison-card with-card">
-
-                <div class="comparison-card-head">
-
-                    <span class="comparison-icon">
-
-                        <?php if ($right_icon) : ?>
-
-                            <img src="<?php echo esc_url($right_icon['url']); ?>"
-                                alt="<?php echo esc_attr($right_icon['alt']); ?>">
-
-                        <?php else : ?>
-
-                            ✓
-
-                        <?php endif; ?>
-
-                    </span>
-
-                    <h3><?php echo esc_html($right_title); ?></h3>
-
-                </div>
-
-
-                <?php if ($right_items) : ?>
-
-                    <div class="comparison-list">
-
-                        <?php foreach ($right_items as $item) : ?>
-
-                            <div class="comparison-item">
-
-                                <span class="item-number">
-                                    <?php echo esc_html($item['number']); ?>
-                                </span>
-
-                                <p>
-                                    <?php echo esc_html($item['text']); ?>
-                                </p>
-
-                            </div>
-
-                        <?php endforeach; ?>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
+            <?php endforeach; ?>
 
         </div>
 
-
         <div class="comparison-cta">
 
-            <?php if ($primary_link) : ?>
+            <?php if ($primary_button) : ?>
 
-                <a
-                    href="<?php echo esc_url($primary_link['url']); ?>"
-                    target="<?php echo esc_attr($primary_link['target'] ?: '_self'); ?>"
-                    class="btn btn-primary">
+                <a class="btn btn-primary"
+                    href="<?php echo esc_url($primary_button['url']); ?>"
+                    target="<?php echo esc_attr($primary_button['target'] ?: '_self'); ?>">
 
-                    <?php echo esc_html($primary_text); ?>
+                    <?php echo esc_html($primary_button['title']); ?>
 
                 </a>
 
             <?php endif; ?>
 
 
-            <?php if ($secondary_link) : ?>
+            <?php if ($secondary_button) : ?>
 
-                <a
-                    href="<?php echo esc_url($secondary_link['url']); ?>"
-                    target="<?php echo esc_attr($secondary_link['target'] ?: '_self'); ?>"
-                    class="btn btn-dark">
+                <a class="btn btn-dark"
+                    href="<?php echo esc_url($secondary_button['url']); ?>"
+                    target="<?php echo esc_attr($secondary_button['target'] ?: '_self'); ?>">
 
-                    <?php echo esc_html($secondary_text); ?>
+                    <?php echo esc_html($secondary_button['title']); ?>
 
                 </a>
 

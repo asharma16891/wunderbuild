@@ -43,77 +43,111 @@ if (!$items) {
 
                 <div class="t-track" id="tTrack">
 
-                    <?php foreach ($items as $item) : ?>
+                   <?php foreach ($items as $item) : ?>
 
-                        <div class="t-slide">
+    <div class="t-slide">
 
-                            <div class="t-card">
+        <?php if ($item['content_type'] == 'testimonial') : ?>
 
-                                <div class="t-stars">
+            <div class="t-card">
 
-                                    <?php
-                                    $rating = !empty($item['rating']) ? (int) $item['rating'] : 5;
+                <div class="t-stars">
 
-                                    for ($i = 1; $i <= $rating; $i++) :
-                                    ?>
+                    <?php
+                    $rating = !empty($item['rating']) ? (int) $item['rating'] : 5;
 
-                                        <svg viewBox="0 0 24 24">
-                                            <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" />
-                                        </svg>
+                    for ($i = 1; $i <= $rating; $i++) :
+                    ?>
 
-                                    <?php endfor; ?>
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9" />
+                        </svg>
 
-                                </div>
+                    <?php endfor; ?>
 
-                                <p class="t-quote">
-                                    <?php echo esc_html($item['review']); ?>
-                                </p>
+                </div>
 
-                                <div class="t-person">
+                <p class="t-quote">
+                    <?php echo esc_html($item['review']); ?>
+                </p>
 
-                                    <div class="t-avatar">
+                <div class="t-person">
 
-                                        <?php if (!empty($item['avatar'])) : ?>
+                    <div class="t-avatar">
 
-                                            <img
-                                                src="<?php echo esc_url($item['avatar']['url']); ?>"
-                                                alt="<?php echo esc_attr($item['avatar']['alt']); ?>">
+                        <?php if (!empty($item['avatar'])) : ?>
 
-                                        <?php endif; ?>
+                            <img
+                                src="<?php echo esc_url($item['avatar']['url']); ?>"
+                                alt="<?php echo esc_attr($item['avatar']['alt']); ?>">
 
-                                    </div>
+                        <?php endif; ?>
 
-                                    <div>
+                    </div>
 
-                                        <div class="name">
-                                            <?php echo esc_html($item['name']); ?>
-                                        </div>
+                    <div>
 
-                                        <div class="meta">
-                                            <?php
-                                            echo esc_html($item['company']);
+                        <div class="name">
+                            <?php echo esc_html($item['name']); ?>
+                        </div>
 
-                                            if (!empty($item['location'])) {
-                                                echo ' · ' . esc_html($item['location']);
-                                            }
-                                            ?>
-                                        </div>
+                        <div class="meta">
 
-                                    </div>
+                            <?php
+                            echo esc_html($item['company']);
 
-                                    <?php if (!empty($item['review_badge'])) : ?>
-                                        <span class="t-badge">
-                                            <?php echo esc_html($item['review_badge']); ?>
-                                        </span>
-                                    <?php endif; ?>
-
-                                </div>
-
-                            </div>
+                            if (!empty($item['location'])) {
+                                echo ' · ' . esc_html($item['location']);
+                            }
+                            ?>
 
                         </div>
 
-                    <?php endforeach; ?>
+                    </div>
+
+                    <?php if (!empty($item['review_badge'])) : ?>
+
+                        <span class="t-badge">
+                            <?php echo esc_html($item['review_badge']); ?>
+                        </span>
+
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
+
+        <?php elseif ($item['content_type'] == 'image') : ?>
+
+            <div class="t-card t-card-image">
+
+                <?php if (!empty($item['image'])) : ?>
+
+                    <img
+                        src="<?php echo esc_url($item['image']['url']); ?>"
+                        alt="<?php echo esc_attr($item['image']['alt']); ?>">
+
+                <?php endif; ?>
+
+            </div>
+
+        <?php elseif ($item['content_type'] == 'video') : ?>
+
+            <div class="t-card t-card-video">
+
+                <?php
+                if (!empty($item['video'])) {
+                    echo $item['video'];
+                }
+                ?>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+<?php endforeach; ?>
 
                 </div>
 

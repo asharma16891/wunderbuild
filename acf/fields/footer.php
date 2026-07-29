@@ -6,7 +6,8 @@ if (!defined('ABSPATH')) {
 
 add_action('acf/init', 'wunderbuild_register_footer_fields');
 
-function wunderbuild_register_footer_fields() {
+function wunderbuild_register_footer_fields()
+{
 
     if (!function_exists('acf_add_local_field_group')) {
         return;
@@ -58,6 +59,40 @@ function wunderbuild_register_footer_fields() {
             ),
 
             // =============================
+            // App Store Buttons
+            // =============================
+
+            array(
+                'key'   => 'field_footer_google_play_image',
+                'label' => 'Google Play Button Image',
+                'name'  => 'footer_google_play_image',
+                'type'  => 'image',
+                'return_format' => 'array',
+            ),
+
+            array(
+                'key'   => 'field_footer_google_play_link',
+                'label' => 'Google Play Button Link',
+                'name'  => 'footer_google_play_link',
+                'type'  => 'url',
+            ),
+
+            array(
+                'key'   => 'field_footer_app_store_image',
+                'label' => 'App Store Button Image',
+                'name'  => 'footer_app_store_image',
+                'type'  => 'image',
+                'return_format' => 'array',
+            ),
+
+            array(
+                'key'   => 'field_footer_app_store_link',
+                'label' => 'App Store Button Link',
+                'name'  => 'footer_app_store_link',
+                'type'  => 'url',
+            ),
+
+            // =============================
             // Newsletter
             // =============================
 
@@ -83,30 +118,31 @@ function wunderbuild_register_footer_fields() {
                 'rows'  => 2,
             ),
 
+
             // =============================
-// Footer Menus
-// =============================
+            // Footer Menus
+            // =============================
 
-array(
-    'key'   => 'field_footer_menu_1_title',
-    'label' => 'Footer Menu 1 Title',
-    'name'  => 'footer_menu_1_title',
-    'type'  => 'text',
-),
+            array(
+                'key'   => 'field_footer_menu_1_title',
+                'label' => 'Footer Menu 1 Title',
+                'name'  => 'footer_menu_1_title',
+                'type'  => 'text',
+            ),
 
-array(
-    'key'   => 'field_footer_menu_2_title',
-    'label' => 'Footer Menu 2 Title',
-    'name'  => 'footer_menu_2_title',
-    'type'  => 'text',
-),
+            array(
+                'key'   => 'field_footer_menu_2_title',
+                'label' => 'Footer Menu 2 Title',
+                'name'  => 'footer_menu_2_title',
+                'type'  => 'text',
+            ),
 
-array(
-    'key'   => 'field_footer_menu_3_title',
-    'label' => 'Footer Menu 3 Title',
-    'name'  => 'footer_menu_3_title',
-    'type'  => 'text',
-),
+            array(
+                'key'   => 'field_footer_menu_3_title',
+                'label' => 'Footer Menu 3 Title',
+                'name'  => 'footer_menu_3_title',
+                'type'  => 'text',
+            ),
 
             // =============================
             // Contact

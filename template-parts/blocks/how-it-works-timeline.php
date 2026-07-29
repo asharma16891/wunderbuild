@@ -56,39 +56,49 @@ if (empty($items)) {
                                 </div>
                             <?php endif; ?>
 
-                            <h3><?php echo esc_html($item['title']); ?></h3>
+                            <div class="stage-mobile-head">
+                                <h3><?php echo esc_html($item['title']); ?></h3>
+                                <button class="stage-toggle" type="button">
+                                 <span></span>
+                                </button>
 
-                            <dl>
+                            </div>
+                            <div class="stage-content">
+                                <dl>
+    
+                                    <div class="row">
+                                        <dt>Win</dt>
+                                        <dd><?php echo esc_html($item['win']); ?></dd>
+                                    </div>
+    
+                                    <div class="row">
+                                        <dt>Practice</dt>
+                                        <dd><?php echo esc_html($item['feature']); ?></dd>
+                                    </div>
+    
+                                    <div class="row">
+                                        <dt>Tools</dt>
+                                        <dd><?php echo esc_html($item['tools']); ?></dd>
+                                    </div>
+    
+                                </dl>
+    
+                                <?php if ($button) : ?>
+    
+                                    <a
+                                        href="<?php echo esc_url($button['url']); ?>"
+                                        target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
+                                        class="btn btn-ghost btn-sm">
+    
+                                        <?php echo esc_html($item['button_text']); ?>
+    
+                                    </a>
+    
+                                <?php endif; ?>
 
-                                <div class="row">
-                                    <dt>Win</dt>
-                                    <dd><?php echo esc_html($item['win']); ?></dd>
-                                </div>
+                            </div>
 
-                                <div class="row">
-                                    <dt>Practice</dt>
-                                    <dd><?php echo esc_html($item['feature']); ?></dd>
-                                </div>
 
-                                <div class="row">
-                                    <dt>Tools</dt>
-                                    <dd><?php echo esc_html($item['tools']); ?></dd>
-                                </div>
-
-                            </dl>
-
-                            <?php if ($button) : ?>
-
-                                <a
-                                    href="<?php echo esc_url($button['url']); ?>"
-                                    target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
-                                    class="btn btn-ghost btn-sm">
-
-                                    <?php echo esc_html($item['button_text']); ?>
-
-                                </a>
-
-                            <?php endif; ?>
 
                         </div>
 
@@ -134,39 +144,50 @@ if (empty($items)) {
                                 </div>
                             <?php endif; ?>
 
-                            <h3><?php echo esc_html($item['title']); ?></h3>
+                            <div class="stage-mobile-head">
+                                        <h3><?php echo esc_html($item['title']); ?></h3>
+                                        <button class="stage-toggle" type="button">
+                                     <span></span>
+                                    </button>
 
-                            <dl>
+                            </div>
 
-                                <div class="row">
-                                    <dt>Win</dt>
-                                    <dd><?php echo esc_html($item['win']); ?></dd>
-                                </div>
+                            <div class="stage-content">
+                                <dl>
+    
+                                    <div class="row">
+                                        <dt>Win</dt>
+                                        <dd><?php echo esc_html($item['win']); ?></dd>
+                                    </div>
+    
+                                    <div class="row">
+                                        <dt>Practice</dt>
+                                        <dd><?php echo esc_html($item['feature']); ?></dd>
+                                    </div>
+    
+                                    <div class="row">
+                                        <dt>Tools</dt>
+                                        <dd><?php echo esc_html($item['tools']); ?></dd>
+                                    </div>
+    
+                                </dl>
+    
+                                <?php if ($button) : ?>
+    
+                                    <a
+                                        href="<?php echo esc_url($button['url']); ?>"
+                                        target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
+                                        class="btn btn-ghost btn-sm">
+    
+                                        <?php echo esc_html($item['button_text']); ?>
+    
+                                    </a>
+    
+                                <?php endif; ?>
 
-                                <div class="row">
-                                    <dt>Practice</dt>
-                                    <dd><?php echo esc_html($item['feature']); ?></dd>
-                                </div>
+                            </div>
 
-                                <div class="row">
-                                    <dt>Tools</dt>
-                                    <dd><?php echo esc_html($item['tools']); ?></dd>
-                                </div>
 
-                            </dl>
-
-                            <?php if ($button) : ?>
-
-                                <a
-                                    href="<?php echo esc_url($button['url']); ?>"
-                                    target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
-                                    class="btn btn-ghost btn-sm">
-
-                                    <?php echo esc_html($item['button_text']); ?>
-
-                                </a>
-
-                            <?php endif; ?>
 
                         </div>
 

@@ -41,3 +41,17 @@ function wunderbuild_enqueue_assets() {
         true
     );
 }
+
+
+add_action('enqueue_block_editor_assets', 'wunderbuild_block_editor_styles');
+
+function wunderbuild_block_editor_styles() {
+
+    wp_enqueue_style(
+        'wunderbuild-editor-style',
+        get_stylesheet_directory_uri() . '/assets/css/custom-style.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/css/custom-style.css')
+    );
+
+}

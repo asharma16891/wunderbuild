@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 
 $footer_heading         = get_field('footer_heading', 'option');
@@ -11,6 +7,12 @@ $footer_logo_text       = get_field('footer_logo_text', 'option');
 
 $company_title          = get_field('footer_company_title', 'option');
 $company_description    = get_field('footer_company_description', 'option');
+
+$google_play_image = get_field('footer_google_play_image', 'option');
+$google_play_link  = get_field('footer_google_play_link', 'option');
+
+$app_store_image = get_field('footer_app_store_image', 'option');
+$app_store_link  = get_field('footer_app_store_link', 'option');
 
 $newsletter_placeholder = get_field('footer_newsletter_placeholder', 'option');
 $newsletter_button      = get_field('footer_newsletter_button', 'option');
@@ -73,6 +75,27 @@ $socials                = get_field('footer_socials', 'option');
         <p>
           <?php echo esc_html($company_description); ?>
         </p>
+
+
+        <div class="store-badges">
+
+          <?php if ($google_play_image) : ?>
+            <a href="<?php echo esc_url($google_play_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
+              <img
+                src="<?php echo esc_url($google_play_image['url']); ?>"
+                alt="<?php echo esc_attr($google_play_image['alt']); ?>">
+            </a>
+          <?php endif; ?>
+
+          <?php if ($app_store_image) : ?>
+            <a href="<?php echo esc_url($app_store_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
+              <img
+                src="<?php echo esc_url($app_store_image['url']); ?>"
+                alt="<?php echo esc_attr($app_store_image['alt']); ?>">
+            </a>
+          <?php endif; ?>
+
+        </div>
 
         <form class="newsletter-form" onsubmit="return false;">
 

@@ -114,34 +114,3 @@ $button_link  = get_field('button_link');
 
 </section>
 
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(function (item) {
-
-        const question = item.querySelector('.faq-question');
-
-        question.addEventListener('click', function () {
-
-            const isActive = item.classList.contains('active');
-
-            // Close all FAQs
-            faqItems.forEach(function (faq) {
-                faq.classList.remove('active');
-            });
-
-            // Open clicked FAQ
-            if (!isActive) {
-                item.classList.add('active');
-            }
-
-        });
-
-    });
-
-});
-</script>
