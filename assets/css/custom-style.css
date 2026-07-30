@@ -3208,11 +3208,14 @@ a.contact-row:hover {
     
 }
 
+
 .comparison-cta{
       text-align: center;
     margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
 }
-
 
 
 /* Left */
