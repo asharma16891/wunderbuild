@@ -4,15 +4,12 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("scrolled", window.scrollY > 40);
 });
 document.addEventListener("DOMContentLoaded", function () {
-
   const mobileToggle = document.querySelector(".mobile-toggle");
   const navLinks = document.querySelector(".nav-links");
   const navActions = document.querySelector(".nav-actions");
 
   if (mobileToggle && navLinks && navActions) {
-
     mobileToggle.addEventListener("click", function () {
-
       const isOpen = mobileToggle.classList.toggle("active");
 
       navLinks.classList.toggle("mobile-menu-open", isOpen);
@@ -23,13 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       mobileToggle.setAttribute(
         "aria-label",
-        isOpen ? "Close menu" : "Open menu"
+        isOpen ? "Close menu" : "Open menu",
       );
-
     });
-
   }
-
 });
 
 // Product showcase tabs
@@ -64,7 +58,7 @@ if (pathContainer && pathFill && pathRows.length) {
 
     const activeIndex = Math.min(
       pathRows.length - 1,
-      Math.floor(progress * pathRows.length)
+      Math.floor(progress * pathRows.length),
     );
 
     pathRows.forEach((r, i) => {
@@ -92,8 +86,7 @@ if (pathContainer && pathFill && pathRows.length) {
         r.classList.toggle("active", i === index);
       });
 
-      pathFill.style.height =
-        ((index + 1) / pathRows.length) * 100 + "%";
+      pathFill.style.height = ((index + 1) / pathRows.length) * 100 + "%";
     });
   });
 }
@@ -122,10 +115,7 @@ if (pathContainer && pathFill && pathRows.length) {
     const dot = document.createElement("button");
 
     dot.className = "t-dot" + (i === 0 ? " active" : "");
-    dot.setAttribute(
-      "aria-label",
-      "Go to testimonial " + (i + 1)
-    );
+    dot.setAttribute("aria-label", "Go to testimonial " + (i + 1));
 
     dot.addEventListener("click", () => goTo(i));
 
@@ -137,8 +127,7 @@ if (pathContainer && pathFill && pathRows.length) {
   function goTo(i) {
     index = (i + slides.length) % slides.length;
 
-    track.style.transform =
-      "translateX(-" + index * 100 + "%)";
+    track.style.transform = "translateX(-" + index * 100 + "%)";
 
     dots.forEach((d, di) => {
       d.classList.toggle("active", di === index);
@@ -171,14 +160,13 @@ if (pathContainer && pathFill && pathRows.length) {
     (e) => {
       startX = e.touches[0].clientX;
     },
-    { passive: true }
+    { passive: true },
   );
 
   track.addEventListener("touchend", (e) => {
     if (startX === null) return;
 
-    const dx =
-      e.changedTouches[0].clientX - startX;
+    const dx = e.changedTouches[0].clientX - startX;
 
     if (dx > 40) {
       goTo(index - 1);
@@ -200,93 +188,127 @@ if (pathContainer && pathFill && pathRows.length) {
   restartAutoplay();
 })();
 
-
 /* =========================================================
    FAQ ACCORDION
 ========================================================= */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
+  const faqItems = document.querySelectorAll(".faq-item");
 
-    const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    const question = item.querySelector(".faq-question");
 
-    faqItems.forEach(function (item) {
+    question.addEventListener("click", function () {
+      const isActive = item.classList.contains("active");
 
-        const question = item.querySelector('.faq-question');
+      // Close all FAQs
+      faqItems.forEach(function (faq) {
+        faq.classList.remove("active");
+      });
 
-        question.addEventListener('click', function () {
-
-            const isActive = item.classList.contains('active');
-
-            // Close all FAQs
-            faqItems.forEach(function (faq) {
-                faq.classList.remove('active');
-            });
-
-            // Open clicked FAQ
-            if (!isActive) {
-                item.classList.add('active');
-            }
-
-        });
-
+      // Open clicked FAQ
+      if (!isActive) {
+        item.classList.add("active");
+      }
     });
-
+  });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
+  const dots = document.querySelectorAll(".hs-dot");
+  const cards = document.querySelectorAll(".hs-card");
+  const items = document.querySelectorAll(".hs-item");
 
-    const dots = document.querySelectorAll(".hs-dot");
-    const cards = document.querySelectorAll(".hs-card");
-    const items = document.querySelectorAll(".hs-item");
-
-    function activate(id) {
-
-        dots.forEach(dot => {
-            dot.classList.toggle(
-                "active",
-                dot.dataset.id === id
-            );
-        });
-
-        cards.forEach(card => {
-            card.classList.toggle(
-                "show",
-                card.dataset.id === id
-            );
-        });
-
-        items.forEach(item => {
-            item.classList.toggle(
-                "active",
-                item.dataset.id === id
-            );
-        });
-
-    }
-
-    dots.forEach(dot => {
-
-        dot.addEventListener("click", function () {
-
-            activate(this.dataset.id);
-
-        });
-
+  function activate(id) {
+    dots.forEach((dot) => {
+      dot.classList.toggle("active", dot.dataset.id === id);
     });
 
-    items.forEach(item => {
-
-        item.addEventListener("click", function () {
-
-            activate(this.dataset.id);
-
-        });
-
+    cards.forEach((card) => {
+      card.classList.toggle("show", card.dataset.id === id);
     });
 
+    items.forEach((item) => {
+      item.classList.toggle("active", item.dataset.id === id);
+    });
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", function () {
+      activate(this.dataset.id);
+    });
+  });
+
+  items.forEach((item) => {
+    item.addEventListener("click", function () {
+      activate(this.dataset.id);
+    });
+  });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const animatedItems = document.querySelectorAll(
+    ".optA .stage-card, .optA .shot, .optA .node",
+  );
 
+  if (!animatedItems.length) return;
 
+  const observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
 
+          // Animate only once
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -80px 0px",
+    },
+  );
+
+  animatedItems.forEach(function (item) {
+    observer.observe(item);
+  });
+  if (window.innerWidth <= 820) {
+    const cards = document.querySelectorAll(".optA .stage-card");
+
+    cards.forEach(function (card, index) {
+      const button = card.querySelector(".stage-toggle");
+      const image = card.parentElement.querySelector(".shot");
+
+      // // first item open
+      // if (index === 0) {
+      //     card.classList.add('active');
+      //     if (image) {
+      //         image.classList.add('active');
+      //     }
+      // }
+
+      button.addEventListener("click", function () {
+        const opened = card.classList.contains("active");
+
+        cards.forEach(function (c) {
+          c.classList.remove("active");
+
+          const img = c.parentElement.querySelector(".shot");
+
+          if (img) {
+            img.classList.remove("active");
+          }
+        });
+
+        if (!opened) {
+          card.classList.add("active");
+
+          if (image) {
+            image.classList.add("active");
+          }
+        }
+      });
+    });
+  }
+});
