@@ -88,6 +88,20 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'editor-help',
             'keywords'    => ['faq', 'accordion', 'questions'],
         ],
+        [
+            'name'        => 'new-work',
+            'title'       => 'New Work',
+            'description' => 'New Work Section',
+            'icon'        => 'grid-view',
+            'keywords'    => ['new', 'work', 'cards'],
+        ],
+        [
+            'name'        => 'workflow-map',
+            'title'       => 'Workflow Map',
+            'description' => 'Workflow Map Section',
+            'icon'        => 'share-alt',
+            'keywords'    => ['workflow', 'map', 'hotspots'],
+        ],
 
     ];
 
@@ -109,19 +123,19 @@ function wunderbuild_register_acf_blocks()
         // ]);
 
         acf_register_block_type([
-    'name'            => $block['name'],
-    'title'           => __($block['title'], 'wunderbuild'),
-    'description'     => __($block['description'], 'wunderbuild'),
-    'render_callback' => 'wunderbuild_render_block',
-    'category'        => 'layout',
-    'icon'            => $block['icon'],
-    'keywords'        => $block['keywords'],
-    'mode'            => 'preview',
-    'supports'        => [
-        'align' => false,
-        'jsx'   => true,
-    ],
-]);
+            'name'            => $block['name'],
+            'title'           => __($block['title'], 'wunderbuild'),
+            'description'     => __($block['description'], 'wunderbuild'),
+            'render_callback' => 'wunderbuild_render_block',
+            'category'        => 'layout',
+            'icon'            => $block['icon'],
+            'keywords'        => $block['keywords'],
+            'mode'            => 'preview',
+            'supports'        => [
+                'align' => false,
+                'jsx'   => true,
+            ],
+        ]);
     }
 }
 

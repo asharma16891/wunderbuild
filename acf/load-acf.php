@@ -55,3 +55,5 @@ require_once get_stylesheet_directory() . '/acf/fields/final-cta.php';
 require_once get_stylesheet_directory() . '/acf/fields/how-it-works-timeline.php';
 require_once get_stylesheet_directory() . '/acf/fields/comparison.php';
 require_once get_stylesheet_directory() . '/acf/fields/faqs.php';
+require_once get_stylesheet_directory() . '/acf/fields/new-work.php';
+require_once get_stylesheet_directory() . '/acf/fields/workflow-map.php';
