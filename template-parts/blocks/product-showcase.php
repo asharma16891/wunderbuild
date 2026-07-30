@@ -1,13 +1,16 @@
 <?php
 
-$badge      = get_field('badge');
-$heading    = get_field('heading');
-$description = get_field('description');
-$tabs       = get_field('tabs');
+$fields = $args['fields'] ?? [];
+
+$badge       = $fields['badge'] ?? '';
+$heading     = $fields['heading'] ?? '';
+$description = $fields['description'] ?? '';
+$tabs        = $fields['tabs'] ?? [];
 
 if (empty($tabs)) {
     return;
 }
+
 ?>
 
 <section class="showcase" id="showcase">
@@ -15,17 +18,17 @@ if (empty($tabs)) {
 
         <div class="section-head center" style="margin-left:auto;margin-right:auto;">
 
-            <?php if ($badge) : ?>
+            <?php if (!empty($badge)) : ?>
                 <span class="badge badge-indigo">
                     <?php echo esc_html($badge); ?>
                 </span>
             <?php endif; ?>
 
-            <?php if ($heading) : ?>
+            <?php if (!empty($heading)) : ?>
                 <h2><?php echo esc_html($heading); ?></h2>
             <?php endif; ?>
 
-            <?php if ($description) : ?>
+            <?php if (!empty($description)) : ?>
                 <p><?php echo esc_html($description); ?></p>
             <?php endif; ?>
 
@@ -36,14 +39,14 @@ if (empty($tabs)) {
 
             <?php foreach ($tabs as $index => $tab) :
 
-                $slug = sanitize_title($tab['tab_title']);
+                $slug = sanitize_title($tab['tab_title'] ?? '');
             ?>
 
                 <button
-                    class="tab-btn <?php echo ($index == 0) ? 'active' : ''; ?>"
+                    class="tab-btn <?php echo ($index === 0) ? 'active' : ''; ?>"
                     data-tab="<?php echo esc_attr($slug); ?>">
 
-                    <?php echo esc_html($tab['tab_title']); ?>
+                    <?php echo esc_html($tab['tab_title'] ?? ''); ?>
 
                 </button>
 
@@ -56,34 +59,40 @@ if (empty($tabs)) {
 
             <?php foreach ($tabs as $index => $tab) :
 
-                $slug = sanitize_title($tab['tab_title']);
-                $image = $tab['image'];
-               $button      = $tab['button_link'];
-                $button_text = $tab['button_text'];
+                $slug        = sanitize_title($tab['tab_title'] ?? '');
+                $image       = $tab['image'] ?? [];
+                $button      = $tab['button_link'] ?? [];
+                $button_text = $tab['button_text'] ?? '';
 
             ?>
 
                 <div
-                    class="tab-panel <?php echo ($index == 0) ? 'active' : ''; ?>"
+                    class="tab-panel <?php echo ($index === 0) ? 'active' : ''; ?>"
                     id="panel-<?php echo esc_attr($slug); ?>">
 
                     <div class="showcase-inner">
 
                         <div class="showcase-text">
 
-                            <span class="cat">
-                                <?php echo esc_html($tab['tab_title']); ?>
-                            </span>
+                            <?php if (!empty($tab['tab_title'])) : ?>
+                                <span class="cat">
+                                    <?php echo esc_html($tab['tab_title']); ?>
+                                </span>
+                            <?php endif; ?>
 
-                            <h3>
-                                <?php echo esc_html($tab['content_heading']); ?>
-                            </h3>
+                            <?php if (!empty($tab['content_heading'])) : ?>
+                                <h3>
+                                    <?php echo esc_html($tab['content_heading']); ?>
+                                </h3>
+                            <?php endif; ?>
 
-                            <p>
-                                <?php echo esc_html($tab['content_description']); ?>
-                            </p>
+                            <?php if (!empty($tab['content_description'])) : ?>
+                                <p>
+                                    <?php echo esc_html($tab['content_description']); ?>
+                                </p>
+                            <?php endif; ?>
 
-                            <?php if ($button) : ?>
+                            <?php if (!empty($button)) : ?>
 
                                 <a
                                     href="<?php echo esc_url($button['url']); ?>"
@@ -105,11 +114,11 @@ if (empty($tabs)) {
 
                         <div class="browser-mock">
 
-                            <?php if ($image) : ?>
+                            <?php if (!empty($image)) : ?>
 
                                 <img
                                     src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt']); ?>">
+                                    alt="<?php echo esc_attr($image['alt'] ?? ''); ?>">
 
                             <?php endif; ?>
 

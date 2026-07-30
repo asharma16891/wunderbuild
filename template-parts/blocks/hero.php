@@ -1,15 +1,15 @@
 <?php
 
-$badge       = get_field('hero_badge');
-$title       = get_field('hero_title');
-$description = get_field('hero_description');
+$fields = $args['fields'] ?? [];
 
-$primary     = get_field('hero_primary_button');
-$secondary   = get_field('hero_secondary_button');
+$badge       = $fields['hero_badge'] ?? '';
+$title       = $fields['hero_title'] ?? '';
+$description = $fields['hero_description'] ?? '';
 
-$hero_image = get_field('hero_image');
+$primary     = $fields['hero_primary_button'] ?? [];
+$secondary   = $fields['hero_secondary_button'] ?? [];
 
-
+$hero_image  = $fields['hero_image'] ?? [];
 
 ?>
 

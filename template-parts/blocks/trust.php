@@ -1,6 +1,8 @@
 <?php
 
-$trust_cards = get_field('trust_cards');
+$fields = $args['fields'] ?? [];
+
+$trust_cards = $fields['trust_cards'] ?? [];
 
 if (empty($trust_cards)) {
     return;
@@ -30,7 +32,7 @@ if (empty($trust_cards)) {
 
                             <img
                                 src="<?php echo esc_url($card['icon']['url']); ?>"
-                                alt="<?php echo esc_attr($card['icon']['alt']); ?>">
+                                alt="<?php echo esc_attr($card['icon']['alt'] ?? ''); ?>">
 
                         </span>
 

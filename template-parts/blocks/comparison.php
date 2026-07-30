@@ -1,34 +1,32 @@
 <?php
 
-$badge             = get_field('badge');
-$heading           = get_field('heading');
-$description       = get_field('description');
+$fields = $args['fields'] ?? [];
 
-$comparison = array(
-    array(
+$badge       = $fields['badge'] ?? '';
+$heading     = $fields['heading'] ?? '';
+$description = $fields['description'] ?? '';
+
+$comparison = [
+    [
         'class'       => 'comparison-box--left',
-        'small_title' => get_field('left_small_title'),
-        'heading'     => get_field('left_heading'),
-        'icon'        => get_field('left_icon'),
-        'items'       => get_field('left_items'),
-    ),
-    array(
+        'small_title' => $fields['left_small_title'] ?? '',
+        'heading'     => $fields['left_heading'] ?? '',
+        'icon'        => $fields['left_icon'] ?? [],
+        'items'       => $fields['left_items'] ?? [],
+    ],
+    [
         'class'       => 'comparison-box--right',
-        'small_title' => get_field('right_small_title'),
-        'heading'     => get_field('right_heading'),
-        'icon'        => get_field('right_icon'),
-        'items'       => get_field('right_items'),
-    ),
-);
+        'small_title' => $fields['right_small_title'] ?? '',
+        'heading'     => $fields['right_heading'] ?? '',
+        'icon'        => $fields['right_icon'] ?? [],
+        'items'       => $fields['right_items'] ?? [],
+    ],
+];
 
-$primary_button   = get_field('primary_button');
-$secondary_button = get_field('secondary_button');
-
-
+$primary_button   = $fields['primary_button'] ?? [];
+$secondary_button = $fields['secondary_button'] ?? [];
 
 ?>
-
-
 
 <section class="comparison-section">
 
@@ -36,17 +34,17 @@ $secondary_button = get_field('secondary_button');
 
         <div class="comparison-head">
 
-            <?php if ($badge) : ?>
+            <?php if (!empty($badge)) : ?>
                 <span class="badge comparison-badge">
                     <?php echo esc_html($badge); ?>
                 </span>
             <?php endif; ?>
 
-            <?php if ($heading) : ?>
+            <?php if (!empty($heading)) : ?>
                 <h2><?php echo nl2br(esc_html($heading)); ?></h2>
             <?php endif; ?>
 
-            <?php if ($description) : ?>
+            <?php if (!empty($description)) : ?>
                 <p><?php echo esc_html($description); ?></p>
             <?php endif; ?>
 
@@ -70,9 +68,10 @@ $secondary_button = get_field('secondary_button');
 
         <div class="comparison-cta">
 
-            <?php if ($primary_button) : ?>
+            <?php if (!empty($primary_button)) : ?>
 
-                <a class="btn btn-primary"
+                <a
+                    class="btn btn-primary"
                     href="<?php echo esc_url($primary_button['url']); ?>"
                     target="<?php echo esc_attr($primary_button['target'] ?: '_self'); ?>">
 
@@ -82,10 +81,10 @@ $secondary_button = get_field('secondary_button');
 
             <?php endif; ?>
 
+            <?php if (!empty($secondary_button)) : ?>
 
-            <?php if ($secondary_button) : ?>
-
-                <a class="btn btn-dark"
+                <a
+                    class="btn btn-dark"
                     href="<?php echo esc_url($secondary_button['url']); ?>"
                     target="<?php echo esc_attr($secondary_button['target'] ?: '_self'); ?>">
 

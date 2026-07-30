@@ -1,14 +1,16 @@
 <?php
 
-$badge        = get_field('badge');
-$heading      = get_field('heading');
-$description  = get_field('description');
+$fields = $args['fields'] ?? [];
 
-$faqs         = get_field('faqs');
+$badge       = $fields['badge'] ?? '';
+$heading     = $fields['heading'] ?? '';
+$description = $fields['description'] ?? '';
 
-$bottom_text  = get_field('bottom_text');
-$button_text  = get_field('button_text');
-$button_link  = get_field('button_link');
+$faqs        = $fields['faqs'] ?? [];
+
+$bottom_text = $fields['bottom_text'] ?? '';
+$button_text = $fields['button_text'] ?? '';
+$button_link = $fields['button_link'] ?? [];
 
 ?>
 
@@ -19,25 +21,24 @@ $button_link  = get_field('button_link');
         <!-- FAQ Header -->
         <div class="faq-head">
 
-            <?php if ($badge) : ?>
+            <?php if (!empty($badge)) : ?>
                 <span class="badge faq-badge">
                     <?php echo esc_html($badge); ?>
                 </span>
             <?php endif; ?>
 
-            <?php if ($heading) : ?>
+            <?php if (!empty($heading)) : ?>
                 <h2><?php echo nl2br(esc_html($heading)); ?></h2>
             <?php endif; ?>
 
-            <?php if ($description) : ?>
+            <?php if (!empty($description)) : ?>
                 <p><?php echo esc_html($description); ?></p>
             <?php endif; ?>
 
         </div>
 
-
         <!-- FAQ Accordion -->
-        <?php if ($faqs) : ?>
+        <?php if (!empty($faqs)) : ?>
 
             <div class="faq-list">
 
@@ -52,7 +53,7 @@ $button_link  = get_field('button_link');
                         <button class="faq-question" type="button">
 
                             <span>
-                                <?php echo esc_html($faq['question']); ?>
+                                <?php echo esc_html($faq['question'] ?? ''); ?>
                             </span>
 
                             <span class="faq-icon">
@@ -67,7 +68,7 @@ $button_link  = get_field('button_link');
                             <div class="faq-answer-inner">
 
                                 <p>
-                                    <?php echo esc_html($faq['answer']); ?>
+                                    <?php echo esc_html($faq['answer'] ?? ''); ?>
                                 </p>
 
                             </div>
@@ -82,11 +83,10 @@ $button_link  = get_field('button_link');
 
         <?php endif; ?>
 
-
         <!-- CTA -->
         <div class="faq-cta">
 
-            <?php if ($bottom_text) : ?>
+            <?php if (!empty($bottom_text)) : ?>
 
                 <p>
                     <?php echo esc_html($bottom_text); ?>
@@ -94,8 +94,7 @@ $button_link  = get_field('button_link');
 
             <?php endif; ?>
 
-
-            <?php if ($button_link) : ?>
+            <?php if (!empty($button_link)) : ?>
 
                 <a
                     href="<?php echo esc_url($button_link['url']); ?>"
@@ -113,4 +112,3 @@ $button_link  = get_field('button_link');
     </div>
 
 </section>
-

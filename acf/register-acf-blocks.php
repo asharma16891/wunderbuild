@@ -93,19 +93,52 @@ function wunderbuild_register_acf_blocks()
 
     foreach ($blocks as $block) {
 
+        // acf_register_block_type([
+        //     'name'              => $block['name'],
+        //     'title'             => __($block['title'], 'wunderbuild'),
+        //     'description'       => __($block['description'], 'wunderbuild'),
+        //     'render_template'   => get_stylesheet_directory() . '/template-parts/blocks/' . $block['name'] . '.php',
+        //     'category'          => 'layout',
+        //     'icon'              => $block['icon'],
+        //     'keywords'          => $block['keywords'],
+        //     'mode'              => 'preview',
+        //     'supports'          => [
+        //         'align' => false,
+        //         'jsx'   => true,
+        //     ],
+        // ]);
+
         acf_register_block_type([
-            'name'              => $block['name'],
-            'title'             => __($block['title'], 'wunderbuild'),
-            'description'       => __($block['description'], 'wunderbuild'),
-            'render_template'   => get_stylesheet_directory() . '/template-parts/blocks/' . $block['name'] . '.php',
-            'category'          => 'layout',
-            'icon'              => $block['icon'],
-            'keywords'          => $block['keywords'],
-            'mode'              => 'preview',
-            'supports'          => [
-                'align' => false,
-                'jsx'   => true,
-            ],
-        ]);
+    'name'            => $block['name'],
+    'title'           => __($block['title'], 'wunderbuild'),
+    'description'     => __($block['description'], 'wunderbuild'),
+    'render_callback' => 'wunderbuild_render_block',
+    'category'        => 'layout',
+    'icon'            => $block['icon'],
+    'keywords'        => $block['keywords'],
+    'mode'            => 'preview',
+    'supports'        => [
+        'align' => false,
+        'jsx'   => true,
+    ],
+]);
     }
+}
+
+
+
+function wunderbuild_render_block($block, $content = '', $is_preview = false, $post_id = 0)
+{
+    $slug = str_replace('acf/', '', $block['name']);
+
+    get_template_part(
+        'template-parts/blocks/' . $slug,
+        null,
+        [
+            'block'      => $block,
+            'fields'     => get_fields(),
+            'is_preview' => $is_preview,
+            'post_id'    => $post_id,
+        ]
+    );
 }

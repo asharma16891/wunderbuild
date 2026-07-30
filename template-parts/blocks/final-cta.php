@@ -1,13 +1,15 @@
 <?php
 
-$heading         = get_field('heading');
-$description     = get_field('description');
+$fields = $args['fields'] ?? [];
 
-$primary_text    = get_field('primary_button_text');
-$primary_link    = get_field('primary_button_link');
+$heading        = $fields['heading'] ?? '';
+$description    = $fields['description'] ?? '';
 
-$secondary_text  = get_field('secondary_button_text');
-$secondary_link  = get_field('secondary_button_link');
+$primary_text   = $fields['primary_button_text'] ?? '';
+$primary_link   = $fields['primary_button_link'] ?? [];
+
+$secondary_text = $fields['secondary_button_text'] ?? '';
+$secondary_link = $fields['secondary_button_link'] ?? [];
 
 ?>
 
@@ -17,17 +19,17 @@ $secondary_link  = get_field('secondary_button_link');
 
     <div class="wrap" style="position:relative; z-index:1;">
 
-        <?php if ($heading) : ?>
+        <?php if (!empty($heading)) : ?>
             <h2><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
 
-        <?php if ($description) : ?>
+        <?php if (!empty($description)) : ?>
             <p><?php echo esc_html($description); ?></p>
         <?php endif; ?>
 
         <div class="actions">
 
-            <?php if ($primary_link) : ?>
+            <?php if (!empty($primary_link)) : ?>
 
                 <a
                     href="<?php echo esc_url($primary_link['url']); ?>"
@@ -40,8 +42,7 @@ $secondary_link  = get_field('secondary_button_link');
 
             <?php endif; ?>
 
-
-            <?php if ($secondary_link) : ?>
+            <?php if (!empty($secondary_link)) : ?>
 
                 <a
                     href="<?php echo esc_url($secondary_link['url']); ?>"
