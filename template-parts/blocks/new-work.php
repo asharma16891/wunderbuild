@@ -15,7 +15,7 @@ if (empty($cards)) {
 
 <section class="new-work">
 
-    <div class="container">
+    <div class="wrap">
 
         <div class="section-heading">
 
