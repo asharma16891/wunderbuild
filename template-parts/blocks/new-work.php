@@ -39,7 +39,7 @@ if (empty($cards)) {
 
         </div>
 
-        <div class="feature-grid wrap">
+        <div class="feature-grid">
 
             <?php foreach ($cards as $card) :
 
