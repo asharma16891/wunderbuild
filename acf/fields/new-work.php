@@ -20,12 +20,7 @@ function wunderbuild_register_new_work_fields()
 
         'fields' => array(
 
-            array(
-                'key' => 'field_new_work_badge',
-                'label' => 'Badge',
-                'name' => 'badge',
-                'type' => 'text',
-            ),
+           
 
             array(
                 'key' => 'field_new_work_heading',

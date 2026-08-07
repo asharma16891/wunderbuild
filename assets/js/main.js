@@ -1,48 +1,180 @@
-// Sticky nav on scroll
-const header = document.getElementById("siteHeader");
-window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 40);
-});
-document.addEventListener("DOMContentLoaded", function () {
+// // Sticky nav on scroll
+// const header = document.getElementById("siteHeader");
+// window.addEventListener("scroll", () => {
+//   header.classList.toggle("scrolled", window.scrollY > 40);
+// });
+// document.addEventListener("DOMContentLoaded", function () {
 
+//   const mobileToggle = document.querySelector(".mobile-toggle");
+//   const navLinks = document.querySelector(".nav-links");
+//   const navActions = document.querySelector(".nav-actions");
+
+//   if (mobileToggle && navLinks && navActions) {
+
+//     mobileToggle.addEventListener("click", function () {
+
+//       const isOpen = mobileToggle.classList.toggle("active");
+
+//       navLinks.classList.toggle("mobile-menu-open", isOpen);
+//       navActions.classList.toggle("mobile-menu-open", isOpen);
+
+//       // Accessibility
+//       mobileToggle.setAttribute("aria-expanded", isOpen);
+
+//       mobileToggle.setAttribute(
+//         "aria-label",
+//         isOpen ? "Close menu" : "Open menu"
+//       );
+
+//     });
+
+//   }
+
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.getElementById("siteHeader");
+  const hero = document.querySelector(".hero");
+
+  function updateHeader() {
+    // Keep header scrolled for solid background/gradient hero
+    if (hero && hero.classList.contains("hero--gradient")) {
+      header.classList.add("scrolled");
+      return;
+    }
+
+    // Normal behavior for image/video heroes
+    header.classList.toggle("scrolled", window.scrollY > 40);
+  }
+
+  // Initial state
+  updateHeader();
+
+  // Scroll event
+  window.addEventListener("scroll", updateHeader);
+
+  // Mobile Menu
   const mobileToggle = document.querySelector(".mobile-toggle");
   const navLinks = document.querySelector(".nav-links");
   const navActions = document.querySelector(".nav-actions");
 
   if (mobileToggle && navLinks && navActions) {
-
     mobileToggle.addEventListener("click", function () {
-
       const isOpen = mobileToggle.classList.toggle("active");
 
       navLinks.classList.toggle("mobile-menu-open", isOpen);
       navActions.classList.toggle("mobile-menu-open", isOpen);
 
-      // Accessibility
-      mobileToggle.setAttribute("aria-expanded", isOpen);
+      header.classList.toggle("mobile-menu-open", isOpen);
 
+      mobileToggle.setAttribute("aria-expanded", isOpen);
       mobileToggle.setAttribute(
         "aria-label",
-        isOpen ? "Close menu" : "Open menu"
+        isOpen ? "Close menu" : "Open menu",
       );
-
     });
-
   }
-
 });
 
 // Product showcase tabs
-const tabBtns = document.querySelectorAll(".tab-btn");
-const panels = document.querySelectorAll(".tab-panel");
-tabBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    tabBtns.forEach((b) => b.classList.remove("active"));
-    panels.forEach((p) => p.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+(() => {
+  const showcase = document.getElementById("showcase");
+  if (!showcase) return;
+
+  const tabs = [...showcase.querySelectorAll(".tab-btn")];
+  const panels = [...showcase.querySelectorAll(".tab-panel")];
+
+  const total = tabs.length;
+  if (!total) return;
+
+  let currentIndex = 0;
+  let isAnimating = false;
+
+  function render(index) {
+    currentIndex = index;
+
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle("active", i === index);
+    });
+
+    panels.forEach((panel, i) => {
+      panel.classList.toggle("active", i === index);
+    });
+  }
+
+  function getTargetScroll(index) {
+    const rect = showcase.getBoundingClientRect();
+    const start = window.scrollY + rect.top;
+    const scrollArea = showcase.offsetHeight - window.innerHeight;
+
+    return start + (scrollArea / total) * index;
+  }
+
+  function isPinned() {
+    const rect = showcase.getBoundingClientRect();
+
+    return rect.top <= 100 && rect.bottom >= window.innerHeight;
+  }
+
+  function goTo(index) {
+    index = Math.max(0, Math.min(index, total - 1));
+
+    if (index === currentIndex) return;
+
+    isAnimating = true;
+
+    render(index);
+
+    window.scrollTo({
+      top: getTargetScroll(index),
+      behavior: "smooth",
+    });
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 700);
+  }
+
+  window.addEventListener(
+    "wheel",
+    function (e) {
+      if (window.innerWidth <= 900) return;
+
+      if (!isPinned()) return;
+
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+      if (e.deltaY > 25) {
+        if (currentIndex < total - 1) {
+          e.preventDefault();
+          goTo(currentIndex + 1);
+        }
+      } else if (e.deltaY < -25) {
+        if (currentIndex > 0) {
+          e.preventDefault();
+          goTo(currentIndex - 1);
+        }
+      }
+    },
+    { passive: false },
+  );
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      if (window.innerWidth <= 900) {
+        render(index);
+        return;
+      }
+
+      goTo(index);
+    });
   });
-});
+
+  render(0);
+})();
 
 // Process path: fill grows and the active step updates as you scroll through the section
 // Process Timeline
@@ -64,7 +196,7 @@ if (pathContainer && pathFill && pathRows.length) {
 
     const activeIndex = Math.min(
       pathRows.length - 1,
-      Math.floor(progress * pathRows.length)
+      Math.floor(progress * pathRows.length),
     );
 
     pathRows.forEach((r, i) => {
@@ -92,14 +224,12 @@ if (pathContainer && pathFill && pathRows.length) {
         r.classList.toggle("active", i === index);
       });
 
-      pathFill.style.height =
-        ((index + 1) / pathRows.length) * 100 + "%";
+      pathFill.style.height = ((index + 1) / pathRows.length) * 100 + "%";
     });
   });
 }
 
 // Testimonials slider
-// Testimonials Slider
 (function () {
   const track = document.getElementById("tTrack");
 
@@ -122,10 +252,7 @@ if (pathContainer && pathFill && pathRows.length) {
     const dot = document.createElement("button");
 
     dot.className = "t-dot" + (i === 0 ? " active" : "");
-    dot.setAttribute(
-      "aria-label",
-      "Go to testimonial " + (i + 1)
-    );
+    dot.setAttribute("aria-label", "Go to testimonial " + (i + 1));
 
     dot.addEventListener("click", () => goTo(i));
 
@@ -137,8 +264,7 @@ if (pathContainer && pathFill && pathRows.length) {
   function goTo(i) {
     index = (i + slides.length) % slides.length;
 
-    track.style.transform =
-      "translateX(-" + index * 100 + "%)";
+    track.style.transform = "translateX(-" + index * 100 + "%)";
 
     dots.forEach((d, di) => {
       d.classList.toggle("active", di === index);
@@ -171,14 +297,13 @@ if (pathContainer && pathFill && pathRows.length) {
     (e) => {
       startX = e.touches[0].clientX;
     },
-    { passive: true }
+    { passive: true },
   );
 
   track.addEventListener("touchend", (e) => {
     if (startX === null) return;
 
-    const dx =
-      e.changedTouches[0].clientX - startX;
+    const dx = e.changedTouches[0].clientX - startX;
 
     if (dx > 40) {
       goTo(index - 1);
@@ -200,181 +325,298 @@ if (pathContainer && pathFill && pathRows.length) {
   restartAutoplay();
 })();
 
-
 /* =========================================================
    FAQ ACCORDION
 ========================================================= */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
+  const faqItems = document.querySelectorAll(".faq-item");
 
-    const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    const question = item.querySelector(".faq-question");
 
-    faqItems.forEach(function (item) {
+    question.addEventListener("click", function () {
+      const isActive = item.classList.contains("active");
 
-        const question = item.querySelector('.faq-question');
+      // Close all FAQs
+      faqItems.forEach(function (faq) {
+        faq.classList.remove("active");
+      });
 
-        question.addEventListener('click', function () {
-
-            const isActive = item.classList.contains('active');
-
-            // Close all FAQs
-            faqItems.forEach(function (faq) {
-                faq.classList.remove('active');
-            });
-
-            // Open clicked FAQ
-            if (!isActive) {
-                item.classList.add('active');
-            }
-
-        });
-
+      // Open clicked FAQ
+      if (!isActive) {
+        item.classList.add("active");
+      }
     });
-
+  });
 });
 
+/* =========================================================
+   Inner pages dots action scroll
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    const dots = document.querySelectorAll(".hs-dot");
-    const cards = document.querySelectorAll(".hs-card");
-    const items = document.querySelectorAll(".hs-item");
+  ScrollTrigger.matchMedia({
 
-    function activate(id) {
+    // Desktop only
+    "(min-width: 801px)": function () {
 
-        dots.forEach(dot => {
-            dot.classList.toggle(
-                "active",
-                dot.dataset.id === id
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 100;
+      const GAP = 20;
+
+      document.querySelectorAll(".workflow-map").forEach((wrapper) => {
+
+        const section = wrapper.querySelector(".hs-grid");
+        if (!section) return;
+
+        const dots = gsap.utils.toArray(wrapper.querySelectorAll(".hs-dot"));
+        const cards = gsap.utils.toArray(wrapper.querySelectorAll(".hs-card"));
+
+        if (!dots.length) return;
+
+        const STEP_HEIGHT = window.innerHeight * 1.8;
+
+        let current = -1;
+        let clickMode = false;
+
+        dots.forEach(dot => dot.classList.remove("active", "next"));
+        cards.forEach(card => card.classList.remove("show"));
+
+        function activate(index) {
+
+          current = index;
+
+          dots.forEach((dot, i) => {
+            dot.classList.remove("active", "next");
+
+            if (i === index) {
+              dot.classList.add("active");
+            } else if (i === index + 1) {
+              dot.classList.add("next");
+            }
+          });
+
+          cards.forEach((card, i) => {
+            card.classList.remove("show");
+
+            if (i === index) {
+              card.classList.add("show");
+            }
+          });
+        }
+
+        const trigger = ScrollTrigger.create({
+
+          trigger: section,
+
+          start: `top top+=${headerHeight + GAP}`,
+
+          end: "+=" + ((dots.length - 1) * STEP_HEIGHT),
+
+          pin: true,
+
+          pinSpacing: true,
+
+          scrub: 2,
+
+          anticipatePin: 1,
+
+          snap: {
+            snapTo(value) {
+              const total = dots.length - 1;
+              return Math.round(value * total) / total;
+            },
+            duration: 0.8,
+            ease: "power2.inOut",
+            inertia: false
+          },
+
+          onUpdate(self) {
+
+            if (clickMode) return;
+
+            const distance = self.scroll() - self.start;
+
+            let index = Math.floor(
+              (distance + STEP_HEIGHT * 0.5) / STEP_HEIGHT
             );
+
+            index = gsap.utils.clamp(0, dots.length - 1, index);
+
+            if (index !== current) {
+              activate(index);
+            }
+
+          }
+
         });
 
-        cards.forEach(card => {
-            card.classList.toggle(
-                "show",
-                card.dataset.id === id
-            );
+        dots.forEach((dot, index) => {
+
+          dot.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            clickMode = true;
+
+            activate(index);
+
+            gsap.to(window, {
+
+              scrollTo: {
+                y: trigger.start + (index * STEP_HEIGHT),
+                autoKill: false
+              },
+
+              duration: 0.8,
+
+              ease: "power2.inOut",
+
+              onComplete() {
+                clickMode = false;
+              }
+
+            });
+
+          });
+
         });
 
-        items.forEach(item => {
-            item.classList.toggle(
-                "active",
-                item.dataset.id === id
-            );
-        });
+      });
+
+      ScrollTrigger.refresh();
+
+    },
+
+    // Mobile (800px and below)
+    "(max-width: 800px)": function () {
+
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+      document.querySelectorAll(".hs-dot").forEach(dot => {
+        dot.classList.remove("active", "next");
+      });
+
+      document.querySelectorAll(".hs-card").forEach(card => {
+        card.classList.remove("show");
+      });
 
     }
 
-    dots.forEach(dot => {
-
-        dot.addEventListener("click", function () {
-
-            activate(this.dataset.id);
-
-        });
-
-    });
-
-    items.forEach(item => {
-
-        item.addEventListener("click", function () {
-
-            activate(this.dataset.id);
-
-        });
-
-    });
+  });
 
 });
 
-   document.addEventListener('DOMContentLoaded', function() {
-
-        const animatedItems = document.querySelectorAll(
-            '.optA .stage-card, .optA .shot, .optA .node'
-        );
-
-        if (!animatedItems.length) return;
-
-        const observer = new IntersectionObserver(
-            function(entries, observer) {
-
-                entries.forEach(function(entry) {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add('is-visible');
-
-                        // Animate only once
-                        observer.unobserve(entry.target);
-                    }
-
-                });
-
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -80px 0px'
-            }
-        );
-
-        animatedItems.forEach(function(item) {
-            observer.observe(item);
+document.addEventListener("DOMContentLoaded", () => {
+  // no index-checking needed — CSS above already decides WHICH
+  // sections get the effect. This just decides WHEN (in view or not).
+  document.querySelectorAll(".hs-visual").forEach((visual) => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visual.classList.toggle("zoom-in", entry.isIntersecting);
         });
-        if (window.innerWidth <= 820) {
+      },
+      { threshold: 0.2 },
+    );
 
-            const cards = document.querySelectorAll('.optA .stage-card');
+    io.observe(visual);
+  });
 
-            cards.forEach(function(card, index) {
+  document.querySelectorAll(".workflow-map").forEach((section, index) => {
+    if (index === 1) {
+      section.classList.add("workflow-second");
+    }
 
-                const button = card.querySelector('.stage-toggle');
-                const image = card.parentElement.querySelector('.shot');
+    if (index === 2) {
+      section.classList.add("workflow-third");
+    }
+  });
+});
 
-                // // first item open
-                // if (index === 0) {
-                //     card.classList.add('active');
-                //     if (image) {
-                //         image.classList.add('active');
-                //     }
-                // }
+/* =========================================================
+   Inner pages dots action scroll end here
+========================================================= */
 
-                button.addEventListener('click', function() {
+// ============================================================
+// Entrance fade for the 2nd/3rd repeated .workflow-map only.
+// ============================================================
 
-                    const opened = card.classList.contains('active');
+document.addEventListener("DOMContentLoaded", function () {
+  const animatedItems = document.querySelectorAll(
+    ".optA .stage-card, .optA .shot, .optA .node",
+  );
 
-                    cards.forEach(function(c) {
+  if (!animatedItems.length) return;
 
-                        c.classList.remove('active');
+  const observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
 
-                        const img = c.parentElement.querySelector('.shot');
-
-                        if (img) {
-                            img.classList.remove('active');
-                        }
-
-                    });
-
-                    if (!opened) {
-
-                        card.classList.add('active');
-
-                        if (image) {
-                            image.classList.add('active');
-                        }
-
-                    }
-
-                });
-
-            });
-
+          // Animate only once
+          observer.unobserve(entry.target);
         }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -80px 0px",
+    },
+  );
 
+  animatedItems.forEach(function (item) {
+    observer.observe(item);
+  });
+  if (window.innerWidth <= 820) {
+    const cards = document.querySelectorAll(".optA .stage-card");
+
+    cards.forEach(function (card, index) {
+      const button = card.querySelector(".stage-toggle");
+      const image = card.parentElement.querySelector(".shot");
+
+      // // first item open
+      // if (index === 0) {
+      //     card.classList.add('active');
+      //     if (image) {
+      //         image.classList.add('active');
+      //     }
+      // }
+
+      button.addEventListener("click", function () {
+        const opened = card.classList.contains("active");
+
+        cards.forEach(function (c) {
+          c.classList.remove("active");
+
+          const img = c.parentElement.querySelector(".shot");
+
+          if (img) {
+            img.classList.remove("active");
+          }
+        });
+
+        if (!opened) {
+          card.classList.add("active");
+
+          if (image) {
+            image.classList.add("active");
+          }
+        }
+      });
     });
+  }
+});
 
-document.querySelectorAll('.menu-item-has-children').forEach(item => {
-
-    item.insertAdjacentHTML(
-        'beforeend',
-        `
+document.querySelectorAll(".menu-item-has-children").forEach((item) => {
+  item.insertAdjacentHTML(
+    "beforeend",
+    `
         <button class="submenu-toggle" type="button" aria-label="Toggle submenu">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -385,16 +627,108 @@ document.querySelectorAll('.menu-item-has-children').forEach(item => {
                     stroke-linejoin="round"/>
             </svg>
         </button>
-        `
-    );
-
+        `,
+  );
 });
 
-document.querySelectorAll('.submenu-toggle').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+document.querySelectorAll(".submenu-toggle").forEach((button) => {
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-        this.closest('.menu-item-has-children').classList.toggle('open');
-    });
+    const parent = this.closest(".menu-item-has-children");
+    parent.classList.toggle("open");
+  });
 });
+
+document.addEventListener("click", function (e) {
+  // ---- PLAY ----
+  const cover = e.target.closest(".video-cover");
+  if (cover) {
+    const embed = cover.nextElementSibling;
+    if (!embed || !embed.classList.contains("video-embed")) return;
+
+    playEmbed(embed);
+    cover.style.display = "none";
+    embed.style.display = "block";
+    return;
+  }
+
+  // ---- STOP / PAUSE ----
+  const stopBtn = e.target.closest(".video-stop-btn");
+  if (stopBtn) {
+    const embed = stopBtn.closest(".video-embed");
+    const cover = embed?.previousElementSibling;
+    if (!embed) return;
+
+    stopEmbed(embed);
+    embed.style.display = "none";
+    if (cover && cover.classList.contains("video-cover")) {
+      cover.style.display = "block";
+    }
+  }
+});
+
+function playEmbed(embed) {
+  // only build the iframe the first time this video is played
+  if (!embed.dataset.built) {
+    const rawHtml = embed.dataset.embedSrc || "";
+    embed.innerHTML = rawHtml;
+    embed.dataset.built = "1";
+  }
+
+  const iframe = embed.querySelector("iframe");
+  if (!iframe) return;
+
+  let src = iframe.getAttribute("src") || "";
+  src = addAutoplayParam(src);
+  iframe.setAttribute("src", src);
+  iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
+
+  // add the custom stop button once
+  if (!embed.querySelector(".video-stop-btn")) {
+    const btn = document.createElement("button");
+    btn.className = "video-stop-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Stop video");
+    btn.innerHTML =
+      '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    embed.appendChild(btn);
+  }
+}
+
+function stopEmbed(embed) {
+  const iframe = embed.querySelector("iframe");
+  if (!iframe) return;
+
+  // this is the important part — YouTube/Vimeo iframes keep playing
+  // (audio included) even when display:none is applied to a parent.
+  // The only reliable way to actually stop playback is to clear the
+  // src, which unloads the player entirely.
+  const src = iframe.getAttribute("src");
+  iframe.setAttribute("src", "");
+
+  // rebuild fresh next time "play" is clicked
+  embed.dataset.built = "";
+  embed.innerHTML = "";
+}
+
+function addAutoplayParam(src) {
+  if (!src) return src;
+
+  const separator = src.includes("?") ? "&" : "?";
+
+  if (src.includes("youtube.com") || src.includes("youtu.be")) {
+    return src + separator + "autoplay=1&mute=0&enablejsapi=1";
+  }
+
+  if (src.includes("vimeo.com")) {
+    return src + separator + "autoplay=1";
+  }
+
+  // unknown provider — leave as-is, cover/play button still worked,
+  // the provider's own player controls will still show
+  return src;
+}
+
+// section zooom in effect

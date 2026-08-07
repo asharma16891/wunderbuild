@@ -20,11 +20,22 @@ function wunderbuild_register_workflow_map_fields()
         'fields' => array(
 
             array(
-                'key'   => 'field_workflow_heading',
-                'label' => 'Heading',
-                'name'  => 'heading',
-                'type'  => 'textarea',
-                'rows'  => 2,
+                'key'           => 'field_workflow_heading',
+                'label'         => 'Heading',
+                'name'          => 'heading',
+                'type'          => 'wysiwyg',
+                'tabs'          => 'visual,text',
+                'toolbar'       => 'basic',
+                'media_upload'  => 0,
+                'delay'         => 0,
+            ),
+
+            array(
+                'key' => 'field_workflow_description',
+                'label' => 'Description',
+                'name' => 'description',
+                'type' => 'textarea',
+                'rows' => 3,
             ),
 
             array(
@@ -41,7 +52,7 @@ function wunderbuild_register_workflow_map_fields()
                 'label' => 'Hotspots',
                 'name'  => 'hotspots',
                 'type'  => 'repeater',
-                'layout'=> 'block',
+                'layout' => 'block',
                 'button_label' => 'Add Hotspot',
 
                 'sub_fields' => array(

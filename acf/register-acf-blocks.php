@@ -53,6 +53,7 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'sos',
             'keywords'    => ['support', 'help', 'cards'],
         ],
+        
         [
             'name'        => 'testimonials',
             'title'       => 'Testimonials',

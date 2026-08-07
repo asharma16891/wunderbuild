@@ -19,12 +19,7 @@ function wunderbuild_register_process_fields() {
 
         'fields' => array(
 
-            array(
-                'key'   => 'field_process_badge',
-                'label' => 'Badge',
-                'name'  => 'process_badge',
-                'type'  => 'text',
-            ),
+          
 
             array(
                 'key'   => 'field_process_heading',

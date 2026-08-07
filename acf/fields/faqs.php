@@ -19,12 +19,7 @@ function wunderbuild_register_faq_fields()
 
         'fields' => array(
 
-            array(
-                'key'   => 'field_faq_badge',
-                'label' => 'Badge',
-                'name'  => 'badge',
-                'type'  => 'text',
-            ),
+            
 
             array(
                 'key'   => 'field_faq_heading',
@@ -79,26 +74,11 @@ function wunderbuild_register_faq_fields()
 
             ),
 
-            array(
-                'key'   => 'field_faq_bottom_text',
-                'label' => 'Bottom Text',
-                'name'  => 'bottom_text',
-                'type'  => 'text',
-            ),
+           
 
-            array(
-                'key'   => 'field_faq_button_text',
-                'label' => 'Button Text',
-                'name'  => 'button_text',
-                'type'  => 'text',
-            ),
+            
 
-            array(
-                'key'   => 'field_faq_button_link',
-                'label' => 'Button Link',
-                'name'  => 'button_link',
-                'type'  => 'link',
-            ),
+           
 
         ),
 

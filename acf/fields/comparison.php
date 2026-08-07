@@ -20,12 +20,7 @@ function wunderbuild_register_comparison_fields()
         'fields' => array(
 
     // Section
-    array(
-        'key'   => 'field_comparison_badge',
-        'label' => 'Badge',
-        'name'  => 'badge',
-        'type'  => 'text',
-    ),
+    
 
     array(
         'key'   => 'field_comparison_heading',

@@ -2,15 +2,11 @@
 
 $fields = $args['fields'] ?? [];
 
-$badge       = $fields['badge'] ?? '';
 $heading     = $fields['heading'] ?? '';
 $description = $fields['description'] ?? '';
 
 $faqs        = $fields['faqs'] ?? [];
 
-$bottom_text = $fields['bottom_text'] ?? '';
-$button_text = $fields['button_text'] ?? '';
-$button_link = $fields['button_link'] ?? [];
 
 ?>
 
@@ -21,19 +17,15 @@ $button_link = $fields['button_link'] ?? [];
         <!-- FAQ Header -->
         <div class="faq-head">
 
-            <?php if (!empty($badge)) : ?>
-                <span class="badge faq-badge">
-                    <?php echo esc_html($badge); ?>
-                </span>
-            <?php endif; ?>
+           
 
             <?php if (!empty($heading)) : ?>
                 <h2><?php echo nl2br(esc_html($heading)); ?></h2>
             <?php endif; ?>
 
-            <?php if (!empty($description)) : ?>
+            <!-- <?php if (!empty($description)) : ?>
                 <p><?php echo esc_html($description); ?></p>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
         </div>
 
@@ -83,32 +75,8 @@ $button_link = $fields['button_link'] ?? [];
 
         <?php endif; ?>
 
-        <!-- CTA -->
-        <div class="faq-cta">
-
-            <?php if (!empty($bottom_text)) : ?>
-
-                <p>
-                    <?php echo esc_html($bottom_text); ?>
-                </p>
-
-            <?php endif; ?>
-
-            <?php if (!empty($button_link)) : ?>
-
-                <a
-                    href="<?php echo esc_url($button_link['url']); ?>"
-                    target="<?php echo esc_attr($button_link['target'] ?: '_self'); ?>"
-                    class="btn btn-primary">
-
-                    <?php echo esc_html($button_text); ?>
-
-                </a>
-
-            <?php endif; ?>
-
-        </div>
-
+      
+      
     </div>
 
 </section>

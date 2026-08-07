@@ -2,7 +2,6 @@
 
 $fields = $args['fields'] ?? [];
 
-$badge       = $fields['process_badge'] ?? '';
 $heading     = $fields['process_heading'] ?? '';
 $description = $fields['process_description'] ?? '';
 $steps       = $fields['process_steps'] ?? [];
@@ -15,11 +14,7 @@ $steps       = $fields['process_steps'] ?? [];
 
         <div class="section-head">
 
-            <?php if (!empty($badge)) : ?>
-                <span class="badge badge-lime">
-                    <?php echo esc_html($badge); ?>
-                </span>
-            <?php endif; ?>
+          
 
             <?php if (!empty($heading)) : ?>
                 <h2>

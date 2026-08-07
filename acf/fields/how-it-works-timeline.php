@@ -19,12 +19,7 @@ function wunderbuild_register_how_it_works_timeline_fields()
 
         'fields' => array(
 
-            array(
-                'key'   => 'field_hit_badge',
-                'label' => 'Section Badge',
-                'name'  => 'badge',
-                'type'  => 'text',
-            ),
+           
 
             array(
                 'key'   => 'field_hit_heading',

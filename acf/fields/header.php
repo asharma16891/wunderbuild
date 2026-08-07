@@ -39,6 +39,12 @@ add_action('acf/include_fields', function () {
                 'name' => 'trial_button',
                 'type' => 'link',
             ),
+             array(
+                'key' => 'field_demo_button',
+                'label' => 'Free Demo Button',
+                'name' => 'demo_button',
+                'type' => 'link',
+            ),
 
         ),
 

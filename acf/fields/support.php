@@ -19,12 +19,7 @@ function wunderbuild_register_support_fields()
 
         'fields' => array(
 
-            array(
-                'key'   => 'field_support_badge',
-                'label' => 'Badge',
-                'name'  => 'badge',
-                'type'  => 'text',
-            ),
+           
 
             array(
                 'key'   => 'field_support_heading',

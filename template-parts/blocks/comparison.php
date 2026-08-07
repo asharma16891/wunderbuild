@@ -2,7 +2,6 @@
 
 $fields = $args['fields'] ?? [];
 
-$badge       = $fields['badge'] ?? '';
 $heading     = $fields['heading'] ?? '';
 $description = $fields['description'] ?? '';
 
@@ -34,11 +33,7 @@ $secondary_button = $fields['secondary_button'] ?? [];
 
         <div class="comparison-head">
 
-            <?php if (!empty($badge)) : ?>
-                <span class="badge comparison-badge">
-                    <?php echo esc_html($badge); ?>
-                </span>
-            <?php endif; ?>
+            
 
             <?php if (!empty($heading)) : ?>
                 <h2><?php echo nl2br(esc_html($heading)); ?></h2>

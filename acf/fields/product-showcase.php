@@ -19,12 +19,7 @@ function wunderbuild_register_product_showcase_fields()
 
         'fields' => array(
 
-            array(
-                'key'   => 'field_ps_badge',
-                'label' => 'Badge',
-                'name'  => 'badge',
-                'type'  => 'text',
-            ),
+           
 
             array(
                 'key'   => 'field_ps_heading',

@@ -2,7 +2,6 @@
 
 $fields = $args['fields'] ?? [];
 
-$badge   = $fields['badge'] ?? '';
 $heading = $fields['heading'] ?? '';
 $items   = $fields['timeline'] ?? [];
 
@@ -18,11 +17,6 @@ if (empty($items)) {
 
         <div class="section-head">
 
-            <?php if (!empty($badge)) : ?>
-                <span class="badge" style="background:var(--lime); color:var(--charcoal);">
-                    <?php echo esc_html($badge); ?>
-                </span>
-            <?php endif; ?>
 
             <?php if (!empty($heading)) : ?>
                 <h2><?php echo nl2br(esc_html($heading)); ?></h2>
@@ -67,17 +61,17 @@ if (empty($items)) {
                                 <dl>
 
                                     <div class="row">
-                                        <dt>Win</dt>
+                                        <dt>The Win</dt>
                                         <dd><?php echo esc_html($item['win'] ?? ''); ?></dd>
                                     </div>
 
                                     <div class="row">
-                                        <dt>Practice</dt>
+                                        <dt>In Practice</dt>
                                         <dd><?php echo esc_html($item['feature'] ?? ''); ?></dd>
                                     </div>
 
                                     <div class="row">
-                                        <dt>Tools</dt>
+                                        <dt>Tools Used</dt>
                                         <dd><?php echo esc_html($item['tools'] ?? ''); ?></dd>
                                     </div>
 
@@ -88,7 +82,7 @@ if (empty($items)) {
                                     <a
                                         href="<?php echo esc_url($button['url']); ?>"
                                         target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
-                                        class="btn btn-ghost btn-sm">
+                                        class="btn btn-primary btn-sm">
 
                                         <?php echo esc_html($item['button_text'] ?? ''); ?>
 
@@ -108,9 +102,17 @@ if (empty($items)) {
 
                             <?php if (!empty($image)) : ?>
 
-                                <img
-                                    src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt'] ?? ''); ?>">
+                                <a
+                                    href="<?php echo esc_url($image['url']); ?>"
+                                    data-fancybox="timeline-gallery"
+                                    data-caption="<?php echo esc_attr($item['title'] ?? ''); ?>"
+                                    class="timeline-lightbox">
+
+                                    <img
+                                        src="<?php echo esc_url($image['url']); ?>"
+                                        alt="<?php echo esc_attr($image['alt'] ?? ''); ?>">
+
+                                </a>
 
                             <?php endif; ?>
 
@@ -122,9 +124,17 @@ if (empty($items)) {
 
                             <?php if (!empty($image)) : ?>
 
-                                <img
-                                    src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt'] ?? ''); ?>">
+                                <a
+                                    href="<?php echo esc_url($image['url']); ?>"
+                                    data-fancybox="timeline-gallery"
+                                    data-caption="<?php echo esc_attr($item['title'] ?? ''); ?>"
+                                    class="timeline-lightbox">
+
+                                    <img
+                                        src="<?php echo esc_url($image['url']); ?>"
+                                        alt="<?php echo esc_attr($image['alt'] ?? ''); ?>">
+
+                                </a>
 
                             <?php endif; ?>
 
@@ -178,7 +188,7 @@ if (empty($items)) {
                                     <a
                                         href="<?php echo esc_url($button['url']); ?>"
                                         target="<?php echo esc_attr($button['target'] ?: '_self'); ?>"
-                                        class="btn btn-ghost btn-sm">
+                                        class="btn btn-primary btn-sm">
 
                                         <?php echo esc_html($item['button_text'] ?? ''); ?>
 

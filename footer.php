@@ -1,9 +1,9 @@
 <?php
 
-$footer_heading         = get_field('footer_heading', 'option');
 
 $footer_logo            = get_field('footer_logo', 'option');
 $footer_logo_text       = get_field('footer_logo_text', 'option');
+
 
 $company_title          = get_field('footer_company_title', 'option');
 $company_description    = get_field('footer_company_description', 'option');
@@ -14,13 +14,16 @@ $google_play_link  = get_field('footer_google_play_link', 'option');
 $app_store_image = get_field('footer_app_store_image', 'option');
 $app_store_link  = get_field('footer_app_store_link', 'option');
 
+
+
+$newsletter_title       = get_field('footer_newsletter_title', 'option');
+$newsletter_description = get_field('footer_newsletter_description', 'option');
 $newsletter_placeholder = get_field('footer_newsletter_placeholder', 'option');
 $newsletter_button      = get_field('footer_newsletter_button', 'option');
 $newsletter_note        = get_field('footer_newsletter_note', 'option');
 
 $menu1_title            = get_field('footer_menu_1_title', 'option');
 $menu2_title            = get_field('footer_menu_2_title', 'option');
-$menu3_title            = get_field('footer_menu_3_title', 'option');
 
 $contact_title          = get_field('footer_contact_title', 'option');
 $phone                  = get_field('footer_phone', 'option');
@@ -40,9 +43,7 @@ $socials                = get_field('footer_socials', 'option');
 
   <div class="wrap">
 
-    <div class="footer-top-line">
-      <?php echo esc_html($footer_heading); ?>
-    </div>
+
 
     <div class="footer-grid">
 
@@ -68,54 +69,44 @@ $socials                = get_field('footer_socials', 'option');
 
         </div>
 
+
         <p class="tagline">
           <?php echo esc_html($company_title); ?>
         </p>
+
+
 
         <p>
           <?php echo esc_html($company_description); ?>
         </p>
 
 
-        <div class="store-badges">
+         <p class="tagline">
+          <?php echo esc_html($newsletter_title); ?>
+        </p>
 
-          <?php if ($google_play_image) : ?>
-            <a href="<?php echo esc_url($google_play_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
-              <img
-                src="<?php echo esc_url($google_play_image['url']); ?>"
-                alt="<?php echo esc_attr($google_play_image['alt']); ?>">
-            </a>
-          <?php endif; ?>
+       <div class="newsletter-form">
+    <?php echo do_shortcode('[contact-form-7 id="59eaeef" title="Contact form 1"]'); ?>
+</div>
 
-          <?php if ($app_store_image) : ?>
-            <a href="<?php echo esc_url($app_store_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
-              <img
-                src="<?php echo esc_url($app_store_image['url']); ?>"
-                alt="<?php echo esc_attr($app_store_image['alt']); ?>">
-            </a>
-          <?php endif; ?>
-
+        <div class="footer-brand">
+          <p>
+            <?php echo esc_html($newsletter_description); ?>
+          </p>
         </div>
-
-        <form class="newsletter-form" onsubmit="return false;">
-
-          <input
-            type="email"
-            placeholder="<?php echo esc_attr($newsletter_placeholder); ?>">
-
-          <button type="submit">
-
-            <?php echo esc_html($newsletter_button); ?>
-
-          </button>
-
-        </form>
 
         <span class="newsletter-note">
 
           <?php echo esc_html($newsletter_note); ?>
 
         </span>
+
+
+        
+
+
+
+
 
       </div>
 
@@ -163,27 +154,6 @@ $socials                = get_field('footer_socials', 'option');
 
       </div>
 
-      <!-- ========================= -->
-      <!-- Footer Menu 3 -->
-      <!-- ========================= -->
-
-      <div>
-
-        <h5>How it works</h5>
-
-        <?php
-
-        wp_nav_menu(array(
-
-          'theme_location' => 'footer_menu_3',
-          'container'      => false,
-          'menu_class'     => 'foot-links',
-
-        ));
-
-        ?>
-
-      </div>
 
       <!-- ========================= -->
       <!-- Contact -->
@@ -257,6 +227,29 @@ $socials                = get_field('footer_socials', 'option');
 
         <?php endif; ?>
 
+        <div class="store-badges">
+
+          <?php if ($google_play_image) : ?>
+            <a href="<?php echo esc_url($google_play_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
+              <img
+                src="<?php echo esc_url($google_play_image['url']); ?>"
+                alt="<?php echo esc_attr($google_play_image['alt']); ?>">
+            </a>
+          <?php endif; ?>
+
+          <?php if ($app_store_image) : ?>
+            <a href="<?php echo esc_url($app_store_link ?: '#'); ?>" class="store-badge" target="_blank" rel="noopener">
+              <img
+                src="<?php echo esc_url($app_store_image['url']); ?>"
+                alt="<?php echo esc_attr($app_store_image['alt']); ?>">
+            </a>
+          <?php endif; ?>
+
+        </div>
+
+
+       
+
       </div>
 
     </div>
@@ -327,5 +320,22 @@ $socials                = get_field('footer_socials', 'option');
 <?php wp_footer(); ?>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  Fancybox.bind('[data-fancybox="timeline-gallery"]', {
+    animated: true,
+    showClass: "fancybox-zoomIn",
+    hideClass: "fancybox-zoomOut",
+    dragToClose: true,
+    Toolbar: {
+      display: [
+        "close"
+      ]
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollToPlugin.min.js"></script>
 
 </html>

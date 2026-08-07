@@ -6,7 +6,8 @@ if (!defined('ABSPATH')) {
 
 add_action('acf/init', 'wunderbuild_register_hero_fields');
 
-function wunderbuild_register_hero_fields() {
+function wunderbuild_register_hero_fields()
+{
 
     if (!function_exists('acf_add_local_field_group')) {
         return;
@@ -20,12 +21,6 @@ function wunderbuild_register_hero_fields() {
 
         'fields' => array(
 
-            array(
-                'key' => 'field_hero_badge',
-                'label' => 'Badge',
-                'name' => 'hero_badge',
-                'type' => 'text',
-            ),
 
             array(
                 'key' => 'field_hero_title',
@@ -58,6 +53,16 @@ function wunderbuild_register_hero_fields() {
             ),
 
             array(
+                'key'           => 'field_hero_background_color',
+                'label'         => 'Hero Background Color',
+                'name'          => 'hero_background_color',
+                'type'          => 'color_picker',
+                'default_value' => '#F5F7F4',
+                'enable_opacity' => 0,
+                'return_format' => 'string',
+            ),
+
+            array(
                 'key' => 'field_hero_image',
                 'label' => 'Hero Image',
                 'name' => 'hero_image',
@@ -65,18 +70,26 @@ function wunderbuild_register_hero_fields() {
                 'return_format' => 'array',
                 'preview_size' => 'medium',
             ),
+            array(
+                'key'           => 'field_hero_video',
+                'label'         => 'Hero Video',
+                'name'          => 'hero_video',
+                'type'          => 'file',
+                'return_format' => 'array',
+                'mime_types'    => 'mp4,webm,ogg',
+            ),
 
         ),
 
         'location' => array(
-    array(
-        array(
-            'param' => 'block',
-            'operator' => '==',
-            'value' => 'acf/hero',
+            array(
+                array(
+                    'param' => 'block',
+                    'operator' => '==',
+                    'value' => 'acf/hero',
+                ),
+            ),
         ),
-    ),
-),
 
     ));
 }

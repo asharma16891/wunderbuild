@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&f[]=satoshi@400,500,700&display=swap"
     rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.css" />
 
   <?php wp_head(); ?>
 </head>
@@ -23,9 +26,12 @@
   $logo         = get_field('header_logo', 'option');
   $login_button = get_field('login_button', 'option');
   $trial_button = get_field('trial_button', 'option');
+  $demo_button = get_field('demo_button', 'option');
   ?>
 
   <header id="siteHeader">
+
+   
 
     <nav class="navbar">
 
@@ -86,6 +92,19 @@
 
         <?php endif; ?>
 
+        <?php if ($demo_button) : ?>
+
+          <a
+            href="<?php echo esc_url($demo_button['url']); ?>"
+            target="<?php echo esc_attr($demo_button['target']); ?>"
+            class="btn btn-ghost btn-sm">
+
+            <?php echo esc_html($demo_button['title']); ?>
+
+          </a>
+
+        <?php endif; ?>
+
       </div>
 
       <button
@@ -104,4 +123,6 @@
 
     </nav>
 
+
+  
   </header>

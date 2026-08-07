@@ -2,7 +2,6 @@
 
 $fields = $args['fields'] ?? [];
 
-$badge       = $fields['badge'] ?? '';
 $heading     = $fields['heading'] ?? '';
 $description = $fields['description'] ?? '';
 
@@ -23,11 +22,6 @@ if (empty($items)) {
 
         <div class="section-head center" style="margin-left:auto;margin-right:auto;">
 
-            <?php if (!empty($badge)) : ?>
-                <span class="badge badge-coral">
-                    <?php echo esc_html($badge); ?>
-                </span>
-            <?php endif; ?>
 
             <?php if (!empty($heading)) : ?>
                 <h2><?php echo esc_html($heading); ?></h2>
@@ -139,13 +133,37 @@ if (empty($items)) {
 
                             <?php elseif (($item['content_type'] ?? '') === 'video') : ?>
 
+                                <?php
+                                $video = $item['video'] ?? '';
+                                $cover = $item['video_cover'] ?? [];
+                                ?>
+
                                 <div class="t-card t-card-video">
 
-                                    <?php
-                                    if (!empty($item['video'])) {
-                                        echo $item['video']; // Trusted ACF WYSIWYG/embed output
-                                    }
-                                    ?>
+                                    <?php if (!empty($cover)) : ?>
+
+                                        <div class="video-cover">
+                                            <img
+                                                src="<?php echo esc_url($cover['url']); ?>"
+                                                alt="<?php echo esc_attr($cover['alt'] ?? ''); ?>">
+
+                                            <button class="video-play-btn" type="button" aria-label="Play video">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <polygon points="8 5 19 12 8 19 8 5" fill="currentColor" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <div class="video-embed" style="display:none;" data-embed-src="<?php echo esc_attr($video); ?>">
+                                            <?php // filled in by JS on first play, so autoplay params can be injected 
+                                            ?>
+                                        </div>
+
+                                    <?php else : ?>
+
+                                        <?php echo $video; ?>
+
+                                    <?php endif; ?>
 
                                 </div>
 

@@ -20,16 +20,8 @@ function wunderbuild_register_footer_fields()
 
         'fields' => array(
 
-            // =============================
-            // Footer Heading
-            // =============================
 
-            array(
-                'key'   => 'field_footer_heading',
-                'label' => 'Footer Heading',
-                'name'  => 'footer_heading',
-                'type'  => 'text',
-            ),
+           
 
             // =============================
             // Company Info
@@ -43,7 +35,8 @@ function wunderbuild_register_footer_fields()
                 'return_format' => 'array',
             ),
 
-            array(
+
+              array(
                 'key'   => 'field_footer_company_title',
                 'label' => 'Company Heading',
                 'name'  => 'footer_company_title',
@@ -96,6 +89,23 @@ function wunderbuild_register_footer_fields()
             // Newsletter
             // =============================
 
+
+             array(
+                'key'   => 'field_footer_newsletter_title',
+                'label' => 'Newsletter Heading',
+                'name'  => 'footer_newsletter_title',
+                'type'  => 'text',
+            ),
+
+
+            array(
+                'key'   => 'field_footer_newsletter_description',
+                'label' => 'Newsletter Description',
+                'name'  => 'footer_newsletter_description',
+                'type'  => 'textarea',
+                'rows'  => 4,
+            ),
+
             array(
                 'key'   => 'field_footer_newsletter_placeholder',
                 'label' => 'Newsletter Placeholder',
@@ -137,13 +147,7 @@ function wunderbuild_register_footer_fields()
                 'type'  => 'text',
             ),
 
-            array(
-                'key'   => 'field_footer_menu_3_title',
-                'label' => 'Footer Menu 3 Title',
-                'name'  => 'footer_menu_3_title',
-                'type'  => 'text',
-            ),
-
+           
             // =============================
             // Contact
             // =============================

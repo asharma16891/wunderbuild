@@ -3,6 +3,7 @@
 $fields = $args['fields'] ?? [];
 
 $heading          = $fields['heading'] ?? '';
+$description         = $fields['description'] ?? '';
 $workflow_image   = $fields['workflow_image'] ?? [];
 $hotspots = $fields['hotspots'] ?? [];
 
@@ -21,29 +22,40 @@ $secondary_button = $fields['secondary_button'] ?? [];
 
     <div class="wrap">
 
-        <div class="section-head new-work-header">
+       <?php if (!empty($heading) || !empty($description)) : ?>
 
-            <?php if (!empty($heading)) : ?>
+    <div class="section-head new-work-header">
 
-                <h2>
-                    <?php
-                    echo wp_kses(
-                        $heading,
-                        [
-                            'span' => [
-                                'class' => [],
-                                'style' => [],
-                            ],
-                            'br' => [],
-                        ]
-                    );
-                    ?>
-                </h2>
+        <?php if (!empty($heading)) : ?>
 
-            <?php endif; ?>
+            <h2>
+                <?php
+                echo wp_kses(
+                    $heading,
+                    [
+                        'span' => [
+                            'class' => [],
+                            'style' => [],
+                        ],
+                        'br' => [],
+                    ]
+                );
+                ?>
+            </h2>
 
-        </div>
+        <?php endif; ?>
 
+        <?php if (!empty($description)) : ?>
+
+            <p>
+                <?php echo esc_html($description); ?>
+            </p>
+
+        <?php endif; ?>
+
+    </div>
+
+<?php endif; ?>
         <div class="hs-grid">
 
             <div class="hs-visual">
@@ -120,18 +132,20 @@ $secondary_button = $fields['secondary_button'] ?? [];
         </div>
 
         <div class="mobile-workflow">
+            <?php if (!empty($workflow_image)) : ?>
+
+                <div class="mobile-workflow-image">
+                    <img
+                        src="<?php echo esc_url($workflow_image['url']); ?>"
+                        alt="<?php echo esc_attr($workflow_image['alt'] ?? ''); ?>">
+                </div>
+
+            <?php endif; ?>
+
 
             <?php foreach ($hotspots as $item) : ?>
 
                 <div class="mobile-card">
-
-                    <?php if (!empty($workflow_image)) : ?>
-
-                        <img
-                            src="<?php echo esc_url($workflow_image['url']); ?>"
-                            alt="<?php echo esc_attr($workflow_image['alt'] ?? ''); ?>">
-
-                    <?php endif; ?>
 
                     <div class="mobile-card-content">
 
@@ -167,7 +181,7 @@ $secondary_button = $fields['secondary_button'] ?? [];
 
         </div>
 
-        <div class="comparison-cta">
+        <!-- <div class="comparison-cta">
 
             <?php if (!empty($primary_button)) : ?>
 
@@ -195,7 +209,7 @@ $secondary_button = $fields['secondary_button'] ?? [];
 
             <?php endif; ?>
 
-        </div>
+        </div> -->
 
     </div>
 
