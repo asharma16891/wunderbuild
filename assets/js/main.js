@@ -950,3 +950,1007 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const process = document.querySelector(".wb-migration-process");
+
+    if (!process) return;
+
+    if (
+        typeof gsap === "undefined" ||
+        typeof ScrollTrigger === "undefined"
+    ) {
+        console.warn("GSAP / ScrollTrigger is not loaded.");
+        return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const desktopSteps = Array.from(
+        process.querySelectorAll(".wb-migration-process__step")
+    );
+
+    const mobileSteps = Array.from(
+        process.querySelectorAll(".wb-migration-process__mobile-step")
+    );
+
+    const trackFill = process.querySelector(
+        ".wb-migration-process__track-fill"
+    );
+
+    const mobileLineFill = process.querySelector(
+        ".wb-migration-process__mobile-line-fill"
+    );
+
+    const desktopCard = process.querySelector(
+        ".wb-migration-process__desktop-card"
+    );
+
+    const cardLabel = process.querySelector(
+        ".wb-migration-process__card-label"
+    );
+
+    const cardTitle = process.querySelector(
+        ".wb-migration-process__card-content h3"
+    );
+
+    const cardText = process.querySelector(
+        ".wb-migration-process__card-content p"
+    );
+
+    const cardIcon = process.querySelector(
+        ".wb-migration-process__icon-value"
+    );
+
+
+    /* =====================================================
+       DATA
+    ===================================================== */
+
+    const stepsData = [
+
+        {
+            label: "Step 01",
+            title: "Export the data",
+            text: "Export the records you want to bring across from the current system or files.",
+            icon: "↓"
+        },
+
+        {
+            label: "Step 02",
+            title: "Send the files to Wunderbuild",
+            text: "Provide the Excel or CSV files to the onboarding team.",
+            icon: "↳"
+        },
+
+        {
+            label: "Step 03",
+            title: "We review and prepare them",
+            text: "The team checks what can be imported and edits or restructures supported data where needed.",
+            icon: "≡"
+        },
+
+        {
+            label: "Step 04",
+            title: "We import the supported records",
+            text: "The prepared information is imported into the Wunderbuild account.",
+            icon: "↓"
+        },
+
+        {
+            label: "Step 05",
+            title: "You check the result",
+            text: "Review the imported records and request any necessary adjustments.",
+            icon: "✓"
+        }
+
+    ];
+
+
+    const totalSteps = stepsData.length - 1;
+
+    let activeIndex = 0;
+    let desktopTrigger = null;
+
+
+    /* =====================================================
+       UPDATE DESKTOP
+    ===================================================== */
+
+    function updateDesktop(index, animate = true) {
+
+        index = Math.max(
+            0,
+            Math.min(index, totalSteps)
+        );
+
+        activeIndex = index;
+
+
+        desktopSteps.forEach((step, i) => {
+
+            const active = i === index;
+
+            step.classList.toggle(
+                "is-active",
+                active
+            );
+
+            step.setAttribute(
+                "aria-selected",
+                active ? "true" : "false"
+            );
+
+        });
+
+
+        const data = stepsData[index];
+
+
+        if (animate) {
+
+            gsap.to(desktopCard, {
+                opacity: 0,
+                y: 15,
+                duration: 0.18,
+                ease: "power2.out",
+                onComplete: () => {
+
+                    cardLabel.textContent = data.label;
+                    cardTitle.textContent = data.title;
+                    cardText.textContent = data.text;
+                    cardIcon.textContent = data.icon;
+
+                    gsap.to(desktopCard, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.35,
+                        ease: "power2.out"
+                    });
+
+                }
+            });
+
+        } else {
+
+            cardLabel.textContent = data.label;
+            cardTitle.textContent = data.title;
+            cardText.textContent = data.text;
+            cardIcon.textContent = data.icon;
+
+        }
+
+
+        /* timeline */
+
+        const progress =
+            (index / totalSteps) * 100;
+
+        gsap.to(trackFill, {
+            width: `${progress}%`,
+            duration: animate ? 0.35 : 0,
+            ease: "power2.out"
+        });
+
+    }
+
+
+    /* =====================================================
+       UPDATE MOBILE
+    ===================================================== */
+
+    function updateMobile(index) {
+
+        index = Math.max(
+            0,
+            Math.min(index, totalSteps)
+        );
+
+        activeIndex = index;
+
+
+        mobileSteps.forEach((step, i) => {
+
+            step.classList.toggle(
+                "is-active",
+                i === index
+            );
+
+        });
+
+
+        /*
+         * Fill vertical line until active step.
+         */
+
+        const activeStep = mobileSteps[index];
+
+        if (activeStep && mobileLineFill) {
+
+            const container =
+                process.querySelector(
+                    ".wb-migration-process__mobile"
+                );
+
+            const number =
+                activeStep.querySelector(
+                    ".wb-migration-process__mobile-number"
+                );
+
+            const containerRect =
+                container.getBoundingClientRect();
+
+            const numberRect =
+                number.getBoundingClientRect();
+
+            const height =
+                numberRect.top -
+                containerRect.top +
+                (numberRect.height / 2);
+
+            gsap.to(mobileLineFill, {
+                height: `${height}px`,
+                duration: 0.35,
+                ease: "power2.out"
+            });
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INITIAL
+    ===================================================== */
+
+    updateDesktop(0, false);
+    updateMobile(0);
+
+
+    /* =====================================================
+       DESKTOP SCROLL
+    ===================================================== */
+
+    function createDesktopScroll() {
+
+        if (window.innerWidth <= 767) {
+            return;
+        }
+
+
+        desktopTrigger = ScrollTrigger.create({
+
+            id: "wbMigrationProcessDesktop",
+
+            trigger: process,
+
+            start: "top top",
+
+            end: () => {
+
+                return "+=" +
+                    (
+                        window.innerHeight *
+                        totalSteps
+                    );
+
+            },
+
+            pin: true,
+
+            anticipatePin: 1,
+
+            scrub: 0.25,
+
+            invalidateOnRefresh: true,
+
+
+            snap: {
+
+                snapTo: (value) => {
+
+                    const step =
+                        Math.round(
+                            value * totalSteps
+                        );
+
+                    return step / totalSteps;
+
+                },
+
+                duration: {
+                    min: 0.2,
+                    max: 0.45
+                },
+
+                delay: 0,
+
+                ease: "power2.out"
+
+            },
+
+
+            onUpdate: (self) => {
+
+                const index =
+                    Math.round(
+                        self.progress *
+                        totalSteps
+                    );
+
+
+                if (index !== activeIndex) {
+
+                    updateDesktop(index);
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       DESKTOP CLICK
+    ===================================================== */
+
+    desktopSteps.forEach((step, index) => {
+
+        step.addEventListener("click", () => {
+
+            if (window.innerWidth <= 767) {
+                return;
+            }
+
+            if (!desktopTrigger) {
+                return;
+            }
+
+
+            const progress =
+                index / totalSteps;
+
+
+            const target =
+                desktopTrigger.start +
+                (
+                    desktopTrigger.end -
+                    desktopTrigger.start
+                ) * progress;
+
+
+            window.scrollTo({
+
+                top: target,
+
+                behavior: "smooth"
+
+            });
+
+        });
+
+    });
+
+
+    /* =====================================================
+       MOBILE SCROLL
+    ===================================================== */
+
+    function createMobileScroll() {
+
+        if (window.innerWidth > 767) {
+            return;
+        }
+
+
+        mobileSteps.forEach((step, index) => {
+
+            ScrollTrigger.create({
+
+                trigger: step,
+
+                start: "top 60%",
+
+                end: "bottom 40%",
+
+                onEnter: () => {
+
+                    updateMobile(index);
+
+                },
+
+                onEnterBack: () => {
+
+                    updateMobile(index);
+
+                }
+
+            });
+
+        });
+
+    }
+
+
+    /* =====================================================
+       CREATE
+    ===================================================== */
+
+    createDesktopScroll();
+    createMobileScroll();
+
+
+    /* =====================================================
+       RESIZE
+    ===================================================== */
+
+    let resizeTimer;
+
+    window.addEventListener("resize", () => {
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+
+            if (desktopTrigger) {
+
+                desktopTrigger.kill();
+
+                desktopTrigger = null;
+
+            }
+
+
+            ScrollTrigger.getAll().forEach(trigger => {
+
+                if (
+                    trigger.trigger &&
+                    process.contains(trigger.trigger)
+                ) {
+                    trigger.kill();
+                }
+
+            });
+
+
+            activeIndex = 0;
+
+            updateDesktop(0, false);
+            updateMobile(0);
+
+
+            createDesktopScroll();
+            createMobileScroll();
+
+
+            ScrollTrigger.refresh();
+
+        }, 250);
+
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("wb-review-modal");
+
+    if (!modal) return;
+
+    let previousTrigger = null;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FILTER / PAGINATION
+    |--------------------------------------------------------------------------
+    */
+
+    async function navigate(url, push = true) {
+
+        const scrollPosition = window.scrollY;
+
+        try {
+
+            const response = await fetch(url, {
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            });
+
+            if (!response.ok) {
+                window.location.href = url;
+                return;
+            }
+
+
+            const html = await response.text();
+
+            const doc = new DOMParser().parseFromString(
+                html,
+                "text/html"
+            );
+
+
+            const newGallery = doc.querySelector(
+                ".wb-reviews-gallery"
+            );
+
+            const currentGallery = document.querySelector(
+                ".wb-reviews-gallery"
+            );
+
+
+            if (!newGallery || !currentGallery) {
+                window.location.href = url;
+                return;
+            }
+
+
+            currentGallery.replaceWith(newGallery);
+
+
+            if (push) {
+                history.pushState({}, "", url);
+            }
+
+
+            /*
+            |------------------------------------------------------------------
+            | KEEP CURRENT SCROLL POSITION
+            |------------------------------------------------------------------
+            */
+
+            requestAnimationFrame(() => {
+                window.scrollTo(0, scrollPosition);
+            });
+
+
+        } catch (error) {
+
+            window.location.href = url;
+
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FILTERS + LOAD MORE + PAGINATION
+    |--------------------------------------------------------------------------
+    */
+
+    document.addEventListener("click", event => {
+
+        const link = event.target.closest(
+            "[data-review-filter], [data-load-more], .wb-reviews-pages a"
+        );
+
+
+        if (!link) {
+            return;
+        }
+
+
+        event.preventDefault();
+
+
+        navigate(link.href);
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | BACK / FORWARD
+    |--------------------------------------------------------------------------
+    */
+
+    window.addEventListener("popstate", () => {
+
+        navigate(
+            window.location.href,
+            false
+        );
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | OPEN VIDEO
+    |--------------------------------------------------------------------------
+    */
+
+    function openVideo(button) {
+
+        const card = button.closest(
+            ".wb-review-card"
+        );
+
+
+        if (!card) {
+            return;
+        }
+
+
+        previousTrigger = button;
+
+
+        /*
+        |----------------------------------------------------------------------
+        | MODAL ELEMENTS
+        |----------------------------------------------------------------------
+        */
+
+        const video = modal.querySelector(
+            ".wb-review-modal__video"
+        );
+
+        const unavailable = modal.querySelector(
+            ".wb-review-modal__unavailable"
+        );
+
+        const title = modal.querySelector(
+            "#wb-review-modal-title"
+        );
+
+        const role = modal.querySelector(
+            ".wb-review-modal__role"
+        );
+
+        const summary = modal.querySelector(
+            ".wb-review-modal__summary"
+        );
+
+        const topic = modal.querySelector(
+            ".wb-review-modal__topic"
+        );
+
+        const rating = modal.querySelector(
+            ".wb-review-modal__rating"
+        );
+
+        const transcript = modal.querySelector(
+            ".wb-review-transcript"
+        );
+
+        const transcriptContent = transcript.querySelector(
+            "div"
+        );
+
+        const captions = modal.querySelector(
+            ".wb-review-modal__captions"
+        );
+
+
+        /*
+        |----------------------------------------------------------------------
+        | CARD DATA
+        |----------------------------------------------------------------------
+        */
+
+        const name =
+            card.querySelector(
+                ".wb-review-person strong"
+            )?.textContent.trim() || "";
+
+
+        const roleText =
+            [...card.querySelectorAll(
+                ".wb-review-person span"
+            )]
+            .map(item => item.textContent.trim())
+            .filter(Boolean)
+            .join(" · ");
+
+
+        const reviewText =
+            card.querySelector(
+                ".wb-review-video__summary"
+            )?.textContent.trim() || "";
+
+
+        const topicText =
+            card.querySelector(
+                ".wb-review-topic"
+            )?.textContent.trim() || "";
+
+
+        const ratingText =
+            card.querySelector(
+                ".wb-review-rating"
+            )?.textContent.trim() || "";
+
+
+        const poster =
+            card.querySelector(
+                ".wb-review-video__media img"
+            )?.src || "";
+
+
+        /*
+        |----------------------------------------------------------------------
+        | DATA FROM BUTTON
+        |----------------------------------------------------------------------
+        */
+
+        const videoUrl =
+            button.dataset.videoUrl || "";
+
+
+        const captionsUrl =
+            button.dataset.captions || "";
+
+
+        const transcriptText =
+            button.dataset.transcript || "";
+
+
+        /*
+        |----------------------------------------------------------------------
+        | FILL MODAL DETAILS
+        |----------------------------------------------------------------------
+        */
+
+        title.textContent = name;
+
+        role.textContent = roleText;
+
+        summary.textContent = reviewText;
+
+        topic.textContent = topicText;
+
+        rating.textContent = ratingText;
+
+
+        /*
+        |----------------------------------------------------------------------
+        | VIDEO
+        |----------------------------------------------------------------------
+        */
+
+        video.pause();
+
+        video.removeAttribute("src");
+
+
+        if (videoUrl) {
+
+
+            /*
+            |------------------------------------------------------------------
+            | VIDEO AVAILABLE
+            |------------------------------------------------------------------
+            */
+
+            video.hidden = false;
+
+            unavailable.hidden = true;
+
+
+            /*
+            |------------------------------------------------------------------
+            | VIDEO URL
+            |------------------------------------------------------------------
+            */
+
+            video.src = videoUrl;
+
+
+            /*
+            |------------------------------------------------------------------
+            | POSTER
+            |------------------------------------------------------------------
+            */
+
+            if (poster) {
+                video.poster = poster;
+            }
+
+
+            /*
+            |------------------------------------------------------------------
+            | CAPTIONS
+            |------------------------------------------------------------------
+            */
+
+            if (captionsUrl) {
+
+                captions.src = captionsUrl;
+
+                captions.hidden = false;
+
+            } else {
+
+                captions.removeAttribute("src");
+
+                captions.hidden = true;
+
+            }
+
+
+            video.load();
+
+
+        } else {
+
+
+            /*
+            |------------------------------------------------------------------
+            | VIDEO NOT AVAILABLE
+            |------------------------------------------------------------------
+            */
+
+            video.hidden = true;
+
+            unavailable.hidden = false;
+
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | TRANSCRIPT
+        |----------------------------------------------------------------------
+        */
+
+        if (transcriptText) {
+
+            transcript.hidden = false;
+
+            transcriptContent.textContent =
+                transcriptText;
+
+        } else {
+
+            transcript.hidden = true;
+
+            transcriptContent.textContent = "";
+
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | OPEN MODAL
+        |----------------------------------------------------------------------
+        */
+
+        modal.hidden = false;
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.classList.add(
+            "wb-review-modal-open"
+        );
+
+
+        modal.querySelector(
+            ".wb-review-modal__close"
+        )?.focus();
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CLOSE VIDEO
+    |--------------------------------------------------------------------------
+    */
+
+    function closeVideo() {
+
+        if (modal.hidden) {
+            return;
+        }
+
+
+        const video = modal.querySelector(
+            ".wb-review-modal__video"
+        );
+
+
+        video.pause();
+
+        video.removeAttribute("src");
+
+        video.removeAttribute("poster");
+
+        video.load();
+
+
+        modal.hidden = true;
+
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.classList.remove(
+            "wb-review-modal-open"
+        );
+
+
+        if (previousTrigger) {
+
+            previousTrigger.focus();
+
+            previousTrigger = null;
+
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VIDEO CLICK
+    |--------------------------------------------------------------------------
+    */
+
+    document.addEventListener("click", event => {
+
+
+        const button = event.target.closest(
+            "[data-video-open]"
+        );
+
+
+        if (button) {
+
+            openVideo(button);
+
+            return;
+
+        }
+
+
+        const closeButton = event.target.closest(
+            "[data-video-close]"
+        );
+
+
+        if (closeButton) {
+
+            closeVideo();
+
+        }
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | ESCAPE
+    |--------------------------------------------------------------------------
+    */
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            !modal.hidden
+        ) {
+
+            closeVideo();
+
+        }
+
+    });
+
+});
