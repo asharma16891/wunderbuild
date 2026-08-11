@@ -35,10 +35,17 @@
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.getElementById("siteHeader");
   const hero = document.querySelector(".hero");
+  const Secondhero = document.querySelector(".pricing-hero");
 
   function updateHeader() {
     // Keep header scrolled for solid background/gradient hero
     if (hero && hero.classList.contains("hero--gradient")) {
+      header.classList.add("scrolled");
+      return;
+    }
+
+     // Keep header scrolled for solid background/gradient hero
+    if (Secondhero) {
       header.classList.add("scrolled");
       return;
     }
@@ -359,16 +366,13 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   ScrollTrigger.matchMedia({
-
     // Desktop only
     "(min-width: 801px)": function () {
-
       const header = document.querySelector("header");
       const headerHeight = header ? header.offsetHeight : 100;
       const GAP = 20;
 
       document.querySelectorAll(".workflow-map").forEach((wrapper) => {
-
         const section = wrapper.querySelector(".hs-grid");
         if (!section) return;
 
@@ -382,11 +386,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let current = -1;
         let clickMode = false;
 
-        dots.forEach(dot => dot.classList.remove("active", "next"));
-        cards.forEach(card => card.classList.remove("show"));
+        dots.forEach((dot) => dot.classList.remove("active", "next"));
+        cards.forEach((card) => card.classList.remove("show"));
 
         function activate(index) {
-
           current = index;
 
           dots.forEach((dot, i) => {
@@ -409,12 +412,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const trigger = ScrollTrigger.create({
-
           trigger: section,
 
           start: `top top+=${headerHeight + GAP}`,
 
-          end: "+=" + ((dots.length - 1) * STEP_HEIGHT),
+          end: "+=" + (dots.length - 1) * STEP_HEIGHT,
 
           pin: true,
 
@@ -431,17 +433,16 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             duration: 0.8,
             ease: "power2.inOut",
-            inertia: false
+            inertia: false,
           },
 
           onUpdate(self) {
-
             if (clickMode) return;
 
             const distance = self.scroll() - self.start;
 
             let index = Math.floor(
-              (distance + STEP_HEIGHT * 0.5) / STEP_HEIGHT
+              (distance + STEP_HEIGHT * 0.5) / STEP_HEIGHT,
             );
 
             index = gsap.utils.clamp(0, dots.length - 1, index);
@@ -449,15 +450,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index !== current) {
               activate(index);
             }
-
-          }
-
+          },
         });
 
         dots.forEach((dot, index) => {
-
           dot.addEventListener("click", function (e) {
-
             e.preventDefault();
             e.stopPropagation();
 
@@ -466,10 +463,9 @@ document.addEventListener("DOMContentLoaded", () => {
             activate(index);
 
             gsap.to(window, {
-
               scrollTo: {
-                y: trigger.start + (index * STEP_HEIGHT),
-                autoKill: false
+                y: trigger.start + index * STEP_HEIGHT,
+                autoKill: false,
               },
 
               duration: 0.8,
@@ -478,37 +474,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
               onComplete() {
                 clickMode = false;
-              }
-
+              },
             });
-
           });
-
         });
-
       });
 
       ScrollTrigger.refresh();
-
     },
 
     // Mobile (800px and below)
     "(max-width: 800px)": function () {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
-      document.querySelectorAll(".hs-dot").forEach(dot => {
+      document.querySelectorAll(".hs-dot").forEach((dot) => {
         dot.classList.remove("active", "next");
       });
 
-      document.querySelectorAll(".hs-card").forEach(card => {
+      document.querySelectorAll(".hs-card").forEach((card) => {
         card.classList.remove("show");
       });
-
-    }
-
+    },
   });
-
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -732,3 +719,234 @@ function addAutoplayParam(src) {
 }
 
 // section zooom in effect
+
+if (typeof gsap !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".workflow-item");
+
+  const dots = document.querySelectorAll(".workflow-dot");
+
+  const cards = document.querySelectorAll(".workflow-card");
+
+  const path = document.querySelector("#workflow-path");
+
+  /*--------------------------
+Initial State
+---------------------------*/
+
+  gsap.set(cards, {
+    opacity: 0,
+    y: 60,
+    scale: 0.92,
+  });
+
+  /* SVG Line */
+
+  const length = path.getTotalLength();
+
+  path.style.strokeDasharray = length;
+
+  path.style.strokeDashoffset = length;
+
+  /*--------------------------
+Draw SVG
+---------------------------*/
+
+  gsap.to(path, {
+    strokeDashoffset: 0,
+
+    ease: "power2.out",
+
+    duration: 2,
+
+    scrollTrigger: {
+      trigger: ".pricing-workflow",
+
+      start: "top 70%",
+    },
+  });
+
+  /*--------------------------
+Cards Animation
+---------------------------*/
+
+  cards.forEach((card, index) => {
+    gsap.to(card, {
+      opacity: 1,
+
+      y: 0,
+
+      scale: 1,
+
+      duration: 0.7,
+
+      ease: "power3.out",
+
+      delay: index * 0.15,
+
+      scrollTrigger: {
+        trigger: card,
+
+        start: "top 82%",
+      },
+    });
+  });
+
+  /*--------------------------
+Dots Animation
+---------------------------*/
+
+  dots.forEach((dot, index) => {
+    gsap.from(dot, {
+      scale: 0,
+
+      duration: 0.5,
+
+      delay: index * 0.18,
+
+      ease: "back.out(2)",
+
+      scrollTrigger: {
+        trigger: dot,
+
+        start: "top 82%",
+      },
+    });
+  });
+
+  /*--------------------------
+Active Dot
+---------------------------*/
+
+  function activate(index) {
+    items.forEach((item) => item.classList.remove("active"));
+
+    dots.forEach((dot) => dot.classList.remove("active"));
+
+    items[index].classList.add("active");
+
+    dots[index].classList.add("active");
+  }
+
+  /*--------------------------
+Scroll Active
+---------------------------*/
+
+  items.forEach((item, index) => {
+    ScrollTrigger.create({
+      trigger: item,
+
+      start: "top center",
+
+      end: "bottom center",
+
+      onEnter() {
+        activate(index);
+      },
+
+      onEnterBack() {
+        activate(index);
+      },
+    });
+  });
+
+  /*--------------------------
+Click Dot
+---------------------------*/
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      activate(index);
+
+      gsap.to(window, {
+        duration: 1,
+
+        scrollTo: {
+          y: items[index],
+
+          offsetY: 150,
+        },
+
+        ease: "power2.out",
+      });
+    });
+  });
+
+  /*--------------------------
+Hover Animation
+---------------------------*/
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, {
+        y: -12,
+
+        duration: 0.3,
+      });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, {
+        y: 0,
+
+        duration: 0.3,
+      });
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const buttons = document.querySelectorAll(".job-btn");
+    const cards = document.querySelectorAll(".pricing-card");
+    const pricingGrid = document.querySelector(".pricing-grid");
+    const header = document.querySelector("header");
+
+    const headerHeight = header ? header.offsetHeight : 90;
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const plan = button.dataset.plan;
+
+            // Active button
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            // Active card
+            cards.forEach(card => {
+
+                if (card.dataset.plan === plan) {
+
+                    card.classList.add("active");
+
+                    // Smooth scroll
+                    const top =
+                        pricingGrid.getBoundingClientRect().top +
+                        window.pageYOffset -
+                        headerHeight -
+                        20;
+
+                    window.scrollTo({
+                        top,
+                        behavior: "smooth"
+                    });
+
+                } else {
+
+                    card.classList.remove("active");
+
+                }
+
+            });
+
+        });
+
+    });
+
+});

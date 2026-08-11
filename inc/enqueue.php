@@ -29,6 +29,25 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($css_file) ? filemtime($css_file) : WB_VERSION
     );
+   // pricing page css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/pricing.css';
+
+    wp_enqueue_style(
+        'wunderbuild-pricing',
+        get_stylesheet_directory_uri() . '/assets/css/pricing.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+
+    // pricing page css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/support-onboarding.css';
+
+    wp_enqueue_style(
+        'wunderbuild-support-onboarding',
+        get_stylesheet_directory_uri() . '/assets/css/support-onboarding.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
 
     // JS
     $js_file = get_stylesheet_directory() . '/assets/js/main.js';

@@ -35,7 +35,7 @@ $icon_paths = [
 ];
 $icon_keys = array_keys($icon_paths);
 
-$accent_vars = ['var(--lime)', 'var(--indigo)', 'var(--coral)', 'var(--peach)'];
+$accent_vars = ['var(--indigo)', 'var(--coral)', 'var(--peach)'];
 
 ?>
 

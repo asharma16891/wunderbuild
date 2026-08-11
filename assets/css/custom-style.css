@@ -137,17 +137,17 @@ img {
   border: 1.5px solid rgba(255, 255, 255, .55);
 }
 
-.hero--image .btn-ghost, .hero--video .btn-ghost {
+/* .hero--image .btn-ghost, .hero--video .btn-ghost {
   background: transparent !important;
   
 }
 
 .btn-ghost:hover {
   border-color: var(--charcoal);
-}
+} */
 
 .btn-sm {
-  padding: 10px 18px;
+  padding: 10px 15px;
   font-size: 13.5px;
 }
 
@@ -195,7 +195,7 @@ header.scrolled .navbar {
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 19px;
-  max-width: 210px;
+  max-width: 190px;
 }
 
 /* .page-template-how-it-works .logo img{
@@ -239,6 +239,7 @@ header.scrolled .logo img{
 
 
 
+
 .nav-links a:hover::after {
   width: 100%;
 }
@@ -247,7 +248,7 @@ header.scrolled .logo img{
 .nav-links .primary-menu {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -266,7 +267,7 @@ header.scrolled .logo img{
 
 .nav-links .primary-menu li a {
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     /* color: var(--charcoal); */
     color: #fff;
@@ -294,13 +295,13 @@ header.scrolled .nav-links .primary-menu li a:hover {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nav-login {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 500;
-  padding: 10px 14px;
+  /* padding: 10px 14px; */
   border-radius: 100px;
   color: #fff;
 }
@@ -625,14 +626,6 @@ header.scrolled.mobile-menu-open .navbar{
     width: 133px;
     text-align: center;
   }
-  .nav-login{
-        padding: 10px 20px;
-    background: var(--charcoal);
-    color: #fff;
-    border-radius: 100px;
-    width: 133px;
-    text-align: center;
-  }
 
   /* =========================
      Open Menu
@@ -778,11 +771,11 @@ header.scrolled.mobile-menu-open .navbar{
   overflow: hidden;
   padding: 100px 0;
   /* background: rgb(251, 251, 251); */
-  background: var(--lime)
+  background: var(--charcoal)
 ;
 }
 
-.trust::before {
+/* .trust::before {
   content: "";
 
   position: absolute;
@@ -795,7 +788,7 @@ header.scrolled.mobile-menu-open .navbar{
   background-size: 90px 90px;
 
   opacity: 0.35;
-}
+} */
 
 /*----------------------------------
 Animated blobs
@@ -963,7 +956,7 @@ Text
 
   margin-bottom: 14px;
 
-  color: #1d1c1b;
+  color: var(--charcoal);
 }
 
 .trust-card p {
@@ -1231,18 +1224,7 @@ section {
   color: var(--charcoal);
   
 }
-.page-id-154 .process::before {
-    content: "";
-    position: fixed;
-    top: 50%;
-    left: -12px;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgb(180 255 80 / 32%), transparent 70%);
-    pointer-events: none;
-    transform: translateY(-50%);
-}
+
 
 .page-id-154 .process-path::before {
   
@@ -1473,7 +1455,7 @@ section {
 }
 
 .tab-btn.active .ic {
-  background: var(--accent, var(--lime));
+  background: var(--accent, var(--charcoal));
 }
 
 /* RIGHT: cross-fading content panels */
@@ -1566,15 +1548,6 @@ section {
   font-size: 11.5px;
   font-weight: 600;
   color: var(--ink-40);
-}
-.t-card.t-card-video {
-  padding: 0px;
-}
-.t-card.t-card-video iframe{
-  width: 100%;
-  overflow: hidden;
-  border-radius: 24px;
-
 }
 
 @media (max-width: 900px) {
@@ -1818,7 +1791,8 @@ section {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: 30px 37px;
+  /* padding: 30px 37px; */
+      padding: 40px 44px;
   transition: all 0.3s ease;
 }
 
@@ -1858,6 +1832,9 @@ section {
 @media (max-width: 860px) {
   .support-grid {
     grid-template-columns: 1fr;
+  }
+  .support-card{
+    padding: 30px 26px;
   }
 }
 
@@ -2328,7 +2305,7 @@ footer .wrap {
   font-size: 15px !important;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--lime) !important;
+  color: #fff !important;
   margin: 14px 0 0 !important;
   
 }
@@ -2429,6 +2406,8 @@ footer h5 {
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.2s ease;
+   font-family:"Satoshi";
+
 }
 
 .newsletter-form button:hover {
@@ -4081,7 +4060,7 @@ font-size: 16px;
     border-radius:40px;
     font-size:13px;
     font-weight:600;
-        margin: 0 0 18px 0;
+        margin: 0 auto 18px auto;
 }
 
 .section-heading h2{
