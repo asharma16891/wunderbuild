@@ -1,0 +1,3223 @@
+/* =========================================================
+   WUNDERBUILD — SWITCHING TO WUNDERBUILD
+   HERO SECTION
+   All classes are page-specific to avoid global conflicts.
+========================================================= */
+
+.wb-migration-hero {
+    position: relative;
+
+    padding: 120px 0 110px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* ---------------------------------------------------------
+   Background shapes
+--------------------------------------------------------- */
+
+.wb-migration-hero__bg-shape {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.wb-migration-hero__bg-shape--one {
+    width: 460px;
+    height: 460px;
+
+    top: -260px;
+    left: -180px;
+
+    background: rgba(253, 185, 155, 0.16);
+}
+
+.wb-migration-hero__bg-shape--two {
+    width: 420px;
+    height: 420px;
+
+    right: -220px;
+    bottom: -230px;
+
+    background: rgba(180, 255, 80, 0.10);
+}
+
+
+/* ---------------------------------------------------------
+   Container
+--------------------------------------------------------- */
+
+.wb-migration-hero__container {
+    width: min(1180px, calc(100% - 48px));
+
+    margin: 0 auto;
+}
+
+
+/* ---------------------------------------------------------
+   Content
+--------------------------------------------------------- */
+
+.wb-migration-hero__content {
+    max-width: 820px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------------
+   Eyebrow
+--------------------------------------------------------- */
+
+.wb-migration-hero__eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 8px 14px;
+
+    border-radius: 100px;
+
+    background: rgba(253, 185, 155, 0.18);
+
+    color: #b85e45;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* ---------------------------------------------------------
+   H1
+--------------------------------------------------------- */
+
+.wb-migration-hero__title {
+    max-width: 820px;
+
+    margin: 22px auto 20px;
+
+    color: var(--charcoal, #1d1c1b);
+
+    font-size: clamp(42px, 5.5vw, 68px);
+
+    line-height: 1.04;
+
+    letter-spacing: -0.04em;
+
+    font-weight: 700;
+}
+
+.wb-migration-hero__title span {
+    display: block;
+
+    color: #8a6fdd;
+}
+
+
+/* ---------------------------------------------------------
+   Description
+--------------------------------------------------------- */
+
+.wb-migration-hero__description {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: var(--ink-60, rgba(29, 28, 27, 0.6));
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* ---------------------------------------------------------
+   Buttons
+--------------------------------------------------------- */
+
+.wb-migration-hero__actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 34px;
+}
+
+
+
+/* =========================================================
+   MIGRATION VISUAL
+========================================================= */
+
+.wb-migration-hero__visual {
+    max-width: 1080px;
+
+    margin: 80px auto 0;
+}
+
+
+/* ---------------------------------------------------------
+   Flow
+--------------------------------------------------------- */
+
+.wb-migration-hero__flow {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        90px
+        minmax(0, 0.85fr)
+        90px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* ---------------------------------------------------------
+   Stage
+--------------------------------------------------------- */
+
+.wb-migration-hero__stage {
+    position: relative;
+
+    min-width: 0;
+}
+
+
+/* ---------------------------------------------------------
+   Source / destination cards
+--------------------------------------------------------- */
+
+.wb-migration-hero__stage-card {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    min-height: 150px;
+
+    padding: 28px;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(29, 28, 27, 0.07);
+
+    box-shadow:
+        0 24px 60px rgba(29, 28, 27, 0.08);
+}
+
+.wb-migration-hero__stage-card--destination {
+    background: #f7f5ff;
+
+    border-color: rgba(138, 111, 221, 0.18);
+}
+
+
+/* ---------------------------------------------------------
+   Icons
+--------------------------------------------------------- */
+
+.wb-migration-hero__stage-icon {
+    flex: 0 0 58px;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+}
+
+.wb-migration-hero__stage-icon--source {
+    background: #fff0e9;
+
+    color: #c36b4e;
+}
+
+.wb-migration-hero__stage-icon--destination {
+    background: #e8e1ff;
+
+    color: #7658df;
+}
+
+
+/* ---------------------------------------------------------
+   Stage text
+--------------------------------------------------------- */
+
+.wb-migration-hero__stage-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--ink-40, rgba(29, 28, 27, 0.4));
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+.wb-migration-hero__stage-card h3 {
+    margin: 0 0 7px;
+
+    color: var(--charcoal, #1d1c1b);
+
+    font-size: 21px;
+
+    line-height: 1.2;
+}
+
+.wb-migration-hero__stage-card p {
+    margin: 0;
+
+    color: var(--ink-60, rgba(29, 28, 27, 0.6));
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FILE CARD
+========================================================= */
+
+.wb-migration-hero__file-card {
+    position: relative;
+
+    min-height: 180px;
+
+    padding: 26px;
+
+    border-radius: 24px;
+
+    background: #fffaf7;
+
+    border: 1px solid rgba(253, 185, 155, 0.55);
+
+    box-shadow:
+        0 25px 60px rgba(29, 28, 27, 0.08);
+}
+
+.wb-migration-hero__file-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.wb-migration-hero__file-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #ffdfd2;
+
+    color: #b85e45;
+}
+
+.wb-migration-hero__file-type {
+    padding: 6px 10px;
+
+    border-radius: 50px;
+
+    background: #ffffff;
+
+    color: #b85e45;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+.wb-migration-hero__file-card strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--charcoal, #1d1c1b);
+
+    font-size: 20px;
+}
+
+.wb-migration-hero__file-card > span {
+    color: var(--ink-60, rgba(29, 28, 27, 0.6));
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CONNECTORS
+========================================================= */
+
+.wb-migration-hero__connector {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 120px;
+}
+
+.wb-migration-hero__connector-line {
+    width: 100%;
+
+    border-top: 2px dashed rgba(138, 111, 221, 0.35);
+}
+
+.wb-migration-hero__connector-arrow {
+    position: absolute;
+
+    right: -3px;
+    right: 38%;
+    top: 50%;
+
+    /* transform: translateY(-50%); */
+
+    color: #8a6fdd;
+
+    font-size: 22px;
+
+    background: #ffffff;
+
+    padding: 0 3px;
+        transform: rotate(-89deg);
+}
+
+.wb-migration-hero__connector-label {
+    position: absolute;
+
+    top: calc(50% - 32px);
+
+    padding: 5px 9px;
+
+    border-radius: 50px;
+
+    background: #ffffff;
+
+    color: var(--ink-40, rgba(29, 28, 27, 0.4));
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   Bottom note
+--------------------------------------------------------- */
+
+.wb-migration-hero__note {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 26px;
+
+    color: var(--ink-60, rgba(29, 28, 27, 0.6));
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+.wb-migration-hero__note-dot {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background: #ff8f85;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-migration-hero {
+        padding: 90px 0 80px;
+    }
+
+    .wb-migration-hero__container {
+        width: min(100% - 36px, 760px);
+    }
+
+    .wb-migration-hero__flow {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .wb-migration-hero__connector {
+        min-height: 55px;
+
+        width: 100%;
+    }
+
+    .wb-migration-hero__connector-line {
+        width: 2px;
+
+        height: 40px;
+
+        border-top: 0;
+
+        border-left: 2px dashed rgba(138, 111, 221, 0.35);
+    }
+
+    .wb-migration-hero__connector-arrow {
+        right: auto;
+
+        bottom: -4px;
+        top: auto;
+
+        transform: none;
+    }
+
+    .wb-migration-hero__connector-label {
+        top: 5px;
+    }
+
+    .wb-migration-hero__visual {
+        margin-top: 60px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .wb-migration-hero {
+        padding: 70px 0 65px;
+    }
+
+    .wb-migration-hero__container {
+        width: min(100% - 28px, 540px);
+    }
+
+    .wb-migration-hero__title {
+        font-size: 40px;
+
+        letter-spacing: -0.035em;
+    }
+
+    .wb-migration-hero__description {
+        font-size: 16px;
+    }
+
+    .wb-migration-hero__actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .wb-migration-hero__button {
+        width: 100%;
+    }
+
+    .wb-migration-hero__visual {
+        margin-top: 48px;
+    }
+
+    .wb-migration-hero__stage-card {
+        padding: 22px;
+
+        min-height: 130px;
+    }
+
+    .wb-migration-hero__stage-icon {
+        width: 50px;
+        height: 50px;
+
+        flex-basis: 50px;
+    }
+
+    .wb-migration-hero__file-card {
+        min-height: 155px;
+
+        padding: 22px;
+    }
+
+    .wb-migration-hero__note {
+        align-items: flex-start;
+
+        text-align: left;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wb-migration-hero__button {
+        transition: none;
+    }
+
+    .wb-migration-hero__button:hover {
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   WUNDERBUILD - MIGRATION PROCESS
+   ========================================================= */
+
+.wb-migration-process {
+    --wb-pearl: #f2f5f8;
+    --wb-white: #ffffff;
+    --wb-charcoal: #1d1c1b;
+    --wb-lime: #b4ff50;
+    --wb-indigo: #8d78ff;
+    --wb-ink-60: #66717d;
+    --wb-border: rgba(29, 28, 27, 0.10);
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 100vh;
+
+    padding: 110px 0;
+}
+
+
+/* ---------------------------------------------------------
+   INNER
+--------------------------------------------------------- */
+
+.wb-migration-process__inner {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+
+
+/* ---------------------------------------------------------
+   TIMELINE
+--------------------------------------------------------- */
+
+.wb-migration-process__timeline {
+    position: relative;
+}
+
+
+/* ---------------------------------------------------------
+   LINE
+--------------------------------------------------------- */
+
+.wb-migration-process__line {
+    position: absolute;
+
+    top: 39px;
+    left: 10%;
+
+    width: 80%;
+    height: 2px;
+
+    background: rgba(29, 28, 27, 0.10);
+
+    z-index: 0;
+}
+
+.wb-migration-process__line-fill {
+    width: 0;
+    height: 100%;
+
+    background: var(--wb-lime);
+
+    transition: width 0.45s ease;
+}
+
+
+/* ---------------------------------------------------------
+   STEP NAVIGATION
+--------------------------------------------------------- */
+
+.wb-migration-process__steps {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    z-index: 2;
+}
+
+
+.wb-migration-process__step {
+    appearance: none;
+
+    border: 0;
+    background: transparent;
+
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: var(--wb-ink-60);
+
+    font-family: inherit;
+}
+
+
+/* ---------------------------------------------------------
+   STEP NUMBER
+--------------------------------------------------------- */
+
+.wb-migration-process__step-number {
+    width: 78px;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--wb-white);
+
+    border: 2px solid rgba(29, 28, 27, 0.14);
+
+    color: var(--wb-charcoal);
+
+    font-size: 17px;
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 30px rgba(29, 28, 27, 0.08);
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.wb-migration-process__step-name {
+    margin-top: 15px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE STEP
+--------------------------------------------------------- */
+
+.wb-migration-process__step.is-active
+.wb-migration-process__step-number {
+
+    background: var(--charcoal);
+
+    border-color: var(--charcoal);
+
+    color: #fff;
+
+    transform: scale(1.12);
+
+    box-shadow:
+        0 0 0 10px rgba(180, 255, 80, 0.16),
+        0 15px 35px rgba(29, 28, 27, 0.10);
+}
+
+
+.wb-migration-process__step.is-active
+.wb-migration-process__step-name {
+
+    color: var(--wb-charcoal);
+
+    transform: translateY(2px);
+}
+
+
+/* ---------------------------------------------------------
+   KEYBOARD FOCUS
+--------------------------------------------------------- */
+
+.wb-migration-process__step:focus-visible {
+    outline: 3px solid var(--wb-indigo);
+    outline-offset: 6px;
+    border-radius: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   PANELS
+--------------------------------------------------------- */
+
+.wb-migration-process__panels {
+    position: relative;
+
+    max-width: 920px;
+
+    margin: 65px auto 0;
+
+    min-height: 200px;
+}
+
+
+.wb-migration-process__panel {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 38px;
+
+    min-height: 200px;
+
+    padding: 55px 65px;
+
+    background: var(--wb-white);
+
+    border: 1px solid var(--wb-border);
+
+    border-radius: 32px;
+
+    box-shadow:
+        0 25px 70px rgba(29, 28, 27, 0.08);
+
+    overflow: hidden;
+}
+
+
+/* subtle decorative circle */
+
+.wb-migration-process__panel::after {
+    content: "";
+
+    position: absolute;
+
+    right: -90px;
+    bottom: -100px;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background: rgba(180, 255, 80, 0.16);
+
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   ICON
+--------------------------------------------------------- */
+
+.wb-migration-process__icon {
+    position: relative;
+    z-index: 1;
+
+    flex: 0 0 82px;
+
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background: rgba(180, 255, 80, 0.20);
+
+    color: #52751c;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENT
+--------------------------------------------------------- */
+
+.wb-migration-process__content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 650px;
+}
+
+
+.wb-migration-process__label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--wb-indigo);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+}
+
+
+.wb-migration-process__content h3 {
+    margin: 0 0 18px;
+
+    color: var(--wb-charcoal);
+
+    font-size: clamp(28px, 3vw, 42px);
+
+    line-height: 1.1;
+
+    letter-spacing: -0.03em;
+}
+
+
+.wb-migration-process__content p {
+    margin: 0;
+
+    color: var(--wb-ink-60);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* ---------------------------------------------------------
+   HIDDEN PANEL
+--------------------------------------------------------- */
+
+.wb-migration-process__panel[hidden] {
+    display: none;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 991px) {
+
+    .wb-migration-process {
+        padding: 90px 0;
+    }
+
+    .wb-migration-process__heading {
+        margin-bottom: 55px;
+    }
+
+    .wb-migration-process__steps {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .wb-migration-process__step-number {
+        width: 62px;
+        height: 62px;
+
+        font-size: 15px;
+    }
+
+    .wb-migration-process__line {
+        top: 31px;
+        left: 10%;
+        width: 80%;
+    }
+
+    .wb-migration-process__panel {
+        padding: 45px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+/* =========================================================
+   WUNDERBUILD - MIGRATION PROCESS
+========================================================= */
+
+.wb-migration-process {
+    --wb-charcoal: #1d1c1b;
+    --wb-white: #ffffff;
+    --wb-pearl: #f2f5f8;
+    --wb-lime: #b4ff50;
+    --wb-indigo: #8d78ff;
+    --wb-ink-60: #66717d;
+    --wb-border: rgba(29, 28, 27, 0.10);
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(180, 255, 80, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 60%,
+            rgba(141, 120, 255, 0.08),
+            transparent 35%
+        ),
+        #f8fafb;
+
+    padding: 110px 0;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.wb-migration-process__inner {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.wb-migration-process__heading {
+    max-width: 900px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+.wb-migration-process__desktop {
+    display: block;
+}
+
+.wb-migration-process__timeline {
+    position: relative;
+    padding: 0 50px;
+}
+
+.wb-migration-process__track {
+    position: absolute;
+
+    top: 38px;
+    left: 10%;
+    right: 10%;
+
+    height: 2px;
+
+    background: rgba(29, 28, 27, 0.12);
+}
+
+.wb-migration-process__track-fill {
+    display: block;
+
+    width: 0;
+    height: 100%;
+
+    background: var(--wb-lime);
+}
+
+
+.wb-migration-process__steps {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    z-index: 2;
+}
+
+
+.wb-migration-process__name{
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+
+.wb-migration-process__number {
+    width: 76px;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(29, 28, 27, 0.12);
+
+    color: #7b838b;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.wb-migration-process__step.is-active .wb-migration-process__number {
+    background: var(--charcoal);
+
+    border-color: var(--charcoal);
+
+    color: #fff;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 0 10px rgba(180, 255, 80, 0.14);
+}
+
+
+.wb-migration-process__step-name {
+    margin-top: 14px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: color .3s ease;
+}
+
+.wb-migration-process__step.is-active .wb-migration-process__step-name {
+    color: var(--wb-charcoal);
+}
+
+
+/* =========================================================
+   DESKTOP CARD
+========================================================= */
+
+.wb-migration-process__desktop-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 42px;
+
+    width: min(920px, 100%);
+
+    margin: 50px auto 0;
+
+    padding: 40px 70px;
+
+    background: var(--wb-white);
+
+    border: 1px solid var(--wb-border);
+
+    border-radius: 34px;
+
+    box-shadow:
+        0 25px 70px rgba(29, 28, 27, 0.08);
+
+    overflow: hidden;
+}
+
+.wb-migration-process__desktop-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    bottom: -130px;
+
+    border-radius: 50%;
+
+    background: rgba(180, 255, 80, 0.15);
+
+    pointer-events: none;
+}
+
+
+.wb-migration-process__card-icon {
+    position: relative;
+    z-index: 1;
+
+    flex: 0 0 88px;
+
+    width: 88px;
+    height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    background: rgba(180, 255, 80, 0.20);
+
+    color: #567d1c;
+
+    font-size: 40px;
+}
+
+
+.wb-migration-process__card-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+.wb-migration-process__card-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--wb-indigo);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+
+.wb-migration-process__card-content h3 {
+    margin: 0 0 16px;
+
+    color: var(--wb-charcoal);
+
+    font-size: clamp(30px, 3.5vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -.04em;
+}
+
+
+.wb-migration-process__card-content p {
+    margin: 0;
+
+    color: var(--wb-ink-60);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MOBILE - HIDDEN BY DEFAULT
+========================================================= */
+
+.wb-migration-process__mobile {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-migration-process {
+        padding: 90px 0;
+    }
+
+    .wb-migration-process__timeline {
+        padding: 0 20px;
+    }
+
+    .wb-migration-process__number {
+        width: 64px;
+        height: 64px;
+    }
+
+    .wb-migration-process__desktop-card {
+        padding: 45px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-migration-process {
+        padding: 70px 0 80px;
+
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(180, 255, 80, 0.08),
+                transparent 35%
+            ),
+            #f5f7f8;
+    }
+
+
+    .wb-migration-process__inner {
+        width: calc(100% - 32px);
+    }
+
+
+    /* -------------------------
+       HEADING
+    ------------------------- */
+
+    .wb-migration-process__heading {
+        text-align: left;
+
+        margin: 0 0 55px;
+    }
+
+    .wb-migration-process__eyebrow {
+        margin-bottom: 14px;
+    }
+
+    .wb-migration-process__heading h2 {
+        font-size: clamp(38px, 11vw, 52px);
+
+        line-height: 1;
+
+        letter-spacing: -.055em;
+    }
+
+    .wb-migration-process__heading p {
+        margin-top: 20px;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+    }
+
+
+    /* -------------------------
+       DESKTOP OFF
+    ------------------------- */
+
+    .wb-migration-process__desktop {
+        display: none;
+    }
+
+
+    /* -------------------------
+       MOBILE TIMELINE
+    ------------------------- */
+
+    .wb-migration-process__mobile {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 26px;
+
+        padding-left: 0;
+    }
+
+
+    /* Vertical line */
+
+    .wb-migration-process__mobile-line {
+        position: absolute;
+
+        top: 29px;
+        bottom: 29px;
+
+        left: 29px;
+
+        width: 2px;
+
+        background: rgba(29, 28, 27, 0.12);
+
+        z-index: 0;
+    }
+
+
+    .wb-migration-process__mobile-line-fill {
+        display: block;
+
+        width: 100%;
+        height: 0;
+
+        background: var(--wb-lime);
+
+        transition: height .4s ease;
+    }
+
+
+    /* -------------------------
+       MOBILE STEP ROW
+    ------------------------- */
+
+    .wb-migration-process__mobile-step {
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns: 58px minmax(0, 1fr);
+
+        align-items: start;
+
+        gap: 14px;
+
+        z-index: 1;
+    }
+
+
+    /* -------------------------
+       NUMBER
+    ------------------------- */
+
+    .wb-migration-process__mobile-number {
+        position: relative;
+        z-index: 2;
+
+        width: 58px;
+        height: 58px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: #f5f7f8;
+
+        border: 1.5px solid rgba(29, 28, 27, 0.18);
+
+        color: #8d959d;
+
+        font-size: 15px;
+        font-weight: 800;
+
+        transition:
+            background .35s ease,
+            color .35s ease,
+            border-color .35s ease,
+            box-shadow .35s ease,
+            transform .35s ease;
+    }
+
+
+    /* -------------------------
+       MOBILE CARD
+    ------------------------- */
+
+    .wb-migration-process__mobile-card {
+        position: relative;
+
+        min-width: 0;
+
+        padding: 24px 22px;
+
+        border-radius: 18px;
+
+        background: #e4eaee;
+
+        border: 1px solid rgba(29, 28, 27, 0.06);
+
+        opacity: .72;
+
+        transform: scale(.98);
+
+        transition:
+            background .4s ease,
+            opacity .4s ease,
+            transform .4s ease,
+            box-shadow .4s ease,
+            border-color .4s ease;
+    }
+
+
+    /* -------------------------
+       ACTIVE MOBILE STEP
+    ------------------------- */
+
+    .wb-migration-process__mobile-step.is-active
+    .wb-migration-process__mobile-number {
+
+        background: var(--wb-charcoal);
+
+        border-color: var(--wb-charcoal);
+
+        color: var(--wb-white);
+
+        transform: scale(1.08);
+
+        box-shadow:
+            0 0 0 7px rgba(180, 255, 80, 0.16);
+    }
+
+
+    .wb-migration-process__mobile-step.is-active
+    .wb-migration-process__mobile-card {
+
+        background: #ffffff;
+
+        opacity: 1;
+
+        transform: scale(1);
+
+        border-color: rgba(180, 255, 80, 0.45);
+
+        box-shadow:
+            0 16px 35px rgba(29, 28, 27, 0.09);
+    }
+
+
+    /* -------------------------
+       MOBILE CONTENT
+    ------------------------- */
+
+    .wb-migration-process__mobile-label {
+        display: block;
+
+        margin-bottom: 7px;
+
+        color: var(--wb-indigo);
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: .1em;
+
+        text-transform: uppercase;
+    }
+
+
+    .wb-migration-process__mobile-card h3 {
+        margin: 0 0 10px;
+
+        color: var(--wb-charcoal);
+
+        font-size: 20px;
+
+        line-height: 1.15;
+
+        letter-spacing: -.025em;
+    }
+
+
+    .wb-migration-process__mobile-card p {
+        margin: 0;
+
+        color: #68737c;
+
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .wb-migration-process__inner {
+        width: calc(100% - 24px);
+    }
+
+    .wb-migration-process__mobile-step {
+        grid-template-columns: 52px minmax(0, 1fr);
+
+        gap: 11px;
+    }
+
+    .wb-migration-process__mobile-number {
+        width: 52px;
+        height: 52px;
+
+        font-size: 14px;
+    }
+
+    .wb-migration-process__mobile-line {
+        left: 26px;
+    }
+
+    .wb-migration-process__mobile-card {
+        padding: 20px 18px;
+    }
+
+}
+
+/* =========================================
+   SECTION 05
+   MIGRATION LIMITS
+========================================= */
+
+.wb-migration-limits {
+    position: relative;
+    padding: 120px 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.wb-migration-limits__head {
+    max-width: 825px;
+    margin: auto auto 60px auto;
+    text-align: center;
+}
+
+
+
+
+.wb-migration-limits__head h2 {
+    margin: 0;
+   font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--charcoal, #1d1c1b);
+}
+
+.wb-migration-limits__head h2 span {
+    color: var(--ink-60, #66717d);
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.wb-migration-limits__grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.wb-migration-limit-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 34px;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(29, 28, 27, .08);
+
+    background: var(--pearl, #f2f5f8);
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* Large decorative circle */
+
+.wb-migration-limit-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -90px;
+    bottom: -110px;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    opacity: .8;
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.wb-migration-limit-card__top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 65px;
+}
+
+
+
+
+/* Icon */
+
+.wb-migration-limit-card__icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+}
+
+.wb-migration-limit-card__icon img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.wb-migration-limit-card h3 {
+    position: relative;
+
+    margin: 0 0 14px;
+
+    max-width: 420px;
+
+    font-size: clamp(25px, 2.5vw, 34px);
+    line-height: 1.12;
+    letter-spacing: -.025em;
+
+    color: var(--charcoal, #1d1c1b);
+}
+
+.wb-migration-limit-card p {
+    position: relative;
+
+    max-width: 520px;
+
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    color: var(--ink-60, #66717d);
+}
+
+
+/* =========================================
+   PEACH
+========================================= */
+
+.wb-limit-peach::after {
+    background: rgba(253, 185, 155, .35);
+}
+
+.wb-limit-peach .wb-migration-limit-card__icon {
+    background: rgba(253, 185, 155, .45);
+}
+
+
+/* =========================================
+   INDIGO
+========================================= */
+
+.wb-limit-indigo::after {
+    background: rgba(179, 153, 255, .28);
+}
+
+.wb-limit-indigo .wb-migration-limit-card__icon {
+    background: rgba(179, 153, 255, .38);
+}
+
+
+/* =========================================
+   CORAL
+========================================= */
+
+.wb-limit-coral::after {
+    background: rgba(255, 143, 133, .30);
+}
+
+.wb-limit-coral .wb-migration-limit-card__icon {
+    background: rgba(255, 143, 133, .38);
+}
+
+
+/* =========================================
+   LIME
+========================================= */
+
+.wb-limit-lime::after {
+    background: rgba(180, 255, 80, .32);
+}
+
+.wb-limit-lime .wb-migration-limit-card__icon {
+    background: rgba(180, 255, 80, .40);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    .wb-migration-limits {
+        padding: 90px 0;
+    }
+
+    .wb-migration-limits__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wb-migration-limit-card {
+        min-height: 310px;
+        padding: 28px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .wb-migration-limits {
+        padding: 75px 0;
+    }
+
+    .wb-migration-limits__head {
+        margin-bottom: 40px;
+    }
+
+    .wb-migration-limits__head h2 {
+        font-size: 38px;
+    }
+
+    .wb-migration-limits__grid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .wb-migration-limit-card {
+        min-height: auto;
+
+        padding: 26px;
+
+        border-radius: 22px;
+    }
+
+    .wb-migration-limit-card__top {
+        margin-bottom: 45px;
+    }
+
+    .wb-migration-limit-card__icon {
+        width: 56px;
+        height: 56px;
+
+        border-radius: 16px;
+    }
+
+    .wb-migration-limit-card__icon img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .wb-migration-limit-card h3 {
+        font-size: 27px;
+    }
+
+}
+
+/* =========================================================
+   SECTION 06 — TIMING & COST
+========================================================= */
+
+.wb-migration-timing {
+    position: relative;
+
+    padding: 120px 0;
+
+    background: var(--pearl, #f2f5f8);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.wb-migration-timing__inner {
+    width: min(1180px, calc(100% - 48px));
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.wb-migration-timing__head {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+.wb-migration-timing__eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    padding: 8px 14px;
+
+    border-radius: 50px;
+
+    background: rgba(180, 255, 80, 0.20);
+
+    color: #52751c;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .10em;
+
+    text-transform: uppercase;
+}
+
+.wb-migration-timing__head h2 {
+    margin: 0;
+
+    font-size: clamp(42px, 5vw, 64px);
+
+    line-height: 1.05;
+
+    letter-spacing: -.045em;
+
+    color: var(--charcoal, #1d1c1b);
+}
+
+.wb-migration-timing__head h2 span {
+    color: var(--indigo, #8d78ff);
+}
+
+.wb-migration-timing__head p {
+    max-width: 780px;
+
+    margin: 28px auto 0;
+
+    color: var(--ink-60, #66717d);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CARDS GRID
+========================================================= */
+
+.wb-migration-timing__grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.wb-migration-timing-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 34px;
+
+    background: var(--white, #fff);
+
+    border: 1px solid rgba(29, 28, 27, .08);
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 55px rgba(29, 28, 27, .06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* Decorative circle */
+
+.wb-migration-timing-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -95px;
+    bottom: -115px;
+
+    border-radius: 50%;
+
+    background: rgba(180, 255, 80, .20);
+
+    pointer-events: none;
+}
+
+
+/* Different accent for second card */
+
+.wb-migration-timing-card:nth-child(2)::after {
+    background: rgba(179, 153, 255, .20);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.wb-migration-timing-card__icon {
+    position: relative;
+    z-index: 2;
+
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(180, 255, 80, .28);
+}
+
+.wb-migration-timing-card:nth-child(2)
+.wb-migration-timing-card__icon {
+    background: rgba(179, 153, 255, .28);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.wb-migration-timing-card__number {
+    position: absolute;
+
+    top: 40px;
+    right: 35px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    color: var(--ink-60, #66717d);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.wb-migration-timing-card h3 {
+    position: relative;
+    z-index: 2;
+
+    max-width: 440px;
+
+    margin: 55px 0 15px;
+
+    color: var(--charcoal, #1d1c1b);
+
+    font-size: clamp(26px, 3vw, 36px);
+
+    line-height: 1.12;
+
+    letter-spacing: -.03em;
+}
+
+.wb-migration-timing-card p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 480px;
+
+    margin: 0;
+
+    color: var(--ink-60, #66717d);
+
+    font-size: 16px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.wb-migration-timing-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 28px 65px rgba(29, 28, 27, .09);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-migration-timing {
+        padding: 90px 0;
+    }
+
+    .wb-migration-timing__head {
+        margin-bottom: 50px;
+    }
+
+    .wb-migration-timing__grid {
+        gap: 18px;
+    }
+
+    .wb-migration-timing-card {
+        padding: 28px;
+
+        min-height: 310px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-migration-timing {
+        padding: 75px 0;
+    }
+
+    .wb-migration-timing__inner {
+        width: min(100% - 32px, 600px);
+    }
+
+    .wb-migration-timing__head {
+        text-align: left;
+
+        margin-bottom: 40px;
+    }
+
+    .wb-migration-timing__head h2 {
+        font-size: 38px;
+    }
+
+    .wb-migration-timing__head p {
+        margin-top: 20px;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+    }
+
+    .wb-migration-timing__grid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .wb-migration-timing-card {
+        min-height: auto;
+
+        padding: 26px;
+
+        border-radius: 22px;
+    }
+
+    .wb-migration-timing-card__icon {
+        width: 58px;
+        height: 58px;
+
+        border-radius: 17px;
+    }
+
+    .wb-migration-timing-card__icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .wb-migration-timing-card__number {
+        top: 32px;
+        right: 28px;
+    }
+
+    .wb-migration-timing-card h3 {
+        margin-top: 45px;
+
+        font-size: 27px;
+    }
+
+    .wb-migration-timing-card p {
+        font-size: 15px;
+    }
+
+}
+
+/* =========================================================
+   WUNDERBUILD — TIMING & COST
+   Editorial / Asymmetric Layout
+========================================================= */
+
+.wb-timing-section {
+    --wb-charcoal: #1d1c1b;
+    --wb-white: #ffffff;
+    --wb-pearl: #f2f5f8;
+    --wb-lime: #b4ff50;
+    --wb-indigo: #8d78ff;
+    --wb-peach: #fdb99b;
+    --wb-ink-60: #66717d;
+    --wb-border: rgba(29, 28, 27, 0.10);
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 130px 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 30%,
+            rgba(180, 255, 80, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(141, 120, 255, 0.10),
+            transparent 30%
+        ),
+        var(--wb-pearl);
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.wb-timing-inner {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.wb-timing-heading {
+    max-width: 850px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+
+.wb-timing-heading h2 {
+    margin: 0;
+
+    color: var(--wb-charcoal);
+
+       font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+.wb-timing-heading h2 span {
+    color: var(--wb-indigo);
+}
+
+.wb-timing-heading p {
+    max-width: 780px;
+
+    margin: 28px auto 0;
+
+    color: var(--wb-ink-60);
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.wb-timing-layout {
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 30px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   LEFT VISUAL
+========================================================= */
+
+.wb-timing-visual {
+    position: relative;
+
+    min-height: 620px;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 36px;
+
+    background: var(--wb-charcoal);
+
+    color: var(--wb-white);
+
+    box-shadow:
+        0 30px 80px rgba(29, 28, 27, 0.14);
+}
+
+
+/* subtle lime glow */
+
+.wb-timing-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    top: 80px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(180, 255, 80, 0.08);
+
+    filter: blur(5px);
+}
+
+
+/* top */
+
+.wb-timing-visual-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(255,255,255,0.55);
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.wb-timing-clock {
+    position: relative;
+
+    width: 330px;
+    height: 330px;
+
+    margin: 65px auto 55px;
+}
+
+
+/* rings */
+
+.wb-clock-ring {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.wb-clock-ring-middle {
+    inset: 30px;
+
+    border-color: rgba(180,255,80,0.35);
+
+    border-style: dashed;
+}
+
+.wb-clock-ring-outer {
+    box-shadow:
+        0 0 0 18px rgba(180,255,80,0.025),
+        0 0 80px rgba(180,255,80,0.08);
+}
+
+
+/* center */
+
+.wb-clock-center {
+    position: absolute;
+
+    inset: 80px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    text-align: center;
+}
+
+.wb-clock-center strong {
+    display: block;
+
+    color: var(--wb-lime);
+
+    font-size: 72px;
+    line-height: 0.9;
+
+    letter-spacing: -0.07em;
+}
+
+.wb-clock-center span {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 13px;
+}
+
+
+/* dots */
+
+.wb-clock-dot {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: var(--wb-lime);
+
+    box-shadow:
+        0 0 0 7px rgba(180,255,80,0.10);
+}
+
+.dot-1 {
+    top: 30px;
+    left: 50%;
+}
+
+.dot-2 {
+    right: 30px;
+    top: 50%;
+}
+
+.dot-3 {
+    bottom: 30px;
+    left: 50%;
+}
+
+.dot-4 {
+    left: 30px;
+    top: 50%;
+}
+
+
+/* =========================================================
+   VISUAL BOTTOM
+========================================================= */
+
+.wb-timing-visual-bottom {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    padding-top: 25px;
+}
+
+.wb-timing-visual-bottom div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.wb-timing-visual-bottom strong {
+    font-size: 16px;
+}
+
+.wb-timing-visual-bottom span {
+    color: rgba(255,255,255,0.50);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   RIGHT FEATURES
+========================================================= */
+
+.wb-timing-features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   FEATURE ROW
+========================================================= */
+
+.wb-timing-feature {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:72px 1fr 35px;
+
+    gap: 20px;
+
+    align-items: start;
+
+    padding: 30px 28px;
+
+    min-height: 235px;
+
+    background: var(--wb-white);
+
+    border: 1px solid var(--wb-border);
+
+    border-radius: 28px;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.wb-timing-feature:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 60px rgba(29,28,27,0.09);
+}
+
+
+/* icon */
+
+.wb-timing-feature-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+}
+
+.wb-icon-lime {
+    background: rgba(180,255,80,0.22);
+}
+
+.wb-icon-indigo {
+    background: rgba(141,120,255,0.18);
+}
+
+.wb-timing-feature-icon svg {
+    width: 30px;
+    height: 30px;
+
+    fill: none;
+
+    stroke: var(--wb-charcoal);
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* content */
+
+.wb-timing-feature-content span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--wb-indigo);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+.wb-timing-feature-content h3 {
+    margin: 0 0 13px;
+
+    color: var(--wb-charcoal);
+
+    font-size: clamp(25px, 2.5vw, 34px);
+
+    line-height: 1.05;
+
+    letter-spacing: -0.035em;
+}
+
+.wb-timing-feature-content p {
+    margin: 0;
+
+    color: var(--wb-ink-60);
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* arrow */
+
+.wb-feature-arrow {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--wb-charcoal);
+
+    color: white;
+
+    font-size: 17px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.wb-timing-feature:hover .wb-feature-arrow {
+    transform: rotate(45deg);
+
+    background: var(--wb-lime);
+
+    color: var(--wb-charcoal);
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.wb-timing-note {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 10px 5px 0;
+}
+
+.wb-note-mark {
+    flex: 0 0 28px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(253,185,155,0.35);
+
+    color: var(--wb-charcoal);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.wb-timing-note p {
+    margin: 3px 0 0;
+
+    color: var(--wb-ink-60);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-timing-section {
+        padding: 100px 0;
+    }
+
+    .wb-timing-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wb-timing-visual {
+        min-height: 500px;
+    }
+
+    .wb-timing-clock {
+        margin-top: 45px;
+        margin-bottom: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-timing-section {
+        padding: 80px 0;
+    }
+
+    .wb-timing-inner {
+        width: min(100% - 32px, 600px);
+    }
+
+    .wb-timing-heading {
+        margin-bottom: 50px;
+
+        text-align: left;
+    }
+
+    .wb-timing-heading h2 {
+        font-size: clamp(38px, 11vw, 52px);
+    }
+
+    .wb-timing-heading p {
+        font-size: 16px;
+    }
+
+
+    /* visual */
+
+    .wb-timing-visual {
+        min-height: 440px;
+
+        padding: 25px;
+
+        border-radius: 28px;
+    }
+
+    .wb-timing-clock {
+        width: 240px;
+        height: 240px;
+
+        margin: 45px auto;
+    }
+
+    .wb-clock-center {
+        inset: 58px;
+    }
+
+    .wb-clock-center strong {
+        font-size: 56px;
+    }
+
+    .wb-clock-center span {
+        font-size: 11px;
+    }
+
+    .wb-clock-ring-middle {
+        inset: 22px;
+    }
+
+    .wb-timing-visual-bottom {
+        gap: 8px;
+    }
+
+    .wb-timing-visual-bottom strong {
+        font-size: 13px;
+    }
+
+    .wb-timing-visual-bottom span {
+        font-size: 10px;
+    }
+
+
+    /* feature */
+
+    .wb-timing-feature {
+        grid-template-columns: 58px 1fr;
+
+        gap: 14px;
+
+        padding: 24px 20px;
+
+        min-height: auto;
+
+        border-radius: 24px;
+    }
+
+    .wb-timing-feature-icon {
+        width: 54px;
+        height: 54px;
+
+        border-radius: 16px;
+    }
+
+    .wb-timing-feature-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .wb-timing-feature-content h3 {
+        font-size: 25px;
+    }
+
+    .wb-timing-feature-content p {
+        font-size: 14px;
+    }
+
+    .wb-feature-arrow {
+        display: none;
+    }
+
+}
+
+/* =========================================================
+   SECTION 07 - HANDOVER TO ONBOARDING
+========================================================= */
+
+.wb-handover {
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+
+    background-image: url("https://www.wunderbuild.com/wp-content/uploads/2023/04/scott-graham-5fNmWej4tAA-unsplash1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.wb-handover__overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(29, 28, 27, 0.92) 0%,
+            rgba(29, 28, 27, 0.78) 45%,
+            rgba(29, 28, 27, 0.40) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.wb-handover__inner {
+    position: relative;
+    z-index: 2;
+
+    width: min(1180px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 100px 0;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.wb-handover__content {
+    max-width: 760px;
+}
+
+
+.wb-handover__eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 24px;
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 143, 133, 0.16);
+    border: 1px solid var(--coral);
+
+    color: var(--coral);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.wb-handover__content h2 {
+    margin: 0 0 28px;
+
+    color: var(--white);
+
+    font-size: clamp(48px, 6vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+
+.wb-handover__content h2 span {
+    color: var(--coral);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.wb-handover__content p {
+    max-width: 680px;
+
+    margin: 0 0 38px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+
+
+
+/* =========================================================
+   DECORATIVE SHAPES
+========================================================= */
+
+.wb-handover::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    top: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(180, 255, 80, 0.10);
+
+    z-index: 1;
+}
+
+
+.wb-handover::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: 10%;
+    bottom: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(141, 120, 255, 0.15);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-handover {
+        min-height: 500px;
+
+        margin: 60px 0;
+
+        border-radius: 0 0 50px 50px;
+    }
+
+    .wb-handover__inner {
+        padding: 80px 0;
+    }
+
+    .wb-handover__content {
+        max-width: 700px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-handover {
+        min-height: 600px;
+
+        margin: 50px 0;
+
+        background-position: 65% center;
+
+        border-radius: 0 0 35px 35px;
+    }
+
+
+    .wb-handover__overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(29, 28, 27, 0.82) 0%,
+                rgba(29, 28, 27, 0.94) 100%
+            );
+    }
+
+
+    .wb-handover__inner {
+        width: min(100% - 32px, 600px);
+
+        padding: 75px 0;
+    }
+
+
+    .wb-handover__eyebrow {
+        margin-bottom: 20px;
+
+        font-size: 10px;
+
+        padding: 7px 12px;
+    }
+
+
+    .wb-handover__content h2 {
+        font-size: clamp(42px, 12vw, 58px);
+
+        line-height: 1;
+
+        letter-spacing: -0.05em;
+
+        margin-bottom: 24px;
+    }
+
+
+    .wb-handover__content p {
+        font-size: 16px;
+
+        line-height: 1.65;
+
+        margin-bottom: 30px;
+    }
+
+
+    .wb-handover__button {
+        width: 100%;
+
+        justify-content: space-between;
+
+        padding-left: 20px;
+    }
+
+
+    .wb-handover__button-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+}

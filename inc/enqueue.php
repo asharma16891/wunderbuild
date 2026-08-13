@@ -48,7 +48,45 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
+   
+     // switch to wunderbuild css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/switch-to-wunderbuild.css';
 
+    wp_enqueue_style(
+        'switch-to-wunderbuild',
+        get_stylesheet_directory_uri() . '/assets/css/switch-to-wunderbuild.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+     // review css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/reviews.css';
+
+    wp_enqueue_style(
+        'wunderbuild-reviews',
+        get_stylesheet_directory_uri() . '/assets/css/reviews.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+
+     // contact css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/contact.css';
+
+    wp_enqueue_style(
+        'wunderbuild-contact',
+        get_stylesheet_directory_uri() . '/assets/css/contact.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+
+     // contact css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/mcp-integrations.css';
+
+    wp_enqueue_style(
+        'wunderbuild-mcp-integrations.css',
+        get_stylesheet_directory_uri() . '/assets/css/mcp-integrations.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
     // JS
     $js_file = get_stylesheet_directory() . '/assets/js/main.js';
 

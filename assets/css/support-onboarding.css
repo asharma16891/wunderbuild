@@ -1160,6 +1160,10 @@
 
 @media (max-width: 991px) {
 
+  .support-card-grid{
+        grid-template-columns: repeat(1, 1fr)
+  }
+
     .support-routes {
         padding: 90px 0;
     }
