@@ -1954,3 +1954,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const enquiryForm = document.querySelector("#enquiry-form");
+
+    if (!enquiryForm) {
+        return;
+    }
+
+    document.addEventListener("click", function (event) {
+
+        const link = event.target.closest("[data-enquiry-route]");
+
+        if (!link) {
+            return;
+        }
+
+        const selectedRoute = link.dataset.enquiryRoute;
+
+        const select = document.querySelector(
+            'select[name="enquiry-type"]'
+        );
+
+        if (!select) {
+            return;
+        }
+
+        select.value = selectedRoute;
+
+        select.dispatchEvent(
+            new Event("change", {
+                bubbles: true
+            })
+        );
+
+    });
+
+});
