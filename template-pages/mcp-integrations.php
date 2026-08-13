@@ -7,1468 +7,922 @@
 get_header();
 ?>
 
-<?php
-/**
- * =========================================================
- * WUNDERBUILD - REVIEWS GALLERY
- * Sections 02 - 07
- * =========================================================
- */
 
-/*
-|--------------------------------------------------------------------------
-| REVIEW DATA
-|--------------------------------------------------------------------------
-| Replace these records with your CMS / CPT data later.
-| Private fields are intentionally kept in the array but never rendered.
-|--------------------------------------------------------------------------
-*/
+<!-- =========================================================
+     MCP INTEGRATIONS — HERO
+========================================================= -->
+<section class="wb-migration-hero">
 
-$wb_reviews = [
+    <div class="wb-migration-hero__container">
 
-    [
-        'id'                    => 1,
-        'review_type'           => 'text',
-        'review_text'           => 'The onboarding team made the transition easy and helped our team learn the system quickly.',
-        'rating'                => 5,
-        'reviewer_name'         => 'John Smith',
-        'role'                  => 'Director',
-        'company'               => '',
-        'review_date'           => '2026-07-18',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        <div class="wb-migration-hero__content">
 
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
+            <span class="wb-migration-hero__eyebrow">
+                MCP integrations
+            </span>
 
-        'topic'                 => 'support-onboarding',
+            <h1 class="wb-migration-hero__title">
+                Work with your Wunderbuild
+                <span>data in plain English.</span>
+            </h1>
 
-        'featured'              => true,
-        'featured_order'        => 1,
+            <p class="wb-migration-hero__description">
+                Model Context Protocol (MCP) integrations connect supported AI tools to the jobs, plans, documents, estimates, schedules, costings, claims, suppliers, and contacts already in Wunderbuild. Ask a question, review the answer, and approve the next step when you are ready.
+            </p>
 
-        // Private CMS fields
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
+            <div class="wb-migration-hero__actions">
 
-    [
-        'id'                    => 2,
-        'review_type'           => 'video',
-        'review_text'           => 'Builder shares how migration and setup worked.',
-        'rating'                => 5,
-        'reviewer_name'         => 'Sarah Wilson',
-        'role'                  => 'Estimator',
-        'company'               => '',
-        'review_date'           => '2026-07-12',
-        'source_label'          => 'Customer video',
-        'source_url'            => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/13029988_3840_2160_30fps-1.mp4',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+                <a
+                    href="#"
+                    class="btn btn-primary">
+                    Book a free demo
+                </a>
 
-        /*
-         * Add real video URL here.
-         * Example:
-         * https://example.com/review.mp4
-         */
-        'video_url'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/13029988_3840_2160_30fps-1.mp4',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/mqdefault_6s-2-Picsart-AiImageEnhancer.png',
-        'duration'              => '2:45',
-
-        /*
-         * VTT file for captions.
-         */
-        'captions'              => '',
-
-        'transcript'            => 'The customer explains how the migration and setup process worked and how the onboarding team helped the business move across.',
-
-        'topic'                 => 'switching',
-
-        'featured'              => true,
-        'featured_order'        => 2,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
-
-    [
-        'id'                    => 3,
-        'review_type'           => 'text',
-        'review_text'           => 'We were able to move our processes into one place and give the team a much clearer way to manage work.',
-        'rating'                => 4.5,
-        'reviewer_name'         => 'Michael Brown',
-        'role'                  => 'Operations Manager',
-        'company'               => '',
-        'review_date'           => '2026-07-05',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
-
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
-
-        'topic'                 => 'value',
-
-        'featured'              => false,
-        'featured_order'        => 0,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
-
-    [
-        'id'                    => 4,
-        'review_type'           => 'video',
-        'review_text'           => 'A builder talks through the day-to-day workflow and how the team uses Wunderbuild.',
-        'rating'                => 5,
-        'reviewer_name'         => 'David Taylor',
-        'role'                  => 'Builder',
-        'company'               => '',
-        'review_date'           => '2026-06-28',
-        'source_label'          => 'Customer video',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
-
-        'video_url'             => '',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-2.jpg',
-        'duration'              => '3:12',
-        'captions'              => '',
-        'transcript'            => 'The builder discusses how the team uses Wunderbuild in its everyday workflow.',
-
-        'topic'                 => 'product-workflow',
-
-        'featured'              => false,
-        'featured_order'        => 0,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
-
-    [
-        'id'                    => 5,
-        'review_type'           => 'text',
-        'review_text'           => 'Having the right information available to the team has made it easier to keep jobs moving.',
-        'rating'                => 5,
-        'reviewer_name'         => 'Emma Davis',
-        'role'                  => 'Office Manager',
-        'company'               => '',
-        'review_date'           => '2026-06-20',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
-
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
-
-        'topic'                 => 'value',
-
-        'featured'              => false,
-        'featured_order'        => 0,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
-
-    [
-        'id'                    => 6,
-        'review_type'           => 'video',
-        'review_text'           => 'A team member shares their experience with support and onboarding.',
-        'rating'                => 4.5,
-        'reviewer_name'         => 'James Wilson',
-        'role'                  => 'Project Manager',
-        'company'               => '',
-        'review_date'           => '2026-06-15',
-        'source_label'          => 'Customer video',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
-
-        'video_url'             => '',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-3.jpg',
-        'duration'              => '1:58',
-        'captions'              => '',
-        'transcript'            => 'The team member explains their experience with the onboarding and support process.',
-
-        'topic'                 => 'support-onboarding',
-
-        'featured'              => false,
-        'featured_order'        => 0,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
-    ],
-
-];
-
-
-/*
-|--------------------------------------------------------------------------
-| ONLY APPROVED REVIEWS CAN APPEAR PUBLICLY
-|--------------------------------------------------------------------------
-*/
-
-$wb_reviews = array_values(
-    array_filter($wb_reviews, function ($review) {
-
-        return (
-            isset($review['verification_status']) &&
-            $review['verification_status'] === 'approved' &&
-            isset($review['permission_status']) &&
-            $review['permission_status'] === 'approved'
-        );
-    })
-);
-
-
-/*
-|--------------------------------------------------------------------------
-| SORT
-|--------------------------------------------------------------------------
-| Featured reviews first in manual order.
-| Remaining reviews newest first.
-|--------------------------------------------------------------------------
-*/
-
-usort($wb_reviews, function ($a, $b) {
-
-    if ($a['featured'] !== $b['featured']) {
-        return $a['featured'] ? -1 : 1;
-    }
-
-    if ($a['featured'] && $b['featured']) {
-        return $a['featured_order'] <=> $b['featured_order'];
-    }
-
-    return strtotime($b['review_date']) <=> strtotime($a['review_date']);
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| FILTER VALUES
-|--------------------------------------------------------------------------
-*/
-
-$allowed_types = [
-    'all',
-    'text',
-    'video'
-];
-
-$allowed_topics = [
-    'all',
-    'product-workflow',
-    'support-onboarding',
-    'switching',
-    'value'
-];
-
-
-$current_type = isset($_GET['review_type'])
-    ? sanitize_key($_GET['review_type'])
-    : 'all';
-
-$current_topic = isset($_GET['review_topic'])
-    ? sanitize_key($_GET['review_topic'])
-    : 'all';
-
-$current_page = isset($_GET['review_page'])
-    ? max(1, absint($_GET['review_page']))
-    : 1;
-
-
-/*
-|--------------------------------------------------------------------------
-| VALIDATE FILTERS
-|--------------------------------------------------------------------------
-*/
-
-if (!in_array($current_type, $allowed_types, true)) {
-    $current_type = 'all';
-}
-
-if (!in_array($current_topic, $allowed_topics, true)) {
-    $current_topic = 'all';
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| FILTER REVIEWS
-|--------------------------------------------------------------------------
-*/
-
-$filtered_reviews = array_filter(
-    $wb_reviews,
-    function ($review) use ($current_type, $current_topic) {
-
-        if (
-            $current_type !== 'all' &&
-            $review['review_type'] !== $current_type
-        ) {
-            return false;
-        }
-
-        if (
-            $current_topic !== 'all' &&
-            $review['topic'] !== $current_topic
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-);
-
-$filtered_reviews = array_values($filtered_reviews);
-
-
-/*
-|--------------------------------------------------------------------------
-| SECONDARY FILTER VISIBILITY
-|--------------------------------------------------------------------------
-| Only show topic filters if there is enough topic content.
-|--------------------------------------------------------------------------
-*/
-
-$topic_counts = [];
-
-foreach ($wb_reviews as $review) {
-
-    if (!empty($review['topic'])) {
-
-        if (!isset($topic_counts[$review['topic']])) {
-            $topic_counts[$review['topic']] = 0;
-        }
-
-        $topic_counts[$review['topic']]++;
-    }
-}
-
-$show_secondary_filters = count($topic_counts) >= 2;
-
-
-/*
-|--------------------------------------------------------------------------
-| PAGINATION
-|--------------------------------------------------------------------------
-*/
-
-$per_page = 6;
-
-$total_reviews = count($filtered_reviews);
-
-$total_pages = max(
-    1,
-    (int) ceil($total_reviews / $per_page)
-);
-
-$current_page = min(
-    $current_page,
-    $total_pages
-);
-
-$offset = ($current_page - 1) * $per_page;
-
-$page_reviews = array_slice(
-    $filtered_reviews,
-    $offset,
-    $per_page
-);
-
-
-/*
-|--------------------------------------------------------------------------
-| URL BUILDER
-|--------------------------------------------------------------------------
-*/
-
-function wb_review_filter_url($type = 'all', $topic = 'all', $page = 1)
-{
-    $params = [];
-
-    if ($type !== 'all') {
-        $params['review_type'] = $type;
-    }
-
-    if ($topic !== 'all') {
-        $params['review_topic'] = $topic;
-    }
-
-    if ($page > 1) {
-        $params['review_page'] = $page;
-    }
-
-    $url = get_permalink();
-
-    if (!empty($params)) {
-        $url = add_query_arg($params, $url);
-    }
-
-    return esc_url($url);
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| TOPIC LABELS
-|--------------------------------------------------------------------------
-*/
-
-$topic_labels = [
-
-    'product-workflow'   => 'Product & workflow',
-    'support-onboarding' => 'Support & onboarding',
-    'switching'          => 'Switching to Wunderbuild',
-    'value'              => 'Value & business impact',
-
-];
-
-?>
-
-
-<?php
-/**
- * Wunderbuild Reviews Gallery
- *
- * PHP handles:
- * - Review data
- * - Filters
- * - Sorting
- * - Pagination
- * - Card markup
- *
- * JS only handles:
- * - AJAX-like filter navigation
- * - Browser history
- * - Video modal
- */
-
-/*
-|--------------------------------------------------------------------------
-| SAFETY DEFAULTS
-|--------------------------------------------------------------------------
-*/
-
-$current_type  = isset($current_type) ? $current_type : 'all';
-$current_topic = isset($current_topic) ? $current_topic : 'all';
-
-$page_reviews = isset($page_reviews) && is_array($page_reviews)
-    ? $page_reviews
-    : array();
-
-$topic_labels = isset($topic_labels) && is_array($topic_labels)
-    ? $topic_labels
-    : array();
-
-$topic_counts = isset($topic_counts) && is_array($topic_counts)
-    ? $topic_counts
-    : array();
-
-$total_reviews = isset($total_reviews)
-    ? (int) $total_reviews
-    : count($page_reviews);
-
-$total_pages = isset($total_pages)
-    ? (int) $total_pages
-    : 1;
-
-$current_page = isset($current_page)
-    ? (int) $current_page
-    : 1;
-
-$offset = isset($offset)
-    ? (int) $offset
-    : 0;
-
-
-/*
-|--------------------------------------------------------------------------
-| SECONDARY FILTER VISIBILITY
-|--------------------------------------------------------------------------
-*/
-
-$show_secondary_filters = !empty($show_secondary_filters);
-
-
-/*
-|--------------------------------------------------------------------------
-| LAYOUT STATE
-|--------------------------------------------------------------------------
-|
-| Important:
-|
-| Mixed:
-| - Video = wider 2-column treatment
-| - Text = normal 1-column
-|
-| Video only:
-| - Videos become normal cards
-| - So multiple videos can appear together
-|
-*/
-
-$has_text_reviews  = false;
-$has_video_reviews = false;
-
-foreach ($page_reviews as $review) {
-    if (($review['review_type'] ?? '') === 'video') {
-        $has_video_reviews = true;
-    } else {
-        $has_text_reviews = true;
-    }
-}
-
-$video_only = $has_video_reviews && !$has_text_reviews;
-$single_review = count($page_reviews) === 1;
-
-$grid_classes = array('wb-reviews-grid');
-
-if ($video_only) {
-    $grid_classes[] = 'wb-reviews-grid--video-only';
-}
-
-if ($single_review) {
-    $grid_classes[] = 'wb-reviews-grid--single';
-}
-
-$grid_class = implode(' ', $grid_classes);
-?>
-
-<?php
-/**
- * Wunderbuild Reviews Gallery
- *
- * Backend / ACF data remains the source of truth.
- */
-
-
-/*
-|--------------------------------------------------------------------------
-| DEFAULT POSTER
-|--------------------------------------------------------------------------
-|
-| For now use one common poster image.
-|
-| Upload:
-| /wp-content/themes/YOUR-THEME/assets/images/review-poster.jpg
-|
-| Later backend can replace this with ACF thumbnail.
-|
-*/
-
-$default_review_poster = get_template_directory_uri() . '/assets/images/Estimates.png';
-
-?>
-
-
-<section
-    class="wb-reviews-gallery"
-    aria-labelledby="wb-reviews-gallery-title"
->
-
-    <div class="wb-reviews-gallery__inner">
-
-
-        <!-- =========================================================
-             HEADER
-        ========================================================== -->
-
-        <div class="wb-reviews-gallery__header">
-
-            <div class="wb-reviews-gallery__heading">
-
-                <span class="wb-reviews-gallery__eyebrow">
-                    Customer reviews
-                </span>
-
-                <h2 id="wb-reviews-gallery-title">
-                    Browse the reviews.
-                </h2>
-
-                <p>
-                    See what builders and their teams say about
-                    Wunderbuild, from switching and onboarding
-                    through to everyday workflows and business impact.
-                </p>
+                <a
+                    href="#"
+                    class="btn btn-dark">
+                    Start a free trial
+                </a>
 
             </div>
 
-
-            <!-- =====================================================
-                 PRIMARY FILTERS
-            ====================================================== -->
-
-            <nav
-                class="wb-reviews-filter"
-                aria-label="Review type filters"
-            >
-
-                <!-- ALL -->
-
-                <a
-                    class="<?php echo $current_type === 'all' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                        wb_review_filter_url('all', $current_topic)
-                    ); ?>"
-                    data-review-filter
-                    data-type="all"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'all' ? 'page' : 'false'; ?>"
-                >
-                    All reviews
-                </a>
-
-
-                <!-- TEXT -->
-
-                <a
-                    class="<?php echo $current_type === 'text' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                        wb_review_filter_url('text', $current_topic)
-                    ); ?>"
-                    data-review-filter
-                    data-type="text"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'text' ? 'page' : 'false'; ?>"
-                >
-                    Text reviews
-                </a>
-
-
-                <!-- VIDEO -->
-
-                <a
-                    class="<?php echo $current_type === 'video' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                        wb_review_filter_url('video', $current_topic)
-                    ); ?>"
-                    data-review-filter
-                    data-type="video"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'video' ? 'page' : 'false'; ?>"
-                >
-                    Video reviews
-                </a>
-
-            </nav>
-
-
-            <!-- =====================================================
-                 SECONDARY TOPIC FILTERS
-            ====================================================== -->
-
-            <?php if ($show_secondary_filters) : ?>
-
-                <nav
-                    class="wb-reviews-topics"
-                    aria-label="Review topic filters"
-                >
-
-                    <!-- ALL TOPICS -->
-
-                    <a
-                        class="<?php echo $current_topic === 'all' ? 'is-active' : ''; ?>"
-                        href="<?php echo esc_url(
-                            wb_review_filter_url($current_type, 'all')
-                        ); ?>"
-                        data-review-filter
-                        data-type="<?php echo esc_attr($current_type); ?>"
-                        data-topic="all"
-                    >
-                        All topics
-                    </a>
-
-
-                    <?php foreach ($topic_labels as $topic_key => $topic_label) : ?>
-
-                        <?php
-
-                        $topic_count = isset($topic_counts[$topic_key])
-                            ? $topic_counts[$topic_key]
-                            : 0;
-
-                        if ($topic_count < 1) {
-                            continue;
-                        }
-
-                        ?>
-
-                        <a
-                            class="<?php echo $current_topic === $topic_key ? 'is-active' : ''; ?>"
-                            href="<?php echo esc_url(
-                                wb_review_filter_url(
-                                    $current_type,
-                                    $topic_key
-                                )
-                            ); ?>"
-                            data-review-filter
-                            data-type="<?php echo esc_attr($current_type); ?>"
-                            data-topic="<?php echo esc_attr($topic_key); ?>"
-                        >
-                            <?php echo esc_html($topic_label); ?>
-                        </a>
-
-                    <?php endforeach; ?>
-
-                </nav>
-
-            <?php endif; ?>
-
         </div>
 
 
-        <!-- =========================================================
-             RESULTS STATUS
-        ========================================================== -->
 
-        <div
-            class="wb-reviews-status"
-            data-review-status
-            aria-live="polite"
-            aria-atomic="true"
-        >
+        <!-- PRODUCT RECORDING -->
+        <div class="mcp-hero__media">
 
-            Showing
+            <div class="mcp-hero__media-frame">
 
-            <strong>
-                <?php echo esc_html($total_reviews); ?>
-            </strong>
 
-            <?php echo $total_reviews === 1 ? 'review' : 'reviews'; ?>
+                <div class="mcp-hero__video">
 
-        </div>
+                    <!-- Replace with approved product recording -->
 
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                        poster="<?php echo esc_url(
+                                    get_template_directory_uri() . '/assets/images/mcp-hero-poster.jpg'
+                                ); ?>">
 
-        <!-- =========================================================
-             REVIEWS GRID
-        ========================================================== -->
+                        <source
+                            src="https://www.wunderbuild.com/wp-content/uploads/2025/03/WB-Hero-Motion-Element-FFFFFF.mp4"
+                            type="video/mp4">
 
-        <div
-            class="
-                wb-reviews-grid
-                <?php
-                echo count($page_reviews) === 1
-                    ? 'wb-reviews-grid--single'
-                    : '';
-                ?>
-            "
-            id="wb-reviews-grid"
-        >
-
-
-            <?php if (!empty($page_reviews)) : ?>
-
-
-                <?php foreach ($page_reviews as $index => $review) : ?>
-
-                    <?php
-
-                    $is_video = ($review['review_type'] ?? '') === 'video';
-
-                    $card_class = $is_video
-                        ? 'wb-review-card wb-review-card--video'
-                        : 'wb-review-card wb-review-card--text';
-
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | POSTER
-                    |--------------------------------------------------------------------------
-                    */
-
-                    $poster = !empty($review['thumbnail'])
-                        ? $review['thumbnail']
-                        : $default_review_poster;
-
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | DATE
-                    |--------------------------------------------------------------------------
-                    */
-
-                    $formatted_date = !empty($review['review_date'])
-                        ? date_i18n(
-                            get_option('date_format'),
-                            strtotime($review['review_date'])
-                        )
-                        : '';
-
-                    ?>
-
-
-                    <article
-                        class="<?php echo esc_attr($card_class); ?>"
-                        data-review-type="<?php echo esc_attr(
-                            $review['review_type'] ?? ''
-                        ); ?>"
-                        data-review-topic="<?php echo esc_attr(
-                            $review['topic'] ?? ''
-                        ); ?>"
-                    >
-
-
-                        <?php if ($is_video) : ?>
-
-                            <!-- =================================================
-                                 VIDEO CARD
-                            ================================================== -->
-
-                            <div class="wb-review-video">
-
-
-                                <!-- VIDEO IMAGE -->
-
-                                <div class="wb-review-video__media">
-
-                                    <img
-                                        src="<?php echo esc_url($poster); ?>"
-                                        alt=""
-                                        loading="lazy"
-                                    >
-
-
-                                    <!-- PLAY BUTTON -->
-
-                                    <button
-                                        class="wb-review-video__play"
-                                        type="button"
-                                        aria-label="Watch review from <?php echo esc_attr(
-                                            $review['reviewer_name'] ?? ''
-                                        ); ?>"
-                                        data-video-open
-                                        data-video-url="<?php echo esc_url(
-                                            $review['video_url'] ?? ''
-                                        ); ?>"
-                                        data-captions="<?php echo esc_url(
-                                            $review['captions'] ?? ''
-                                        ); ?>"
-                                        data-transcript="<?php echo esc_attr(
-                                            $review['transcript'] ?? ''
-                                        ); ?>"
-                                    >
-
-                                        <span aria-hidden="true">
-                                            ▶
-                                        </span>
-
-                                    </button>
-
-
-                                    <!-- DURATION -->
-
-                                    <?php if (!empty($review['duration'])) : ?>
-
-                                        <span class="wb-review-video__duration">
-                                            <?php echo esc_html(
-                                                $review['duration']
-                                            ); ?>
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </div>
-
-
-                                <!-- VIDEO DETAILS -->
-
-                                <div class="wb-review-video__details">
-
-
-                                    <!-- TOP -->
-
-                                    <div class="wb-review-card__top">
-
-                                        <span class="wb-review-card__number">
-                                            <?php echo sprintf(
-                                                '%02d',
-                                                $offset + $index + 1
-                                            ); ?>
-                                        </span>
-
-
-                                        <?php if (!empty($review['rating'])) : ?>
-
-                                            <div
-                                                class="wb-review-rating"
-                                                aria-label="<?php echo esc_attr(
-                                                    $review['rating']
-                                                ); ?> out of 5"
-                                            >
-
-                                                <span
-                                                    class="wb-review-rating__stars"
-                                                    aria-hidden="true"
-                                                >
-                                                    ★★★★★
-                                                </span>
-
-                                                <span>
-                                                    <?php echo esc_html(
-                                                        $review['rating']
-                                                    ); ?>
-                                                </span>
-
-                                            </div>
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-
-                                    <!-- TOPIC -->
-
-                                    <?php if (!empty($review['topic'])) : ?>
-
-                                        <span class="wb-review-topic">
-
-                                            <?php
-                                            echo esc_html(
-                                                $topic_labels[
-                                                    $review['topic']
-                                                ] ?? $review['topic']
-                                            );
-                                            ?>
-
-                                        </span>
-
-                                    <?php endif; ?>
-
-
-                                    <!-- SUMMARY -->
-
-                                    <p class="wb-review-video__summary">
-
-                                        <?php echo esc_html(
-                                            $review['review_text'] ?? ''
-                                        ); ?>
-
-                                    </p>
-
-
-                                    <!-- PERSON -->
-
-                                    <div class="wb-review-person">
-
-                                        <strong>
-                                            <?php echo esc_html(
-                                                $review['reviewer_name'] ?? ''
-                                            ); ?>
-                                        </strong>
-
-
-                                        <?php if (!empty($review['role'])) : ?>
-
-                                            <span>
-                                                <?php echo esc_html(
-                                                    $review['role']
-                                                ); ?>
-                                            </span>
-
-                                        <?php endif; ?>
-
-
-                                        <?php if (!empty($review['company'])) : ?>
-
-                                            <span>
-                                                <?php echo esc_html(
-                                                    $review['company']
-                                                ); ?>
-                                            </span>
-
-                                        <?php endif; ?>
-
-
-                                        <?php if (!empty($formatted_date)) : ?>
-
-                                            <time
-                                                datetime="<?php echo esc_attr(
-                                                    $review['review_date']
-                                                ); ?>"
-                                            >
-                                                <?php echo esc_html(
-                                                    $formatted_date
-                                                ); ?>
-                                            </time>
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                        <?php else : ?>
-
-                            <!-- =================================================
-                                 TEXT REVIEW CARD
-                            ================================================== -->
-
-                            <div class="wb-review-card__top">
-
-                                <span class="wb-review-card__number">
-                                    <?php echo sprintf(
-                                        '%02d',
-                                        $offset + $index + 1
-                                    ); ?>
-                                </span>
-
-
-                                <?php if (!empty($review['rating'])) : ?>
-
-                                    <div
-                                        class="wb-review-rating"
-                                        aria-label="<?php echo esc_attr(
-                                            $review['rating']
-                                        ); ?> out of 5"
-                                    >
-
-                                        <span
-                                            class="wb-review-rating__stars"
-                                            aria-hidden="true"
-                                        >
-                                            ★★★★★
-                                        </span>
-
-                                        <span>
-                                            <?php echo esc_html(
-                                                $review['rating']
-                                            ); ?>
-                                        </span>
-
-                                    </div>
-
-                                <?php endif; ?>
-
-                            </div>
-
-
-                            <?php if (!empty($review['topic'])) : ?>
-
-                                <span class="wb-review-topic">
-
-                                    <?php
-                                    echo esc_html(
-                                        $topic_labels[
-                                            $review['topic']
-                                        ] ?? $review['topic']
-                                    );
-                                    ?>
-
-                                </span>
-
-                            <?php endif; ?>
-
-
-                            <blockquote>
-
-                                “<?php echo esc_html(
-                                    $review['review_text'] ?? ''
-                                ); ?>”
-
-                            </blockquote>
-
-
-                            <div class="wb-review-person">
-
-                                <strong>
-                                    <?php echo esc_html(
-                                        $review['reviewer_name'] ?? ''
-                                    ); ?>
-                                </strong>
-
-
-                                <?php if (!empty($review['role'])) : ?>
-
-                                    <span>
-                                        <?php echo esc_html(
-                                            $review['role']
-                                        ); ?>
-                                    </span>
-
-                                <?php endif; ?>
-
-
-                                <?php if (!empty($review['company'])) : ?>
-
-                                    <span>
-                                        <?php echo esc_html(
-                                            $review['company']
-                                        ); ?>
-                                    </span>
-
-                                <?php endif; ?>
-
-
-                                <?php if (!empty($formatted_date)) : ?>
-
-                                    <time
-                                        datetime="<?php echo esc_attr(
-                                            $review['review_date']
-                                        ); ?>"
-                                    >
-                                        <?php echo esc_html(
-                                            $formatted_date
-                                        ); ?>
-                                    </time>
-
-                                <?php endif; ?>
-
-                            </div>
-
-
-                            <?php if (!empty($review['source_label'])) : ?>
-
-                                <div class="wb-review-source">
-
-                                    <?php if (!empty($review['source_url'])) : ?>
-
-                                        <a
-                                            href="<?php echo esc_url(
-                                                $review['source_url']
-                                            ); ?>"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <?php echo esc_html(
-                                                $review['source_label']
-                                            ); ?>
-                                        </a>
-
-                                    <?php else : ?>
-
-                                        <span>
-                                            <?php echo esc_html(
-                                                $review['source_label']
-                                            ); ?>
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </div>
-
-                            <?php endif; ?>
-
-
-                        <?php endif; ?>
-
-                    </article>
-
-
-                <?php endforeach; ?>
-
-
-            <?php else : ?>
-
-
-                <!-- =========================================================
-                     EMPTY STATE
-                ========================================================== -->
-
-                <div
-                    class="wb-reviews-empty"
-                    role="status"
-                >
-
-                    <span
-                        class="wb-reviews-empty__icon"
-                        aria-hidden="true"
-                    >
-                        —
-                    </span>
-
-
-                    <h3>
-                        No reviews found.
-                    </h3>
-
-
-                    <p>
-                        There are no reviews matching the selected filters.
-                        Try another review type or topic.
-                    </p>
-
-
-                    <a
-                        href="<?php echo esc_url(get_permalink()); ?>"
-                        class="wb-reviews-empty__button"
-                    >
-                        View all reviews
-                    </a>
+                    </video>
 
                 </div>
 
+            </div>
 
-            <?php endif; ?>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     SECTION 02 — PROBLEM
+========================================================= -->
+
+<section class="mcp-problem section-space">
+
+    <div class="wrap">
+
+        <div class="section-head">
+
+
+            <h2>
+                Finding the answer should not
+                <span>mean stopping the work.</span>
+            </h2>
 
         </div>
 
 
-        <!-- =========================================================
-             PAGINATION
-        ========================================================== -->
-
-        <?php if ($total_pages > 1) : ?>
-
-            <div class="wb-reviews-pagination">
+        <div class="mcp-problem__grid">
 
 
-                <!-- LOAD MORE -->
+            <!-- CARD 01 -->
 
-                <?php if ($current_page < $total_pages) : ?>
+            <article class="mcp-problem-card">
 
-                    <a
-                        href="<?php echo esc_url(
-                            wb_review_filter_url(
-                                $current_type,
-                                $current_topic,
-                                $current_page + 1
-                            )
-                        ); ?>"
-                        class="wb-reviews-load-more"
-                        data-load-more
-                    >
-                        Load more reviews
-                    </a>
+                <div class="mcp-problem-card__icon">
 
-                <?php endif; ?>
+                    <img
+                        src="<?php echo esc_url(
+                                    get_stylesheet_directory_uri() . '/assets/images/search.svg'
+                                ); ?>"
+                        alt="">
+                </div>
+                <div class="mcp-problem-card__content">
+
+                    <h3>
+                        The answer is buried
+                    </h3>
+
+                    <p>
+                        The information is already in the job, but finding the
+                        right plan, note, cost, claim, or supplier record can
+                        still take time.
+                    </p>
+
+                </div>
+
+            </article>
 
 
-                <!-- PAGINATION -->
+            <!-- CARD 02 -->
 
-                <nav
-                    class="wb-reviews-pages"
-                    aria-label="Reviews pagination"
-                >
+            <article class="mcp-problem-card">
 
-                    <?php for (
-                        $page = 1;
-                        $page <= $total_pages;
-                        $page++
-                    ) : ?>
+                <div class="mcp-problem-card__icon">
 
-                        <a
-                            href="<?php echo esc_url(
-                                wb_review_filter_url(
-                                    $current_type,
-                                    $current_topic,
-                                    $page
-                                )
-                            ); ?>"
-                            class="<?php echo $page === $current_page
-                                ? 'is-active'
-                                : ''; ?>"
-                            <?php
-                            echo $page === $current_page
-                                ? 'aria-current="page"'
-                                : '';
-                            ?>
-                        >
-                            <?php echo esc_html($page); ?>
-                        </a>
+                   <img
+                        src="<?php echo esc_url(
+                                    get_stylesheet_directory_uri() . '/assets/images/download.svg'
+                                ); ?>"
+                        alt="">
 
-                    <?php endfor; ?>
+                </div>
 
-                </nav>
+                <div class="mcp-problem-card__content">
+
+                    <h3>
+                        The context gets rebuilt
+                    </h3>
+
+                    <p>
+                        Copying details into a separate chat, spreadsheet, or
+                        report creates another version of the job to check.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- CARD 03 -->
+
+            <article class="mcp-problem-card">
+
+                <div class="mcp-problem-card__icon">
+
+                    <img
+                        src="<?php echo esc_url(
+                                    get_stylesheet_directory_uri() . '/assets/images/arrow.svg'
+                                ); ?>"
+                        alt="">
+
+                </div>
+                <div class="mcp-problem-card__content">
+
+                    <h3>
+                        The next step still waits
+                    </h3>
+
+                    <p>
+                        Finding the answer is only part of the work. The claim,
+                        purchase order, variation, update, or follow-up still
+                        needs to be prepared properly.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="mcp-product-story section-space">
+
+    <div class="wrap">
+
+        <div class="mcp-product-story__box">
+
+            <div class="mcp-product-story__content">
+
+                <div class="section-head">
+
+                    <h2>
+                        Ask about the job.
+                        <span>Work from the answer.</span>
+                    </h2>
+
+                </div>
+
+                <p class="mcp-product-story__description">
+                    The connected tool can find supported Wunderbuild records,
+                    explain what it sees, and prepare supported actions for the
+                    builder to review. Wunderbuild remains the system where the
+                    job records, workflows, and permissions are managed.
+                </p>
+
+                <div class="mcp-product-story__note">
+
+                    <span class="mcp-product-story__note-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+
+                            <path
+                                d="M12 3L21 20H3L12 3Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round"/>
+
+                            <path
+                                d="M12 9V13"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"/>
+
+                            <circle
+                                cx="12"
+                                cy="16.5"
+                                r="0.8"
+                                fill="currentColor"/>
+
+                        </svg>
+
+                    </span>
+
+                    <p>
+                        Anything that sends information externally or makes a
+                        significant change should be shown for approval first.
+                    </p>
+
+                </div>
 
             </div>
 
-        <?php endif; ?>
+
+            <!-- ANIMATED VISUAL -->
+
+            <div class="mcp-product-story__visual" aria-hidden="true">
+
+                <div class="mcp-flow">
+
+                    <div class="mcp-flow__grid"></div>
+
+                    <div class="mcp-flow__line mcp-flow__line--one"></div>
+
+                    <div class="mcp-flow__line mcp-flow__line--two"></div>
+
+                    <div class="mcp-flow__line mcp-flow__line--three"></div>
+
+
+                    <div class="mcp-flow__node mcp-flow__node--one">
+                        <span></span>
+                    </div>
+
+                    <div class="mcp-flow__node mcp-flow__node--two">
+                        <span></span>
+                    </div>
+
+                    <div class="mcp-flow__node mcp-flow__node--three">
+                        <span></span>
+                    </div>
+
+
+                    <div class="mcp-flow__document mcp-flow__document--one">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="mcp-flow__document mcp-flow__document--two">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="mcp-flow__document mcp-flow__document--three">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
+<section class="mcp-capabilities section-space">
 
-<!-- ================================================================
-     VIDEO MODAL
-================================================================ -->
+    <div class="wrap">
 
-<div
-    class="wb-review-modal"
-    id="wb-review-modal"
-    hidden
-    aria-hidden="true"
->
-
-
-    <!-- OVERLAY -->
-
-    <div
-        class="wb-review-modal__overlay"
-        data-video-close
-    ></div>
+        <!-- SECTION HEADER -->
+        <div class="section-head">
+            <h2>
+                Work with the information already attached to the job.
+            </h2>
+        </div>
 
 
-    <!-- DIALOG -->
+        <div class="mcp-capabilities__layout">
 
-    <div
-        class="wb-review-modal__dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="wb-review-modal-title"
-    >
+            <!-- =========================
+                 TABS
+            ========================== -->
+            <div class="mcp-capabilities__tabs" role="tablist" aria-label="Capabilities">
+
+                <!-- TAB 01 -->
+                <button
+                    class="mcp-capability-tab active"
+                    id="mcp-tab-1"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="mcp-panel-1"
+                    tabindex="0"
+                    data-tab="1"
+                >
+                    
+
+                    <span class="mcp-capability-tab__icon">
+                        <svg viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <rect x="9" y="6" width="26" height="34" rx="3"
+                                stroke="currentColor" stroke-width="2"/>
+                            <path d="M15 14H29"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                            <path d="M15 20H29"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                            <path d="M15 26H25"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                            <path d="M29 32H39"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                        </svg>
+                    </span>
+
+                    <span class="mcp-capability-tab__title">
+                        Plans and documents
+                    </span>
+
+                    <span class="mcp-capability-tab__arrow">
+                        →
+                    </span>
+                </button>
 
 
-        <!-- CLOSE -->
+                <!-- TAB 02 -->
+                <button
+                    class="mcp-capability-tab"
+                    id="mcp-tab-2"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="mcp-panel-2"
+                    tabindex="-1"
+                    data-tab="2"
+                >
+                    
 
-        <button
-            class="wb-review-modal__close"
-            type="button"
-            aria-label="Close video review"
-            data-video-close
-        >
-            ×
-        </button>
+                    <span class="mcp-capability-tab__icon">
+                        <svg viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <rect x="7" y="10" width="34" height="29" rx="3"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M7 18H41"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M14 25H23"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                            <path d="M14 31H30"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                        </svg>
+                    </span>
+
+                    <span class="mcp-capability-tab__title">
+                        Estimates and live jobs
+                    </span>
+
+                    <span class="mcp-capability-tab__arrow">
+                        →
+                    </span>
+                </button>
 
 
-        <!-- =========================================================
-             MEDIA
-        ========================================================== -->
+                <!-- TAB 03 -->
+                <button
+                    class="mcp-capability-tab"
+                    id="mcp-tab-3"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="mcp-panel-3"
+                    tabindex="-1"
+                    data-tab="3"
+                >
+                    
 
-        <div class="wb-review-modal__media">
+                    <span class="mcp-capability-tab__icon">
+                        <svg viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <circle cx="24" cy="24" r="17"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M24 13V24L31 29"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                            <path d="M15 36H33"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+                        </svg>
+                    </span>
+
+                    <span class="mcp-capability-tab__title">
+                        Costs, claims, and suppliers
+                    </span>
+
+                    <span class="mcp-capability-tab__arrow">
+                        →
+                    </span>
+                </button>
 
 
-            <!-- VIDEO -->
+                <!-- TAB 04 -->
+                <button
+                    class="mcp-capability-tab"
+                    id="mcp-tab-4"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="mcp-panel-4"
+                    tabindex="-1"
+                    data-tab="4"
+                >
+                    
 
-            <video
-                class="wb-review-modal__video"
-                controls
-                playsinline
-                preload="metadata"
-                hidden
-            >
+                    <span class="mcp-capability-tab__icon">
+                        <svg viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <circle cx="17" cy="17" r="7"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <circle cx="32" cy="17" r="7"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <circle cx="24" cy="32" r="7"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M22 20L26 20"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M20 23L21 26"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                            <path d="M28 23L27 26"
+                                stroke="currentColor"
+                                stroke-width="2"/>
+                        </svg>
+                    </span>
 
-                <track
-                    class="wb-review-modal__captions"
-                    kind="captions"
-                    srclang="en"
-                    label="English"
+                    <span class="mcp-capability-tab__title">
+                        Across the business
+                    </span>
+
+                    <span class="mcp-capability-tab__arrow">
+                        →
+                    </span>
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 CONTENT PANELS
+            ========================== -->
+            <div class="mcp-capabilities__panels">
+
+
+                <!-- PANEL 01 -->
+                <article
+                    class="mcp-capability-panel active"
+                    id="mcp-panel-1"
+                    role="tabpanel"
+                    aria-labelledby="mcp-tab-1"
+                    data-panel="1"
+                >
+
+                    <div class="mcp-capability-panel__top">
+
+                        
+
+                        <h3>
+                            Plans and documents
+                        </h3>
+
+                    </div>
+
+
+                    <p class="mcp-capability-panel__description">
+                        Ask about contracts, specifications, permits, reports,
+                        drawings, and scanned plans stored in Wunderbuild.
+                    </p>
+
+
+                    <div class="mcp-capability-prompts">
+
+                        <div class="mcp-capability-prompts__head">
+                            Example prompts
+                        </div>
+
+                        <div class="mcp-prompt-list">
+
+                            <div class="mcp-prompt">
+                                What are the retention terms in the Henderson contract?
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Summarise the structural notes on sheet S-102.
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Does the window schedule match the elevation?
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PANEL 02 -->
+                <article
+                    class="mcp-capability-panel"
+                    id="mcp-panel-2"
+                    role="tabpanel"
+                    aria-labelledby="mcp-tab-2"
+                    data-panel="2"
                     hidden
                 >
 
-            </video>
+                    <div class="mcp-capability-panel__top">
+
+                        
+
+                        <h3>
+                            Estimates and live jobs
+                        </h3>
+
+                    </div>
 
 
-            <!-- UNAVAILABLE -->
-
-            <div
-                class="wb-review-modal__unavailable"
-                hidden
-            >
-
-                <img
-                    src="<?php echo esc_url(
-                        $default_review_poster
-                    ); ?>"
-                    alt=""
-                >
-
-                <div class="wb-review-modal__unavailable-copy">
-
-                    <strong>
-                        Video currently unavailable
-                    </strong>
-
-                    <p>
-                        The review details are still available below.
+                    <p class="mcp-capability-panel__description">
+                        Review estimate totals, start from templates, prepare
+                        supplier quote requests, check the programme, find
+                        outstanding tasks, and add notes against the right job.
                     </p>
 
-                </div>
+
+                    <div class="mcp-capability-prompts">
+
+                        <div class="mcp-capability-prompts__head">
+                            Example prompts
+                        </div>
+
+                        <div class="mcp-prompt-list">
+
+                            <div class="mcp-prompt">
+                                What is the estimate total including GST?
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Start a new estimate from our duplex template.
+                            </div>
+
+                            <div class="mcp-prompt">
+                                What is still outstanding this week?
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PANEL 03 -->
+                <article
+                    class="mcp-capability-panel"
+                    id="mcp-panel-3"
+                    role="tabpanel"
+                    aria-labelledby="mcp-tab-3"
+                    data-panel="3"
+                    hidden
+                >
+
+                    <div class="mcp-capability-panel__top">
+
+                       
+
+                        <h3>
+                            Costs, claims, and suppliers
+                        </h3>
+
+                    </div>
+
+
+                    <p class="mcp-capability-panel__description">
+                        Ask about claimable work, committed costs, cost codes,
+                        retention, supplier bills, purchase orders, and variations.
+                    </p>
+
+
+                    <div class="mcp-capability-prompts">
+
+                        <div class="mcp-capability-prompts__head">
+                            Example prompts
+                        </div>
+
+                        <div class="mcp-prompt-list">
+
+                            <div class="mcp-prompt">
+                                What can I still claim on stage 3?
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Show this job’s costings by cost code.
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Prepare a purchase order for review.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PANEL 04 -->
+                <article
+                    class="mcp-capability-panel"
+                    id="mcp-panel-4"
+                    role="tabpanel"
+                    aria-labelledby="mcp-tab-4"
+                    data-panel="4"
+                    hidden
+                >
+
+                    <div class="mcp-capability-panel__top">
+
+                       
+
+                        <h3>
+                            Across the business
+                        </h3>
+
+                    </div>
+
+
+                    <p class="mcp-capability-panel__description">
+                        Search across jobs, estimates, leads, contacts,
+                        suppliers, costings, schedules, and tasks to bring
+                        the important information together.
+                    </p>
+
+
+                    <div class="mcp-capability-prompts">
+
+                        <div class="mcp-capability-prompts__head">
+                            Example prompts
+                        </div>
+
+                        <div class="mcp-prompt-list">
+
+                            <div class="mcp-prompt">
+                                Which jobs need attention?
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Which jobs have unclaimed work?
+                            </div>
+
+                            <div class="mcp-prompt">
+                                Which suppliers have expired insurance?
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- =========================================================
-             REVIEW DETAILS
-        ========================================================== -->
-
-        <div class="wb-review-modal__details">
+</section>
 
 
-            <!-- RATING -->
+<section class="access-timeline section-space" style="background: var(--pearl);">
 
-            <div class="wb-review-modal__rating"></div>
+    <div class="wrap">
+
+        <div class="section-head">
+            <h2>Your Wunderbuild access still applies.</h2>
+        </div>
+
+        <div class="access-timeline__wrap">
+
+            <div class="access-timeline__line">
+                <svg
+                    class="access-wave"
+                    viewBox="0 0 1400 180"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M0 90
+                           C100 20, 200 20, 300 90
+                           S500 160, 600 90
+                           S800 20, 900 90
+                           S1100 160, 1200 90
+                           S1350 20, 1400 60"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    />
+                </svg>
+            </div>
 
 
-            <!-- TOPIC -->
+            <!-- 01 -->
+            <article class="access-point access-point--01">
 
-            <span class="wb-review-modal__topic wb-review-topic"></span>
+                <div class="access-point__marker">
+                    <span>01</span>
+                </div>
+
+                <div class="access-point__content">
+                    <h3>The same access rules matter</h3>
+
+                    <p>
+                        The connected tool should only receive the Wunderbuild
+                        information available to the person making the request.
+                    </p>
+                </div>
+
+            </article>
 
 
-            <!-- NAME -->
+            <!-- 02 -->
+            <article class="access-point access-point--02">
 
-            <h2 id="wb-review-modal-title"></h2>
+                <div class="access-point__marker">
+                    <span>02</span>
+                </div>
+
+                <div class="access-point__content">
+                    <h3>The original record stays in Wunderbuild</h3>
+
+                    <p>
+                        The builder does not need to download and re-upload the
+                        original file before asking a supported question.
+                    </p>
+                </div>
+
+            </article>
 
 
-            <!-- ROLE -->
+            <!-- 03 -->
+            <article class="access-point access-point--03">
 
-            <p class="wb-review-modal__role"></p>
+                <div class="access-point__marker">
+                    <span>03</span>
+                </div>
+
+                <div class="access-point__content">
+                    <h3>Important actions need approval</h3>
+
+                    <p>
+                        Claims, purchase orders, variations, messages, and other
+                        significant actions should be presented for review before
+                        they happen.
+                    </p>
+                </div>
+
+            </article>
 
 
-            <!-- REVIEW -->
+            <!-- 04 -->
+            <article class="access-point access-point--04">
 
-            <p class="wb-review-modal__summary"></p>
+                <div class="access-point__marker">
+                    <span>04</span>
+                </div>
 
+                <div class="access-point__content">
+                    <h3>The answer comes from the job</h3>
 
-            <!-- TRANSCRIPT -->
+                    <p>
+                        The connected tool works from current Wunderbuild records
+                        rather than a separate export that may already be out of date.
+                    </p>
+                </div>
 
-            <details
-                class="wb-review-transcript"
-                hidden
-            >
-
-                <summary>
-                    View transcript
-                </summary>
-
-                <div></div>
-
-            </details>
-
+            </article>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
+<section class="workspace-cta section-space">
+    <div class="workspace-cta__bg">
+      
+    </div>
 
-<!-- =========================================================
-     VIDEO MODAL
-========================================================== -->
+    <div class="wrap">
 
+        <div class="workspace-cta__content">
+
+            
+
+            <h2>
+                Need to build a process
+                <span>around the work?</span>
+            </h2>
+
+            <p>
+                Workspace Studio helps builders create connected forms,
+                registers, logs, and checklists inside Wunderbuild.
+            </p>
+
+            <a
+                href="<?php echo esc_url(home_url('/builder-ai/workspace-studio/')); ?>"
+                class="workspace-cta__button">
+
+                <span>Explore Workspace Studio</span>
+
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <path
+                        d="M4 10H16M11 5L16 10L11 15"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+</section>
 
 
 

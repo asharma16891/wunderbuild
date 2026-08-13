@@ -1,0 +1,687 @@
+/* =========================================================
+   MCP CONTROL & ACCESS
+========================================================= */
+
+.mcp-control {
+    background: var(--white);
+    overflow: hidden;
+}
+
+.mcp-control .section-head {
+    max-width: 760px;
+    margin-bottom: 75px;
+}
+
+.mcp-control .section-head h2 span {
+    color: var(--peach);
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.mcp-control__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1120px;
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.mcp-control-card {
+    position: relative;
+
+    min-height: 250px;
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: var(--pearl);
+
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* Alternating vertical rhythm */
+
+.mcp-control-card:nth-child(1),
+.mcp-control-card:nth-child(3) {
+    transform: translateY(45px);
+}
+
+.mcp-control-card:nth-child(2),
+.mcp-control-card:nth-child(4) {
+    transform: translateY(-45px);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.mcp-control-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.mcp-control-card__icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--charcoal);
+
+    background: var(--white);
+
+    border: 1px solid var(--ink-15);
+    border-radius: 14px;
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        color .35s ease;
+}
+
+.mcp-control-card__icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.mcp-control-card__body {
+    max-width: 430px;
+}
+
+.mcp-control-card__body h3 {
+    margin: 0 0 14px;
+
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.05;
+    letter-spacing: -.035em;
+}
+
+.mcp-control-card__body p {
+    margin: 0;
+
+    max-width: 400px;
+
+    color: var(--ink-60);
+
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.mcp-control-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(29, 28, 27, .25);
+
+    box-shadow: var(--shadow-soft);
+}
+
+.mcp-control-card:nth-child(1):hover,
+.mcp-control-card:nth-child(3):hover {
+    transform: translateY(41px);
+}
+
+.mcp-control-card:nth-child(2):hover,
+.mcp-control-card:nth-child(4):hover {
+    transform: translateY(-49px);
+}
+
+.mcp-control-card:hover .mcp-control-card__icon {
+    transform: translateY(-3px);
+
+    background: var(--peach);
+    color: var(--charcoal);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .mcp-control .section-head {
+        margin-bottom: 55px;
+    }
+
+    .mcp-control__grid {
+        gap: 20px;
+    }
+
+    .mcp-control-card {
+        min-height: 290px;
+        padding: 28px;
+    }
+
+    .mcp-control-card:nth-child(1),
+    .mcp-control-card:nth-child(2),
+    .mcp-control-card:nth-child(3),
+    .mcp-control-card:nth-child(4) {
+        transform: none;
+    }
+
+    .mcp-control-card:hover,
+    .mcp-control-card:nth-child(1):hover,
+    .mcp-control-card:nth-child(2):hover,
+    .mcp-control-card:nth-child(3):hover,
+    .mcp-control-card:nth-child(4):hover {
+        transform: translateY(-4px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .mcp-control .section-head {
+        margin-bottom: 40px;
+    }
+
+    .mcp-control__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .mcp-control-card {
+        min-height: 280px;
+        padding: 24px;
+    }
+
+    .mcp-control-card:nth-child(1),
+    .mcp-control-card:nth-child(2),
+    .mcp-control-card:nth-child(3),
+    .mcp-control-card:nth-child(4) {
+        transform: none;
+    }
+
+    .mcp-control-card__icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .mcp-control-card__body h3 {
+        font-size: 23px;
+    }
+
+}
+
+/* =========================================
+   SECTION 05 — WORKSPACE EDITOR
+========================================= */
+
+.workspace-editor {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    margin-top: 65px;
+    overflow: hidden;
+    border: 1px solid rgba(29, 28, 27, 0.12);
+    border-radius: 30px;
+    background: #1d1c1b;
+    box-shadow: 0 35px 90px rgba(29, 28, 27, 0.14);
+}
+
+
+/* Sidebar */
+
+.workspace-editor__sidebar {
+    padding: 30px 22px;
+    background: #242322;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.workspace-editor__brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 55px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.workspace-editor__brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--peach, #fdb99b);
+}
+
+
+/* Navigation */
+
+.workspace-editor__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.workspace-editor__nav-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    align-items: center;
+    width: 100%;
+    padding: 15px 12px;
+    border: 0;
+    border-radius: 13px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.workspace-editor__nav-item span {
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.workspace-editor__nav-item:hover {
+    background: rgba(253, 185, 155, 0.08);
+    color: #fff;
+}
+
+.workspace-editor__nav-item.active {
+    background: rgba(253, 185, 155, 0.14);
+    color: #fff;
+}
+
+.workspace-editor__nav-item.active span {
+    color: var(--peach, #fdb99b);
+    opacity: 1;
+}
+
+
+/* Main */
+
+.workspace-editor__main {
+    min-width: 0;
+    background: #f8f8f7;
+}
+
+
+/* Topbar */
+
+.workspace-editor__topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+       padding: 18px 38px;
+    border-bottom: 1px solid rgba(29, 28, 27, 0.10);
+}
+
+.workspace-editor__label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(29, 28, 27, 0.45);
+}
+
+.workspace-editor__topbar h3 {
+    margin: 0;
+    font-size: 29px;
+    color: var(--charcoal, #1d1c1b);
+}
+
+
+
+
+/* Content */
+
+.workspace-editor__content {
+    max-height: 650px;
+    overflow-y: auto;
+    padding: 32px 38px 45px;
+
+    /* Smooth internal scrolling */
+    scroll-behavior: smooth;
+}
+
+
+/* Custom scrollbar */
+
+.workspace-editor__content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.workspace-editor__content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.workspace-editor__content::-webkit-scrollbar-thumb {
+    background: rgba(29, 28, 27, 0.18);
+    border-radius: 999px;
+}
+
+
+/* Group */
+
+.workspace-group {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(29, 28, 27, 0.10);
+
+    /* Used by JS when scrolling to section */
+    scroll-margin-top: 0;
+}
+
+.workspace-group:first-child {
+    padding-top: 0;
+}
+
+.workspace-group:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.workspace-group__head {
+    display: flex;
+    gap: 18px;
+}
+
+.workspace-group__number {
+    flex: 0 0 auto;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    /* PEACH instead of INDIGO */
+    background: rgba(253, 185, 155, 0.18);
+    color: #a86f59;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.workspace-group h4 {
+    margin: 0 0 8px;
+    font-size: 21px;
+    color: var(--charcoal, #1d1c1b);
+}
+
+.workspace-group p {
+    max-width: 700px;
+    margin: 0;
+    color: rgba(29, 28, 27, 0.62);
+    line-height: 1.65;
+}
+
+
+/* Active content section */
+
+.workspace-group.is-active .workspace-group__number {
+    background: var(--peach, #fdb99b);
+    color: var(--charcoal, #1d1c1b);
+}
+
+
+
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+
+    .workspace-editor {
+        grid-template-columns: 210px 1fr;
+    }
+
+    .workspace-editor__content {
+        padding: 28px;
+    }
+
+    .workspace-fields-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .workspace-editor {
+        display: block;
+        border-radius: 22px;
+    }
+
+    .workspace-editor__sidebar {
+        padding: 20px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .workspace-editor__brand {
+        margin-bottom: 20px;
+    }
+
+    .workspace-editor__nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workspace-editor__nav-item {
+        font-size: 12px;
+    }
+
+    .workspace-editor__topbar {
+        padding: 24px 20px;
+    }
+
+    .workspace-editor__content {
+        padding: 24px 20px;
+        max-height: none;
+    }
+
+    .workspace-group__head {
+        gap: 12px;
+    }
+
+    .workspace-fields-grid {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+    }
+
+}
+
+
+/* =========================================
+   SECTION 06 — FIELD ACCESS & CONTROL
+========================================= */
+
+.workspace-access__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 55px;
+}
+
+
+/* Card */
+
+.workspace-access__card {
+    position: relative;
+    min-height: 300px;
+    padding: 32px;
+    border: 1px solid rgba(29, 28, 27, 0.10);
+    border-radius: 26px;
+    background: #fff;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.workspace-access__card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(253, 185, 155, 0.65);
+    box-shadow: 0 20px 45px rgba(29, 28, 27, 0.08);
+}
+
+
+/* Number */
+
+.workspace-access__number {
+    position: absolute;
+    top: 25px;
+    right: 28px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(29, 28, 27, 0.35);
+}
+
+
+/* Icon */
+
+.workspace-access__icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 32px;
+
+    border-radius: 16px;
+    background: rgba(253, 185, 155, 0.16);
+}
+
+.workspace-access__icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
+/* Content */
+
+.workspace-access__card h3 {
+    margin: 0 0 12px;
+
+    font-size: 21px;
+    line-height: 1.2;
+    color: var(--charcoal, #1d1c1b);
+}
+
+.workspace-access__card p {
+    max-width: 390px;
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(29, 28, 27, 0.62);
+}
+
+
+/* Last two cards */
+
+.workspace-access__card:nth-child(4),
+.workspace-access__card:nth-child(5) {
+    grid-column: span 1;
+}
+
+
+/* Desktop positioning */
+
+.workspace-access__card:nth-child(4) {
+    grid-column: 1 / 2;
+}
+
+.workspace-access__card:nth-child(5) {
+    grid-column: 2 / 3;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+
+    .workspace-access__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workspace-access__card:nth-child(4),
+    .workspace-access__card:nth-child(5) {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .workspace-access__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 40px;
+    }
+
+    .workspace-access__card {
+        min-height: auto;
+        padding: 26px;
+        border-radius: 22px;
+    }
+
+    .workspace-access__icon {
+        margin-bottom: 25px;
+    }
+
+}

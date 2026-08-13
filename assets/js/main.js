@@ -1993,3 +1993,393 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tabs = document.querySelectorAll(".mcp-capability-tab");
+    const panels = document.querySelectorAll(".mcp-capability-panel");
+
+    if (!tabs.length || !panels.length) {
+        return;
+    }
+
+
+    function activateTab(tab) {
+
+        const tabId = tab.dataset.tab;
+
+        tabs.forEach(function (item) {
+
+            const isActive = item === tab;
+
+            item.classList.toggle("active", isActive);
+            item.setAttribute(
+                "aria-selected",
+                isActive ? "true" : "false"
+            );
+
+            item.setAttribute(
+                "tabindex",
+                isActive ? "0" : "-1"
+            );
+
+        });
+
+
+        panels.forEach(function (panel) {
+
+            const isActive =
+                panel.dataset.panel === tabId;
+
+            panel.classList.toggle("active", isActive);
+
+            if (isActive) {
+
+                panel.removeAttribute("hidden");
+
+                /*
+                 * Restart the panel animation.
+                 */
+                panel.style.animation = "none";
+
+                requestAnimationFrame(function () {
+                    panel.style.animation = "";
+                });
+
+            } else {
+
+                panel.setAttribute("hidden", "");
+
+            }
+
+        });
+
+    }
+
+
+    tabs.forEach(function (tab, index) {
+
+        tab.addEventListener("click", function () {
+            activateTab(tab);
+        });
+
+
+        tab.addEventListener("keydown", function (event) {
+
+            let nextIndex = null;
+
+
+            if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+
+                event.preventDefault();
+
+                nextIndex =
+                    (index + 1) % tabs.length;
+
+            }
+
+
+            if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+
+                event.preventDefault();
+
+                nextIndex =
+                    (index - 1 + tabs.length) % tabs.length;
+
+            }
+
+
+            if (nextIndex !== null) {
+
+                tabs[nextIndex].focus();
+                activateTab(tabs[nextIndex]);
+
+            }
+
+
+            if (event.key === "Home") {
+
+                event.preventDefault();
+
+                tabs[0].focus();
+                activateTab(tabs[0]);
+
+            }
+
+
+            if (event.key === "End") {
+
+                event.preventDefault();
+
+                tabs[tabs.length - 1].focus();
+                activateTab(tabs[tabs.length - 1]);
+
+            }
+
+        });
+
+    });
+
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const timeline = document.querySelector(".mcp-control__timeline");
+    const steps = document.querySelectorAll(".mcp-control__step");
+    const progress = document.querySelector(".mcp-control__line span");
+
+    if (!timeline || !steps.length || !progress) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (!entry.isIntersecting) return;
+
+                const step = entry.target;
+
+                step.classList.add("is-visible");
+
+                setTimeout(() => {
+                    step.classList.add("is-active");
+                }, 180);
+
+                const index = [...steps].indexOf(step);
+
+                const progressValue =
+                    ((index + 1) / steps.length) * 100;
+
+                progress.style.height = `${progressValue}%`;
+
+            });
+
+        },
+        {
+            threshold: 0.45
+        }
+    );
+
+    steps.forEach((step) => {
+        observer.observe(step);
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const editor = document.querySelector(".workspace-editor");
+
+    if (!editor) {
+        return;
+    }
+
+    const content = editor.querySelector(".workspace-editor__content");
+    const navItems = editor.querySelectorAll(".workspace-editor__nav-item");
+    const groups = editor.querySelectorAll(".workspace-group");
+
+    if (!content || !navItems.length || !groups.length) {
+        return;
+    }
+
+
+    let isClickScrolling = false;
+    let scrollTimer;
+
+
+    /*
+     * -----------------------------------------
+     * Set active tab
+     * -----------------------------------------
+     */
+
+    function setActive(targetId) {
+
+        navItems.forEach(function (item) {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.target === targetId
+            );
+
+        });
+
+        groups.forEach(function (group) {
+
+            group.classList.toggle(
+                "is-active",
+                group.id === targetId
+            );
+
+        });
+
+    }
+
+
+    /*
+     * -----------------------------------------
+     * Scroll clicked section to TOP
+     * -----------------------------------------
+     */
+
+    function scrollToGroup(target) {
+
+        const contentRect =
+            content.getBoundingClientRect();
+
+        const targetRect =
+            target.getBoundingClientRect();
+
+        /*
+         * Current scroll position +
+         * distance between target and
+         * scroll container.
+         */
+
+        const scrollTop =
+            content.scrollTop +
+            (targetRect.top - contentRect.top);
+
+        content.scrollTo({
+            top: scrollTop,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /*
+     * -----------------------------------------
+     * Sidebar click
+     * -----------------------------------------
+     */
+
+    navItems.forEach(function (item) {
+
+        item.addEventListener("click", function () {
+
+            const targetId =
+                item.dataset.target;
+
+            const target =
+                editor.querySelector("#" + targetId);
+
+            if (!target) {
+                return;
+            }
+
+
+            /*
+             * Immediately activate clicked tab
+             */
+
+            setActive(targetId);
+
+
+            /*
+             * Prevent scroll listener from
+             * changing active tab during
+             * smooth scrolling.
+             */
+
+            isClickScrolling = true;
+
+            clearTimeout(scrollTimer);
+
+
+            /*
+             * Move selected section
+             * exactly to the top.
+             */
+
+            scrollToGroup(target);
+
+
+            /*
+             * Wait until smooth scroll
+             * finishes.
+             */
+
+            scrollTimer = setTimeout(function () {
+
+                isClickScrolling = false;
+
+            }, 700);
+
+        });
+
+    });
+
+
+    /*
+     * -----------------------------------------
+     * Detect active section while scrolling
+     * -----------------------------------------
+     */
+
+    let ticking = false;
+
+    content.addEventListener("scroll", function () {
+
+        if (ticking || isClickScrolling) {
+            return;
+        }
+
+        ticking = true;
+
+        requestAnimationFrame(function () {
+
+            const contentRect =
+                content.getBoundingClientRect();
+
+            /*
+             * Active zone:
+             * top portion of the content area.
+             */
+
+            const activeLine =
+                contentRect.top + 80;
+
+            let currentGroup = groups[0];
+
+            groups.forEach(function (group) {
+
+                const rect =
+                    group.getBoundingClientRect();
+
+                if (rect.top <= activeLine) {
+                    currentGroup = group;
+                }
+
+            });
+
+
+            if (currentGroup) {
+
+                setActive(
+                    currentGroup.id
+                );
+
+            }
+
+
+            ticking = false;
+
+        });
+
+    });
+
+
+    /*
+     * -----------------------------------------
+     * Initial active state
+     * -----------------------------------------
+     */
+
+    setActive(groups[0].id);
+
+});
+

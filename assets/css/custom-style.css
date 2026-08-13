@@ -66,6 +66,14 @@ a {
   text-decoration: none;
 }
 
+a,
+button,
+input,
+textarea,
+select {
+    font-family: "Satoshi", sans-serif !important;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -107,6 +115,28 @@ img {
     box-shadow 0.25s,
     background 0.25s;
   white-space: nowrap;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 26px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s,
+    background 0.25s;
+  white-space: nowrap;
+  color: #fff;
+    background: var(--charcoal);
+    border: 1.5px solid rgba(255, 255, 255, .55);
 }
 
 .btn-primary {
@@ -998,7 +1028,7 @@ section {
 
 .section-head {
   text-align: center;
-  max-width: 740px;
+  max-width: 820px;
   margin: 0 auto 56px ;
 }
 
@@ -1043,6 +1073,7 @@ section {
   font-size: 16.5px;
   margin-top: 16px;
   line-height: 1.65;
+  max-width: 780px;
 }
 
 /* ---------- Process timeline ---------- */
@@ -4055,8 +4086,10 @@ font-size: 16px;
     width: 100%;
     max-width: fit-content;
     padding:8px 16px;
-    background:#d9f7d9;
-    color:#2ca94f;
+    /* background:#d9f7d9;
+    color:#2ca94f; */
+    background: #b399ff99;
+    color: var(--charcoal);
     border-radius:40px;
     font-size:13px;
     font-weight:600;
