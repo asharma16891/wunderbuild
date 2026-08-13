@@ -171,7 +171,6 @@ padding:90px 0;
 .pricing-selector{
 
     padding:100px 0 100px;
-        border-bottom: 1px solid #ececec;
 
 }
 
@@ -260,7 +259,7 @@ flex:0 0 auto;
 
 .pricing-plans{
 
-    padding:90px 0px;
+    padding: 40px 0px 90px;
 
 }
 
@@ -287,7 +286,7 @@ flex:0 0 auto;
     bottom:40px;
 }
 
-.pricing-grid{
+/* .pricing-grid{
 
     display:grid;
 
@@ -297,6 +296,59 @@ flex:0 0 auto;
 
     margin-top:60px;
 
+} */
+
+.pricing-grid {
+    display: none;
+}
+
+.pricing-grid.active {
+    display: grid;
+    
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    margin-top:60px;
+}
+.pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 20px auto 40px;
+}
+
+.pricing-toggle-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+}
+
+.billing-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border: none;
+    border-radius: 30px;
+    background: #8b7cf6;
+    cursor: pointer;
+    padding: 0;
+}
+
+.billing-toggle-slider {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.billing-toggle.annual .billing-toggle-slider {
+    transform: translateX(24px);
 }
 
 .pricing-card{

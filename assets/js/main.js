@@ -899,14 +899,50 @@ Hover Animation
 });
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const buttons = document.querySelectorAll(".job-btn");
-    const cards = document.querySelectorAll(".pricing-card");
-    const pricingGrid = document.querySelector(".pricing-grid");
+    const pricingGrids = document.querySelectorAll(".pricing-grid");
+    const billingToggle = document.querySelector(".billing-toggle");
     const header = document.querySelector("header");
 
     const headerHeight = header ? header.offsetHeight : 90;
+
+    function getActiveGrid() {
+
+        return document.querySelector(
+            ".pricing-grid.active"
+        );
+
+    }
+
+    function updatePricingCard(plan) {
+
+        const activeGrid = getActiveGrid();
+
+        if (!activeGrid) {
+            return;
+        }
+
+        const cards = activeGrid.querySelectorAll(".pricing-card");
+
+        cards.forEach(card => {
+
+            if (card.dataset.plan === plan) {
+
+                card.classList.add("active");
+
+            } else {
+
+                card.classList.remove("active");
+
+            }
+
+        });
+
+    }
+
 
     buttons.forEach(button => {
 
@@ -914,39 +950,98 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const plan = button.dataset.plan;
 
-            // Active button
-            buttons.forEach(btn => btn.classList.remove("active"));
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
             button.classList.add("active");
 
-            // Active card
-            cards.forEach(card => {
+            updatePricingCard(plan);
 
-                if (card.dataset.plan === plan) {
+            const pricingGrid = getActiveGrid();
 
-                    card.classList.add("active");
+            if (pricingGrid) {
 
-                    // Smooth scroll
-                    const top =
-                        pricingGrid.getBoundingClientRect().top +
-                        window.pageYOffset -
-                        headerHeight -
-                        20;
+                const top =
+                    pricingGrid.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    headerHeight -
+                    20;
 
-                    window.scrollTo({
-                        top,
-                        behavior: "smooth"
-                    });
+                window.scrollTo({
+                    top: top,
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+
+    if (billingToggle) {
+
+        billingToggle.addEventListener("click", () => {
+
+            const isAnnual =
+                billingToggle.classList.toggle("annual");
+
+            billingToggle.setAttribute(
+                "aria-pressed",
+                isAnnual ? "true" : "false"
+            );
+
+
+            pricingGrids.forEach(grid => {
+
+                if (
+                    isAnnual &&
+                    grid.dataset.billing === "annual"
+                ) {
+
+                    grid.classList.add("active");
+
+                } else if (
+                    !isAnnual &&
+                    grid.dataset.billing === "monthly"
+                ) {
+
+                    grid.classList.add("active");
 
                 } else {
 
-                    card.classList.remove("active");
+                    grid.classList.remove("active");
 
                 }
 
             });
 
+
+            const activeButton =
+                document.querySelector(".job-btn.active");
+
+            if (activeButton) {
+
+                updatePricingCard(
+                    activeButton.dataset.plan
+                );
+
+            }
+
         });
 
-    });
+    }
+
+    const activeButton =
+        document.querySelector(".job-btn.active");
+
+    if (activeButton) {
+
+        updatePricingCard(
+            activeButton.dataset.plan
+        );
+
+    }
 
 });
