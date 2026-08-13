@@ -2,7 +2,7 @@
 
 $fields = $args['fields'] ?? [];
 
-$eyebrow     = $fields['eyebrow'] ?? '';
+
 $heading     = $fields['heading'] ?? '';
 $description = $fields['description'] ?? '';
 
@@ -18,6 +18,7 @@ $billing_toggle = $fields['billing_toggle'] ?? [];
 
 $monthly_label = $billing_toggle['monthly_label'] ?? 'Monthly';
 $annual_label  = $billing_toggle['annual_label'] ?? 'Annual';
+$show_annual_plans = $fields['show_annual_plans'] ?? false;
 
 
 $monthly_cards = $fields['monthly_cards'] ?? [];
@@ -48,13 +49,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
 
         <div class="section-head">
 
-            <?php if ($eyebrow) : ?>
 
-                <span class="section-label">
-                    <?php echo esc_html($eyebrow); ?>
-                </span>
-
-            <?php endif; ?>
 
 
             <?php if ($heading) : ?>
@@ -91,8 +86,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
                     <button
                         type="button"
                         class="job-btn <?php echo $is_active ? 'active' : ''; ?>"
-                        data-plan="<?php echo esc_attr($tab_slug); ?>"
-                    >
+                        data-plan="<?php echo esc_attr($tab_slug); ?>">
                         <?php echo esc_html($tab['label'] ?? ''); ?>
                     </button>
 
@@ -133,7 +127,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
 
         </div>
 
-        <?php if ($billing_toggle) : ?>
+        <?php if ($billing_toggle && $show_annual_plans) : ?>
 
             <div class="pricing-toggle">
 
@@ -145,8 +139,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
                     type="button"
                     class="billing-toggle"
                     aria-label="Toggle pricing period"
-                    aria-pressed="false"
-                >
+                    aria-pressed="false">
                     <span class="billing-toggle-slider"></span>
                 </button>
 
@@ -163,8 +156,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
 
             <div
                 class="pricing-grid pricing-grid-monthly active"
-                data-billing="monthly"
-            >
+                data-billing="monthly">
 
                 <?php foreach ($monthly_cards as $card) : ?>
 
@@ -175,8 +167,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
 
                     <div
                         class="pricing-card <?php echo $is_highlighted ? 'active' : ''; ?>"
-                        data-plan="<?php echo esc_attr($plan_slug); ?>"
-                    >
+                        data-plan="<?php echo esc_attr($plan_slug); ?>">
 
                         <?php if (!empty($card['badge'])) : ?>
 
@@ -233,8 +224,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
                             <a
                                 href="<?php echo esc_url($card['button']['url'] ?? '#'); ?>"
                                 target="<?php echo esc_attr($card['button']['target'] ?? '_self'); ?>"
-                                class="btn btn-primary"
-                            >
+                                class="btn btn-primary">
                                 <?php echo esc_html($card['button']['title'] ?? ''); ?>
                             </a>
 
@@ -249,12 +239,11 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
         <?php endif; ?>
 
 
-        <?php if ($annual_cards) : ?>
+      <?php if ($show_annual_plans && $annual_cards) : ?>
 
             <div
                 class="pricing-grid pricing-grid-annual"
-                data-billing="annual"
-            >
+                data-billing="annual">
 
                 <?php foreach ($annual_cards as $card) : ?>
 
@@ -265,8 +254,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
 
                     <div
                         class="pricing-card <?php echo $is_highlighted ? 'active' : ''; ?>"
-                        data-plan="<?php echo esc_attr($plan_slug); ?>"
-                    >
+                        data-plan="<?php echo esc_attr($plan_slug); ?>">
 
                         <?php if (!empty($card['badge'])) : ?>
 
@@ -323,8 +311,7 @@ if (!$default_plan && !empty($job_tabs[0]['slug'])) {
                             <a
                                 href="<?php echo esc_url($card['button']['url'] ?? '#'); ?>"
                                 target="<?php echo esc_attr($card['button']['target'] ?? '_self'); ?>"
-                                class="btn btn-primary"
-                            >
+                                class="btn btn-primary">
                                 <?php echo esc_html($card['button']['title'] ?? ''); ?>
                             </a>
 

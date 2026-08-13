@@ -5,10 +5,7 @@ $fields = $args['fields'] ?? [];
 $heading     = $fields['heading'] ?? '';
 $description = $fields['description'] ?? '';
 
-$center_content = $fields['center_content'] ?? [];
 
-$center_heading     = $center_content['heading'] ?? '';
-$center_description = $center_content['description'] ?? '';
 
 $benefits_cards = $fields['benefits_cards'] ?? [];
 
@@ -92,30 +89,17 @@ $benefits_cards = $fields['benefits_cards'] ?? [];
                     if ($index === 1) :
                     ?>
 
-                        <div class="center-circle">
+                         <div class="center-circle">
 
-                            <div class="circle">
+                <div class="circle">
 
-                                <?php if (!empty($center_heading)) : ?>
+                    <h3>One Simple Plan</h3>
 
-                                    <h3>
-                                        <?php echo esc_html($center_heading); ?>
-                                    </h3>
+                    <span>Everything your team needs</span>
 
-                                <?php endif; ?>
+                </div>
 
-
-                                <?php if (!empty($center_description)) : ?>
-
-                                    <span>
-                                        <?php echo esc_html($center_description); ?>
-                                    </span>
-
-                                <?php endif; ?>
-
-                            </div>
-
-                        </div>
+            </div>
 
                     <?php endif; ?>
 

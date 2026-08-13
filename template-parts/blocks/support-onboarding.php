@@ -7,12 +7,6 @@ $description = $fields['description'] ?? '';
 
 $left_cards = $fields['left_cards'] ?? [];
 
-$center_content = $fields['center_content'] ?? [];
-
-$center_icon        = $center_content['icon'] ?? [];
-$center_heading     = $center_content['heading'] ?? '';
-$center_description = $center_content['description'] ?? '';
-
 $right_card = $fields['right_card'] ?? [];
 
 $right_icon        = $right_card['icon'] ?? [];
@@ -114,32 +108,22 @@ $button_link = $button['link'] ?? [];
 
                 <div class="center-circles">
 
-                    <?php if (!empty($center_icon['url'])) : ?>
+                    <svg width="70" height="70" viewBox="0 0 24 24" fill="none">
 
-                        <img
-                            src="<?php echo esc_url($center_icon['url']); ?>"
-                            alt="<?php echo esc_attr($center_icon['alt'] ?? ''); ?>"
-                        >
+                        <path d="M12 3L20 7V12C20 17 16.8 20.7 12 22C7.2 20.7 4 17 4 12V7L12 3Z"
+                            stroke="#1d1c1b"
+                            stroke-width="1.8" />
 
-                    <?php endif; ?>
+                        <path d="M9 12L11 14L15.5 9.5"
+                            stroke="#1d1c1b"
+                            stroke-width="1.8"
+                            stroke-linecap="round" />
 
+                    </svg>
 
-                    <?php if (!empty($center_heading)) : ?>
+                    <h3>Support Hub</h3>
 
-                        <h3>
-                            <?php echo esc_html($center_heading); ?>
-                        </h3>
-
-                    <?php endif; ?>
-
-
-                    <?php if (!empty($center_description)) : ?>
-
-                        <span>
-                            <?php echo esc_html($center_description); ?>
-                        </span>
-
-                    <?php endif; ?>
+                   
 
                 </div>
 

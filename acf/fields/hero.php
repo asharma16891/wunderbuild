@@ -22,12 +22,22 @@ function wunderbuild_register_hero_fields()
         'fields' => array(
 
 
+
+         array(
+                'key'   => 'field_hero_eyebrow',
+                'label' => 'Eyebrow / Badge',
+                'name'  => 'hero_eyebrow',
+                'type'  => 'text',
+                'instructions' => 'Text displayed above the hero heading.',
+            ),
+            
             array(
                 'key' => 'field_hero_title',
                 'label' => 'Heading',
                 'name' => 'hero_title',
-                'type' => 'textarea',
-                'rows' => 3,
+                 'type'  => 'wysiwyg',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
             ),
 
             array(

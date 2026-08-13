@@ -4050,17 +4050,17 @@ font-size: 16px;
     margin:0 auto 60px;
 }
 
-.eyebrow{
-   display: flex;
+.eyebrow {
+    display: flex;
     width: 100%;
     max-width: fit-content;
-    padding:8px 16px;
-    background:#d9f7d9;
-    color:#2ca94f;
-    border-radius:40px;
-    font-size:13px;
-    font-weight:600;
-        margin: 0 auto 18px auto;
+    padding: 8px 16px;
+    background: #b399ff99;
+    color: var(--charcoal);
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 auto 18px auto;
 }
 
 .section-heading h2{

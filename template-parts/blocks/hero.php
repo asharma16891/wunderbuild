@@ -2,6 +2,8 @@
 
 $fields = $args['fields'] ?? [];
 
+
+$eyebrow    = $fields['hero_eyebrow'] ?? '';
 $title       = $fields['hero_title'] ?? '';
 $description = $fields['hero_description'] ?? '';
 
@@ -58,8 +60,18 @@ if ($hero_mode === 'image') {
     <div class="wrap">
         <div class="hero-content">
 
+
+         <?php if ($eyebrow): ?>
+
+                <span class="eyebrow">
+                    <?php echo esc_html($eyebrow); ?>
+                </span>
+
+            <?php endif; ?>
+
             <?php if ($title): ?>
-                <h1 class="hero-title"><?php echo nl2br(esc_html($title)); ?></h1>
+                
+                 <h1 class="hero-title">  <?php echo wp_kses_post($title); ?> </h1>
             <?php endif; ?>
 
             <?php if ($description): ?>

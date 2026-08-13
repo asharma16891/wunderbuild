@@ -41,34 +41,7 @@ function wunderbuild_register_pricing_benefits_fields()
                 'rows'  => 4,
             ),
 
-            /*
-             * Center Circle
-             */
-            array(
-                'key'   => 'field_pricing_benefits_center',
-                'label' => 'Center Content',
-                'name'  => 'center_content',
-                'type'  => 'group',
-
-                'sub_fields' => array(
-
-                    array(
-                        'key'   => 'field_pricing_benefits_center_heading',
-                        'label' => 'Heading',
-                        'name'  => 'heading',
-                        'type'  => 'text',
-                    ),
-
-                    array(
-                        'key'   => 'field_pricing_benefits_center_description',
-                        'label' => 'Description',
-                        'name'  => 'description',
-                        'type'  => 'textarea',
-                        'rows'  => 3,
-                    ),
-
-                ),
-            ),
+           
 
             /*
              * Benefits Cards

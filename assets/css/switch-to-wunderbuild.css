@@ -1169,10 +1169,11 @@
    DESKTOP CARD
 ========================================================= */
 
+
 .wb-migration-process__desktop-card {
     position: relative;
 
-    display: flex;
+    display: none;
     align-items: center;
 
     gap: 42px;
@@ -1193,6 +1194,11 @@
         0 25px 70px rgba(29, 28, 27, 0.08);
 
     overflow: hidden;
+}
+
+
+.wb-migration-process__desktop-card.is-active {
+    display: flex;
 }
 
 .wb-migration-process__desktop-card::after {

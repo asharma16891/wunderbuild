@@ -82,43 +82,7 @@ function wunderbuild_register_support_onboarding_fields()
                 ),
             ),
 
-            /*
-             * Center Content
-             */
-            array(
-                'key'   => 'field_support_onboarding_center',
-                'label' => 'Center Content',
-                'name'  => 'center_content',
-                'type'  => 'group',
-
-                'sub_fields' => array(
-
-                    array(
-                        'key'           => 'field_support_onboarding_center_icon',
-                        'label'         => 'Icon',
-                        'name'          => 'icon',
-                        'type'          => 'image',
-                        'return_format' => 'array',
-                        'preview_size'  => 'medium',
-                        'library'       => 'all',
-                    ),
-
-                    array(
-                        'key'   => 'field_support_onboarding_center_heading',
-                        'label' => 'Heading',
-                        'name'  => 'heading',
-                        'type'  => 'text',
-                    ),
-
-                    array(
-                        'key'   => 'field_support_onboarding_center_description',
-                        'label' => 'Description',
-                        'name'  => 'description',
-                        'type'  => 'text',
-                    ),
-
-                ),
-            ),
+           
 
             /*
              * Right Card

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-     // Keep header scrolled for solid background/gradient hero
+    // Keep header scrolled for solid background/gradient hero
     if (Secondhero) {
       header.classList.add("scrolled");
       return;
@@ -909,13 +909,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const headerHeight = header ? header.offsetHeight : 90;
 
+
     function getActiveGrid() {
-
-        return document.querySelector(
-            ".pricing-grid.active"
-        );
-
+        return document.querySelector(".pricing-grid.active");
     }
+
 
     function updatePricingCard(plan) {
 
@@ -930,13 +928,9 @@ document.addEventListener("DOMContentLoaded", () => {
         cards.forEach(card => {
 
             if (card.dataset.plan === plan) {
-
                 card.classList.add("active");
-
             } else {
-
                 card.classList.remove("active");
-
             }
 
         });
@@ -944,6 +938,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    // Job Tabs
     buttons.forEach(button => {
 
         button.addEventListener("click", () => {
@@ -980,6 +975,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // Monthly / Annual Toggle
     if (billingToggle) {
 
         billingToggle.addEventListener("click", () => {
@@ -995,16 +991,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             pricingGrids.forEach(grid => {
 
+                const billingType = grid.dataset.billing;
+
                 if (
                     isAnnual &&
-                    grid.dataset.billing === "annual"
+                    billingType === "annual"
                 ) {
 
                     grid.classList.add("active");
 
                 } else if (
                     !isAnnual &&
-                    grid.dataset.billing === "monthly"
+                    billingType === "monthly"
                 ) {
 
                     grid.classList.add("active");
@@ -1018,615 +1016,507 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
 
+            // Get currently selected job tab
             const activeButton =
                 document.querySelector(".job-btn.active");
 
+
+            // Update cards based on active job tab
             if (activeButton) {
 
                 updatePricingCard(
                     activeButton.dataset.plan
                 );
 
+            }
+
+        });
+
+    }
+
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const process = document.querySelector(".wb-migration-process");
-
-    if (!process) return;
-
-    if (
-        typeof gsap === "undefined" ||
-        typeof ScrollTrigger === "undefined"
-    ) {
-        console.warn("GSAP / ScrollTrigger is not loaded.");
-        return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
-    const desktopSteps = Array.from(
-        process.querySelectorAll(".wb-migration-process__step")
-    );
-
-    const mobileSteps = Array.from(
-        process.querySelectorAll(".wb-migration-process__mobile-step")
-    );
-
-    const trackFill = process.querySelector(
-        ".wb-migration-process__track-fill"
-    );
-
-    const mobileLineFill = process.querySelector(
-        ".wb-migration-process__mobile-line-fill"
-    );
-
-    const desktopCard = process.querySelector(
-        ".wb-migration-process__desktop-card"
-    );
-
-    const cardLabel = process.querySelector(
-        ".wb-migration-process__card-label"
-    );
-
-    const cardTitle = process.querySelector(
-        ".wb-migration-process__card-content h3"
-    );
-
-    const cardText = process.querySelector(
-        ".wb-migration-process__card-content p"
-    );
-
-    const cardIcon = process.querySelector(
-        ".wb-migration-process__icon-value"
+    const migrationSections = document.querySelectorAll(
+        ".wb-migration-process"
     );
 
 
-    /* =====================================================
-       DATA
-    ===================================================== */
+    migrationSections.forEach(function (section) {
 
-    const stepsData = [
-
-        {
-            label: "Step 01",
-            title: "Export the data",
-            text: "Export the records you want to bring across from the current system or files.",
-            icon: "↓"
-        },
-
-        {
-            label: "Step 02",
-            title: "Send the files to Wunderbuild",
-            text: "Provide the Excel or CSV files to the onboarding team.",
-            icon: "↳"
-        },
-
-        {
-            label: "Step 03",
-            title: "We review and prepare them",
-            text: "The team checks what can be imported and edits or restructures supported data where needed.",
-            icon: "≡"
-        },
-
-        {
-            label: "Step 04",
-            title: "We import the supported records",
-            text: "The prepared information is imported into the Wunderbuild account.",
-            icon: "↓"
-        },
-
-        {
-            label: "Step 05",
-            title: "You check the result",
-            text: "Review the imported records and request any necessary adjustments.",
-            icon: "✓"
-        }
-
-    ];
-
-
-    const totalSteps = stepsData.length - 1;
-
-    let activeIndex = 0;
-    let desktopTrigger = null;
-
-
-    /* =====================================================
-       UPDATE DESKTOP
-    ===================================================== */
-
-    function updateDesktop(index, animate = true) {
-
-        index = Math.max(
-            0,
-            Math.min(index, totalSteps)
+        const steps = section.querySelectorAll(
+            ".wb-migration-process__step"
         );
 
-        activeIndex = index;
+        const mobileSteps = section.querySelectorAll(
+            ".wb-migration-process__mobile-step"
+        );
+
+        const desktopCards = section.querySelectorAll(
+            ".wb-migration-process__desktop-card"
+        );
+
+        const desktopSection = section.querySelector(
+            ".wb-migration-process__desktop"
+        );
+
+        const trackFill = section.querySelector(
+            ".wb-migration-process__track-fill"
+        );
+
+        const mobileLineFill = section.querySelector(
+            ".wb-migration-process__mobile-line-fill"
+        );
 
 
-        desktopSteps.forEach((step, i) => {
+        /*
+        ========================================
+        UPDATE ACTIVE STEP
+        ========================================
+        */
 
-            const active = i === index;
+        function updateStep(stepIndex) {
 
-            step.classList.toggle(
-                "is-active",
-                active
-            );
-
-            step.setAttribute(
-                "aria-selected",
-                active ? "true" : "false"
-            );
-
-        });
+            stepIndex = String(stepIndex);
 
 
-        const data = stepsData[index];
+            /*
+            ----------------------------------------
+            DESKTOP STEPS
+            ----------------------------------------
+            */
 
+            steps.forEach(function (step) {
 
-        if (animate) {
+                const isActive =
+                    step.dataset.step === stepIndex;
 
-            gsap.to(desktopCard, {
-                opacity: 0,
-                y: 15,
-                duration: 0.18,
-                ease: "power2.out",
-                onComplete: () => {
+                step.classList.toggle(
+                    "is-active",
+                    isActive
+                );
 
-                    cardLabel.textContent = data.label;
-                    cardTitle.textContent = data.title;
-                    cardText.textContent = data.text;
-                    cardIcon.textContent = data.icon;
+                step.setAttribute(
+                    "aria-selected",
+                    isActive ? "true" : "false"
+                );
 
-                    gsap.to(desktopCard, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.35,
-                        ease: "power2.out"
-                    });
-
-                }
             });
 
-        } else {
 
-            cardLabel.textContent = data.label;
-            cardTitle.textContent = data.title;
-            cardText.textContent = data.text;
-            cardIcon.textContent = data.icon;
+            /*
+            ----------------------------------------
+            DESKTOP CARDS
+            ----------------------------------------
+            */
+
+            desktopCards.forEach(function (card) {
+
+                const isActive =
+                    card.dataset.stepContent === stepIndex;
+
+                card.classList.toggle(
+                    "is-active",
+                    isActive
+                );
+
+            });
+
+
+            /*
+            ----------------------------------------
+            MOBILE STEPS
+            ----------------------------------------
+            */
+
+            mobileSteps.forEach(function (mobileStep) {
+
+                const isActive =
+                    mobileStep.dataset.mobileStep === stepIndex;
+
+                mobileStep.classList.toggle(
+                    "is-active",
+                    isActive
+                );
+
+            });
+
+
+            /*
+            ----------------------------------------
+            DESKTOP PROGRESS LINE
+            ----------------------------------------
+            */
+
+            if (
+                trackFill &&
+                steps.length > 1
+            ) {
+
+                const progress =
+                    (
+                        Number(stepIndex) /
+                        (steps.length - 1)
+                    ) * 100;
+
+                trackFill.style.width =
+                    progress + "%";
+
+            }
+
+
+            /*
+            ----------------------------------------
+            MOBILE PROGRESS LINE
+            ----------------------------------------
+            */
+
+            if (
+                mobileLineFill &&
+                mobileSteps.length > 1
+            ) {
+
+                const progress =
+                    (
+                        Number(stepIndex) /
+                        (mobileSteps.length - 1)
+                    ) * 100;
+
+                mobileLineFill.style.height =
+                    progress + "%";
+
+            }
 
         }
 
 
-        /* timeline */
+        /*
+        ========================================
+        DESKTOP STEP CLICK
+        ========================================
+        */
 
-        const progress =
-            (index / totalSteps) * 100;
+        steps.forEach(function (step) {
 
-        gsap.to(trackFill, {
-            width: `${progress}%`,
-            duration: animate ? 0.35 : 0,
-            ease: "power2.out"
-        });
+            step.addEventListener(
+                "click",
+                function () {
 
-    }
+                    updateStep(
+                        this.dataset.step
+                    );
 
-
-    /* =====================================================
-       UPDATE MOBILE
-    ===================================================== */
-
-    function updateMobile(index) {
-
-        index = Math.max(
-            0,
-            Math.min(index, totalSteps)
-        );
-
-        activeIndex = index;
-
-
-        mobileSteps.forEach((step, i) => {
-
-            step.classList.toggle(
-                "is-active",
-                i === index
+                }
             );
 
         });
 
 
         /*
-         * Fill vertical line until active step.
-         */
+        ========================================
+        DESKTOP SCROLL FUNCTIONALITY
+        ========================================
+        */
 
-        const activeStep = mobileSteps[index];
+        let ticking = false;
 
-        if (activeStep && mobileLineFill) {
 
-            const container =
-                process.querySelector(
-                    ".wb-migration-process__mobile"
+        function handleDesktopScroll() {
+
+            /*
+            Only run on desktop
+            */
+
+            if (window.innerWidth < 768) {
+                return;
+            }
+
+
+            if (
+                !desktopSection ||
+                steps.length < 2
+            ) {
+                return;
+            }
+
+
+            const rect =
+                desktopSection.getBoundingClientRect();
+
+            const windowHeight =
+                window.innerHeight;
+
+
+            /*
+            Stop if section is outside viewport
+            */
+
+            if (
+                rect.bottom < 0 ||
+                rect.top > windowHeight
+            ) {
+                return;
+            }
+
+
+            /*
+            Scroll position inside section
+            */
+
+            const scrollPosition =
+                windowHeight * 0.5;
+
+
+            let progress =
+                (scrollPosition - rect.top) /
+                rect.height;
+
+
+            /*
+            Keep progress between 0 and 1
+            */
+
+            progress = Math.max(
+                0,
+                Math.min(1, progress)
+            );
+
+
+            /*
+            Convert progress to step number
+            */
+
+            const stepIndex =
+                Math.round(
+                    progress *
+                    (steps.length - 1)
                 );
 
-            const number =
-                activeStep.querySelector(
-                    ".wb-migration-process__mobile-number"
-                );
 
-            const containerRect =
-                container.getBoundingClientRect();
-
-            const numberRect =
-                number.getBoundingClientRect();
-
-            const height =
-                numberRect.top -
-                containerRect.top +
-                (numberRect.height / 2);
-
-            gsap.to(mobileLineFill, {
-                height: `${height}px`,
-                duration: 0.35,
-                ease: "power2.out"
-            });
+            updateStep(stepIndex);
 
         }
 
-    }
 
+        window.addEventListener(
+            "scroll",
+            function () {
 
-    /* =====================================================
-       INITIAL
-    ===================================================== */
+                if (!ticking) {
 
-    updateDesktop(0, false);
-    updateMobile(0);
+                    window.requestAnimationFrame(
+                        function () {
 
+                            handleDesktopScroll();
 
-    /* =====================================================
-       DESKTOP SCROLL
-    ===================================================== */
+                            ticking = false;
 
-    function createDesktopScroll() {
-
-        if (window.innerWidth <= 767) {
-            return;
-        }
-
-
-        desktopTrigger = ScrollTrigger.create({
-
-            id: "wbMigrationProcessDesktop",
-
-            trigger: process,
-
-            start: "top top",
-
-            end: () => {
-
-                return "+=" +
-                    (
-                        window.innerHeight *
-                        totalSteps
+                        }
                     );
 
-            },
-
-            pin: true,
-
-            anticipatePin: 1,
-
-            scrub: 0.25,
-
-            invalidateOnRefresh: true,
-
-
-            snap: {
-
-                snapTo: (value) => {
-
-                    const step =
-                        Math.round(
-                            value * totalSteps
-                        );
-
-                    return step / totalSteps;
-
-                },
-
-                duration: {
-                    min: 0.2,
-                    max: 0.45
-                },
-
-                delay: 0,
-
-                ease: "power2.out"
-
-            },
-
-
-            onUpdate: (self) => {
-
-                const index =
-                    Math.round(
-                        self.progress *
-                        totalSteps
-                    );
-
-
-                if (index !== activeIndex) {
-
-                    updateDesktop(index);
+                    ticking = true;
 
                 }
 
+            },
+            {
+                passive: true
             }
-
-        });
-
-    }
-
-    const activeButton =
-        document.querySelector(".job-btn.active");
-
-    if (activeButton) {
-
-        updatePricingCard(
-            activeButton.dataset.plan
         );
 
-    }
 
+        window.addEventListener(
+            "resize",
+            function () {
 
-    /* =====================================================
-       DESKTOP CLICK
-    ===================================================== */
+                handleDesktopScroll();
 
-    desktopSteps.forEach((step, index) => {
-
-        step.addEventListener("click", () => {
-
-            if (window.innerWidth <= 767) {
-                return;
             }
-
-            if (!desktopTrigger) {
-                return;
-            }
+        );
 
 
-            const progress =
-                index / totalSteps;
+        /*
+        ========================================
+        MOBILE SCROLL FUNCTIONALITY
+        ========================================
+        */
+
+        if (
+            "IntersectionObserver" in window &&
+            mobileSteps.length
+        ) {
+
+            const mobileObserver =
+                new IntersectionObserver(
+                    function (entries) {
+
+                        entries.forEach(
+                            function (entry) {
+
+                                if (
+                                    entry.isIntersecting &&
+                                    window.innerWidth < 768
+                                ) {
+
+                                    updateStep(
+                                        entry.target
+                                            .dataset
+                                            .mobileStep
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.5
+                    }
+                );
 
 
-            const target =
-                desktopTrigger.start +
-                (
-                    desktopTrigger.end -
-                    desktopTrigger.start
-                ) * progress;
+            mobileSteps.forEach(
+                function (mobileStep) {
 
+                    mobileObserver.observe(
+                        mobileStep
+                    );
 
-            window.scrollTo({
+                }
+            );
 
-                top: target,
-
-                behavior: "smooth"
-
-            });
-
-        });
-
-    });
-
-
-    /* =====================================================
-       MOBILE SCROLL
-    ===================================================== */
-
-    function createMobileScroll() {
-
-        if (window.innerWidth > 767) {
-            return;
         }
 
 
-        mobileSteps.forEach((step, index) => {
+        /*
+        ========================================
+        INITIAL STATE
+        ========================================
+        */
 
-            ScrollTrigger.create({
-
-                trigger: step,
-
-                start: "top 60%",
-
-                end: "bottom 40%",
-
-                onEnter: () => {
-
-                    updateMobile(index);
-
-                },
-
-                onEnterBack: () => {
-
-                    updateMobile(index);
-
-                }
-
-            });
-
-        });
-
-    }
+        updateStep("0");
 
 
-    /* =====================================================
-       CREATE
-    ===================================================== */
+        /*
+        Run once after page load
+        */
 
-    createDesktopScroll();
-    createMobileScroll();
+        setTimeout(
+            function () {
 
+                handleDesktopScroll();
 
-    /* =====================================================
-       RESIZE
-    ===================================================== */
-
-    let resizeTimer;
-
-    window.addEventListener("resize", () => {
-
-        clearTimeout(resizeTimer);
-
-        resizeTimer = setTimeout(() => {
-
-            if (desktopTrigger) {
-
-                desktopTrigger.kill();
-
-                desktopTrigger = null;
-
-            }
-
-
-            ScrollTrigger.getAll().forEach(trigger => {
-
-                if (
-                    trigger.trigger &&
-                    process.contains(trigger.trigger)
-                ) {
-                    trigger.kill();
-                }
-
-            });
-
-
-            activeIndex = 0;
-
-            updateDesktop(0, false);
-            updateMobile(0);
-
-
-            createDesktopScroll();
-            createMobileScroll();
-
-
-            ScrollTrigger.refresh();
-
-        }, 250);
+            },
+            100
+        );
 
     });
 
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
 
-    const modal = document.getElementById("wb-review-modal");
+      const modal = document.getElementById("wb-review-modal");
 
-    if (!modal) return;
+      if (!modal) return;
 
-    let previousTrigger = null;
+      let previousTrigger = null;
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | FILTER / PAGINATION
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | FILTER / PAGINATION
+      |--------------------------------------------------------------------------
+      */
 
-    async function navigate(url, push = true) {
+      async function navigate(url, push = true) {
 
         const scrollPosition = window.scrollY;
 
         try {
 
-            const response = await fetch(url, {
-                headers: {
-                    "X-Requested-With": "XMLHttpRequest"
-                }
-            });
-
-            if (!response.ok) {
-                window.location.href = url;
-                return;
+          const response = await fetch(url, {
+            headers: {
+              "X-Requested-With": "XMLHttpRequest"
             }
+          });
+
+          if (!response.ok) {
+            window.location.href = url;
+            return;
+          }
 
 
-            const html = await response.text();
+          const html = await response.text();
 
-            const doc = new DOMParser().parseFromString(
-                html,
-                "text/html"
-            );
-
-
-            const newGallery = doc.querySelector(
-                ".wb-reviews-gallery"
-            );
-
-            const currentGallery = document.querySelector(
-                ".wb-reviews-gallery"
-            );
+          const doc = new DOMParser().parseFromString(
+            html,
+            "text/html"
+          );
 
 
-            if (!newGallery || !currentGallery) {
-                window.location.href = url;
-                return;
-            }
+          const newGallery = doc.querySelector(
+            ".wb-reviews-gallery"
+          );
+
+          const currentGallery = document.querySelector(
+            ".wb-reviews-gallery"
+          );
 
 
-            currentGallery.replaceWith(newGallery);
+          if (!newGallery || !currentGallery) {
+            window.location.href = url;
+            return;
+          }
 
 
-            if (push) {
-                history.pushState({}, "", url);
-            }
+          currentGallery.replaceWith(newGallery);
 
 
-            /*
-            |------------------------------------------------------------------
-            | KEEP CURRENT SCROLL POSITION
-            |------------------------------------------------------------------
-            */
+          if (push) {
+            history.pushState({}, "", url);
+          }
 
-            requestAnimationFrame(() => {
-                window.scrollTo(0, scrollPosition);
-            });
+
+          /*
+          |------------------------------------------------------------------
+          | KEEP CURRENT SCROLL POSITION
+          |------------------------------------------------------------------
+          */
+
+          requestAnimationFrame(() => {
+            window.scrollTo(0, scrollPosition);
+          });
 
 
         } catch (error) {
 
-            window.location.href = url;
+          window.location.href = url;
 
         }
 
-    }
+      }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | FILTERS + LOAD MORE + PAGINATION
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | FILTERS + LOAD MORE + PAGINATION
+      |--------------------------------------------------------------------------
+      */
 
-    document.addEventListener("click", event => {
+      document.addEventListener("click", event => {
 
         const link = event.target.closest(
-            "[data-review-filter], [data-load-more], .wb-reviews-pages a"
+          "[data-review-filter], [data-load-more], .wb-reviews-pages a"
         );
 
 
         if (!link) {
-            return;
+          return;
         }
 
 
@@ -1635,40 +1525,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navigate(link.href);
 
-    });
+      });
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | BACK / FORWARD
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | BACK / FORWARD
+      |--------------------------------------------------------------------------
+      */
 
-    window.addEventListener("popstate", () => {
+      window.addEventListener("popstate", () => {
 
         navigate(
-            window.location.href,
-            false
+          window.location.href,
+          false
         );
 
-    });
+      });
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | OPEN VIDEO
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | OPEN VIDEO
+      |--------------------------------------------------------------------------
+      */
 
-    function openVideo(button) {
+      function openVideo(button) {
 
         const card = button.closest(
-            ".wb-review-card"
+          ".wb-review-card"
         );
 
 
         if (!card) {
-            return;
+          return;
         }
 
 
@@ -1682,43 +1572,43 @@ document.addEventListener("DOMContentLoaded", () => {
         */
 
         const video = modal.querySelector(
-            ".wb-review-modal__video"
+          ".wb-review-modal__video"
         );
 
         const unavailable = modal.querySelector(
-            ".wb-review-modal__unavailable"
+          ".wb-review-modal__unavailable"
         );
 
         const title = modal.querySelector(
-            "#wb-review-modal-title"
+          "#wb-review-modal-title"
         );
 
         const role = modal.querySelector(
-            ".wb-review-modal__role"
+          ".wb-review-modal__role"
         );
 
         const summary = modal.querySelector(
-            ".wb-review-modal__summary"
+          ".wb-review-modal__summary"
         );
 
         const topic = modal.querySelector(
-            ".wb-review-modal__topic"
+          ".wb-review-modal__topic"
         );
 
         const rating = modal.querySelector(
-            ".wb-review-modal__rating"
+          ".wb-review-modal__rating"
         );
 
         const transcript = modal.querySelector(
-            ".wb-review-transcript"
+          ".wb-review-transcript"
         );
 
         const transcriptContent = transcript.querySelector(
-            "div"
+          "div"
         );
 
         const captions = modal.querySelector(
-            ".wb-review-modal__captions"
+          ".wb-review-modal__captions"
         );
 
 
@@ -1729,42 +1619,42 @@ document.addEventListener("DOMContentLoaded", () => {
         */
 
         const name =
-            card.querySelector(
-                ".wb-review-person strong"
-            )?.textContent.trim() || "";
+          card.querySelector(
+            ".wb-review-person strong"
+          )?.textContent.trim() || "";
 
 
         const roleText =
-            [...card.querySelectorAll(
-                ".wb-review-person span"
-            )]
+          [...card.querySelectorAll(
+            ".wb-review-person span"
+          )]
             .map(item => item.textContent.trim())
             .filter(Boolean)
             .join(" · ");
 
 
         const reviewText =
-            card.querySelector(
-                ".wb-review-video__summary"
-            )?.textContent.trim() || "";
+          card.querySelector(
+            ".wb-review-video__summary"
+          )?.textContent.trim() || "";
 
 
         const topicText =
-            card.querySelector(
-                ".wb-review-topic"
-            )?.textContent.trim() || "";
+          card.querySelector(
+            ".wb-review-topic"
+          )?.textContent.trim() || "";
 
 
         const ratingText =
-            card.querySelector(
-                ".wb-review-rating"
-            )?.textContent.trim() || "";
+          card.querySelector(
+            ".wb-review-rating"
+          )?.textContent.trim() || "";
 
 
         const poster =
-            card.querySelector(
-                ".wb-review-video__media img"
-            )?.src || "";
+          card.querySelector(
+            ".wb-review-video__media img"
+          )?.src || "";
 
 
         /*
@@ -1774,15 +1664,15 @@ document.addEventListener("DOMContentLoaded", () => {
         */
 
         const videoUrl =
-            button.dataset.videoUrl || "";
+          button.dataset.videoUrl || "";
 
 
         const captionsUrl =
-            button.dataset.captions || "";
+          button.dataset.captions || "";
 
 
         const transcriptText =
-            button.dataset.transcript || "";
+          button.dataset.transcript || "";
 
 
         /*
@@ -1816,73 +1706,73 @@ document.addEventListener("DOMContentLoaded", () => {
         if (videoUrl) {
 
 
-            /*
-            |------------------------------------------------------------------
-            | VIDEO AVAILABLE
-            |------------------------------------------------------------------
-            */
+          /*
+          |------------------------------------------------------------------
+          | VIDEO AVAILABLE
+          |------------------------------------------------------------------
+          */
 
-            video.hidden = false;
+          video.hidden = false;
 
-            unavailable.hidden = true;
-
-
-            /*
-            |------------------------------------------------------------------
-            | VIDEO URL
-            |------------------------------------------------------------------
-            */
-
-            video.src = videoUrl;
+          unavailable.hidden = true;
 
 
-            /*
-            |------------------------------------------------------------------
-            | POSTER
-            |------------------------------------------------------------------
-            */
+          /*
+          |------------------------------------------------------------------
+          | VIDEO URL
+          |------------------------------------------------------------------
+          */
 
-            if (poster) {
-                video.poster = poster;
-            }
+          video.src = videoUrl;
 
 
-            /*
-            |------------------------------------------------------------------
-            | CAPTIONS
-            |------------------------------------------------------------------
-            */
+          /*
+          |------------------------------------------------------------------
+          | POSTER
+          |------------------------------------------------------------------
+          */
 
-            if (captionsUrl) {
-
-                captions.src = captionsUrl;
-
-                captions.hidden = false;
-
-            } else {
-
-                captions.removeAttribute("src");
-
-                captions.hidden = true;
-
-            }
+          if (poster) {
+            video.poster = poster;
+          }
 
 
-            video.load();
+          /*
+          |------------------------------------------------------------------
+          | CAPTIONS
+          |------------------------------------------------------------------
+          */
+
+          if (captionsUrl) {
+
+            captions.src = captionsUrl;
+
+            captions.hidden = false;
+
+          } else {
+
+            captions.removeAttribute("src");
+
+            captions.hidden = true;
+
+          }
+
+
+          video.load();
 
 
         } else {
 
 
-            /*
-            |------------------------------------------------------------------
-            | VIDEO NOT AVAILABLE
-            |------------------------------------------------------------------
-            */
+          /*
+          |------------------------------------------------------------------
+          | VIDEO NOT AVAILABLE
+          |------------------------------------------------------------------
+          */
 
-            video.hidden = true;
+          video.hidden = true;
 
-            unavailable.hidden = false;
+          unavailable.hidden = false;
 
         }
 
@@ -1895,16 +1785,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (transcriptText) {
 
-            transcript.hidden = false;
+          transcript.hidden = false;
 
-            transcriptContent.textContent =
-                transcriptText;
+          transcriptContent.textContent =
+            transcriptText;
 
         } else {
 
-            transcript.hidden = true;
+          transcript.hidden = true;
 
-            transcriptContent.textContent = "";
+          transcriptContent.textContent = "";
 
         }
 
@@ -1918,38 +1808,38 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.hidden = false;
 
         modal.setAttribute(
-            "aria-hidden",
-            "false"
+          "aria-hidden",
+          "false"
         );
 
 
         document.body.classList.add(
-            "wb-review-modal-open"
+          "wb-review-modal-open"
         );
 
 
         modal.querySelector(
-            ".wb-review-modal__close"
+          ".wb-review-modal__close"
         )?.focus();
 
-    }
+      }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | CLOSE VIDEO
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | CLOSE VIDEO
+      |--------------------------------------------------------------------------
+      */
 
-    function closeVideo() {
+      function closeVideo() {
 
         if (modal.hidden) {
-            return;
+          return;
         }
 
 
         const video = modal.querySelector(
-            ".wb-review-modal__video"
+          ".wb-review-modal__video"
         );
 
 
@@ -1965,120 +1855,120 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.hidden = true;
 
         modal.setAttribute(
-            "aria-hidden",
-            "true"
+          "aria-hidden",
+          "true"
         );
 
 
         document.body.classList.remove(
-            "wb-review-modal-open"
+          "wb-review-modal-open"
         );
 
 
         if (previousTrigger) {
 
-            previousTrigger.focus();
+          previousTrigger.focus();
 
-            previousTrigger = null;
+          previousTrigger = null;
 
         }
 
-    }
+      }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | VIDEO CLICK
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | VIDEO CLICK
+      |--------------------------------------------------------------------------
+      */
 
-    document.addEventListener("click", event => {
+      document.addEventListener("click", event => {
 
 
         const button = event.target.closest(
-            "[data-video-open]"
+          "[data-video-open]"
         );
 
 
         if (button) {
 
-            openVideo(button);
+          openVideo(button);
 
-            return;
+          return;
 
         }
 
 
         const closeButton = event.target.closest(
-            "[data-video-close]"
+          "[data-video-close]"
         );
 
 
         if (closeButton) {
 
-            closeVideo();
+          closeVideo();
 
         }
 
-    });
+      });
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | ESCAPE
-    |--------------------------------------------------------------------------
-    */
+      /*
+      |--------------------------------------------------------------------------
+      | ESCAPE
+      |--------------------------------------------------------------------------
+      */
 
-    document.addEventListener("keydown", event => {
+      document.addEventListener("keydown", event => {
 
         if (
-            event.key === "Escape" &&
-            !modal.hidden
+          event.key === "Escape" &&
+          !modal.hidden
         ) {
 
-            closeVideo();
+          closeVideo();
 
         }
 
+      });
+
     });
 
-});
 
+    document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", function () {
+      const enquiryForm = document.querySelector("#enquiry-form");
 
-    const enquiryForm = document.querySelector("#enquiry-form");
-
-    if (!enquiryForm) {
+      if (!enquiryForm) {
         return;
-    }
+      }
 
-    document.addEventListener("click", function (event) {
+      document.addEventListener("click", function (event) {
 
         const link = event.target.closest("[data-enquiry-route]");
 
         if (!link) {
-            return;
+          return;
         }
 
         const selectedRoute = link.dataset.enquiryRoute;
 
         const select = document.querySelector(
-            'select[name="enquiry-type"]'
+          'select[name="enquiry-type"]'
         );
 
         if (!select) {
-            return;
+          return;
         }
 
         select.value = selectedRoute;
 
         select.dispatchEvent(
-            new Event("change", {
-                bubbles: true
-            })
+          new Event("change", {
+            bubbles: true
+          })
         );
 
-    });
+      });
 
-});
+    });

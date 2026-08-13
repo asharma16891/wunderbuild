@@ -180,6 +180,34 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'megaphone',
             'keywords'    => ['switching', 'migration', 'cta'],
         ],
+        [
+            'name'        => 'wb-migration-process',
+            'title'       => 'WB Migration Process',
+            'description' => 'Migration process steps section',
+            'icon'        => 'list-view',
+            'keywords'    => ['migration', 'process', 'steps', 'export'],
+        ],
+        [
+            'name'        => 'migration-limit',
+            'title'       => 'Migration Limit',
+            'description' => 'Migration limitations cards section',
+            'icon'        => 'warning',
+            'keywords'    => ['migration', 'limit', 'data', 'cards'],
+        ],
+        [
+            'name'        => 'wb-timing-section',
+            'title'       => 'WB Timing Section',
+            'description' => 'Timing information section',
+            'icon'        => 'clock',
+            'keywords'    => ['timing', 'migration', 'support'],
+        ],
+        [
+            'name'        => 'wb-handover',
+            'title'       => 'WB Handover',
+            'description' => 'Handover CTA section',
+            'icon'        => 'admin-customizer',
+            'keywords'    => ['handover', 'support', 'onboarding', 'team'],
+        ],
 
     ];
 

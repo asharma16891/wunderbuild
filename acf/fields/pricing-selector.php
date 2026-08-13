@@ -21,12 +21,7 @@ function wunderbuild_register_pricing_selector_fields()
         'fields' => array(
 
 
-            array(
-                'key'   => 'field_pricing_selector_eyebrow',
-                'label' => 'Eyebrow',
-                'name'  => 'eyebrow',
-                'type'  => 'text',
-            ),
+
 
             array(
                 'key'   => 'field_pricing_selector_heading',
@@ -139,6 +134,19 @@ function wunderbuild_register_pricing_selector_fields()
                     ),
 
                 ),
+            ),
+
+
+            array(
+                'key'           => 'field_show_annual_plans',
+                'label'         => 'Enable Annual Plans',
+                'name'          => 'show_annual_plans',
+                'type'          => 'true_false',
+                'instructions'  => 'Enable this when annual pricing plans are available.',
+                'default_value' => 0,
+                'ui'            => 1,
+                'ui_on_text'    => 'Show Annual',
+                'ui_off_text'   => 'Hide Annual',
             ),
 
 
