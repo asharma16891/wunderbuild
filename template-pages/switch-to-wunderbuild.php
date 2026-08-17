@@ -5,6 +5,12 @@
  */
 
 get_header();
+<<<<<<< Updated upstream
+=======
+?>
+
+<!-- <section class="pricing-hero">
+>>>>>>> Stashed changes
 
 while ( have_posts() ) :
     the_post();

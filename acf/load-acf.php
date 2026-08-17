@@ -57,6 +57,7 @@ require_once get_stylesheet_directory() . '/acf/fields/comparison.php';
 require_once get_stylesheet_directory() . '/acf/fields/faqs.php';
 require_once get_stylesheet_directory() . '/acf/fields/new-work.php';
 require_once get_stylesheet_directory() . '/acf/fields/workflow-map.php';
+<<<<<<< Updated upstream
 require_once get_stylesheet_directory() . '/acf/fields/pricing-selector.php';
 require_once get_stylesheet_directory() . '/acf/fields/pricing-workflow.php';
 require_once get_stylesheet_directory() . '/acf/fields/pricing-benefits.php';
@@ -71,3 +72,14 @@ require_once get_stylesheet_directory() . '/acf/fields/wb-migration-process.php'
 require_once get_stylesheet_directory() . '/acf/fields/migration-limit.php';
 require_once get_stylesheet_directory() . '/acf/fields/wb-timing-section.php';
 require_once get_stylesheet_directory() . '/acf/fields/wb-handover.php';
+=======
+require_once get_stylesheet_directory() . '/acf/fields/hero-video.php';
+require_once get_stylesheet_directory() . '/acf/fields/mcp-problem.php';
+require_once get_stylesheet_directory() . '/acf/fields/mcp-product-story.php';
+require_once get_stylesheet_directory() . '/acf/fields/mcp-capabilities.php';
+require_once get_stylesheet_directory() . '/acf/fields/mcp-access-timeline.php';
+require_once get_stylesheet_directory() . '/acf/fields/workspace-cta.php';
+require_once get_stylesheet_directory() . '/acf/fields/contact-routes.php';
+require_once get_stylesheet_directory() . '/acf/fields/contact-enquiry.php';
+require_once get_stylesheet_directory() . '/acf/fields/contact-details.php';
+>>>>>>> Stashed changes

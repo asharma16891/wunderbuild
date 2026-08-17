@@ -148,9 +148,7 @@ $contact_data = [
     </section>
 
 
-    <!-- ==================================================
-         CONTACT ROUTES
-    =================================================== -->
+   
 
     <!-- =========================================
      CONTACT ROUTES
@@ -334,18 +332,11 @@ $contact_data = [
 
                 <div class="contact-enquiry__intro">
 
-                    <div class="eyebrow">
-
-                        <span class="dot"></span>
-
-                        Get in touch
-
-                    </div>
+                   
 
 
                     <h2>
-                        Let's talk about
-                        <span>what you need.</span>
+                       Send Enquiry
                     </h2>
 
 
@@ -441,21 +432,13 @@ $contact_data = [
 
         <div class="contact-details__header">
 
-            <div class="eyebrow">
-                <span class="dot"></span>
-                Contact details
-            </div>
+           
 
             <h2>
-                Prefer to reach us
-                <span>directly?</span>
+               Wunderbuild contact details
             </h2>
 
-            <p>
-                Have a question or need help?
-                Reach the Wunderbuild team directly using the
-                details below.
-            </p>
+          
 
         </div>
 

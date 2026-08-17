@@ -348,6 +348,7 @@ $filtered_reviews = array_filter(
 $filtered_reviews = array_values($filtered_reviews);
 
 
+<<<<<<< Updated upstream
 /*
 |--------------------------------------------------------------------------
 | SECONDARY FILTER VISIBILITY
@@ -355,6 +356,19 @@ $filtered_reviews = array_values($filtered_reviews);
 | Only show topic filters if there is enough topic content.
 |--------------------------------------------------------------------------
 */
+=======
+      
+
+    </div>
+
+</section>
+
+
+<section>
+
+  <!-- PRODUCT RECORDING -->
+        <div class="mcp-hero__media">
+>>>>>>> Stashed changes
 
 $topic_counts = [];
 
@@ -381,6 +395,7 @@ $show_secondary_filters = count($topic_counts) >= 2;
 
 $per_page = 6;
 
+<<<<<<< Updated upstream
 $total_reviews = count($filtered_reviews);
 
 $total_pages = max(
@@ -392,6 +407,10 @@ $current_page = min(
     $current_page,
     $total_pages
 );
+=======
+        </div>
+</section>
+>>>>>>> Stashed changes
 
 $offset = ($current_page - 1) * $per_page;
 

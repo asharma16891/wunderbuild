@@ -104,6 +104,7 @@ function wunderbuild_register_acf_blocks()
             'keywords'    => ['workflow', 'map', 'hotspots'],
         ],
         [
+<<<<<<< Updated upstream
             'name'        => 'pricing-hero',
             'title'       => 'Pricing Hero',
             'description' => 'Pricing Hero Section',
@@ -208,6 +209,71 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'admin-customizer',
             'keywords'    => ['handover', 'support', 'onboarding', 'team'],
         ],
+=======
+            'name'        => 'hero-video',
+            'title'       => 'Hero Video',
+            'description' => 'Hero video section',
+            'icon'        => 'video-alt3',
+            'keywords'    => ['hero', 'video'],
+        ],
+        [
+            'name'        => 'mcp-problem',
+            'title'       => 'MCP Problem',
+            'description' => 'MCP problem cards section',
+            'icon'        => 'warning',
+            'keywords'    => ['mcp', 'problem', 'cards', 'answer'],
+        ],
+        [
+            'name'        => 'mcp-product-story',
+            'title'       => 'MCP Product Story',
+            'description' => 'MCP product story section',
+            'icon'        => 'networking',
+            'keywords'    => ['mcp', 'product', 'story', 'flow'],
+        ],
+        [
+            'name'        => 'mcp-capabilities',
+            'title'       => 'MCP Capabilities',
+            'description' => 'MCP capabilities tabs section',
+            'icon'        => 'screenoptions',
+            'keywords'    => ['mcp', 'capabilities', 'tabs', 'prompts'],
+        ],
+        [
+            'name'        => 'mcp-access-timeline',
+            'title'       => 'MCP Access Timeline',
+            'description' => 'MCP access timeline section',
+            'icon'        => 'editor-ol',
+            'keywords'    => ['mcp', 'access', 'timeline'],
+        ],
+        [
+            'name'        => 'workspace-cta',
+            'title'       => 'Workspace CTA',
+            'description' => 'Workspace CTA section',
+            'icon'        => 'button',
+            'keywords'    => ['workspace', 'cta', 'call to action'],
+        ],
+        [
+            'name'        => 'contact-routes',
+            'title'       => 'Contact Routes',
+            'description' => 'Contact routes cards section',
+            'icon'        => 'location-alt',
+            'keywords'    => ['contact', 'routes', 'support', 'sales'],
+        ],
+        [
+            'name'        => 'contact-enquiry',
+            'title'       => 'Contact Enquiry',
+            'description' => 'Contact enquiry section with Contact Form 7',
+            'icon'        => 'email',
+            'keywords'    => ['contact', 'enquiry', 'form'],
+        ],
+        [
+            'name'        => 'contact-details',
+            'title'       => 'Contact Details',
+            'description' => 'Contact details cards section',
+            'icon'        => 'phone',
+            'keywords'    => ['contact', 'details', 'phone', 'support', 'email'],
+        ],
+
+>>>>>>> Stashed changes
 
     ];
 
