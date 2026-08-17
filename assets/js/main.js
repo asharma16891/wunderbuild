@@ -736,6 +736,9 @@ document.addEventListener("DOMContentLoaded", () => {
   /*--------------------------
 Initial State
 ---------------------------*/
+if (!paths.length) {
+        return;
+    }
 
   gsap.set(cards, {
     opacity: 0,
@@ -1955,7 +1958,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
+// contact form js
 document.addEventListener("DOMContentLoaded", function () {
 
     const enquiryForm = document.querySelector("#enquiry-form");
@@ -2382,4 +2385,592 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(groups[0].id);
 
 });
+
+
+// blog page js 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const blog = document.querySelector(".wb-blog");
+
+    if (!blog) {
+        return;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | ELEMENTS
+    |--------------------------------------------------------------------------
+    */
+
+    const tabs = blog.querySelectorAll(".wb-blog-tab");
+
+    const searchInput = blog.querySelector(
+        "#wb-blog-search-input"
+    );
+
+    const clearSearchButton = blog.querySelector(
+        ".wb-blog-search__clear"
+    );
+
+    const clearFilterButton = blog.querySelector(
+        "#wb-blog-clear-filter"
+    );
+
+    const posts = blog.querySelectorAll(
+        "[data-post]"
+    );
+
+    const noResults = blog.querySelector(
+        "#wb-blog-no-results"
+    );
+
+    const resultsCount = blog.querySelector(
+        ".wb-blog-results-count"
+    );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STATE
+    |--------------------------------------------------------------------------
+    */
+
+    let activeTopic = "all";
+
+    let searchTerm = "";
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | URL STATE
+    |--------------------------------------------------------------------------
+    |
+    | Example:
+    |
+    | /resources/blog/?topic=estimating-and-cost-control&search=cost
+    |
+    */
+
+    function getUrlState() {
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        return {
+            topic: params.get("topic") || "all",
+            search: params.get("search") || ""
+        };
+
+    }
+
+
+    function updateUrl() {
+
+        const url = new URL(
+            window.location.href
+        );
+
+        if (activeTopic && activeTopic !== "all") {
+
+            url.searchParams.set(
+                "topic",
+                activeTopic
+            );
+
+        } else {
+
+            url.searchParams.delete("topic");
+
+        }
+
+
+        if (searchTerm) {
+
+            url.searchParams.set(
+                "search",
+                searchTerm
+            );
+
+        } else {
+
+            url.searchParams.delete("search");
+
+        }
+
+
+        window.history.replaceState(
+            {},
+            "",
+            url
+        );
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SET ACTIVE TAB
+    |--------------------------------------------------------------------------
+    */
+
+    function setActiveTab(topic) {
+
+        tabs.forEach(function (tab) {
+
+            const isActive =
+                tab.dataset.topic === topic;
+
+            tab.classList.toggle(
+                "is-active",
+                isActive
+            );
+
+            tab.setAttribute(
+                "aria-selected",
+                isActive ? "true" : "false"
+            );
+
+        });
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FILTER POSTS
+    |--------------------------------------------------------------------------
+    */
+
+    function filterPosts(updateHistory = true) {
+
+        let visibleCount = 0;
+
+
+        posts.forEach(function (post) {
+
+            const postTopic =
+                post.dataset.topic || "";
+
+            const searchableText =
+                post.dataset.search || "";
+
+
+            const topicMatches =
+                activeTopic === "all" ||
+                postTopic === activeTopic;
+
+
+            const searchMatches =
+                !searchTerm ||
+                searchableText.includes(
+                    searchTerm.toLowerCase()
+                );
+
+
+            const shouldShow =
+                topicMatches &&
+                searchMatches;
+
+
+            post.classList.toggle(
+                "is-hidden",
+                !shouldShow
+            );
+
+
+            if (shouldShow) {
+                visibleCount++;
+            }
+
+        });
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | NO RESULTS
+        |--------------------------------------------------------------------------
+        */
+
+        if (noResults) {
+
+            noResults.hidden =
+                visibleCount !== 0;
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | RESULT COUNT
+        |--------------------------------------------------------------------------
+        */
+
+        if (resultsCount) {
+
+            resultsCount.textContent =
+                visibleCount +
+                (visibleCount === 1
+                    ? " article"
+                    : " articles");
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CLEAR SEARCH BUTTON
+        |--------------------------------------------------------------------------
+        */
+
+        if (clearSearchButton) {
+
+            clearSearchButton.hidden =
+                !searchTerm;
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | URL
+        |--------------------------------------------------------------------------
+        */
+
+        if (updateHistory) {
+            updateUrl();
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | TAB CLICK
+    |--------------------------------------------------------------------------
+    */
+
+    tabs.forEach(function (tab) {
+
+        tab.addEventListener(
+            "click",
+            function () {
+
+                activeTopic =
+                    this.dataset.topic || "all";
+
+                setActiveTab(
+                    activeTopic
+                );
+
+                filterPosts();
+
+            }
+        );
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SEARCH
+    |--------------------------------------------------------------------------
+    */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                searchTerm =
+                    this.value
+                        .trim()
+                        .toLowerCase();
+
+                filterPosts();
+
+            }
+        );
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CLEAR SEARCH
+    |--------------------------------------------------------------------------
+    */
+
+    if (clearSearchButton) {
+
+        clearSearchButton.addEventListener(
+            "click",
+            function () {
+
+                searchTerm = "";
+
+                searchInput.value = "";
+
+                searchInput.focus();
+
+                filterPosts();
+
+            }
+        );
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CLEAR ALL FILTERS
+    |--------------------------------------------------------------------------
+    */
+
+    if (clearFilterButton) {
+
+        clearFilterButton.addEventListener(
+            "click",
+            function () {
+
+                activeTopic = "all";
+
+                searchTerm = "";
+
+                setActiveTab("all");
+
+                if (searchInput) {
+                    searchInput.value = "";
+                }
+
+                filterPosts();
+
+            }
+        );
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | KEYBOARD SUPPORT
+    |--------------------------------------------------------------------------
+    */
+
+    tabs.forEach(function (tab, index) {
+
+        tab.addEventListener(
+            "keydown",
+            function (event) {
+
+                let nextIndex = index;
+
+
+                if (event.key === "ArrowRight") {
+
+                    nextIndex =
+                        (index + 1) % tabs.length;
+
+                }
+
+
+                if (event.key === "ArrowLeft") {
+
+                    nextIndex =
+                        (index - 1 + tabs.length) %
+                        tabs.length;
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight" ||
+                    event.key === "ArrowLeft"
+                ) {
+
+                    event.preventDefault();
+
+                    tabs[nextIndex].focus();
+
+                    tabs[nextIndex].click();
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | INITIAL URL STATE
+    |--------------------------------------------------------------------------
+    */
+
+    const initialState =
+        getUrlState();
+
+
+    activeTopic =
+        initialState.topic;
+
+
+    searchTerm =
+        initialState.search
+            .trim()
+            .toLowerCase();
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VALIDATE TOPIC
+    |--------------------------------------------------------------------------
+    */
+
+    const validTopic =
+        Array.from(tabs).some(function (tab) {
+
+            return (
+                tab.dataset.topic === activeTopic
+            );
+
+        });
+
+
+    if (!validTopic) {
+        activeTopic = "all";
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | INITIAL UI
+    |--------------------------------------------------------------------------
+    */
+
+    setActiveTab(
+        activeTopic
+    );
+
+
+    if (searchInput) {
+
+        searchInput.value =
+            initialState.search;
+
+    }
+
+
+    filterPosts(false);
+
+});
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tabs = document.getElementById("wb-blog-tabs");
+    const tabsWrap = document.querySelector(".wb-blog-tabs-wrap");
+    const nextButton = document.getElementById("wb-blog-tabs-next");
+
+    if (!tabs || !tabsWrap || !nextButton) {
+        return;
+    }
+
+
+    /* =====================================================
+       CHECK WHETHER MORE TABS ARE AVAILABLE
+       ===================================================== */
+
+    function updateTabScrollState() {
+
+        const maxScroll =
+            tabs.scrollWidth - tabs.clientWidth;
+
+        const currentScroll =
+            tabs.scrollLeft;
+
+
+        /*
+         * No horizontal overflow
+         */
+
+        if (maxScroll <= 5) {
+
+            tabsWrap.classList.add("is-end");
+
+            return;
+        }
+
+
+        /*
+         * User reached the right side
+         */
+
+        if (currentScroll >= maxScroll - 5) {
+
+            tabsWrap.classList.add("is-end");
+
+        } else {
+
+            tabsWrap.classList.remove("is-end");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       NEXT BUTTON
+       ===================================================== */
+
+    nextButton.addEventListener("click", function () {
+
+        const amount =
+            Math.min(
+                tabs.clientWidth * 0.55,
+                400
+            );
+
+
+        tabs.scrollBy({
+            left: amount,
+            behavior: "smooth"
+        });
+
+    });
+
+
+    /* =====================================================
+       TAB SCROLL
+       ===================================================== */
+
+    tabs.addEventListener(
+        "scroll",
+        updateTabScrollState,
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       RESIZE
+       ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        updateTabScrollState
+    );
+
+
+    /* =====================================================
+       INITIAL CHECK
+       ===================================================== */
+
+    updateTabScrollState();
+
+});
+
+// blog page js end here 
 

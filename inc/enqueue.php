@@ -97,6 +97,16 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
+
+          // workspace studuio css
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/blog.css';
+
+    wp_enqueue_style(
+        'wunderbuild-blog',
+        get_stylesheet_directory_uri() . '/assets/css/blog.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
     // JS
     $js_file = get_stylesheet_directory() . '/assets/js/main.js';
 
