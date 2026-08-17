@@ -104,7 +104,6 @@ function wunderbuild_register_acf_blocks()
             'keywords'    => ['workflow', 'map', 'hotspots'],
         ],
         [
-<<<<<<< Updated upstream
             'name'        => 'pricing-hero',
             'title'       => 'Pricing Hero',
             'description' => 'Pricing Hero Section',
@@ -209,7 +208,7 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'admin-customizer',
             'keywords'    => ['handover', 'support', 'onboarding', 'team'],
         ],
-=======
+        [
             'name'        => 'hero-video',
             'title'       => 'Hero Video',
             'description' => 'Hero video section',
@@ -273,7 +272,6 @@ function wunderbuild_register_acf_blocks()
             'keywords'    => ['contact', 'details', 'phone', 'support', 'email'],
         ],
 
->>>>>>> Stashed changes
 
     ];
 
