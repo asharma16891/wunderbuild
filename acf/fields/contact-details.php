@@ -26,11 +26,10 @@ function wunderbuild_register_contact_details_fields()
             */
 
             array(
-                'key'           => 'field_contact_details_heading',
-                'label'         => 'Section Heading',
-                'name'          => 'heading',
-                'type'          => 'text',
-               
+                'key'   => 'field_contact_details_heading',
+                'label' => 'Section Heading',
+                'name'  => 'heading',
+                'type'  => 'text',
             ),
 
 
@@ -76,11 +75,11 @@ function wunderbuild_register_contact_details_fields()
                     */
 
                     array(
-                        'key'           => 'field_contact_detail_label',
-                        'label'         => 'Label',
-                        'name'          => 'label',
-                        'type'          => 'text',
-                        'placeholder'   => 'Example: PHONE',
+                        'key'         => 'field_contact_detail_label',
+                        'label'       => 'Label',
+                        'name'        => 'label',
+                        'type'        => 'text',
+                        'placeholder' => 'Example: PHONE',
                     ),
 
 
@@ -91,11 +90,27 @@ function wunderbuild_register_contact_details_fields()
                     */
 
                     array(
-                        'key'           => 'field_contact_detail_value',
-                        'label'         => 'Main Value',
-                        'name'          => 'value',
-                        'type'          => 'text',
-                        'placeholder'   => 'Example: 1300 16 16 26',
+                        'key'         => 'field_contact_detail_value',
+                        'label'       => 'Main Value',
+                        'name'        => 'value',
+                        'type'        => 'text',
+                        'placeholder' => 'Example: 1300 16 16 26',
+                    ),
+
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | Main Value Link
+                    |--------------------------------------------------------------------------
+                    */
+
+                    array(
+                        'key'           => 'field_contact_detail_link',
+                        'label'         => 'Main Value Link',
+                        'name'          => 'link',
+                        'type'          => 'link',
+                        'return_format' => 'array',
+                        'instructions'  => 'Optional. Add a link to make the Main Value clickable.',
                     ),
 
 
@@ -106,10 +121,10 @@ function wunderbuild_register_contact_details_fields()
                     */
 
                     array(
-                        'key'         => 'field_contact_detail_description',
-                        'label'       => 'Description',
-                        'name'        => 'description',
-                        'type'        => 'textarea',
+                        'key'        => 'field_contact_detail_description',
+                        'label'      => 'Description',
+                        'name'       => 'description',
+                        'type'       => 'textarea',
                         'rows'       => 3,
                         'new_lines'  => 'br',
                     ),
@@ -121,15 +136,7 @@ function wunderbuild_register_contact_details_fields()
                     |--------------------------------------------------------------------------
                     */
 
-                    array(
-                        'key'           => 'field_contact_detail_highlight',
-                        'label'         => 'Highlight Card',
-                        'name'          => 'highlight',
-                        'type'          => 'true_false',
-                        'instructions'  => 'Enable green top border for this card.',
-                        'default_value' => 0,
-                        'ui'            => 1,
-                    ),
+                    
 
                 ),
             ),

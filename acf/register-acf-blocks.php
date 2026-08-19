@@ -271,6 +271,14 @@ function wunderbuild_register_acf_blocks()
             'icon'        => 'phone',
             'keywords'    => ['contact', 'details', 'phone', 'support', 'email'],
         ],
+       [
+            'name'        => 'about-context',
+            'title'       => 'About Context',
+            'description' => 'About Context Section',
+            'icon'        => 'info',
+            'keywords'    => ['about', 'context', 'cards'],
+        ]
+       
 
 
     ];
