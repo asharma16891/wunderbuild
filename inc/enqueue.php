@@ -98,7 +98,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-          // workspace studuio css
+          // blog css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/blog.css';
 
     wp_enqueue_style(
@@ -107,6 +107,31 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
+    $pricing_css_file = get_stylesheet_directory() . '/assets/css/event.css';
+
+    wp_enqueue_style(
+        'wunderbuild-event',
+        get_stylesheet_directory_uri() . '/assets/css/event.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+     // Affiliate css
+    wp_enqueue_style(
+        'wunderbuild-affiliate',
+        get_stylesheet_directory_uri() . '/assets/css/affiliate.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+
+     // About css
+    wp_enqueue_style(
+        'wunderbuild-about',
+        get_stylesheet_directory_uri() . '/assets/css/about.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+
+
     // JS
     $js_file = get_stylesheet_directory() . '/assets/js/main.js';
 

@@ -589,8 +589,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
 <section
     class="wb-reviews-gallery"
-    aria-labelledby="wb-reviews-gallery-title"
->
+    aria-labelledby="wb-reviews-gallery-title">
 
     <div class="wb-reviews-gallery__inner">
 
@@ -601,11 +600,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
         <div class="wb-reviews-gallery__header">
 
-            <div class="wb-reviews-gallery__heading">
-
-                <span class="wb-reviews-gallery__eyebrow">
-                    Customer reviews
-                </span>
+            <div class="section-head">
 
                 <h2 id="wb-reviews-gallery-title">
                     Browse the reviews.
@@ -626,21 +621,19 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
             <nav
                 class="wb-reviews-filter"
-                aria-label="Review type filters"
-            >
+                aria-label="Review type filters">
 
                 <!-- ALL -->
 
                 <a
                     class="<?php echo $current_type === 'all' ? 'is-active' : ''; ?>"
                     href="<?php echo esc_url(
-                        wb_review_filter_url('all', $current_topic)
-                    ); ?>"
+                                wb_review_filter_url('all', $current_topic)
+                            ); ?>"
                     data-review-filter
                     data-type="all"
                     data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'all' ? 'page' : 'false'; ?>"
-                >
+                    aria-current="<?php echo $current_type === 'all' ? 'page' : 'false'; ?>">
                     All reviews
                 </a>
 
@@ -650,13 +643,12 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                 <a
                     class="<?php echo $current_type === 'text' ? 'is-active' : ''; ?>"
                     href="<?php echo esc_url(
-                        wb_review_filter_url('text', $current_topic)
-                    ); ?>"
+                                wb_review_filter_url('text', $current_topic)
+                            ); ?>"
                     data-review-filter
                     data-type="text"
                     data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'text' ? 'page' : 'false'; ?>"
-                >
+                    aria-current="<?php echo $current_type === 'text' ? 'page' : 'false'; ?>">
                     Text reviews
                 </a>
 
@@ -666,13 +658,12 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                 <a
                     class="<?php echo $current_type === 'video' ? 'is-active' : ''; ?>"
                     href="<?php echo esc_url(
-                        wb_review_filter_url('video', $current_topic)
-                    ); ?>"
+                                wb_review_filter_url('video', $current_topic)
+                            ); ?>"
                     data-review-filter
                     data-type="video"
                     data-topic="<?php echo esc_attr($current_topic); ?>"
-                    aria-current="<?php echo $current_type === 'video' ? 'page' : 'false'; ?>"
-                >
+                    aria-current="<?php echo $current_type === 'video' ? 'page' : 'false'; ?>">
                     Video reviews
                 </a>
 
@@ -687,20 +678,18 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                 <nav
                     class="wb-reviews-topics"
-                    aria-label="Review topic filters"
-                >
+                    aria-label="Review topic filters">
 
                     <!-- ALL TOPICS -->
 
                     <a
                         class="<?php echo $current_topic === 'all' ? 'is-active' : ''; ?>"
                         href="<?php echo esc_url(
-                            wb_review_filter_url($current_type, 'all')
-                        ); ?>"
+                                    wb_review_filter_url($current_type, 'all')
+                                ); ?>"
                         data-review-filter
                         data-type="<?php echo esc_attr($current_type); ?>"
-                        data-topic="all"
-                    >
+                        data-topic="all">
                         All topics
                     </a>
 
@@ -722,15 +711,14 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                         <a
                             class="<?php echo $current_topic === $topic_key ? 'is-active' : ''; ?>"
                             href="<?php echo esc_url(
-                                wb_review_filter_url(
-                                    $current_type,
-                                    $topic_key
-                                )
-                            ); ?>"
+                                        wb_review_filter_url(
+                                            $current_type,
+                                            $topic_key
+                                        )
+                                    ); ?>"
                             data-review-filter
                             data-type="<?php echo esc_attr($current_type); ?>"
-                            data-topic="<?php echo esc_attr($topic_key); ?>"
-                        >
+                            data-topic="<?php echo esc_attr($topic_key); ?>">
                             <?php echo esc_html($topic_label); ?>
                         </a>
 
@@ -751,8 +739,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
             class="wb-reviews-status"
             data-review-status
             aria-live="polite"
-            aria-atomic="true"
-        >
+            aria-atomic="true">
 
             Showing
 
@@ -768,18 +755,9 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
         <!-- =========================================================
              REVIEWS GRID
         ========================================================== -->
-
         <div
-            class="
-                wb-reviews-grid
-                <?php
-                echo count($page_reviews) === 1
-                    ? 'wb-reviews-grid--single'
-                    : '';
-                ?>
-            "
-            id="wb-reviews-grid"
-        >
+            class="<?php echo esc_attr($grid_class); ?>"
+            id="wb-reviews-grid">
 
 
             <?php if (!empty($page_reviews)) : ?>
@@ -826,12 +804,11 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                     <article
                         class="<?php echo esc_attr($card_class); ?>"
                         data-review-type="<?php echo esc_attr(
-                            $review['review_type'] ?? ''
-                        ); ?>"
+                                                $review['review_type'] ?? ''
+                                            ); ?>"
                         data-review-topic="<?php echo esc_attr(
-                            $review['topic'] ?? ''
-                        ); ?>"
-                    >
+                                                $review['topic'] ?? ''
+                                            ); ?>">
 
 
                         <?php if ($is_video) : ?>
@@ -850,8 +827,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                     <img
                                         src="<?php echo esc_url($poster); ?>"
                                         alt=""
-                                        loading="lazy"
-                                    >
+                                        loading="lazy">
 
 
                                     <!-- PLAY BUTTON -->
@@ -860,19 +836,18 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                         class="wb-review-video__play"
                                         type="button"
                                         aria-label="Watch review from <?php echo esc_attr(
-                                            $review['reviewer_name'] ?? ''
-                                        ); ?>"
+                                                                            $review['reviewer_name'] ?? ''
+                                                                        ); ?>"
                                         data-video-open
                                         data-video-url="<?php echo esc_url(
-                                            $review['video_url'] ?? ''
-                                        ); ?>"
+                                                            $review['video_url'] ?? ''
+                                                        ); ?>"
                                         data-captions="<?php echo esc_url(
-                                            $review['captions'] ?? ''
-                                        ); ?>"
+                                                            $review['captions'] ?? ''
+                                                        ); ?>"
                                         data-transcript="<?php echo esc_attr(
-                                            $review['transcript'] ?? ''
-                                        ); ?>"
-                                    >
+                                                                $review['transcript'] ?? ''
+                                                            ); ?>">
 
                                         <span aria-hidden="true">
                                             ▶
@@ -918,14 +893,12 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                             <div
                                                 class="wb-review-rating"
                                                 aria-label="<?php echo esc_attr(
-                                                    $review['rating']
-                                                ); ?> out of 5"
-                                            >
+                                                                $review['rating']
+                                                            ); ?> out of 5">
 
                                                 <span
                                                     class="wb-review-rating__stars"
-                                                    aria-hidden="true"
-                                                >
+                                                    aria-hidden="true">
                                                     ★★★★★
                                                 </span>
 
@@ -950,9 +923,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                             <?php
                                             echo esc_html(
-                                                $topic_labels[
-                                                    $review['topic']
-                                                ] ?? $review['topic']
+                                                $topic_labels[$review['topic']] ?? $review['topic']
                                             );
                                             ?>
 
@@ -1009,9 +980,8 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                             <time
                                                 datetime="<?php echo esc_attr(
-                                                    $review['review_date']
-                                                ); ?>"
-                                            >
+                                                                $review['review_date']
+                                                            ); ?>">
                                                 <?php echo esc_html(
                                                     $formatted_date
                                                 ); ?>
@@ -1047,14 +1017,12 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                     <div
                                         class="wb-review-rating"
                                         aria-label="<?php echo esc_attr(
-                                            $review['rating']
-                                        ); ?> out of 5"
-                                    >
+                                                        $review['rating']
+                                                    ); ?> out of 5">
 
                                         <span
                                             class="wb-review-rating__stars"
-                                            aria-hidden="true"
-                                        >
+                                            aria-hidden="true">
                                             ★★★★★
                                         </span>
 
@@ -1077,9 +1045,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                     <?php
                                     echo esc_html(
-                                        $topic_labels[
-                                            $review['topic']
-                                        ] ?? $review['topic']
+                                        $topic_labels[$review['topic']] ?? $review['topic']
                                     );
                                     ?>
 
@@ -1091,8 +1057,8 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                             <blockquote>
 
                                 “<?php echo esc_html(
-                                    $review['review_text'] ?? ''
-                                ); ?>”
+                                        $review['review_text'] ?? ''
+                                    ); ?>”
 
                             </blockquote>
 
@@ -1132,9 +1098,8 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                     <time
                                         datetime="<?php echo esc_attr(
-                                            $review['review_date']
-                                        ); ?>"
-                                    >
+                                                        $review['review_date']
+                                                    ); ?>">
                                         <?php echo esc_html(
                                             $formatted_date
                                         ); ?>
@@ -1153,11 +1118,10 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                         <a
                                             href="<?php echo esc_url(
-                                                $review['source_url']
-                                            ); ?>"
+                                                        $review['source_url']
+                                                    ); ?>"
                                             target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                            rel="noopener noreferrer">
                                             <?php echo esc_html(
                                                 $review['source_label']
                                             ); ?>
@@ -1195,13 +1159,11 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                 <div
                     class="wb-reviews-empty"
-                    role="status"
-                >
+                    role="status">
 
                     <span
                         class="wb-reviews-empty__icon"
-                        aria-hidden="true"
-                    >
+                        aria-hidden="true">
                         —
                     </span>
 
@@ -1219,8 +1181,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                     <a
                         href="<?php echo esc_url(get_permalink()); ?>"
-                        class="wb-reviews-empty__button"
-                    >
+                        class="wb-reviews-empty__button">
                         View all reviews
                     </a>
 
@@ -1247,15 +1208,14 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                     <a
                         href="<?php echo esc_url(
-                            wb_review_filter_url(
-                                $current_type,
-                                $current_topic,
-                                $current_page + 1
-                            )
-                        ); ?>"
+                                    wb_review_filter_url(
+                                        $current_type,
+                                        $current_topic,
+                                        $current_page + 1
+                                    )
+                                ); ?>"
                         class="wb-reviews-load-more"
-                        data-load-more
-                    >
+                        data-load-more>
                         Load more reviews
                     </a>
 
@@ -1266,8 +1226,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                 <nav
                     class="wb-reviews-pages"
-                    aria-label="Reviews pagination"
-                >
+                    aria-label="Reviews pagination">
 
                     <?php for (
                         $page = 1;
@@ -1277,21 +1236,20 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                         <a
                             href="<?php echo esc_url(
-                                wb_review_filter_url(
-                                    $current_type,
-                                    $current_topic,
-                                    $page
-                                )
-                            ); ?>"
+                                        wb_review_filter_url(
+                                            $current_type,
+                                            $current_topic,
+                                            $page
+                                        )
+                                    ); ?>"
                             class="<?php echo $page === $current_page
-                                ? 'is-active'
-                                : ''; ?>"
+                                        ? 'is-active'
+                                        : ''; ?>"
                             <?php
                             echo $page === $current_page
                                 ? 'aria-current="page"'
                                 : '';
-                            ?>
-                        >
+                            ?>>
                             <?php echo esc_html($page); ?>
                         </a>
 
@@ -1317,16 +1275,14 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
     class="wb-review-modal"
     id="wb-review-modal"
     hidden
-    aria-hidden="true"
->
+    aria-hidden="true">
 
 
     <!-- OVERLAY -->
 
     <div
         class="wb-review-modal__overlay"
-        data-video-close
-    ></div>
+        data-video-close></div>
 
 
     <!-- DIALOG -->
@@ -1335,8 +1291,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
         class="wb-review-modal__dialog"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="wb-review-modal-title"
-    >
+        aria-labelledby="wb-review-modal-title">
 
 
         <!-- CLOSE -->
@@ -1345,8 +1300,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
             class="wb-review-modal__close"
             type="button"
             aria-label="Close video review"
-            data-video-close
-        >
+            data-video-close>
             ×
         </button>
 
@@ -1365,16 +1319,14 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                 controls
                 playsinline
                 preload="metadata"
-                hidden
-            >
+                hidden>
 
                 <track
                     class="wb-review-modal__captions"
                     kind="captions"
                     srclang="en"
                     label="English"
-                    hidden
-                >
+                    hidden>
 
             </video>
 
@@ -1383,15 +1335,13 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
             <div
                 class="wb-review-modal__unavailable"
-                hidden
-            >
+                hidden>
 
                 <img
                     src="<?php echo esc_url(
-                        $default_review_poster
-                    ); ?>"
-                    alt=""
-                >
+                                $default_review_poster
+                            ); ?>"
+                    alt="">
 
                 <div class="wb-review-modal__unavailable-copy">
 
@@ -1446,8 +1396,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
             <details
                 class="wb-review-transcript"
-                hidden
-            >
+                hidden>
 
                 <summary>
                     View transcript
