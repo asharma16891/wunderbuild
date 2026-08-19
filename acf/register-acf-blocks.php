@@ -277,6 +277,41 @@ function wunderbuild_register_acf_blocks()
             'description' => 'About Context Section',
             'icon'        => 'info',
             'keywords'    => ['about', 'context', 'cards'],
+        ],
+        [
+            'name'        => 'about-purpose',
+            'title'       => 'About Purpose',
+            'description' => 'About Purpose Section',
+            'icon'        => 'info',
+            'keywords'    => ['about', 'purpose', 'cards'],
+        ],
+        [
+            'name'        => 'about-feedback',
+            'title'       => 'About Feedback',
+            'description' => 'About Feedback Section',
+            'icon'        => 'info',
+            'keywords'    => ['about', 'feedback', 'steps'],
+        ],
+        [
+            'name'        => 'about-support',
+            'title'       => 'About Support',
+            'description' => 'About Support Section',
+            'icon'        => 'info',
+            'keywords'    => ['about', 'support', 'cards'],
+        ],
+        [
+            'name'        => 'about-team',
+            'title'       => 'About Team',
+            'description' => 'About Team Section',
+            'icon'        => 'groups',
+            'keywords'    => ['about', 'team', 'members'],
+        ],
+        [
+            'name'        => 'about-address',
+            'title'       => 'About Address',
+            'description' => 'About Address Section',
+            'icon'        => 'location-alt',
+            'keywords'    => ['about', 'address', 'location'],
         ]
        
 

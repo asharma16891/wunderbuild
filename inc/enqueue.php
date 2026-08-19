@@ -39,6 +39,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
+    
     // pricing page css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/support-onboarding.css';
 
@@ -87,6 +88,8 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
+
+    
     // JS
     $js_file = get_stylesheet_directory() . '/assets/js/main.js';
 
