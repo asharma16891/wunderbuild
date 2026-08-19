@@ -56,6 +56,7 @@
 
 .wb-reviews-topics {
   margin-top: 12px;
+margin-bottom: 50px;
 }
 
 .wb-reviews-filter a,
@@ -79,7 +80,7 @@
 
 .wb-reviews-filter a:hover,
 .wb-reviews-topics a:hover {
-  transform: translateY(-2px);
+  background: var(--pearl);
 }
 
 .wb-reviews-filter a.is-active,
@@ -113,6 +114,8 @@
   color: var(--review-ink);
 
   font-size: 14px;
+
+  display: none;
 }
 
 /* =========================================================
@@ -127,6 +130,17 @@
   gap: 24px;
 
   align-items: start;
+}
+
+.wb-reviews-grid.wb-reviews-grid--video-only {
+  display: grid;
+
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+      max-width: 1120px;
+    margin-inline: auto;
+
+  
 }
 
 /*
@@ -167,19 +181,6 @@
   box-shadow: 0 28px 70px rgba(29, 28, 27, 0.1);
 }
 
-/* =========================================================
-   TEXT CARD
-========================================================= */
-
-.wb-review-card--text {
-  min-height: 430px;
-
-  padding: 34px;
-
-  display: flex;
-
-  flex-direction: column;
-}
 
 .wb-review-card--text blockquote {
   margin: 70px 0 55px;
@@ -207,13 +208,7 @@
   gap: 20px;
 }
 
-.wb-review-card__number {
-  color: var(--review-ink);
 
-  font-size: 14px;
-
-  font-weight: 700;
-}
 
 /* =========================================================
    RATING
@@ -241,33 +236,7 @@
   letter-spacing: 1px;
 }
 
-/* =========================================================
-   TOPIC
-========================================================= */
 
-.wb-review-topic {
-  display: inline-flex;
-
-  width: fit-content;
-
-  margin-top: 24px;
-
-  padding: 8px 13px;
-
-  border-radius: 999px;
-
-  background: rgba(141, 120, 255, 0.11);
-
-  color: var(--review-indigo);
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-}
 
 /* =========================================================
    PERSON
@@ -326,8 +295,135 @@
  * video = 2 columns
  */
 
+/* =========================================================
+   DEFAULT GRID
+========================================================= */
+
+.wb-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   TEXT CARD
+========================================================= */
+
+.wb-review-card--text {
+    grid-column: span 1;
+}
+
+
+/* =========================================================
+   VIDEO CARD DEFAULT
+========================================================= */
+
 .wb-review-card--video {
-  grid-column: span 2;
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   PATTERN:
+   TEXT + TEXT + TEXT
+========================================================= */
+
+.wb-reviews-grid--pattern-t-t-t
+.wb-review-card {
+    grid-column: span 1;
+}
+
+
+/* =========================================================
+   PATTERN:
+   TEXT + VIDEO
+========================================================= */
+
+.wb-reviews-grid--pattern-t-v
+.wb-review-card--text {
+    grid-column: span 1;
+}
+
+.wb-reviews-grid--pattern-t-v
+.wb-review-card--video {
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   PATTERN:
+   VIDEO + TEXT
+========================================================= */
+
+.wb-reviews-grid--pattern-v-t
+.wb-review-card--video {
+    grid-column: span 2;
+}
+
+.wb-reviews-grid--pattern-v-t
+.wb-review-card--text {
+    grid-column: span 1;
+}
+
+
+/* =========================================================
+   PATTERN:
+   TEXT + VIDEO + TEXT
+========================================================= */
+
+.wb-reviews-grid--pattern-t-v-t
+.wb-review-card--video {
+    grid-column: span 2;
+}
+
+.wb-reviews-grid--pattern-t-v-t
+.wb-review-card:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   PATTERN:
+   TEXT + TEXT + VIDEO
+========================================================= */
+
+.wb-reviews-grid--pattern-t-t-v
+.wb-review-card--video {
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   PATTERN:
+   VIDEO + TEXT + TEXT
+========================================================= */
+
+.wb-reviews-grid--pattern-v-t-t
+.wb-review-card--video {
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   VIDEO ONLY
+========================================================= */
+
+.wb-reviews-grid--video-only
+.wb-review-card--video {
+    grid-column: span 1;
+}
+
+
+/* =========================================================
+   SINGLE REVIEW
+========================================================= */
+
+.wb-reviews-grid--single
+.wb-review-card--video {
+    grid-column: 1 / -1;
 }
 
 /*
@@ -525,6 +621,10 @@
   background: rgba(255, 255, 255, 0.65);
 
   text-align: center;
+
+      max-width: 1120px;
+    margin-inline: auto;
+    width: 100%;
 }
 
 .wb-reviews-empty__icon {
@@ -1149,9 +1249,8 @@ body.wb-review-modal-open {
   display: flex;
   flex-direction: column;
 
-  min-height: 420px;
-
   padding: 30px;
+  height: 100%;
 }
 
 /* Top */
@@ -1165,16 +1264,7 @@ body.wb-review-modal-open {
   gap: 20px;
 }
 
-/* Number */
 
-.wb-review-card__number {
-  color: var(--ink-40);
-
-  font-size: 12px;
-  font-weight: 700;
-
-  letter-spacing: 0.08em;
-}
 
 /* Rating */
 
@@ -1204,8 +1294,6 @@ body.wb-review-modal-open {
   display: inline-flex;
 
   width: fit-content;
-
-  margin-top: 32px;
 
   padding: 7px 11px;
 
@@ -1246,7 +1334,7 @@ body.wb-review-modal-open {
 
   gap: 4px;
 
-  margin-top: 38px;
+  margin-top: 24px;
   padding-top: 22px;
 
   border-top: 1px solid var(--ink-15);
@@ -1433,7 +1521,7 @@ body.wb-review-modal-open {
 }
 
 .wb-review-video__details .wb-review-topic {
-  margin-top: 30px;
+
 
   background: var(--indigo);
 

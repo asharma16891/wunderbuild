@@ -582,9 +582,79 @@ $grid_class = implode(' ', $grid_classes);
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| REVIEW LAYOUT PATTERN
+|--------------------------------------------------------------------------
+*/
+
+$review_pattern = array();
+
+foreach ($page_reviews as $review) {
+
+    $review_pattern[] =
+        (($review['review_type'] ?? '') === 'video')
+            ? 'v'
+            : 't';
+}
+
+$review_pattern = implode('-', $review_pattern);
+
+$grid_classes = array(
+    'wb-reviews-grid',
+);
+
+/*
+|--------------------------------------------------------------------------
+| VIDEO ONLY
+|--------------------------------------------------------------------------
+*/
+
+if ($video_only) {
+    $grid_classes[] = 'wb-reviews-grid--video-only';
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| SINGLE REVIEW
+|--------------------------------------------------------------------------
+*/
+
+if ($single_review) {
+    $grid_classes[] = 'wb-reviews-grid--single';
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| REVIEW ORDER PATTERN
+|--------------------------------------------------------------------------
+|
+| Examples:
+|
+| t-t-t
+| t-v
+| v-v
+| t-v-t
+| t-t-v
+| v-t-t
+|
+*/
+
+if (!empty($review_pattern)) {
+    $grid_classes[] =
+        'wb-reviews-grid--pattern-' .
+        str_replace('-', '-', $review_pattern);
+}
+
+$grid_class = implode(' ', $grid_classes);
+
 $default_review_poster = get_template_directory_uri() . '/assets/images/Estimates.png';
 
 ?>
+
+
 
 
 <section
@@ -880,13 +950,6 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                     <div class="wb-review-card__top">
 
-                                        <span class="wb-review-card__number">
-                                            <?php echo sprintf(
-                                                '%02d',
-                                                $offset + $index + 1
-                                            ); ?>
-                                        </span>
-
 
                                         <?php if (!empty($review['rating'])) : ?>
 
@@ -912,24 +975,26 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                         <?php endif; ?>
 
+                                        <!-- TOPIC -->
+
+                                        <?php if (!empty($review['topic'])) : ?>
+
+                                            <span class="wb-review-topic">
+
+                                                <?php
+                                                echo esc_html(
+                                                    $topic_labels[$review['topic']] ?? $review['topic']
+                                                );
+                                                ?>
+
+                                            </span>
+
+                                        <?php endif; ?>
+
                                     </div>
 
 
-                                    <!-- TOPIC -->
 
-                                    <?php if (!empty($review['topic'])) : ?>
-
-                                        <span class="wb-review-topic">
-
-                                            <?php
-                                            echo esc_html(
-                                                $topic_labels[$review['topic']] ?? $review['topic']
-                                            );
-                                            ?>
-
-                                        </span>
-
-                                    <?php endif; ?>
 
 
                                     <!-- SUMMARY -->
@@ -1004,13 +1069,6 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                             <div class="wb-review-card__top">
 
-                                <span class="wb-review-card__number">
-                                    <?php echo sprintf(
-                                        '%02d',
-                                        $offset + $index + 1
-                                    ); ?>
-                                </span>
-
 
                                 <?php if (!empty($review['rating'])) : ?>
 
@@ -1036,22 +1094,24 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                                 <?php endif; ?>
 
+                                <?php if (!empty($review['topic'])) : ?>
+
+                                    <span class="wb-review-topic">
+
+                                        <?php
+                                        echo esc_html(
+                                            $topic_labels[$review['topic']] ?? $review['topic']
+                                        );
+                                        ?>
+
+                                    </span>
+
+                                <?php endif; ?>
+
                             </div>
 
 
-                            <?php if (!empty($review['topic'])) : ?>
 
-                                <span class="wb-review-topic">
-
-                                    <?php
-                                    echo esc_html(
-                                        $topic_labels[$review['topic']] ?? $review['topic']
-                                    );
-                                    ?>
-
-                                </span>
-
-                            <?php endif; ?>
 
 
                             <blockquote>
