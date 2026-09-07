@@ -1778,3 +1778,403 @@
    
 
 }
+
+/* =========================================================
+   ORIGIN STORY V2
+========================================================= */
+
+.wb-origin-story-v2 {
+    padding: 90px 0;
+}
+
+
+.wb-origin-story-v2 .wrap {
+    max-width: 1180px;
+}
+
+
+
+
+
+.wb-origin-story-v2__eyebrow,
+.wb-origin-story-v2__label,
+.wb-origin-story-v2__item-label {
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: var(--ink-60, #777);
+}
+
+
+.wb-origin-story-v2__header h2 {
+    margin: 0 0 18px;
+
+    color: var(--charcoal, #252525);
+
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 500;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+}
+
+
+.wb-origin-story-v2__header p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--ink-60, #666);
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOUNDER CARD
+========================================================= */
+
+.wb-origin-story-v2__founder {
+    display: grid;
+
+    grid-template-columns: 130px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 34px;
+
+    max-width: 920px;
+
+    margin-bottom: 70px;
+    margin-inline: auto;
+
+    padding: 34px 40px;
+
+    background: var(--white, #fff);
+
+    border: 1px solid rgba(29, 28, 27, 0.1);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 12px 40px rgba(29, 28, 27, 0.05);
+}
+
+
+/* Founder mark */
+
+.wb-origin-story-v2__founder-mark {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background: var(--indigo, #a9a0df);
+
+    color: var(--charcoal, #252525);
+
+    font-size: 20px;
+    font-weight: 600;
+
+    letter-spacing: -0.03em;
+
+    box-shadow:
+        inset 0 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+
+.wb-origin-story-v2__founder-content h3 {
+    margin: 0 0 10px;
+
+    color: var(--charcoal, #252525);
+
+    font-size: 30px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.035em;
+}
+
+
+.wb-origin-story-v2__founder-content p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--ink-60, #666);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   STORY TIMELINE
+========================================================= */
+
+.wb-origin-story-v2__timeline {
+    position: relative;
+    margin-inline: auto;
+    max-width: 920px;
+}
+
+
+/* Vertical line */
+
+.wb-origin-story-v2__timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 12px;
+    bottom: 12px;
+
+    left: 14px;
+
+    width: 1px;
+
+    background:
+        rgba(29, 28, 27, 0.15);
+}
+
+
+/* =========================================================
+   TIMELINE ITEM
+========================================================= */
+
+.wb-origin-story-v2__item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 22px minmax(0, 1fr);
+
+    gap: 32px;
+
+    padding-bottom: 42px;
+}
+
+
+.wb-origin-story-v2__item:last-child {
+    padding-bottom: 0;
+}
+
+
+/* Dot */
+
+.wb-origin-story-v2__rail {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.wb-origin-story-v2__rail span {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: var(--white, #fff);
+
+    border: 5px solid var(--indigo, #a9a0df);
+}
+
+
+/* Alternate accent */
+
+.wb-origin-story-v2__item:nth-child(2)
+.wb-origin-story-v2__rail span {
+    border-color: var(--coral, #ef8c7c);
+}
+
+
+.wb-origin-story-v2__item:nth-child(3)
+.wb-origin-story-v2__rail span {
+    border-color: var(--peach, #f4b28c);
+}
+
+
+.wb-origin-story-v2__item:nth-child(4)
+.wb-origin-story-v2__rail span {
+    border-color: var(--indigo, #a9a0df);
+}
+
+
+.wb-origin-story-v2__item:nth-child(5)
+.wb-origin-story-v2__rail span {
+    border-color: var(--charcoal, #252525);
+}
+
+
+/* =========================================================
+   ITEM CONTENT
+========================================================= */
+
+.wb-origin-story-v2__item-content {
+    position: relative;
+
+    padding: 4px 0 0;
+}
+
+
+.wb-origin-story-v2__item-label {
+    margin-bottom: 9px;
+
+    font-size: 10px;
+}
+
+
+.wb-origin-story-v2__item h3 {
+    margin: 0 0 10px;
+
+    color: var(--charcoal, #252525);
+
+    font-size: clamp(24px, 2.3vw, 32px);
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.035em;
+}
+
+
+.wb-origin-story-v2__item p {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: var(--ink-60, #666);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-origin-story-v2 {
+        padding: 90px 0;
+    }
+
+
+    .wb-origin-story-v2__founder {
+        max-width: 100%;
+    }
+
+
+    .wb-origin-story-v2__timeline {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-origin-story-v2 {
+        padding: 70px 0;
+    }
+
+
+    .wb-origin-story-v2__header {
+        margin-bottom: 45px;
+    }
+
+
+    .wb-origin-story-v2__header p {
+        font-size: 16px;
+    }
+
+
+    /* Founder */
+
+    .wb-origin-story-v2__founder {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        padding: 28px;
+
+        border-radius: 22px;
+
+        margin-bottom: 50px;
+    }
+
+
+    .wb-origin-story-v2__founder-mark {
+        width: 80px;
+        height: 80px;
+
+        font-size: 16px;
+    }
+
+
+    .wb-origin-story-v2__founder-content h3 {
+        font-size: 26px;
+    }
+
+
+    /* Timeline */
+
+    .wb-origin-story-v2__item {
+        grid-template-columns: 18px minmax(0, 1fr);
+
+        gap: 20px;
+
+        padding-bottom: 35px;
+    }
+
+
+    .wb-origin-story-v2__timeline::before {
+        left: 8px;
+    }
+
+
+    .wb-origin-story-v2__rail span {
+        width: 17px;
+        height: 17px;
+
+        border-width: 4px;
+    }
+
+
+    .wb-origin-story-v2__item h3 {
+        font-size: 24px;
+    }
+
+
+    .wb-origin-story-v2__item p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+}

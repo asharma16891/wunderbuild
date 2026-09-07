@@ -1290,45 +1290,61 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// reviews page js
+// review page js 
 
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("wb-review-modal");
 
-  if (!modal) return;
+  if (!modal) {
+    return;
+  }
 
   let previousTrigger = null;
 
   /*
-    |--------------------------------------------------------------------------
-    | FILTER / PAGINATION
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | GALLERY NAVIGATION
+  |--------------------------------------------------------------------------
+  */
+
+  async function fetchPage(url) {
+    const response = await fetch(url, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+
+    const html = await response.text();
+
+    return new DOMParser().parseFromString(html, "text/html");
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | REPLACE GALLERY
+  |--------------------------------------------------------------------------
+  */
 
   async function navigate(url, push = true) {
+    const currentGallery = document.querySelector(".wb-reviews-gallery");
+
+    if (!currentGallery) {
+      window.location.href = url;
+      return;
+    }
+
     const scrollPosition = window.scrollY;
 
     try {
-      const response = await fetch(url, {
-        headers: {
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      });
-
-      if (!response.ok) {
-        window.location.href = url;
-        return;
-      }
-
-      const html = await response.text();
-
-      const doc = new DOMParser().parseFromString(html, "text/html");
+      const doc = await fetchPage(url);
 
       const newGallery = doc.querySelector(".wb-reviews-gallery");
 
-      const currentGallery = document.querySelector(".wb-reviews-gallery");
-
-      if (!newGallery || !currentGallery) {
+      if (!newGallery) {
         window.location.href = url;
         return;
       }
@@ -1339,14 +1355,11 @@ document.addEventListener("DOMContentLoaded", () => {
         history.pushState({}, "", url);
       }
 
-      /*
-            |------------------------------------------------------------------
-            | KEEP CURRENT SCROLL POSITION
-            |------------------------------------------------------------------
-            */
-
       requestAnimationFrame(() => {
-        window.scrollTo(0, scrollPosition);
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "auto",
+        });
       });
     } catch (error) {
       window.location.href = url;
@@ -1354,106 +1367,159 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /*
-    |--------------------------------------------------------------------------
-    | FILTERS + LOAD MORE + PAGINATION
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | LOAD MORE
+  |--------------------------------------------------------------------------
+  */
 
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest(
-      "[data-review-filter], [data-load-more], .wb-reviews-pages a",
-    );
+  async function loadMore(url) {
+    const currentGallery = document.querySelector(".wb-reviews-gallery");
 
-    if (!link) {
+    const currentGrid = document.querySelector("#wb-reviews-grid");
+
+    if (!currentGallery || !currentGrid) {
+      window.location.href = url;
       return;
     }
 
-    event.preventDefault();
+    const loadMoreButton = document.querySelector("[data-load-more]");
 
-    navigate(link.href);
+    if (loadMoreButton) {
+      loadMoreButton.setAttribute("aria-busy", "true");
+      loadMoreButton.style.pointerEvents = "none";
+    }
+
+    try {
+      const doc = await fetchPage(url);
+
+      const newGrid = doc.querySelector("#wb-reviews-grid");
+
+      const newPagination = doc.querySelector(".wb-reviews-pagination");
+
+      const currentPagination = document.querySelector(
+        ".wb-reviews-pagination",
+      );
+
+      if (!newGrid) {
+        window.location.href = url;
+        return;
+      }
+
+      const newCards = newGrid.querySelectorAll(".wb-review-card");
+
+      newCards.forEach((card) => {
+        currentGrid.appendChild(card);
+      });
+
+      if (currentPagination) {
+        if (newPagination) {
+          currentPagination.replaceWith(newPagination);
+        } else {
+          currentPagination.remove();
+        }
+      }
+
+      history.pushState({}, "", url);
+    } catch (error) {
+      window.location.href = url;
+    } finally {
+      const button = document.querySelector("[data-load-more]");
+
+      if (button) {
+        button.removeAttribute("aria-busy");
+        button.style.pointerEvents = "";
+      }
+    }
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | FILTER / PAGINATION / LOAD MORE CLICK
+  |--------------------------------------------------------------------------
+  */
+
+  document.addEventListener("click", (event) => {
+    const filterLink = event.target.closest("[data-review-filter]");
+
+    if (filterLink) {
+      event.preventDefault();
+
+      navigate(filterLink.href);
+
+      return;
+    }
+
+    const loadMoreLink = event.target.closest("[data-load-more]");
+
+    if (loadMoreLink) {
+      event.preventDefault();
+
+      loadMore(loadMoreLink.href);
+
+      return;
+    }
+
+    const paginationLink = event.target.closest(".wb-reviews-pages a");
+
+    if (paginationLink) {
+      event.preventDefault();
+
+      navigate(paginationLink.href);
+
+      return;
+    }
   });
 
   /*
-    |--------------------------------------------------------------------------
-    | BACK / FORWARD
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | BACK / FORWARD
+  |--------------------------------------------------------------------------
+  */
 
   window.addEventListener("popstate", () => {
     navigate(window.location.href, false);
   });
 
   /*
-    |--------------------------------------------------------------------------
-    | OPEN VIDEO
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | MODAL ELEMENTS
+  |--------------------------------------------------------------------------
+  */
+
+  const video = modal.querySelector(".wb-review-modal__video");
+
+  const captions = modal.querySelector(".wb-review-modal__captions");
+
+  const unavailable = modal.querySelector(".wb-review-modal__unavailable");
+
+  const unavailableImage = modal.querySelector(
+    ".wb-review-modal__unavailable-image",
+  );
+
+  const title = modal.querySelector("#wb-review-modal-title");
+
+  const role = modal.querySelector(".wb-review-modal__role");
+
+  const date = modal.querySelector(".wb-review-modal__date");
+
+  const summary = modal.querySelector(".wb-review-modal__summary");
+
+  const topic = modal.querySelector(".wb-review-modal__topic");
+
+  const rating = modal.querySelector(".wb-review-modal__rating");
+
+  const transcript = modal.querySelector(".wb-review-transcript");
+
+  const transcriptContent = transcript?.querySelector("div");
+
+  /*
+  |--------------------------------------------------------------------------
+  | OPEN VIDEO
+  |--------------------------------------------------------------------------
+  */
 
   function openVideo(button) {
-    const card = button.closest(".wb-review-card");
-
-    if (!card) {
-      return;
-    }
-
     previousTrigger = button;
-
-    /*
-        |----------------------------------------------------------------------
-        | MODAL ELEMENTS
-        |----------------------------------------------------------------------
-        */
-
-    const video = modal.querySelector(".wb-review-modal__video");
-
-    const unavailable = modal.querySelector(".wb-review-modal__unavailable");
-
-    const title = modal.querySelector("#wb-review-modal-title");
-
-    const role = modal.querySelector(".wb-review-modal__role");
-
-    const summary = modal.querySelector(".wb-review-modal__summary");
-
-    const topic = modal.querySelector(".wb-review-modal__topic");
-
-    const rating = modal.querySelector(".wb-review-modal__rating");
-
-    const transcript = modal.querySelector(".wb-review-transcript");
-
-    const transcriptContent = transcript.querySelector("div");
-
-    const captions = modal.querySelector(".wb-review-modal__captions");
-
-    /*
-        |----------------------------------------------------------------------
-        | CARD DATA
-        |----------------------------------------------------------------------
-        */
-
-    const name =
-      card.querySelector(".wb-review-person strong")?.textContent.trim() || "";
-
-    const roleText = [...card.querySelectorAll(".wb-review-person span")]
-      .map((item) => item.textContent.trim())
-      .filter(Boolean)
-      .join(" · ");
-
-    const reviewText =
-      card.querySelector(".wb-review-video__summary")?.textContent.trim() || "";
-
-    const topicText =
-      card.querySelector(".wb-review-topic")?.textContent.trim() || "";
-
-    const ratingText =
-      card.querySelector(".wb-review-rating")?.textContent.trim() || "";
-
-    const poster = card.querySelector(".wb-review-video__media img")?.src || "";
-
-    /*
-        |----------------------------------------------------------------------
-        | DATA FROM BUTTON
-        |----------------------------------------------------------------------
-        */
 
     const videoUrl = button.dataset.videoUrl || "";
 
@@ -1461,133 +1527,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const transcriptText = button.dataset.transcript || "";
 
+    const poster = button.dataset.poster || "";
+
+    const name = button.dataset.name || "";
+
+    const roleText = button.dataset.role || "";
+
+    const company = button.dataset.company || "";
+
+    const dateText = button.dataset.date || "";
+
+    const ratingText = button.dataset.rating || "";
+
+    const topicText = button.dataset.topic || "";
+
+    const summaryText = button.dataset.summary || "";
+
     /*
-        |----------------------------------------------------------------------
-        | FILL MODAL DETAILS
-        |----------------------------------------------------------------------
-        */
+    |--------------------------------------------------------------------------
+    | DETAILS
+    |--------------------------------------------------------------------------
+    */
 
     title.textContent = name;
 
-    role.textContent = roleText;
+    role.textContent = [roleText, company].filter(Boolean).join(" · ");
 
-    summary.textContent = reviewText;
+    date.textContent = dateText;
+
+    summary.textContent = summaryText;
 
     topic.textContent = topicText;
 
-    rating.textContent = ratingText;
+    rating.textContent = ratingText ? `${ratingText}/5 rating` : "";
+
+    rating.setAttribute(
+      "aria-label",
+      ratingText ? `${ratingText} out of 5 stars` : "",
+    );
 
     /*
-        |----------------------------------------------------------------------
-        | VIDEO
-        |----------------------------------------------------------------------
-        */
-
-    video.pause();
-
-    video.removeAttribute("src");
-
-    if (videoUrl) {
-      /*
-            |------------------------------------------------------------------
-            | VIDEO AVAILABLE
-            |------------------------------------------------------------------
-            */
-
-      video.hidden = false;
-
-      unavailable.hidden = true;
-
-      /*
-            |------------------------------------------------------------------
-            | VIDEO URL
-            |------------------------------------------------------------------
-            */
-
-      video.src = videoUrl;
-
-      /*
-            |------------------------------------------------------------------
-            | POSTER
-            |------------------------------------------------------------------
-            */
-
-      if (poster) {
-        video.poster = poster;
-      }
-
-      /*
-            |------------------------------------------------------------------
-            | CAPTIONS
-            |------------------------------------------------------------------
-            */
-
-      if (captionsUrl) {
-        captions.src = captionsUrl;
-
-        captions.hidden = false;
-      } else {
-        captions.removeAttribute("src");
-
-        captions.hidden = true;
-      }
-
-      video.load();
-    } else {
-      /*
-            |------------------------------------------------------------------
-            | VIDEO NOT AVAILABLE
-            |------------------------------------------------------------------
-            */
-
-      video.hidden = true;
-
-      unavailable.hidden = false;
-    }
-
-    /*
-        |----------------------------------------------------------------------
-        | TRANSCRIPT
-        |----------------------------------------------------------------------
-        */
+    |--------------------------------------------------------------------------
+    | TRANSCRIPT
+    |--------------------------------------------------------------------------
+    */
 
     if (transcriptText) {
       transcript.hidden = false;
-
       transcriptContent.textContent = transcriptText;
     } else {
       transcript.hidden = true;
-
       transcriptContent.textContent = "";
     }
 
     /*
-        |----------------------------------------------------------------------
-        | OPEN MODAL
-        |----------------------------------------------------------------------
-        */
-
-    modal.hidden = false;
-
-    modal.setAttribute("aria-hidden", "false");
-
-    document.body.classList.add("wb-review-modal-open");
-
-    modal.querySelector(".wb-review-modal__close")?.focus();
-  }
-
-  /*
     |--------------------------------------------------------------------------
-    | CLOSE VIDEO
+    | RESET VIDEO
     |--------------------------------------------------------------------------
     */
-
-  function closeVideo() {
-    if (modal.hidden) {
-      return;
-    }
-
-    const video = modal.querySelector(".wb-review-modal__video");
 
     video.pause();
 
@@ -1595,7 +1592,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
     video.removeAttribute("poster");
 
+    captions.removeAttribute("src");
+
+    /*
+    |--------------------------------------------------------------------------
+    | VIDEO AVAILABLE
+    |--------------------------------------------------------------------------
+    */
+
+    if (videoUrl) {
+      video.hidden = false;
+
+      unavailable.hidden = true;
+
+      video.src = videoUrl;
+
+      if (poster) {
+        video.poster = poster;
+      }
+
+      if (captionsUrl) {
+        captions.src = captionsUrl;
+        captions.hidden = false;
+      } else {
+        captions.hidden = true;
+      }
+
+      video.load();
+    } else {
+      /*
+      |--------------------------------------------------------------------------
+      | VIDEO UNAVAILABLE
+      |--------------------------------------------------------------------------
+      */
+
+      video.hidden = true;
+
+      unavailable.hidden = false;
+
+      if (poster) {
+        unavailableImage.src = poster;
+      } else {
+        unavailableImage.removeAttribute("src");
+      }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | OPEN MODAL
+    |--------------------------------------------------------------------------
+    */
+
+    modal.hidden = false;
+
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("wb-review-modal-open");
+
+    requestAnimationFrame(() => {
+      modal.querySelector(".wb-review-modal__close")?.focus();
+    });
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | CLOSE VIDEO
+  |--------------------------------------------------------------------------
+  */
+
+  function closeVideo() {
+    if (modal.hidden) {
+      return;
+    }
+
+    video.pause();
+
+    video.removeAttribute("src");
+
+    video.removeAttribute("poster");
+
+    captions.removeAttribute("src");
+
     video.load();
+
+    unavailableImage.removeAttribute("src");
 
     modal.hidden = true;
 
@@ -1611,16 +1691,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /*
-    |--------------------------------------------------------------------------
-    | VIDEO CLICK
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | VIDEO / CLOSE CLICK
+  |--------------------------------------------------------------------------
+  */
 
   document.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-video-open]");
+    const videoButton = event.target.closest("[data-video-open]");
 
-    if (button) {
-      openVideo(button);
+    if (videoButton) {
+      openVideo(videoButton);
 
       return;
     }
@@ -1633,14 +1713,56 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /*
-    |--------------------------------------------------------------------------
-    | ESCAPE
-    |--------------------------------------------------------------------------
-    */
+  |--------------------------------------------------------------------------
+  | ESCAPE
+  |--------------------------------------------------------------------------
+  */
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hidden) {
       closeVideo();
+    }
+  });
+
+  /*
+  |--------------------------------------------------------------------------
+  | FOCUS TRAP
+  |--------------------------------------------------------------------------
+  */
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab" || modal.hidden) {
+      return;
+    }
+
+    const focusable = modal.querySelectorAll(
+      'button, [href], video, details, summary, [tabindex]:not([tabindex="-1"])',
+    );
+
+    const elements = Array.from(focusable).filter(
+      (element) => !element.hasAttribute("disabled"),
+    );
+
+    if (!elements.length) {
+      return;
+    }
+
+    const first = elements[0];
+
+    const last = elements[elements.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+
+      last.focus();
+
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+
+      first.focus();
     }
   });
 });
@@ -2642,3 +2764,210 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // js for event page end here
+
+
+// js for single blog page
+document.addEventListener("DOMContentLoaded", function () {
+
+    const articleContent = document.querySelector(
+        ".wb-article-content"
+    );
+
+    const toc = document.getElementById(
+        "wb-article-toc"
+    );
+
+    if (!articleContent || !toc) {
+        return;
+    }
+
+
+    /* =========================================================
+       TABLE OF CONTENTS
+    ========================================================== */
+
+    const headings = articleContent.querySelectorAll(
+        "h2, h3"
+    );
+
+
+    if (!headings.length) {
+        const tocWrapper =
+            document.querySelector(".wb-article-toc");
+
+        if (tocWrapper) {
+            tocWrapper.hidden = true;
+        }
+
+        return;
+    }
+
+
+    headings.forEach(function (heading, index) {
+
+        /*
+         * Create ID if Gutenberg heading doesn't
+         * already have one.
+         */
+
+        if (!heading.id) {
+
+            heading.id =
+                "article-heading-" + (index + 1);
+
+        }
+
+
+        const link =
+            document.createElement("a");
+
+        link.href =
+            "#" + heading.id;
+
+        link.textContent =
+            heading.textContent.trim();
+
+
+        if (heading.tagName.toLowerCase() === "h3") {
+
+            link.classList.add(
+                "is-h3"
+            );
+
+        }
+
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                const target =
+                    document.getElementById(
+                        heading.id
+                    );
+
+                if (!target) {
+                    return;
+                }
+
+
+                const headerOffset = 100;
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    headerOffset;
+
+
+                window.scrollTo({
+
+                    top: targetPosition,
+
+                    behavior: "smooth"
+
+                });
+
+
+                /*
+                 * Update browser URL without
+                 * causing another jump.
+                 */
+
+                if (
+                    window.history &&
+                    window.history.pushState
+                ) {
+
+                    window.history.pushState(
+                        null,
+                        "",
+                        "#" + heading.id
+                    );
+
+                }
+
+            }
+        );
+
+
+        toc.appendChild(link);
+
+    });
+
+
+    /* =========================================================
+       ACTIVE TOC ITEM
+    ========================================================== */
+
+    const tocLinks =
+        toc.querySelectorAll("a");
+
+
+    if (
+        "IntersectionObserver" in window &&
+        headings.length
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+
+                        tocLinks.forEach(
+                            function (link) {
+
+                                link.classList.remove(
+                                    "is-active"
+                                );
+
+                            }
+                        );
+
+
+                        const activeLink =
+                            toc.querySelector(
+                                'a[href="#' +
+                                entry.target.id +
+                                '"]'
+                            );
+
+
+                        if (activeLink) {
+
+                            activeLink.classList.add(
+                                "is-active"
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    rootMargin:
+                        "-110px 0px -65% 0px",
+
+                    threshold: 0
+                }
+            );
+
+
+        headings.forEach(function (heading) {
+
+            observer.observe(
+                heading
+            );
+
+        });
+
+    }
+
+});

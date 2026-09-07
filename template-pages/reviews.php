@@ -1,226 +1,295 @@
 <?php
-
 /**
  * Template Name: Reviews Page
  */
 
 get_header();
-?>
-
-<?php
-/**
- * =========================================================
- * WUNDERBUILD - REVIEWS GALLERY
- * Sections 02 - 07
- * =========================================================
- */
 
 /*
 |--------------------------------------------------------------------------
 | REVIEW DATA
 |--------------------------------------------------------------------------
-| Replace these records with your CMS / CPT data later.
-| Private fields are intentionally kept in the array but never rendered.
+| Temporary dummy data.
+|
+| Backend developer can later replace this array with Review CPT + ACF/meta.
+|
+| Public fields:
+| review_type
+| review_text
+| rating
+| reviewer_name
+| role
+| company
+| review_date
+| source_label
+| source_url
+| verification_status
+| permission_status
+| video_source
+| video_url
+| thumbnail
+| duration
+| captions
+| transcript
+| featured
+| featured_order
+| topic
+|
+| Private fields must NEVER be rendered publicly:
+| private_source_ref
+| private_permission_record
+| private_notes
 |--------------------------------------------------------------------------
 */
 
 $wb_reviews = [
 
     [
-        'id'                    => 1,
-        'review_type'           => 'text',
-        'review_text'           => 'The onboarding team made the transition easy and helped our team learn the system quickly.',
-        'rating'                => 5,
-        'reviewer_name'         => 'John Smith',
-        'role'                  => 'Director',
-        'company'               => '',
-        'review_date'           => '2026-07-18',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 1,
+        'review_type' => 'text',
+        'review_text' => 'The onboarding team made the transition easy and helped our team learn the system quickly.',
+        'rating' => 5,
+        'reviewer_name' => 'John Smith',
+        'role' => 'Director',
+        'company' => 'Smith Building Group',
+        'review_date' => '2026-07-18',
+        'source_label' => 'Customer review',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
+        'video_source' => '',
+        'video_url' => '',
+        'thumbnail' => '',
+        'duration' => '',
+        'captions' => '',
+        'transcript' => '',
 
-        'topic'                 => 'support-onboarding',
+        'topic' => 'support-onboarding',
 
-        'featured'              => true,
-        'featured_order'        => 1,
+        'featured' => true,
+        'featured_order' => 1,
 
-        // Private CMS fields
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
     [
-        'id'                    => 2,
-        'review_type'           => 'video',
-        'review_text'           => 'Builder shares how migration and setup worked.',
-        'rating'                => 5,
-        'reviewer_name'         => 'Sarah Wilson',
-        'role'                  => 'Estimator',
-        'company'               => '',
-        'review_date'           => '2026-07-12',
-        'source_label'          => 'Customer video',
-        'source_url'            => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/13029988_3840_2160_30fps-1.mp4',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 2,
+        'review_type' => 'video',
+        'review_text' => 'Builder shares how migration and setup worked.',
+        'rating' => 5,
+        'reviewer_name' => 'Sarah Wilson',
+        'role' => 'Estimator',
+        'company' => 'Wilson Homes',
+        'review_date' => '2026-07-12',
+        'source_label' => 'Customer video',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        /*
-         * Add real video URL here.
-         * Example:
-         * https://example.com/review.mp4
-         */
-        'video_url'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/13029988_3840_2160_30fps-1.mp4',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/mqdefault_6s-2-Picsart-AiImageEnhancer.png',
-        'duration'              => '2:45',
+        'video_source' => 'uploaded',
+        'video_url' => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/13029988_3840_2160_30fps-1.mp4',
+        'thumbnail' => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/mqdefault_6s-2-Picsart-AiImageEnhancer.png',
+        'duration' => '2:45',
+        'captions' => '',
+        'transcript' => 'The customer explains how the migration and setup process worked and how the onboarding team helped the business move across.',
 
-        /*
-         * VTT file for captions.
-         */
-        'captions'              => '',
+        'topic' => 'switching',
 
-        'transcript'            => 'The customer explains how the migration and setup process worked and how the onboarding team helped the business move across.',
+        'featured' => true,
+        'featured_order' => 2,
 
-        'topic'                 => 'switching',
-
-        'featured'              => true,
-        'featured_order'        => 2,
-
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
     [
-        'id'                    => 3,
-        'review_type'           => 'text',
-        'review_text'           => 'We were able to move our processes into one place and give the team a much clearer way to manage work.',
-        'rating'                => 4.5,
-        'reviewer_name'         => 'Michael Brown',
-        'role'                  => 'Operations Manager',
-        'company'               => '',
-        'review_date'           => '2026-07-05',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 3,
+        'review_type' => 'text',
+        'review_text' => 'We were able to move our processes into one place and give the team a much clearer way to manage work.',
+        'rating' => 4.5,
+        'reviewer_name' => 'Michael Brown',
+        'role' => 'Operations Manager',
+        'company' => 'Brown Residential',
+        'review_date' => '2026-07-05',
+        'source_label' => 'Customer review',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
+        'video_source' => '',
+        'video_url' => '',
+        'thumbnail' => '',
+        'duration' => '',
+        'captions' => '',
+        'transcript' => '',
 
-        'topic'                 => 'value',
+        'topic' => 'value',
 
-        'featured'              => false,
-        'featured_order'        => 0,
+        'featured' => false,
+        'featured_order' => 0,
 
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
     [
-        'id'                    => 4,
-        'review_type'           => 'video',
-        'review_text'           => 'A builder talks through the day-to-day workflow and how the team uses Wunderbuild.',
-        'rating'                => 5,
-        'reviewer_name'         => 'David Taylor',
-        'role'                  => 'Builder',
-        'company'               => '',
-        'review_date'           => '2026-06-28',
-        'source_label'          => 'Customer video',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 4,
+        'review_type' => 'video',
+        'review_text' => 'A builder talks through the day-to-day workflow and how the team uses Wunderbuild.',
+        'rating' => 5,
+        'reviewer_name' => 'David Taylor',
+        'role' => 'Builder',
+        'company' => 'Taylor Projects',
+        'review_date' => '2026-06-28',
+        'source_label' => 'Customer video',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        'video_url'             => '',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-2.jpg',
-        'duration'              => '3:12',
-        'captions'              => '',
-        'transcript'            => 'The builder discusses how the team uses Wunderbuild in its everyday workflow.',
+        'video_source' => 'uploaded',
+        'video_url' => '',
+        'thumbnail' => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-2.jpg',
+        'duration' => '3:12',
+        'captions' => '',
+        'transcript' => 'The builder discusses how the team uses Wunderbuild in its everyday workflow.',
 
-        'topic'                 => 'product-workflow',
+        'topic' => 'product-workflow',
 
-        'featured'              => false,
-        'featured_order'        => 0,
+        'featured' => false,
+        'featured_order' => 0,
 
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
     [
-        'id'                    => 5,
-        'review_type'           => 'text',
-        'review_text'           => 'Having the right information available to the team has made it easier to keep jobs moving.',
-        'rating'                => 5,
-        'reviewer_name'         => 'Emma Davis',
-        'role'                  => 'Office Manager',
-        'company'               => '',
-        'review_date'           => '2026-06-20',
-        'source_label'          => 'Customer review',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 5,
+        'review_type' => 'text',
+        'review_text' => 'Having the right information available to the team has made it easier to keep jobs moving.',
+        'rating' => 5,
+        'reviewer_name' => 'Emma Davis',
+        'role' => 'Office Manager',
+        'company' => 'Davis Construction',
+        'review_date' => '2026-06-20',
+        'source_label' => 'Customer review',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        'video_url'             => '',
-        'video_source'          => '',
-        'thumbnail'             => '',
-        'duration'              => '',
-        'captions'              => '',
-        'transcript'            => '',
+        'video_source' => '',
+        'video_url' => '',
+        'thumbnail' => '',
+        'duration' => '',
+        'captions' => '',
+        'transcript' => '',
 
-        'topic'                 => 'value',
+        'topic' => 'value',
 
-        'featured'              => false,
-        'featured_order'        => 0,
+        'featured' => false,
+        'featured_order' => 0,
 
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
     [
-        'id'                    => 6,
-        'review_type'           => 'video',
-        'review_text'           => 'A team member shares their experience with support and onboarding.',
-        'rating'                => 4.5,
-        'reviewer_name'         => 'James Wilson',
-        'role'                  => 'Project Manager',
-        'company'               => '',
-        'review_date'           => '2026-06-15',
-        'source_label'          => 'Customer video',
-        'source_url'            => '',
-        'verification_status'   => 'approved',
-        'permission_status'     => 'approved',
+        'id' => 6,
+        'review_type' => 'video',
+        'review_text' => 'A team member shares their experience with support and onboarding.',
+        'rating' => 4.5,
+        'reviewer_name' => 'James Wilson',
+        'role' => 'Project Manager',
+        'company' => 'Wilson Building Co.',
+        'review_date' => '2026-06-15',
+        'source_label' => 'Customer video',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
 
-        'video_url'             => '',
-        'video_source'          => 'uploaded',
-        'thumbnail'             => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-3.jpg',
-        'duration'              => '1:58',
-        'captions'              => '',
-        'transcript'            => 'The team member explains their experience with the onboarding and support process.',
+        'video_source' => 'uploaded',
+        'video_url' => '',
+        'thumbnail' => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-3.jpg',
+        'duration' => '1:58',
+        'captions' => '',
+        'transcript' => 'The team member explains their experience with the onboarding and support process.',
 
-        'topic'                 => 'support-onboarding',
+        'topic' => 'support-onboarding',
 
-        'featured'              => false,
-        'featured_order'        => 0,
+        'featured' => false,
+        'featured_order' => 0,
 
-        'private_source_ref'    => '',
-        'private_permission'    => true,
-        'private_notes'         => '',
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
+    ],
+
+    [
+        'id' => 7,
+        'review_type' => 'video',
+        'review_text' => 'A customer explains how having connected information supports the wider team.',
+        'rating' => 5,
+        'reviewer_name' => 'Olivia Martin',
+        'role' => 'Construction Manager',
+        'company' => 'Martin Builders',
+        'review_date' => '2026-06-10',
+        'source_label' => 'Customer video',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
+
+        'video_source' => 'uploaded',
+        'video_url' => '',
+        'thumbnail' => 'https://staging.wunderbuild.com.au/wp-content/uploads/2026/08/review-video-thumb-2.jpg',
+        'duration' => '2:20',
+        'captions' => '',
+        'transcript' => 'The customer discusses how connected information helps the team work across different parts of the job.',
+
+        'topic' => 'product-workflow',
+
+        'featured' => false,
+        'featured_order' => 0,
+
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
+    ],
+
+    [
+        'id' => 8,
+        'review_type' => 'text',
+        'review_text' => 'The team had a clearer process for understanding what needed to happen next and where to get help.',
+        'rating' => 4.5,
+        'reviewer_name' => 'Daniel Harris',
+        'role' => 'Project Coordinator',
+        'company' => 'Harris Homes',
+        'review_date' => '2026-06-04',
+        'source_label' => 'Customer review',
+        'source_url' => '',
+        'verification_status' => 'approved',
+        'permission_status' => 'approved',
+
+        'video_source' => '',
+        'video_url' => '',
+        'thumbnail' => '',
+        'duration' => '',
+        'captions' => '',
+        'transcript' => '',
+
+        'topic' => 'support-onboarding',
+
+        'featured' => false,
+        'featured_order' => 0,
+
+        'private_source_ref' => '',
+        'private_permission_record' => '',
+        'private_notes' => '',
     ],
 
 ];
@@ -228,20 +297,20 @@ $wb_reviews = [
 
 /*
 |--------------------------------------------------------------------------
-| ONLY APPROVED REVIEWS CAN APPEAR PUBLICLY
+| PUBLICATION FILTER
 |--------------------------------------------------------------------------
 */
 
 $wb_reviews = array_values(
-    array_filter($wb_reviews, function ($review) {
+    array_filter(
+        $wb_reviews,
+        function ($review) {
 
-        return (
-            isset($review['verification_status']) &&
-            $review['verification_status'] === 'approved' &&
-            isset($review['permission_status']) &&
-            $review['permission_status'] === 'approved'
-        );
-    })
+            return
+                ($review['verification_status'] ?? '') === 'approved' &&
+                ($review['permission_status'] ?? '') === 'approved';
+        }
+    )
 );
 
 
@@ -249,45 +318,64 @@ $wb_reviews = array_values(
 |--------------------------------------------------------------------------
 | SORT
 |--------------------------------------------------------------------------
-| Featured reviews first in manual order.
-| Remaining reviews newest first.
-|--------------------------------------------------------------------------
 */
 
-usort($wb_reviews, function ($a, $b) {
+usort(
+    $wb_reviews,
+    function ($a, $b) {
 
-    if ($a['featured'] !== $b['featured']) {
-        return $a['featured'] ? -1 : 1;
+        $a_featured = !empty($a['featured']);
+        $b_featured = !empty($b['featured']);
+
+        if ($a_featured !== $b_featured) {
+            return $a_featured ? -1 : 1;
+        }
+
+        if ($a_featured && $b_featured) {
+            return
+                (int) ($a['featured_order'] ?? 999)
+                <=>
+                (int) ($b['featured_order'] ?? 999);
+        }
+
+        return
+            strtotime($b['review_date'] ?? '')
+            <=>
+            strtotime($a['review_date'] ?? '');
     }
-
-    if ($a['featured'] && $b['featured']) {
-        return $a['featured_order'] <=> $b['featured_order'];
-    }
-
-    return strtotime($b['review_date']) <=> strtotime($a['review_date']);
-});
+);
 
 
 /*
 |--------------------------------------------------------------------------
-| FILTER VALUES
+| FILTER CONFIG
 |--------------------------------------------------------------------------
 */
 
 $allowed_types = [
     'all',
     'text',
-    'video'
+    'video',
 ];
 
-$allowed_topics = [
-    'all',
-    'product-workflow',
-    'support-onboarding',
-    'switching',
-    'value'
+$topic_labels = [
+    'product-workflow'   => 'Product & workflow',
+    'support-onboarding' => 'Support & onboarding',
+    'switching'          => 'Switching to Wunderbuild',
+    'value'              => 'Value & business impact',
 ];
 
+$allowed_topics = array_merge(
+    ['all'],
+    array_keys($topic_labels)
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| CURRENT FILTER STATE
+|--------------------------------------------------------------------------
+*/
 
 $current_type = isset($_GET['review_type'])
     ? sanitize_key($_GET['review_type'])
@@ -300,13 +388,6 @@ $current_topic = isset($_GET['review_topic'])
 $current_page = isset($_GET['review_page'])
     ? max(1, absint($_GET['review_page']))
     : 1;
-
-
-/*
-|--------------------------------------------------------------------------
-| VALIDATE FILTERS
-|--------------------------------------------------------------------------
-*/
 
 if (!in_array($current_type, $allowed_types, true)) {
     $current_type = 'all';
@@ -323,36 +404,34 @@ if (!in_array($current_topic, $allowed_topics, true)) {
 |--------------------------------------------------------------------------
 */
 
-$filtered_reviews = array_filter(
-    $wb_reviews,
-    function ($review) use ($current_type, $current_topic) {
+$filtered_reviews = array_values(
+    array_filter(
+        $wb_reviews,
+        function ($review) use ($current_type, $current_topic) {
 
-        if (
-            $current_type !== 'all' &&
-            $review['review_type'] !== $current_type
-        ) {
-            return false;
+            if (
+                $current_type !== 'all' &&
+                ($review['review_type'] ?? '') !== $current_type
+            ) {
+                return false;
+            }
+
+            if (
+                $current_topic !== 'all' &&
+                ($review['topic'] ?? '') !== $current_topic
+            ) {
+                return false;
+            }
+
+            return true;
         }
-
-        if (
-            $current_topic !== 'all' &&
-            $review['topic'] !== $current_topic
-        ) {
-            return false;
-        }
-
-        return true;
-    }
+    )
 );
-
-$filtered_reviews = array_values($filtered_reviews);
 
 
 /*
 |--------------------------------------------------------------------------
-| SECONDARY FILTER VISIBILITY
-|--------------------------------------------------------------------------
-| Only show topic filters if there is enough topic content.
+| TOPIC COUNTS
 |--------------------------------------------------------------------------
 */
 
@@ -360,16 +439,22 @@ $topic_counts = [];
 
 foreach ($wb_reviews as $review) {
 
-    if (!empty($review['topic'])) {
+    $topic = $review['topic'] ?? '';
 
-        if (!isset($topic_counts[$review['topic']])) {
-            $topic_counts[$review['topic']] = 0;
-        }
-
-        $topic_counts[$review['topic']]++;
+    if (!$topic) {
+        continue;
     }
+
+    if (!isset($topic_counts[$topic])) {
+        $topic_counts[$topic] = 0;
+    }
+
+    $topic_counts[$topic]++;
 }
 
+/*
+| Show only when enough topic content exists.
+*/
 $show_secondary_filters = count($topic_counts) >= 2;
 
 
@@ -408,8 +493,12 @@ $page_reviews = array_slice(
 |--------------------------------------------------------------------------
 */
 
-function wb_review_filter_url($type = 'all', $topic = 'all', $page = 1)
-{
+function wb_review_filter_url(
+    $type = 'all',
+    $topic = 'all',
+    $page = 1
+) {
+
     $params = [];
 
     if ($type !== 'all') {
@@ -436,237 +525,93 @@ function wb_review_filter_url($type = 'all', $topic = 'all', $page = 1)
 
 /*
 |--------------------------------------------------------------------------
-| TOPIC LABELS
+| DEFAULT POSTER
 |--------------------------------------------------------------------------
 */
 
-$topic_labels = [
-
-    'product-workflow'   => 'Product & workflow',
-    'support-onboarding' => 'Support & onboarding',
-    'switching'          => 'Switching to Wunderbuild',
-    'value'              => 'Value & business impact',
-
-];
-
-?>
-
-
-<?php
-/**
- * Wunderbuild Reviews Gallery
- *
- * PHP handles:
- * - Review data
- * - Filters
- * - Sorting
- * - Pagination
- * - Card markup
- *
- * JS only handles:
- * - AJAX-like filter navigation
- * - Browser history
- * - Video modal
- */
-
-/*
-|--------------------------------------------------------------------------
-| SAFETY DEFAULTS
-|--------------------------------------------------------------------------
-*/
-
-$current_type  = isset($current_type) ? $current_type : 'all';
-$current_topic = isset($current_topic) ? $current_topic : 'all';
-
-$page_reviews = isset($page_reviews) && is_array($page_reviews)
-    ? $page_reviews
-    : array();
-
-$topic_labels = isset($topic_labels) && is_array($topic_labels)
-    ? $topic_labels
-    : array();
-
-$topic_counts = isset($topic_counts) && is_array($topic_counts)
-    ? $topic_counts
-    : array();
-
-$total_reviews = isset($total_reviews)
-    ? (int) $total_reviews
-    : count($page_reviews);
-
-$total_pages = isset($total_pages)
-    ? (int) $total_pages
-    : 1;
-
-$current_page = isset($current_page)
-    ? (int) $current_page
-    : 1;
-
-$offset = isset($offset)
-    ? (int) $offset
-    : 0;
+$default_review_poster =
+    get_template_directory_uri() .
+    '/assets/images/Estimates.png';
 
 
 /*
 |--------------------------------------------------------------------------
-| SECONDARY FILTER VISIBILITY
+| GRID STATE
 |--------------------------------------------------------------------------
 */
 
-$show_secondary_filters = !empty($show_secondary_filters);
-
-
-/*
-|--------------------------------------------------------------------------
-| LAYOUT STATE
-|--------------------------------------------------------------------------
-|
-| Important:
-|
-| Mixed:
-| - Video = wider 2-column treatment
-| - Text = normal 1-column
-|
-| Video only:
-| - Videos become normal cards
-| - So multiple videos can appear together
-|
-*/
-
-$has_text_reviews  = false;
+$has_text_reviews = false;
 $has_video_reviews = false;
 
 foreach ($page_reviews as $review) {
+
     if (($review['review_type'] ?? '') === 'video') {
         $has_video_reviews = true;
-    } else {
+    }
+
+    if (($review['review_type'] ?? '') === 'text') {
         $has_text_reviews = true;
     }
 }
 
-$video_only = $has_video_reviews && !$has_text_reviews;
-$single_review = count($page_reviews) === 1;
+$grid_classes = ['wb-reviews-grid'];
 
-$grid_classes = array('wb-reviews-grid');
-
-if ($video_only) {
+if ($has_video_reviews && !$has_text_reviews) {
     $grid_classes[] = 'wb-reviews-grid--video-only';
 }
 
-if ($single_review) {
+if (count($page_reviews) === 1) {
     $grid_classes[] = 'wb-reviews-grid--single';
 }
 
 $grid_class = implode(' ', $grid_classes);
-?>
-
-<?php
-/**
- * Wunderbuild Reviews Gallery
- *
- * Backend / ACF data remains the source of truth.
- */
 
 
 /*
 |--------------------------------------------------------------------------
-| DEFAULT POSTER
-|--------------------------------------------------------------------------
-|
-| For now use one common poster image.
-|
-| Upload:
-| /wp-content/themes/YOUR-THEME/assets/images/review-poster.jpg
-|
-| Later backend can replace this with ACF thumbnail.
-|
-*/
-
-/*
-|--------------------------------------------------------------------------
-| REVIEW LAYOUT PATTERN
+| RATING HELPER
 |--------------------------------------------------------------------------
 */
 
-$review_pattern = array();
+function wb_review_rating_markup($rating) {
 
-foreach ($page_reviews as $review) {
+    if ($rating === '' || $rating === null) {
+        return;
+    }
 
-    $review_pattern[] =
-        (($review['review_type'] ?? '') === 'video')
-            ? 'v'
-            : 't';
+    $rating = (float) $rating;
+
+    ?>
+    <div
+        class="wb-review-rating"
+        aria-label="<?php echo esc_attr($rating); ?> out of 5 stars">
+
+        <span
+            class="wb-review-rating__stars"
+            aria-hidden="true">
+
+            <?php echo esc_html('★★★★★'); ?>
+
+        </span>
+
+        <span class="wb-review-rating__number">
+
+            <?php echo esc_html($rating); ?>/5
+
+        </span>
+
+    </div>
+    <?php
 }
-
-$review_pattern = implode('-', $review_pattern);
-
-$grid_classes = array(
-    'wb-reviews-grid',
-);
-
-/*
-|--------------------------------------------------------------------------
-| VIDEO ONLY
-|--------------------------------------------------------------------------
-*/
-
-if ($video_only) {
-    $grid_classes[] = 'wb-reviews-grid--video-only';
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| SINGLE REVIEW
-|--------------------------------------------------------------------------
-*/
-
-if ($single_review) {
-    $grid_classes[] = 'wb-reviews-grid--single';
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| REVIEW ORDER PATTERN
-|--------------------------------------------------------------------------
-|
-| Examples:
-|
-| t-t-t
-| t-v
-| v-v
-| t-v-t
-| t-t-v
-| v-t-t
-|
-*/
-
-if (!empty($review_pattern)) {
-    $grid_classes[] =
-        'wb-reviews-grid--pattern-' .
-        str_replace('-', '-', $review_pattern);
-}
-
-$grid_class = implode(' ', $grid_classes);
-
-$default_review_poster = get_template_directory_uri() . '/assets/images/Estimates.png';
 
 ?>
-
-
 
 
 <section
     class="wb-reviews-gallery"
     aria-labelledby="wb-reviews-gallery-title">
 
-    <div class="wb-reviews-gallery__inner">
-
-
-        <!-- =========================================================
-             HEADER
-        ========================================================== -->
+    <div class="wrap">
 
         <div class="wb-reviews-gallery__header">
 
@@ -676,73 +621,49 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                     Browse the reviews.
                 </h2>
 
-                <p>
-                    See what builders and their teams say about
-                    Wunderbuild, from switching and onboarding
-                    through to everyday workflows and business impact.
-                </p>
-
             </div>
 
 
-            <!-- =====================================================
-                 PRIMARY FILTERS
-            ====================================================== -->
+            <!-- PRIMARY FILTERS -->
 
             <nav
                 class="wb-reviews-filter"
                 aria-label="Review type filters">
 
-                <!-- ALL -->
-
                 <a
+                    href="<?php echo wb_review_filter_url('all', $current_topic); ?>"
                     class="<?php echo $current_type === 'all' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                                wb_review_filter_url('all', $current_topic)
-                            ); ?>"
                     data-review-filter
-                    data-type="all"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
                     aria-current="<?php echo $current_type === 'all' ? 'page' : 'false'; ?>">
+
                     All reviews
+
                 </a>
 
-
-                <!-- TEXT -->
-
                 <a
+                    href="<?php echo wb_review_filter_url('text', $current_topic); ?>"
                     class="<?php echo $current_type === 'text' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                                wb_review_filter_url('text', $current_topic)
-                            ); ?>"
                     data-review-filter
-                    data-type="text"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
                     aria-current="<?php echo $current_type === 'text' ? 'page' : 'false'; ?>">
+
                     Text reviews
+
                 </a>
 
-
-                <!-- VIDEO -->
-
                 <a
+                    href="<?php echo wb_review_filter_url('video', $current_topic); ?>"
                     class="<?php echo $current_type === 'video' ? 'is-active' : ''; ?>"
-                    href="<?php echo esc_url(
-                                wb_review_filter_url('video', $current_topic)
-                            ); ?>"
                     data-review-filter
-                    data-type="video"
-                    data-topic="<?php echo esc_attr($current_topic); ?>"
                     aria-current="<?php echo $current_type === 'video' ? 'page' : 'false'; ?>">
+
                     Video reviews
+
                 </a>
 
             </nav>
 
 
-            <!-- =====================================================
-                 SECONDARY TOPIC FILTERS
-            ====================================================== -->
+            <!-- TOPIC FILTERS -->
 
             <?php if ($show_secondary_filters) : ?>
 
@@ -750,46 +671,26 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                     class="wb-reviews-topics"
                     aria-label="Review topic filters">
 
-                    <!-- ALL TOPICS -->
-
                     <a
+                        href="<?php echo wb_review_filter_url($current_type, 'all'); ?>"
                         class="<?php echo $current_topic === 'all' ? 'is-active' : ''; ?>"
-                        href="<?php echo esc_url(
-                                    wb_review_filter_url($current_type, 'all')
-                                ); ?>"
-                        data-review-filter
-                        data-type="<?php echo esc_attr($current_type); ?>"
-                        data-topic="all">
-                        All topics
-                    </a>
+                        data-review-filter>
 
+                        All topics
+
+                    </a>
 
                     <?php foreach ($topic_labels as $topic_key => $topic_label) : ?>
 
-                        <?php
-
-                        $topic_count = isset($topic_counts[$topic_key])
-                            ? $topic_counts[$topic_key]
-                            : 0;
-
-                        if ($topic_count < 1) {
-                            continue;
-                        }
-
-                        ?>
+                        <?php if (empty($topic_counts[$topic_key])) continue; ?>
 
                         <a
+                            href="<?php echo wb_review_filter_url($current_type, $topic_key); ?>"
                             class="<?php echo $current_topic === $topic_key ? 'is-active' : ''; ?>"
-                            href="<?php echo esc_url(
-                                        wb_review_filter_url(
-                                            $current_type,
-                                            $topic_key
-                                        )
-                                    ); ?>"
-                            data-review-filter
-                            data-type="<?php echo esc_attr($current_type); ?>"
-                            data-topic="<?php echo esc_attr($topic_key); ?>">
+                            data-review-filter>
+
                             <?php echo esc_html($topic_label); ?>
+
                         </a>
 
                     <?php endforeach; ?>
@@ -801,65 +702,42 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
         </div>
 
 
-        <!-- =========================================================
-             RESULTS STATUS
-        ========================================================== -->
+        <!-- STATUS -->
 
         <div
             class="wb-reviews-status"
-            data-review-status
             aria-live="polite"
             aria-atomic="true">
 
             Showing
-
-            <strong>
-                <?php echo esc_html($total_reviews); ?>
-            </strong>
-
+            <strong><?php echo esc_html($total_reviews); ?></strong>
             <?php echo $total_reviews === 1 ? 'review' : 'reviews'; ?>
 
         </div>
 
 
-        <!-- =========================================================
-             REVIEWS GRID
-        ========================================================== -->
+        <!-- GRID -->
+
         <div
             class="<?php echo esc_attr($grid_class); ?>"
             id="wb-reviews-grid">
 
-
             <?php if (!empty($page_reviews)) : ?>
 
-
-                <?php foreach ($page_reviews as $index => $review) : ?>
+                <?php foreach ($page_reviews as $review) : ?>
 
                     <?php
 
-                    $is_video = ($review['review_type'] ?? '') === 'video';
+                    $is_video =
+                        ($review['review_type'] ?? '') === 'video';
 
                     $card_class = $is_video
                         ? 'wb-review-card wb-review-card--video'
                         : 'wb-review-card wb-review-card--text';
 
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | POSTER
-                    |--------------------------------------------------------------------------
-                    */
-
                     $poster = !empty($review['thumbnail'])
                         ? $review['thumbnail']
                         : $default_review_poster;
-
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | DATE
-                    |--------------------------------------------------------------------------
-                    */
 
                     $formatted_date = !empty($review['review_date'])
                         ? date_i18n(
@@ -868,72 +746,67 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                         )
                         : '';
 
-                    ?>
+                    $topic_key = $review['topic'] ?? '';
 
+                    $topic_label =
+                        $topic_labels[$topic_key]
+                        ?? $topic_key;
+
+                    ?>
 
                     <article
                         class="<?php echo esc_attr($card_class); ?>"
-                        data-review-type="<?php echo esc_attr(
-                                                $review['review_type'] ?? ''
-                                            ); ?>"
-                        data-review-topic="<?php echo esc_attr(
-                                                $review['topic'] ?? ''
-                                            ); ?>">
-
+                        data-review-id="<?php echo esc_attr($review['id'] ?? ''); ?>"
+                        data-review-type="<?php echo esc_attr($review['review_type'] ?? ''); ?>"
+                        data-review-topic="<?php echo esc_attr($topic_key); ?>">
 
                         <?php if ($is_video) : ?>
 
-                            <!-- =================================================
-                                 VIDEO CARD
-                            ================================================== -->
+                            <!-- VIDEO CARD -->
 
                             <div class="wb-review-video">
-
-
-                                <!-- VIDEO IMAGE -->
 
                                 <div class="wb-review-video__media">
 
                                     <img
                                         src="<?php echo esc_url($poster); ?>"
                                         alt=""
+                                        width="1200"
+                                        height="675"
                                         loading="lazy">
 
-
-                                    <!-- PLAY BUTTON -->
-
                                     <button
-                                        class="wb-review-video__play"
                                         type="button"
-                                        aria-label="Watch review from <?php echo esc_attr(
-                                                                            $review['reviewer_name'] ?? ''
-                                                                        ); ?>"
+                                        class="wb-review-video__play"
+                                        aria-label="Watch review from <?php echo esc_attr($review['reviewer_name'] ?? 'customer'); ?>"
                                         data-video-open
-                                        data-video-url="<?php echo esc_url(
-                                                            $review['video_url'] ?? ''
-                                                        ); ?>"
-                                        data-captions="<?php echo esc_url(
-                                                            $review['captions'] ?? ''
-                                                        ); ?>"
-                                        data-transcript="<?php echo esc_attr(
-                                                                $review['transcript'] ?? ''
-                                                            ); ?>">
+                                        data-video-url="<?php echo esc_url($review['video_url'] ?? ''); ?>"
+                                        data-captions="<?php echo esc_url($review['captions'] ?? ''); ?>"
+                                        data-transcript="<?php echo esc_attr($review['transcript'] ?? ''); ?>"
+                                        data-poster="<?php echo esc_url($poster); ?>"
+                                        data-name="<?php echo esc_attr($review['reviewer_name'] ?? ''); ?>"
+                                        data-role="<?php echo esc_attr($review['role'] ?? ''); ?>"
+                                        data-company="<?php echo esc_attr($review['company'] ?? ''); ?>"
+                                        data-date="<?php echo esc_attr($formatted_date); ?>"
+                                        data-date-machine="<?php echo esc_attr($review['review_date'] ?? ''); ?>"
+                                        data-rating="<?php echo esc_attr($review['rating'] ?? ''); ?>"
+                                        data-topic="<?php echo esc_attr($topic_label); ?>"
+                                        data-summary="<?php echo esc_attr($review['review_text'] ?? ''); ?>">
 
-                                        <span aria-hidden="true">
-                                            ▶
-                                        </span>
+                                        <span aria-hidden="true">▶</span>
 
                                     </button>
-
-
-                                    <!-- DURATION -->
 
                                     <?php if (!empty($review['duration'])) : ?>
 
                                         <span class="wb-review-video__duration">
-                                            <?php echo esc_html(
+
+                                            <?php
+                                            echo esc_html(
                                                 $review['duration']
-                                            ); ?>
+                                            );
+                                            ?>
+
                                         </span>
 
                                     <?php endif; ?>
@@ -941,49 +814,23 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                 </div>
 
 
-                                <!-- VIDEO DETAILS -->
-
                                 <div class="wb-review-video__details">
-
-
-                                    <!-- TOP -->
 
                                     <div class="wb-review-card__top">
 
+                                        <?php
+                                        wb_review_rating_markup(
+                                            $review['rating'] ?? ''
+                                        );
+                                        ?>
 
-                                        <?php if (!empty($review['rating'])) : ?>
-
-                                            <div
-                                                class="wb-review-rating"
-                                                aria-label="<?php echo esc_attr(
-                                                                $review['rating']
-                                                            ); ?> out of 5">
-
-                                                <span
-                                                    class="wb-review-rating__stars"
-                                                    aria-hidden="true">
-                                                    ★★★★★
-                                                </span>
-
-                                                <span>
-                                                    <?php echo esc_html(
-                                                        $review['rating']
-                                                    ); ?>
-                                                </span>
-
-                                            </div>
-
-                                        <?php endif; ?>
-
-                                        <!-- TOPIC -->
-
-                                        <?php if (!empty($review['topic'])) : ?>
+                                        <?php if ($topic_label) : ?>
 
                                             <span class="wb-review-topic">
 
                                                 <?php
                                                 echo esc_html(
-                                                    $topic_labels[$review['topic']] ?? $review['topic']
+                                                    $topic_label
                                                 );
                                                 ?>
 
@@ -994,37 +841,48 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                     </div>
 
 
+                                    <?php if (!empty($review['review_text'])) : ?>
 
+                                        <p class="wb-review-video__summary">
 
+                                            <?php
+                                            echo esc_html(
+                                                $review['review_text']
+                                            );
+                                            ?>
 
-                                    <!-- SUMMARY -->
+                                        </p>
 
-                                    <p class="wb-review-video__summary">
+                                    <?php endif; ?>
 
-                                        <?php echo esc_html(
-                                            $review['review_text'] ?? ''
-                                        ); ?>
-
-                                    </p>
-
-
-                                    <!-- PERSON -->
 
                                     <div class="wb-review-person">
 
-                                        <strong>
-                                            <?php echo esc_html(
-                                                $review['reviewer_name'] ?? ''
-                                            ); ?>
-                                        </strong>
+                                        <?php if (!empty($review['reviewer_name'])) : ?>
+
+                                            <strong>
+
+                                                <?php
+                                                echo esc_html(
+                                                    $review['reviewer_name']
+                                                );
+                                                ?>
+
+                                            </strong>
+
+                                        <?php endif; ?>
 
 
                                         <?php if (!empty($review['role'])) : ?>
 
                                             <span>
-                                                <?php echo esc_html(
+
+                                                <?php
+                                                echo esc_html(
                                                     $review['role']
-                                                ); ?>
+                                                );
+                                                ?>
+
                                             </span>
 
                                         <?php endif; ?>
@@ -1033,23 +891,29 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                         <?php if (!empty($review['company'])) : ?>
 
                                             <span>
-                                                <?php echo esc_html(
+
+                                                <?php
+                                                echo esc_html(
                                                     $review['company']
-                                                ); ?>
+                                                );
+                                                ?>
+
                                             </span>
 
                                         <?php endif; ?>
 
 
-                                        <?php if (!empty($formatted_date)) : ?>
+                                        <?php if ($formatted_date) : ?>
 
                                             <time
-                                                datetime="<?php echo esc_attr(
-                                                                $review['review_date']
-                                                            ); ?>">
-                                                <?php echo esc_html(
+                                                datetime="<?php echo esc_attr($review['review_date']); ?>">
+
+                                                <?php
+                                                echo esc_html(
                                                     $formatted_date
-                                                ); ?>
+                                                );
+                                                ?>
+
                                             </time>
 
                                         <?php endif; ?>
@@ -1060,48 +924,24 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                             </div>
 
-
                         <?php else : ?>
 
-                            <!-- =================================================
-                                 TEXT REVIEW CARD
-                            ================================================== -->
+                            <!-- TEXT CARD -->
 
                             <div class="wb-review-card__top">
 
+                                <?php
+                                wb_review_rating_markup(
+                                    $review['rating'] ?? ''
+                                );
+                                ?>
 
-                                <?php if (!empty($review['rating'])) : ?>
-
-                                    <div
-                                        class="wb-review-rating"
-                                        aria-label="<?php echo esc_attr(
-                                                        $review['rating']
-                                                    ); ?> out of 5">
-
-                                        <span
-                                            class="wb-review-rating__stars"
-                                            aria-hidden="true">
-                                            ★★★★★
-                                        </span>
-
-                                        <span>
-                                            <?php echo esc_html(
-                                                $review['rating']
-                                            ); ?>
-                                        </span>
-
-                                    </div>
-
-                                <?php endif; ?>
-
-                                <?php if (!empty($review['topic'])) : ?>
+                                <?php if ($topic_label) : ?>
 
                                     <span class="wb-review-topic">
 
                                         <?php
-                                        echo esc_html(
-                                            $topic_labels[$review['topic']] ?? $review['topic']
-                                        );
+                                        echo esc_html($topic_label);
                                         ?>
 
                                     </span>
@@ -1111,33 +951,48 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                             </div>
 
 
+                            <?php if (!empty($review['review_text'])) : ?>
 
+                                <blockquote>
 
+                                    “<?php
+                                    echo esc_html(
+                                        $review['review_text']
+                                    );
+                                    ?>”
 
-                            <blockquote>
+                                </blockquote>
 
-                                “<?php echo esc_html(
-                                        $review['review_text'] ?? ''
-                                    ); ?>”
-
-                            </blockquote>
+                            <?php endif; ?>
 
 
                             <div class="wb-review-person">
 
-                                <strong>
-                                    <?php echo esc_html(
-                                        $review['reviewer_name'] ?? ''
-                                    ); ?>
-                                </strong>
+                                <?php if (!empty($review['reviewer_name'])) : ?>
+
+                                    <strong>
+
+                                        <?php
+                                        echo esc_html(
+                                            $review['reviewer_name']
+                                        );
+                                        ?>
+
+                                    </strong>
+
+                                <?php endif; ?>
 
 
                                 <?php if (!empty($review['role'])) : ?>
 
                                     <span>
-                                        <?php echo esc_html(
+
+                                        <?php
+                                        echo esc_html(
                                             $review['role']
-                                        ); ?>
+                                        );
+                                        ?>
+
                                     </span>
 
                                 <?php endif; ?>
@@ -1146,23 +1001,29 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                 <?php if (!empty($review['company'])) : ?>
 
                                     <span>
-                                        <?php echo esc_html(
+
+                                        <?php
+                                        echo esc_html(
                                             $review['company']
-                                        ); ?>
+                                        );
+                                        ?>
+
                                     </span>
 
                                 <?php endif; ?>
 
 
-                                <?php if (!empty($formatted_date)) : ?>
+                                <?php if ($formatted_date) : ?>
 
                                     <time
-                                        datetime="<?php echo esc_attr(
-                                                        $review['review_date']
-                                                    ); ?>">
-                                        <?php echo esc_html(
+                                        datetime="<?php echo esc_attr($review['review_date']); ?>">
+
+                                        <?php
+                                        echo esc_html(
                                             $formatted_date
-                                        ); ?>
+                                        );
+                                        ?>
+
                                     </time>
 
                                 <?php endif; ?>
@@ -1177,22 +1038,28 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                                     <?php if (!empty($review['source_url'])) : ?>
 
                                         <a
-                                            href="<?php echo esc_url(
-                                                        $review['source_url']
-                                                    ); ?>"
+                                            href="<?php echo esc_url($review['source_url']); ?>"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            <?php echo esc_html(
+
+                                            <?php
+                                            echo esc_html(
                                                 $review['source_label']
-                                            ); ?>
+                                            );
+                                            ?>
+
                                         </a>
 
                                     <?php else : ?>
 
                                         <span>
-                                            <?php echo esc_html(
+
+                                            <?php
+                                            echo esc_html(
                                                 $review['source_label']
-                                            ); ?>
+                                            );
+                                            ?>
+
                                         </span>
 
                                     <?php endif; ?>
@@ -1201,116 +1068,80 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
                             <?php endif; ?>
 
-
                         <?php endif; ?>
 
                     </article>
 
-
                 <?php endforeach; ?>
 
-
             <?php else : ?>
-
-
-                <!-- =========================================================
-                     EMPTY STATE
-                ========================================================== -->
 
                 <div
                     class="wb-reviews-empty"
                     role="status">
 
-                    <span
-                        class="wb-reviews-empty__icon"
-                        aria-hidden="true">
-                        —
-                    </span>
-
-
-                    <h3>
-                        No reviews found.
-                    </h3>
-
+                    <h3>No reviews found.</h3>
 
                     <p>
                         There are no reviews matching the selected filters.
-                        Try another review type or topic.
                     </p>
-
 
                     <a
                         href="<?php echo esc_url(get_permalink()); ?>"
                         class="wb-reviews-empty__button">
+
                         View all reviews
+
                     </a>
 
                 </div>
-
 
             <?php endif; ?>
 
         </div>
 
 
-        <!-- =========================================================
-             PAGINATION
-        ========================================================== -->
+        <!-- PAGINATION -->
 
         <?php if ($total_pages > 1) : ?>
 
             <div class="wb-reviews-pagination">
 
-
-                <!-- LOAD MORE -->
-
                 <?php if ($current_page < $total_pages) : ?>
 
                     <a
-                        href="<?php echo esc_url(
-                                    wb_review_filter_url(
-                                        $current_type,
-                                        $current_topic,
-                                        $current_page + 1
-                                    )
-                                ); ?>"
+                        href="<?php echo wb_review_filter_url(
+                            $current_type,
+                            $current_topic,
+                            $current_page + 1
+                        ); ?>"
                         class="wb-reviews-load-more"
                         data-load-more>
+
                         Load more reviews
+
                     </a>
 
                 <?php endif; ?>
 
 
-                <!-- PAGINATION -->
-
                 <nav
                     class="wb-reviews-pages"
                     aria-label="Reviews pagination">
 
-                    <?php for (
-                        $page = 1;
-                        $page <= $total_pages;
-                        $page++
-                    ) : ?>
+                    <?php for ($page = 1; $page <= $total_pages; $page++) : ?>
 
                         <a
-                            href="<?php echo esc_url(
-                                        wb_review_filter_url(
-                                            $current_type,
-                                            $current_topic,
-                                            $page
-                                        )
-                                    ); ?>"
-                            class="<?php echo $page === $current_page
-                                        ? 'is-active'
-                                        : ''; ?>"
-                            <?php
-                            echo $page === $current_page
-                                ? 'aria-current="page"'
-                                : '';
-                            ?>>
+                            href="<?php echo wb_review_filter_url(
+                                $current_type,
+                                $current_topic,
+                                $page
+                            ); ?>"
+                            class="<?php echo $page === $current_page ? 'is-active' : ''; ?>"
+                            <?php echo $page === $current_page ? 'aria-current="page"' : ''; ?>>
+
                             <?php echo esc_html($page); ?>
+
                         </a>
 
                     <?php endfor; ?>
@@ -1326,10 +1157,7 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 </section>
 
 
-
-<!-- ================================================================
-     VIDEO MODAL
-================================================================ -->
+<!-- VIDEO MODAL -->
 
 <div
     class="wb-review-modal"
@@ -1337,15 +1165,10 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
     hidden
     aria-hidden="true">
 
-
-    <!-- OVERLAY -->
-
     <div
         class="wb-review-modal__overlay"
         data-video-close></div>
 
-
-    <!-- DIALOG -->
 
     <div
         class="wb-review-modal__dialog"
@@ -1353,26 +1176,18 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
         aria-modal="true"
         aria-labelledby="wb-review-modal-title">
 
-
-        <!-- CLOSE -->
-
         <button
             class="wb-review-modal__close"
             type="button"
             aria-label="Close video review"
             data-video-close>
+
             ×
+
         </button>
 
 
-        <!-- =========================================================
-             MEDIA
-        ========================================================== -->
-
         <div class="wb-review-modal__media">
-
-
-            <!-- VIDEO -->
 
             <video
                 class="wb-review-modal__video"
@@ -1385,22 +1200,18 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
                     class="wb-review-modal__captions"
                     kind="captions"
                     srclang="en"
-                    label="English"
-                    hidden>
+                    label="English">
 
             </video>
 
-
-            <!-- UNAVAILABLE -->
 
             <div
                 class="wb-review-modal__unavailable"
                 hidden>
 
                 <img
-                    src="<?php echo esc_url(
-                                $default_review_poster
-                            ); ?>"
+                    class="wb-review-modal__unavailable-image"
+                    src=""
                     alt="">
 
                 <div class="wb-review-modal__unavailable-copy">
@@ -1420,39 +1231,22 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
         </div>
 
 
-        <!-- =========================================================
-             REVIEW DETAILS
-        ========================================================== -->
-
         <div class="wb-review-modal__details">
 
+            <div
+                class="wb-review-modal__rating"
+                aria-label=""></div>
 
-            <!-- RATING -->
-
-            <div class="wb-review-modal__rating"></div>
-
-
-            <!-- TOPIC -->
-
-            <span class="wb-review-modal__topic wb-review-topic"></span>
-
-
-            <!-- NAME -->
+            <span class="wb-review-modal__topic"></span>
 
             <h2 id="wb-review-modal-title"></h2>
 
-
-            <!-- ROLE -->
-
             <p class="wb-review-modal__role"></p>
 
-
-            <!-- REVIEW -->
+            <p class="wb-review-modal__date"></p>
 
             <p class="wb-review-modal__summary"></p>
 
-
-            <!-- TRANSCRIPT -->
 
             <details
                 class="wb-review-transcript"
@@ -1466,7 +1260,6 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 
             </details>
 
-
         </div>
 
     </div>
@@ -1474,18 +1267,4 @@ $default_review_poster = get_template_directory_uri() . '/assets/images/Estimate
 </div>
 
 
-<!-- =========================================================
-     VIDEO MODAL
-========================================================== -->
-
-
-
-
-
-
-
-
-
-
-<?php
-get_footer();
+<?php get_footer(); ?>

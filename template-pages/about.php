@@ -256,8 +256,217 @@ get_header();
 
 </section>
 
-
 <section style="text-align: center;">we will use the seven stage section as on how it works page</section>
+
+<!-- =========================================================
+     SECTION 04: ORIGIN STORY
+========================================================= -->
+
+<!-- =========================================================
+     SECTION 04: ORIGIN STORY
+========================================================= -->
+
+<section class="wb-origin-story-v2">
+
+    <div class="wrap">
+
+        <!-- Section Header -->
+
+        <div class="section-head">
+
+            <h2>
+                Why Wunderbuild was built.
+            </h2>
+
+            
+
+        </div>
+
+
+        <!-- Founder Card -->
+
+        <div class="wb-origin-story-v2__founder">
+
+            <div class="wb-origin-story-v2__founder-mark">
+                <span>WB</span>
+            </div>
+
+            <div class="wb-origin-story-v2__founder-content">
+
+                <span class="wb-origin-story-v2__label">
+                    WHO BUILT IT
+                </span>
+
+                <h3>
+                    [Founder name]
+                </h3>
+
+                <p>
+                    One or two lines about the founder's relevant background,
+                    industry experience and the perspective that led to the
+                    creation of Wunderbuild.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Story Timeline -->
+
+        <div class="wb-origin-story-v2__timeline">
+
+
+            <!-- Item 01 -->
+
+            <article class="wb-origin-story-v2__item">
+
+                <div class="wb-origin-story-v2__rail">
+                    <span></span>
+                </div>
+
+                <div class="wb-origin-story-v2__item-content">
+
+                    <span class="wb-origin-story-v2__item-label">
+                        THE BEGINNING
+                    </span>
+
+                    <h3>
+                        When and where it began.
+                    </h3>
+
+                    <p>
+                        Wunderbuild began in [year] in [location], with the
+                        idea of creating a clearer and more connected way
+                        to manage the moving parts of a building job.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Item 02 -->
+
+            <article class="wb-origin-story-v2__item">
+
+                <div class="wb-origin-story-v2__rail">
+                    <span></span>
+                </div>
+
+                <div class="wb-origin-story-v2__item-content">
+
+                    <span class="wb-origin-story-v2__item-label">
+                        THE PROBLEM
+                    </span>
+
+                    <h3>
+                        Too many moving parts.
+                    </h3>
+
+                    <p>
+                        Information was often spread between spreadsheets,
+                        documents, messages and separate systems, making it
+                        harder for teams to stay connected.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Item 03 -->
+
+            <article class="wb-origin-story-v2__item">
+
+                <div class="wb-origin-story-v2__rail">
+                    <span></span>
+                </div>
+
+                <div class="wb-origin-story-v2__item-content">
+
+                    <span class="wb-origin-story-v2__item-label">
+                        SHAPED BY BUILDERS
+                    </span>
+
+                    <h3>
+                        Early builders helped shape it.
+                    </h3>
+
+                    <p>
+                        Feedback from the people using the product helped
+                        shape the workflows, tools and decisions that became
+                        part of Wunderbuild.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Item 04 -->
+
+            <article class="wb-origin-story-v2__item">
+
+                <div class="wb-origin-story-v2__rail">
+                    <span></span>
+                </div>
+
+                <div class="wb-origin-story-v2__item-content">
+
+                    <span class="wb-origin-story-v2__item-label">
+                        A TURNING POINT
+                    </span>
+
+                    <h3>
+                        From solving tasks to connecting the whole job.
+                    </h3>
+
+                    <p>
+                        As the product evolved, the focus expanded from
+                        individual workflows to bringing work, information,
+                        costs and decisions closer together.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Item 05 -->
+
+            <article class="wb-origin-story-v2__item">
+
+                <div class="wb-origin-story-v2__rail">
+                    <span></span>
+                </div>
+
+                <div class="wb-origin-story-v2__item-content">
+
+                    <span class="wb-origin-story-v2__item-label">
+                        WHAT REMAINS TRUE
+                    </span>
+
+                    <h3>
+                        Keep the whole job connected.
+                    </h3>
+
+                    <p>
+                        The goal remains simple: give builders and their teams
+                        a clearer view of the work, information and decisions
+                        that move a job forward.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
 
 <!-- Section 05: Purpose, Mission and Vision -->
 <section class="wb-purpose">

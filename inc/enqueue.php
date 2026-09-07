@@ -3,7 +3,8 @@
 // Remove Parent Theme CSS
 add_action('wp_enqueue_scripts', 'wunderbuild_remove_parent_theme_css', 999);
 
-function wunderbuild_remove_parent_theme_css() {
+function wunderbuild_remove_parent_theme_css()
+{
 
     wp_dequeue_style('twenty-twenty-one-style');
     wp_deregister_style('twenty-twenty-one-style');
@@ -18,7 +19,8 @@ function wunderbuild_remove_parent_theme_css() {
 // Load Child Theme CSS & JS
 add_action('wp_enqueue_scripts', 'wunderbuild_enqueue_assets', 1000);
 
-function wunderbuild_enqueue_assets() {
+function wunderbuild_enqueue_assets()
+{
 
     // CSS
     $css_file = get_stylesheet_directory() . '/assets/css/custom-style.css';
@@ -29,7 +31,7 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($css_file) ? filemtime($css_file) : WB_VERSION
     );
-   // pricing page css
+    // pricing page css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/pricing.css';
 
     wp_enqueue_style(
@@ -48,8 +50,8 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
-   
-     // switch to wunderbuild css
+
+    // switch to wunderbuild css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/switch-to-wunderbuild.css';
 
     wp_enqueue_style(
@@ -58,7 +60,7 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
-     // review css
+    // review css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/reviews.css';
 
     wp_enqueue_style(
@@ -68,7 +70,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-     // contact css
+    // contact css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/contact.css';
 
     wp_enqueue_style(
@@ -78,7 +80,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-     // contact css
+    // contact css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/mcp-integrations.css';
 
     wp_enqueue_style(
@@ -88,7 +90,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-      // workspace studuio css
+    // workspace studuio css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/workspace-studio.css';
 
     wp_enqueue_style(
@@ -98,7 +100,7 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-          // blog css
+    // blog css
     $pricing_css_file = get_stylesheet_directory() . '/assets/css/blog.css';
 
     wp_enqueue_style(
@@ -115,7 +117,7 @@ function wunderbuild_enqueue_assets() {
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
-     // Affiliate css
+    // Affiliate css
     wp_enqueue_style(
         'wunderbuild-affiliate',
         get_stylesheet_directory_uri() . '/assets/css/affiliate.css',
@@ -123,10 +125,17 @@ function wunderbuild_enqueue_assets() {
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
 
-     // About css
+    // About css
     wp_enqueue_style(
         'wunderbuild-about',
         get_stylesheet_directory_uri() . '/assets/css/about.css',
+        array(),
+        file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
+    );
+    // single blog css
+    wp_enqueue_style(
+        'wunderbuild-single-blog',
+        get_stylesheet_directory_uri() . '/assets/css/single-blog.css',
         array(),
         file_exists($pricing_css_file) ? filemtime($pricing_css_file) : WB_VERSION
     );
@@ -147,7 +156,8 @@ function wunderbuild_enqueue_assets() {
 
 add_action('enqueue_block_editor_assets', 'wunderbuild_block_editor_styles');
 
-function wunderbuild_block_editor_styles() {
+function wunderbuild_block_editor_styles()
+{
 
     wp_enqueue_style(
         'wunderbuild-editor-style',
@@ -155,5 +165,4 @@ function wunderbuild_block_editor_styles() {
         array(),
         filemtime(get_stylesheet_directory() . '/assets/css/custom-style.css')
     );
-
 }
