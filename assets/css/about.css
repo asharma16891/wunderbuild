@@ -1,0 +1,1802 @@
+/* =========================================
+   ABOUT - CONTEXT SECTION
+========================================= */
+
+.wb-about-context {
+  border-top: 1px solid var(--pearl);
+}
+
+/* =========================================
+   CARD GRID
+========================================= */
+
+.wb-about-context__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.wb-context-card {
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.wb-context-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(29, 28, 27, 0.2);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.wb-context-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 78px;
+  height: 78px;
+
+  flex-shrink: 0;
+
+  color: var(--charcoal);
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(29, 28, 27, 0.1);
+}
+.wb-context-card__icon  img{
+  width: 35px !important;
+  height: 35px !important;
+}
+
+/* Indigo Icon Background */
+
+.wb-context-card__icon--indigo {
+  background: var(--indigo);
+}
+
+/* Coral Icon Background */
+
+.wb-context-card__icon--coral {
+  background: var(--coral);
+}
+
+/* Peach Icon Background */
+
+.wb-context-card__icon--peach {
+  background: var(--peach);
+}
+
+.wb-context-card__icon svg {
+  display: block;
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.wb-context-card__content {
+  padding-top: var(--space-20);
+}
+
+
+.wb-context-card__content p {
+  margin: var(--space-20) 0 0;
+  color: var(--ink-60);
+  text-wrap: pretty;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  .wb-about-context {
+    padding: 90px 0;
+  }
+
+  .wb-about-context .section-head {
+    margin-bottom: 55px;
+  }
+
+  .wb-about-context__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wb-context-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .wb-about-context {
+    padding: 70px 0;
+  }
+
+  .wb-about-context .section-head {
+    margin-bottom: 40px;
+  }
+
+  .wb-about-context .section-head h2 {
+    font-size: 42px;
+  }
+
+  .wb-about-context__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wb-context-card {
+    padding: 28px 26px;
+    border-radius: 22px;
+  }
+
+  .wb-context-card:last-child {
+    grid-column: auto;
+  }
+
+  .wb-context-card__icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 19px;
+  }
+
+  .wb-context-card__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .wb-context-card__content h3 {
+    font-size: 25px;
+  }
+
+
+  .wb-context-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   ABOUT - PURPOSE / MISSION / VISION
+========================================= */
+
+.wb-purpose {
+  background: var(--charcoal);
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.wb-purpose .section-head {
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.wb-purpose .section-head h2 {
+  margin: 0;
+  color: var(--white);
+}
+
+/* Grid */
+
+.wb-purpose__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Card */
+
+.wb-purpose-card {
+  border-radius: var(--radius-lg);
+  padding: 40px 30px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease;
+}
+
+.wb-purpose-card::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+.wb-purpose-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Card Colors */
+
+.wb-purpose-card--purpose {
+  background: linear-gradient(160deg, #c4aeff 0%, var(--indigo) 100%);
+}
+
+.wb-purpose-card--mission {
+  background: linear-gradient(160deg, #ffa396 0%, var(--coral) 100%);
+}
+
+.wb-purpose-card--vision {
+  background: linear-gradient(160deg, #ffcba8 0%, var(--peach) 100%);
+}
+
+/* Icon */
+
+.wb-purpose-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    background: rgba(29, 28, 27, .92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-20);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 22px -8px rgba(0, 0, 0, .4);
+}
+
+.wb-purpose-card__icon img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+/* Content */
+
+.wb-purpose-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wb-purpose-card__label {
+  display: inline-block;
+  margin-bottom: var(--space-20);
+
+}
+
+.wb-purpose-card__content p {
+    margin: 0;
+    color: var(--charcoal);
+}
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .wb-purpose {
+    padding: 100px 0;
+  }
+
+  .wb-purpose__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+.wb-purpose__grid {
+  gap: 20px;
+}
+
+  .wb-purpose .section-head {
+    margin-bottom: 42px;
+  }
+
+  .wb-purpose-card {
+    min-height: 350px;
+    padding: 40px 25px;
+
+    border-radius: 22px;
+  }
+
+  .wb-purpose-card:hover {
+    transform: none;
+  }
+
+  .wb-purpose-card__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+  }
+
+  .wb-purpose-card__icon svg {
+    width: 33px;
+    height: 33px;
+  }
+
+  .wb-purpose-card__label {
+    margin-bottom: 18px;
+  }
+
+}
+
+/* =========================================
+   ABOUT - HOW FEEDBACK MOVES
+========================================= */
+
+.wb-feedback-flow {
+  position: relative;
+  background: var(--white);
+  overflow: hidden;
+}
+
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.wb-feedback-flow__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: start;
+  gap: 30px;
+
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+
+  /* Space for staggered cards */
+  padding-bottom: 100px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.wb-feedback-flow__grid .wb-feedback-card {
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+  width: 100%;
+
+  padding: 46px 45px 30px;
+
+  background: var(--white);
+
+  border: 1px solid rgba(29, 28, 27, 0.08);
+  border-radius: 32px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 18px 50px rgba(29, 28, 27, 0.06);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* =========================================
+   STAGGERED LAYOUT
+========================================= */
+
+/* 1st card - left top */
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(1) {
+  transform: translateY(0);
+}
+
+/* 2nd card - right lower */
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(2) {
+  transform: translateY(100px);
+}
+
+/* 3rd card - left */
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(3) {
+  transform: translateY(0);
+}
+
+/* 4th card - right lower */
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(4) {
+  transform: translateY(100px);
+}
+
+/* Dynamic cards:
+   Odd cards = normal
+   Even cards = down */
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(odd) {
+  transform: translateY(0);
+}
+
+.wb-feedback-flow__grid .wb-feedback-card:nth-child(even) {
+  transform: translateY(80px);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.wb-feedback-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+
+  margin-bottom: var(--space-20);
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.wb-feedback-card__icon img {
+  display: block;
+
+  width: 40px !important;
+  height: 40px !important;
+
+  max-width: 40px !important;
+
+  object-fit: contain;
+}
+
+/* =========================================
+   ICON BACKGROUNDS
+========================================= */
+
+.wb-feedback-flow__grid
+  .wb-feedback-card:nth-child(4n + 1)
+  .wb-feedback-card__icon {
+  background: var(--indigo);
+}
+
+.wb-feedback-flow__grid
+  .wb-feedback-card:nth-child(4n + 2)
+  .wb-feedback-card__icon {
+  background: var(--coral);
+}
+
+.wb-feedback-flow__grid
+  .wb-feedback-card:nth-child(4n + 3)
+  .wb-feedback-card__icon {
+  background: var(--peach);
+}
+
+.wb-feedback-flow__grid
+  .wb-feedback-card:nth-child(4n + 4)
+  .wb-feedback-card__icon {
+  background: var(--pearl);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.wb-feedback-card__content {
+  min-width: 0;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.wb-feedback-card h3 {
+  margin: 0;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.wb-feedback-card p {
+  margin: var(--space-20) 0 0;
+  color: var(--ink-60);
+}
+
+/* =========================================
+   HOVER
+========================================= */
+
+.wb-feedback-card:hover {
+  box-shadow: 0 28px 70px rgba(29, 28, 27, 0.1);
+}
+
+/* Hover while maintaining stagger position */
+
+.wb-feedback-card:nth-child(odd):hover {
+  transform: translateY(-8px);
+}
+
+.wb-feedback-card:nth-child(even):hover {
+  transform: translateY(92px);
+}
+
+.wb-feedback-card:hover .wb-feedback-card__icon {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+
+  .wb-feedback-flow__grid {
+    gap: 20px;
+    padding-bottom: 60px;
+  }
+
+  .wb-feedback-flow__grid .wb-feedback-card {
+    padding: 38px;
+    border-radius: 28px;
+  }
+
+  .wb-feedback-flow__grid .wb-feedback-card:nth-child(even) {
+    transform: translateY(60px);
+  }
+
+  .wb-feedback-card:nth-child(odd):hover {
+    transform: translateY(-6px);
+  }
+
+  .wb-feedback-card:nth-child(even):hover {
+    transform: translateY(54px);
+  }
+
+  .wb-feedback-card__icon {
+    width: 76px;
+    height: 76px;
+
+    border-radius: 22px;
+  }
+
+  .wb-feedback-card__icon img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+  .wb-feedback-flow__grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px;
+
+    padding-bottom: 0;
+  }
+
+  /* Remove stagger on mobile */
+
+  .wb-feedback-flow__grid .wb-feedback-card:nth-child(odd),
+  .wb-feedback-flow__grid .wb-feedback-card:nth-child(even) {
+    transform: none !important;
+  }
+
+  .wb-feedback-flow__grid .wb-feedback-card {
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+  }
+
+  .wb-feedback-card__icon {
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: 22px;
+
+    border-radius: 20px;
+  }
+
+  .wb-feedback-card__icon img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+}
+
+/* =========================================
+   ABOUT – PRODUCT AND SUPPORT
+========================================= */
+
+.wb-product-support {
+  background: var(--charcoal);
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.wb-product-support__layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(500px, 1.4fr);
+  gap: 60px;
+  align-items: start;
+}
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.wb-product-support__intro {
+  position: sticky;
+  top: 120px;
+}
+
+.wb-product-support .section-head {
+  margin: 0;
+  text-align: left;
+}
+
+.wb-product-support .section-head h2 {
+  margin: 0;
+  color: var(--white);
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.wb-product-support__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 42px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.wb-product-support__button svg {
+  width: 20px;
+  height: 20px;
+
+  fill: none;
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: transform 0.3s ease;
+}
+
+.wb-product-support__button:hover {
+  transform: translateY(-3px);
+}
+
+.wb-product-support__button:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.wb-product-support__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wb-product-support-card {
+  display: grid;
+  grid-template-columns: 82px 1fr 48px;
+  align-items: center;
+  gap: 28px;
+
+  min-height: 170px;
+  padding: 28px 30px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.wb-product-support-card:hover {
+  transform: translateX(8px);
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.wb-product-support-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 82px;
+  height: 82px;
+
+  color: var(--charcoal);
+
+  border-radius: 22px;
+}
+
+.wb-product-support-card__icon img{
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.wb-product-support-card__icon--indigo {
+  background: var(--indigo);
+}
+
+.wb-product-support-card__icon--coral {
+  background: var(--coral);
+}
+
+.wb-product-support-card__icon--peach {
+  background: var(--peach);
+}
+
+.wb-product-support-card__icon--pearl {
+  background: var(--pearl);
+}
+
+.wb-product-support-card__icon svg {
+  width: 36px;
+  height: 36px;
+
+  fill: none;
+  stroke: currentColor;
+
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.wb-product-support-card__content h3 {
+  color: var(--white);
+}
+
+.wb-product-support-card__content p {
+  max-width: 580px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  text-wrap: pretty;
+}
+
+/* =========================================
+   ARROW
+========================================= */
+
+.wb-product-support-card__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  color: var(--white);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.wb-product-support-card__arrow svg {
+  width: 20px;
+  height: 20px;
+
+  fill: none;
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wb-product-support-card:hover .wb-product-support-card__arrow {
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+
+  .wb-product-support__layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .wb-product-support__intro {
+    position: static;
+  }
+
+  .wb-product-support-card {
+    grid-template-columns: 76px 1fr 46px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+  .wb-product-support__layout {
+    gap: 48px;
+  }
+
+  .wb-product-support-card {
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+
+    min-height: auto;
+    padding: 24px;
+
+    border-radius: 20px;
+  }
+
+  .wb-product-support-card__icon {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 18px;
+  }
+
+  .wb-product-support-card__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .wb-product-support-card__content h3 {
+    font-size: 22px;
+  }
+
+  .wb-product-support-card__content p {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .wb-product-support-card__arrow {
+    display: none;
+  }
+
+  .wb-product-support-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   TEAM SECTION
+========================================= */
+
+.wb-team {
+  background: var(--pearl);
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.wb-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.wb-team-card {
+  position: relative;
+  height: 500px; /* reduced height */
+
+  overflow: hidden;
+
+  border-radius: 20px;
+  background: var(--charcoal);
+
+  isolation: isolate;
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.wb-team-card__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.6s ease;
+}
+
+.wb-team-card:hover .wb-team-card__image {
+  transform: scale(1.04);
+}
+
+/* =========================================
+   CONTENT PANEL
+========================================= */
+
+.wb-team-card__overlay {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+
+  padding: 26px 30px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  max-height: 112px;
+
+  transition:
+    max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.4s ease,
+    background 0.3s ease;
+
+  z-index: 2;
+}
+
+/* =========================================
+   HOVER - PANEL EXPANDS UPWARD
+========================================= */
+
+.wb-team-card:hover .wb-team-card__overlay,
+.wb-team-card:focus-within .wb-team-card__overlay {
+  max-height: 420px;
+
+  padding: 30px;
+}
+
+/* =========================================
+   NAME
+========================================= */
+
+.wb-team-card h3 {
+  color: var(--charcoal);
+
+  /* font-size: clamp(26px, 2vw, 34px);
+  font-weight: 500;
+
+  line-height: 1.15;
+  letter-spacing: -0.035em; */
+}
+
+/* =========================================
+   ROLE
+========================================= */
+
+.wb-team-card__role {
+  margin: 4px 0 0;
+  color: var(--ink-60);
+
+}
+
+/* =========================================
+   EXTRA CONTENT
+========================================= */
+
+.wb-team-card__extra {
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease,
+    transform 0.45s ease;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   SHOW EXTRA ON HOVER
+========================================= */
+
+.wb-team-card:hover .wb-team-card__extra,
+.wb-team-card:focus-within .wb-team-card__extra {
+  max-height: 300px;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.wb-team-card__line {
+  width: 42px;
+  height: 2px;
+
+   margin: 14px 0 14px;
+
+  background: var(--coral);
+}
+
+/* =========================================
+   TEAM / RESPONSIBILITY
+========================================= */
+
+.wb-team-card__team {
+  margin: 0 0 10px;
+
+  color: var(--charcoal);
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================
+   BIO
+========================================= */
+
+.wb-team-card__bio {
+  margin: 0;
+  color: var(--ink-60);
+
+}
+
+/* =========================================
+   LINKEDIN
+========================================= */
+
+.wb-team-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 18px;
+
+  color: var(--charcoal);
+  font-weight: 600;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--ink-40);
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.wb-team-card__linkedin:hover {
+  color: var(--coral);
+  border-color: var(--coral);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  .wb-team__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wb-team-card {
+    height: 480px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .wb-team__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .wb-team-card {
+    height: 480px;
+    border-radius: 16px;
+  }
+
+  .wb-team-card__overlay {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+
+    padding: 22px;
+
+    max-height: none;
+  }
+
+  /*
+     * Mobile par hover nahi hota,
+     * isliye extra content visible rakho
+     */
+
+  .wb-team-card__extra {
+    max-height: 300px;
+
+    opacity: 1;
+
+    transform: none;
+
+    pointer-events: auto;
+  }
+
+}
+
+/* =========================================
+   SECTION 10 - LOCATION
+========================================= */
+
+.wb-location {
+  padding: 110px 0;
+
+  background: var(--white);
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.wb-location__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
+  align-items: center;
+  gap: 60px;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.wb-location__content .section-head {
+  margin-bottom: var(--space-20);
+  text-align: left;
+}
+
+
+
+.wb-location__description {
+  margin: 0;
+  color: var(--ink-60);
+}
+
+/* =========================================
+   LOCATION CARD
+========================================= */
+
+.wb-location__card {
+  position: relative;
+
+  padding: 34px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  background: var(--charcoal);
+
+  border-radius: 24px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* Decorative circles */
+
+.wb-location__card::before,
+.wb-location__card::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  pointer-events: none;
+}
+
+.wb-location__card::before {
+  width: 420px;
+  height: 420px;
+
+  top: -190px;
+  right: -180px;
+}
+
+.wb-location__card::after {
+  width: 280px;
+  height: 280px;
+
+  bottom: -150px;
+  left: -100px;
+}
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.wb-location__card-top {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.wb-location__icon {
+  width: 64px;
+  height: 64px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--charcoal);
+
+  background: var(--lime);
+
+  border-radius: 18px;
+}
+
+/* =========================================
+   ADDRESS
+========================================= */
+
+.wb-location__address {
+  position: relative;
+  z-index: 1;
+
+  padding: 20px 0;
+}
+
+.wb-location__eyebrow {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--lime);
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wb-location__address address {
+  margin: 0;
+
+  color: var(--white);
+
+  font-style: normal;
+}
+
+.wb-location__dot {
+  width: 5px;
+  height: 5px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--coral);
+}
+
+/* =========================================
+   HOVER
+========================================= */
+
+.wb-location__card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.wb-location__card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 30px 80px -30px rgba(29, 28, 27, 0.3);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  .wb-location__inner {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .wb-location__content {
+    max-width: 720px;
+  }
+
+  .wb-location__card {
+    min-height: 400px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .wb-location {
+    padding: 75px 0;
+  }
+
+  .wb-location__inner {
+    gap: 40px;
+  }
+
+  .wb-location__description {
+    font-size: 17px;
+  }
+
+  .wb-location__card {
+    min-height: auto;
+
+    padding: 24px;
+
+    border-radius: 18px;
+  }
+
+  .wb-location__icon {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 15px;
+  }
+
+  .wb-location__address address {
+    font-size: 28px;
+  }
+}
+
+
+/* =========================================================
+   ORIGIN STORY V2
+========================================================= */
+
+
+
+
+.wb-origin-story-v2 .wrap {
+    max-width: 1180px;
+}
+
+
+
+
+
+.wb-origin-story-v2__label,
+.wb-origin-story-v2__item-label {
+    display: block;
+
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    color: var(--ink-60, #777);
+}
+
+
+.wb-origin-story-v2__header h2 {
+    margin: 0 0 18px;
+
+    color: var(--charcoal, #252525);
+
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 500;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+}
+
+
+.wb-origin-story-v2__header p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--ink-60, #666);
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOUNDER CARD
+========================================================= */
+
+.wb-origin-story-v2__founder {
+    display: grid;
+
+    grid-template-columns: 130px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 34px;
+
+    max-width: 920px;
+
+    margin-bottom: 70px;
+    margin-inline: auto;
+
+    padding: 34px 40px;
+
+    background: var(--white, #fff);
+
+    border: 1px solid rgba(29, 28, 27, 0.1);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 12px 40px rgba(29, 28, 27, 0.05);
+}
+
+
+/* Founder mark */
+
+.wb-origin-story-v2__founder-mark  img{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+   object-fit: cover;
+    
+}
+
+.wb-origin-story-v2__founder-mark  {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background: var(--lime);
+
+    color: var(--charcoal, #252525);
+
+    font-size: 20px;
+    font-weight: 600;
+
+    letter-spacing: -0.03em;
+
+    box-shadow:
+        inset 0 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+
+
+.wb-origin-story-v2__founder-content h3 {
+    margin: 0 0 10px;
+}
+
+
+.wb-origin-story-v2__founder-content p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--ink-60, #666);
+}
+
+
+/* =========================================================
+   STORY TIMELINE
+========================================================= */
+
+.wb-origin-story-v2__timeline {
+    position: relative;
+    margin-inline: auto;
+    max-width: 920px;
+}
+
+
+/* Vertical line */
+
+.wb-origin-story-v2__timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 12px;
+    bottom: 12px;
+
+    left: 14px;
+
+    width: 1px;
+
+    background:
+        rgba(29, 28, 27, 0.15);
+}
+
+
+/* =========================================================
+   TIMELINE ITEM
+========================================================= */
+
+.wb-origin-story-v2__item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 22px minmax(0, 1fr);
+
+    gap: 32px;
+
+    padding-bottom: 42px;
+}
+
+
+.wb-origin-story-v2__item:last-child {
+    padding-bottom: 0;
+}
+
+
+/* Dot */
+
+.wb-origin-story-v2__rail {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.wb-origin-story-v2__rail span {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: var(--white, #fff);
+
+    border: 5px solid var(--indigo, #a9a0df);
+}
+
+
+/* Alternate accent */
+
+.wb-origin-story-v2__item:nth-child(2)
+.wb-origin-story-v2__rail span {
+    border-color: var(--coral, #ef8c7c);
+}
+
+
+.wb-origin-story-v2__item:nth-child(3)
+.wb-origin-story-v2__rail span {
+    border-color: var(--peach, #f4b28c);
+}
+
+
+.wb-origin-story-v2__item:nth-child(4)
+.wb-origin-story-v2__rail span {
+    border-color: var(--indigo, #a9a0df);
+}
+
+
+.wb-origin-story-v2__item:nth-child(5)
+.wb-origin-story-v2__rail span {
+    border-color: var(--charcoal, #252525);
+}
+
+
+/* =========================================================
+   ITEM CONTENT
+========================================================= */
+
+.wb-origin-story-v2__item-content {
+    position: relative;
+
+    padding: 4px 0 0;
+}
+
+
+.wb-origin-story-v2__item-label {
+    margin-bottom: 9px;
+}
+
+
+.wb-origin-story-v2__item h3 {
+    margin: 0 0 10px;
+    color: var(--charcoal, #252525);
+}
+
+
+.wb-origin-story-v2__item p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--ink-60, #666);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .wb-origin-story-v2__founder {
+        max-width: 100%;
+    }
+
+
+    .wb-origin-story-v2__timeline {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .wb-origin-story-v2__header {
+        margin-bottom: 45px;
+    }
+
+
+    .wb-origin-story-v2__header p {
+        font-size: 16px;
+    }
+
+
+    /* Founder */
+
+    .wb-origin-story-v2__founder {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        padding: 28px;
+
+        border-radius: 22px;
+
+        margin-bottom: 50px;
+    }
+
+
+    .wb-origin-story-v2__founder-mark {
+        width: 80px;
+        height: 80px;
+
+        font-size: 16px;
+    }
+
+
+    .wb-origin-story-v2__founder-content h3 {
+        font-size: 26px;
+    }
+
+
+    /* Timeline */
+
+    .wb-origin-story-v2__item {
+        grid-template-columns: 18px minmax(0, 1fr);
+
+        gap: 20px;
+
+        padding-bottom: 35px;
+    }
+
+
+    .wb-origin-story-v2__timeline::before {
+        left: 8px;
+    }
+
+
+    .wb-origin-story-v2__rail span {
+        width: 17px;
+        height: 17px;
+
+        border-width: 4px;
+    }
+
+
+    .wb-origin-story-v2__item h3 {
+        font-size: 24px;
+    }
+
+
+    .wb-origin-story-v2__item p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+}

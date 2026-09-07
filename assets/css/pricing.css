@@ -1,0 +1,1102 @@
+.pricing-selector{
+     padding: 250px 0px 150px;
+
+}
+.pricing-hero {
+  position: relative;
+
+  padding: 90px 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  height: 100dvh;
+
+  align-items: center;
+}
+
+.pricing-content {
+  max-width: 820px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.pricing-content h1 {
+  margin: 22px 0;
+
+  font-size: clamp(48px, 6vw, 72px);
+
+  line-height: 1.05;
+}
+
+.pricing-content h1 span {
+  color: var(--indigo);
+}
+
+.pricing-content p {
+  max-width: 730px;
+
+  margin: 0 auto;
+
+  font-size: 18px;
+
+  color: var(--ink-60);
+
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 42px;
+
+  flex-wrap: wrap;
+}
+
+.window-top {
+  display: flex;
+
+  gap: 8px;
+
+  margin-bottom: 34px;
+}
+
+.window-top span {
+  width: 12px;
+
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: #ddd;
+}
+
+.plan-mini {
+  display: grid;
+
+  grid-template-columns: 1fr auto auto;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 24px 28px;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  margin-bottom: 16px;
+
+  transition: 0.3s;
+}
+
+.plan-mini:last-child {
+  margin-bottom: 0;
+}
+
+.plan-mini.active {
+  background: linear-gradient(90deg, #b4ff50, #edffd8);
+
+  border-color: #b4ff50;
+}
+
+.plan-mini small {
+  display: block;
+
+  color: var(--indigo);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  margin-bottom: 6px;
+}
+
+.plan-mini h3 {
+  font-size: 34px;
+
+  margin: 0;
+}
+
+.plan-mini p {
+  margin: 0;
+
+  color: var(--ink-60);
+}
+
+@media (max-width: 991px) {
+  .pricing-hero {
+    padding: 90px 0;
+  }
+}
+
+.job-selector {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+
+  margin-top: 50px;
+}
+
+.job-btn {
+  border: none;
+
+  background: #fff;
+
+  padding: 18px 34px;
+
+  border-radius: 999px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.35s;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: var(--btn-shadow);
+  color: var(--charcoal);
+}
+
+.job-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+.job-btn.active {
+  background: var(--lime);
+
+  color: var(--charcoal);
+
+  border-color: var(--lime);
+
+  box-shadow: 0 18px 35px rgba(180, 255, 80, 0.35);
+}
+
+@media (max-width: 991px) {
+  .job-selector {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 12px 0px;
+  }
+
+  .job-btn {
+    white-space: nowrap;
+    padding: 11px 20px;
+    flex: 0 0 auto;
+    font-size: 14px;
+  }
+  .benefit-card {
+    height: 100%;
+  }
+}
+
+.pricing-plans {
+  padding: 40px 0px 90px;
+}
+
+.pricing-plans::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(186, 255, 71, 0.12);
+  filter: blur(70px);
+  top: -60px;
+  right: -60px;
+}
+
+.pricing-plans::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  left: -40px;
+  bottom: 40px;
+}
+
+.pricing-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+
+  margin-top: 60px;
+}
+
+.pricing-card {
+  transition: 0.35s;
+  position: relative;
+  overflow: hidden;
+  padding: 36px 24px;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-card.active {
+  border: 1px solid var(--charcoal);
+
+  transform: translateY(-12px);
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+}
+
+/* .pricing-card.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  top: 0;
+
+  height: 6px;
+
+  background: linear-gradient(90deg, var(--charcoal));
+} */
+
+.plan-name {
+  display: flex;
+  justify-content: center;
+  background: var(--lime);
+  color: var(--charcoal);
+  width: max-content;
+  margin-inline: auto;
+  padding: 1px 2px;
+}
+
+.price {
+  margin: 30px 0 10px;
+  text-align: center;
+}
+
+.price sup {
+  font-size: 22px;
+
+  top: -16px;
+
+  position: relative;
+}
+
+.price small {
+  font-size: 16px;
+
+  color: var(--ink-60);
+
+  font-weight: 500;
+}
+
+.plan-desc {
+  margin-bottom: 30px;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.pricing-card ul {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0 0 35px;
+}
+
+.pricing-card li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 18px;
+}
+
+.pricing-card li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 22px;
+
+  height: 22px;
+
+  border-radius: 50%;
+
+  background: var(--charcoal);
+  color: var(--white);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.pricing-card .btn {
+  width: 100%;
+
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing-plans::before {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price {
+    font-size: 42px;
+  }
+  .pricing-plans::before {
+    display: none;
+  }
+  .pricing-plans {
+    padding: 0px 0px 90px;
+  }
+  .pricing-card {
+    padding: 24px;
+  }
+  .pricing-selector{
+          padding: 150px 0px 100px;
+  }
+}
+
+/*=========================================
+    WORKFLOW SECTION
+=========================================*/
+
+.pricing-workflow {
+  background: var(--pearl);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background */
+
+.pricing-workflow::before,
+.pricing-workflow::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.pricing-workflow::before {
+  width: 420px;
+  height: 420px;
+  background: #eef0ff;
+  left: -180px;
+  top: 120px;
+}
+
+.pricing-workflow::after {
+  width: 520px;
+  height: 520px;
+  background: #f5f0ff;
+  right: -220px;
+  bottom: -100px;
+}
+
+/*=========================================
+SECTION HEAD
+=========================================*/
+/* 
+.pricing-workflow h2 span {
+  color: #6d5ef8;
+} */
+
+/*=========================================
+ROADMAP
+=========================================*/
+
+.workflow-wrapper {
+  position: relative;
+}
+
+.workflow-svg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: visible;
+
+  z-index: 1;
+}
+
+.workflow-svg path {
+  /* stroke: #cfc6ff; */
+    stroke: var(--charcoal);
+  opacity: 0.6;
+
+  stroke-width: 5;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 14 12;
+}
+
+/*=========================================
+TIMELINE
+=========================================*/
+
+.workflow-timeline {
+  position: relative;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: start;
+
+  height: 100%;
+
+  z-index: 5;
+}
+
+.workflow-item {
+  width: 19%;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+/* Alternate cards */
+
+.workflow-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.workflow-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.workflow-item:nth-child(odd) .workflow-card {
+  margin-bottom: 110px;
+  margin-top: 10px;
+}
+
+.workflow-item:nth-child(even) .workflow-card {
+  margin-top: 110px;
+}
+
+/*=========================================
+DOT
+=========================================*/
+
+.workflow-dot {
+  width: 72px;
+
+  height: 72px;
+
+  border: none;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  position: relative;
+
+  z-index: 10;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  transition: 0.35s;
+
+  font-family: var(--font-mono) !important;
+}
+
+.workflow-dot::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 8px;
+
+  border-radius: 50%;
+
+  /* background: linear-gradient(135deg, #8577ff, #c5b9ff); */
+  background: var(--lime);
+}
+
+.workflow-dot span {
+  position: relative;
+
+  z-index: 2;
+
+  color: var(--charcoal);
+
+  font-weight: 700;
+
+  font-size: 16px;
+}
+
+.workflow-dot:hover {
+  transform: scale(1.12);
+}
+
+.workflow-dot.active {
+  transform: scale(1.18);
+}
+
+/*=========================================
+CARD
+=========================================*/
+
+.workflow-card {
+  width: 245px;
+  transition: 0.4s;
+  position: relative;
+}
+
+.workflow-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+  opacity: 0.6;
+  background: var(--charcoal);
+}
+
+.workflow-item:nth-child(odd) .workflow-card::after {
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  bottom: -110px;
+
+  height: 110px;
+}
+
+.workflow-item:nth-child(even) .workflow-card::after {
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  top: -110px;
+
+  height: 110px;
+}
+
+.workflow-card:hover {
+  transform: translateY(-12px);
+
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+}
+
+.workflow-card h3 {
+  margin-bottom: var(--space-12);
+
+  text-wrap: balance;
+}
+
+.workflow-card p {
+  text-wrap: balance;
+}
+
+/*=========================================
+ACTIVE CARD
+=========================================*/
+
+.workflow-item.active .workflow-card {
+  box-shadow: 0 30px 80px rgba(180, 255, 80, 0.25);
+}
+
+.workflow-item.active .workflow-dot::before {
+  background: var(--lime);
+}
+
+/*=========================================
+FLOATING DECORATION
+=========================================*/
+
+/* .workflow-wrapper::before {
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #a99cff;
+
+  top: 110px;
+
+  left: 46%;
+
+  box-shadow:
+    250px 150px 0 #ddd6ff,
+    -300px 180px 0 #ddd6ff,
+    420px -50px 0 #ece8ff,
+    -450px -40px 0 #ece8ff;
+} */
+
+/*=========================================
+RESPONSIVE
+=========================================*/
+
+@media (max-width: 1100px) {
+  .workflow-wrapper {
+    height: auto;
+  }
+
+  .workflow-svg {
+    display: none;
+  }
+
+  .workflow-timeline {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .workflow-item {
+    width: 100%;
+  }
+
+  .workflow-card {
+    width: 100%;
+
+    max-width: 500px;
+  }
+
+  .workflow-card::after {
+    display: none;
+  }
+
+  .workflow-item:nth-child(odd) .workflow-card,
+  .workflow-item:nth-child(even) .workflow-card {
+    margin: 20px 0 0;
+  }
+}
+
+.pricing-benefits {
+  padding: 100px 0 150px 0px;
+
+  background: #fff;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.benefits-layout {
+  margin-top: 130px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 35px;
+
+  align-items: center;
+
+  position: relative;
+}
+
+/* connector */
+
+.benefits-layout::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 50%;
+
+  width: 480px;
+
+  height: 480px;
+
+  border: 2px dashed #d7d9ff;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+/* cards */
+
+.benefit-card {
+  transition: 0.35s;
+}
+
+.benefit-card:hover {
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.12);
+}
+
+.benefit-card h3 {
+  margin: var(--space-20) 0;
+}
+
+.benefit-card .icon {
+  width: 68px;
+
+  height: 68px;
+
+  border-radius: 18px;
+
+  /* background:linear-gradient(135deg,#F0ECFF,#DDD5FF); */
+  background-color: var(--lime);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 28px;
+}
+
+.benefit-card .icon img,
+.support-icons img {
+  width: 37px !important;
+  height: 37px !important;
+}
+
+/* center */
+
+.center-circle {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.circle {
+  width: 270px;
+
+  height: 270px;
+
+  border-radius: 50%;
+
+  /* background: linear-gradient(
+    135deg,
+    #8f73f2 0%,
+    var(--indigo) 50%,
+    #d0c2ff 100%
+  ); */
+
+  background: var(--lime);
+
+  color: var(--charcoal);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(180, 255, 80, 0.25);
+  /* box-shadow: 0 35px 90px rgba(111, 99, 255, 0.35); */
+}
+
+.circle span {
+  opacity: 0.9;
+}
+
+/* positions */
+
+.card-1 {
+  transform: translateY(-70px);
+}
+
+.card-2 {
+  transform: translateY(70px);
+}
+
+.card-3 {
+  transform: translateY(-70px);
+}
+
+.card-4 {
+  transform: translateY(70px);
+}
+
+/* responsive */
+
+@media (max-width: 992px) {
+  .benefits-layout {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0;
+  }
+
+  .benefits-layout::before {
+    display: none;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4 {
+    transform: none;
+  }
+
+  .circle {
+    width: 220px;
+
+    height: 220px;
+    padding: 5px;
+    margin: 30px auto;
+  }
+  .pricing-benefits {
+    padding: 70px 0 70px 0px;
+  }
+}
+@media (max-width: 767px) {
+  .benefits-layout {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.workflow-step {
+  background: #7ed9b6;
+  color: #1d1c1b;
+  border: 8px solid #fff;
+  box-shadow: 0 12px 30px rgba(126, 217, 182, 0.28);
+}
+
+.workflow-path {
+  stroke: #aeefd7;
+}
+
+.workflow-dot {
+  fill: #7ed9b6;
+}
+.support-onboarding {
+  position: relative;
+  border-top: 1px solid #ececec;
+}
+
+.support-layout {
+  display: grid;
+
+  grid-template-columns: 1fr 320px 1fr;
+
+  gap: 50px;
+
+  align-items: center;
+
+  margin-top: 80px;
+}
+
+.support-side {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 28px;
+}
+
+.support-box {
+  transition: 0.35s;
+}
+
+.support-box:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+}
+
+.support-icons {
+  width: 68px;
+
+  height: 68px;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 28px;
+
+  margin-bottom: var(--space-20);
+
+  background: var(--pearl);
+}
+
+.support-icon.lime {
+  background: var(--lime);
+}
+
+.support-icon.coral {
+  background: var(--coral);
+}
+
+.support-box h3 {
+  margin-bottom: var(--space-20);
+}
+
+.support-center {
+  display: flex;
+
+  justify-content: center;
+
+  position: relative;
+  align-items: center;
+}
+
+.support-center::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 300px;
+
+  border: 2px dashed #d9d9d9;
+
+  border-radius: 50%;
+
+  animation: rotate 30s linear infinite;
+}
+
+.center-circles {
+  width: 220px;
+
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: var(--pearl);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 2;
+
+  box-shadow: var(--shadow-soft);
+}
+
+.center-circles h3 {
+  margin: 18px 0 10px;
+}
+
+.center-circles span {
+  color: #666;
+}
+
+.support-btn {
+  margin-top: 20px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 18px 28px;
+
+  border-radius: 16px;
+
+  background: var(--lime);
+
+  color: var(--charcoal);
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 991px) {
+  .support-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .support-center {
+    order: -1;
+
+    margin-bottom: 30px;
+  }
+
+  .support-center::before {
+    display: none;
+  }
+  .support-side a {
+    justify-content: center;
+    margin: auto;
+  }
+}
